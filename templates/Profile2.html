@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<title>index</title>
+	<head>
+			<script src={{ url_for('static', filename='js/jquery-1.11.1.min.js') }}></script>
+			<script src={{ url_for('static', filename='js/bootstrap.min.js') }}></script>
+			<link rel="stylesheet" href={{ url_for('static', filename='css/bootstrap.min.css') }} />
+
+<!------ Include the above in your HEAD tag ---------->
+</head>
+
+<body>
+<div class="container">
+
+	<div class="display">
+		<a href="/account/profile/edit">Edit Profile</a><br>
+		<a href="/account/profile/changePassword">Change password</a>
+	</div>
+  <button>Home</button>
+  <button>Jobs</button>
+  <button>Messaging</button>
+
+  <button>MyAccount</button>
+  <button>Logout</button>
+    <div class="span3 well">
+        <center>
+        <a href="#aboutModal" data-toggle="modal" data-target="#myModal">  <img src={{ url_for('static', filename='images/img1.png') }}/></a>
+        <h3>Rohit Gollarahalli </h3>
+        <em></em>
+		</center>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title" id="myModalLabel">More About Joe</h4>
+                    </div>
+                <div class="modal-body">
+                    <center>
+                    <img src={{ url_for('static', filename='images/img1.png') }}/></a>
+                    <h3 class="media-heading">Rohit Gollarahalli <small>Halifax,Canada</small></h3>
+                    <span><strong>Skills: </strong></span>
+                        <span class="label label-warning">HTML5/CSS</span>
+                        <span class="label label-info">Adobe CS 5.5</span>
+                        <span class="label label-info">Microsoft Office</span>
+                        <span class="label label-success">Windows XP, Vista, 7</span>
+                    </center>
+                    <hr>
+                    <center>
+                    <p class="text-left"><strong>Bio: </strong><br>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sem dui, tempor sit amet commodo a, vulputate vel tellus.</p>
+                    <br>
+                    </center>
+                </div>
+                <div class="modal-footer">
+                    <center>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">I've heard enough about Joe</button>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<div class="container">
+  <centre>
+<form>
+  <textarea rows="4" cols="50">
+      Share something,post an image or video
+  </textarea>
+<button>Post</button>
+<button>Image</button>
+<button>Video</button>
+</form>
+</centre>
+<centre>
+<p>Newsfeed</p>
+</centre>
+
+
+</div>
+
+</body>

@@ -4,57 +4,50 @@ from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 app.secret_key = 'random string'
-UPLOAD_FOLDER = 'static/uploads'
-ALLOWED_EXTENSIONS = set(['jpeg', 'jpg', 'png', 'gif'])
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-def getLoginDetails():
-    with sqlite3.connect('database.db') as conn:
-        cur = conn.cursor()
-        if 'email' not in session:
-            loggedIn = False
-            firstName = ''
-            noOfItems = 0
-        else:
-            loggedIn = True
-            cur.execute("SELECT userId, firstName FROM users WHERE email = '" + session['email'] + "'")
-            userId, firstName = cur.fetchone()
-            cur.execute("SELECT count(productId) FROM kart WHERE userId = " + str(userId))
-            noOfItems = cur.fetchone()[0]
-    conn.close()
-    return (loggedIn, firstName, noOfItems)
+class loginClass:
+    def getLoginDetails(self):
+        with sqlite3.connect('database.db') as conn:
+            cur = conn.cursor()
+            if 'email' not in session:
+                loggedIn = False
+                firstName = ''
+            else:
+                loggedIn = True
+                cur.execute("SELECT userId, firstName FROM users WHERE email = '" + session['email'] + "'")
+                userId, firstName = cur.fetchone()
+        conn.close()
+        return (loggedIn, firstName)
+
+
 
 @app.route("/")
 def root():
-    loggedIn, firstName, noOfItems = getLoginDetails()
-    with sqlite3.connect('database.db') as conn:
-        cur = conn.cursor()
-        cur.execute('SELECT productId, name, price, description, image, stock FROM products')
-        itemData = cur.fetchall()
-        cur.execute('SELECT categoryId, name FROM categories')
-        categoryData = cur.fetchall()
-    itemData = parse(itemData)
-    return render_template('home.html', itemData=itemData, loggedIn=loggedIn, firstName=firstName, noOfItems=noOfItems, categoryData=categoryData)
+    login = loginClass()
+    loggedIn, firstName = login.getLoginDetails()
+    return render_template('home.html',  loggedIn=loggedIn, firstName=firstName)
 
 
 @app.route("/account/profile")
 def profileHome():
     if 'email' not in session:
         return redirect(url_for('root'))
-    loggedIn, firstName, noOfItems = getLoginDetails()
-    return render_template("profileHome.html", loggedIn=loggedIn, firstName=firstName, noOfItems=noOfItems)
+    login = loginClass()
+    loggedIn, firstName = login.getLoginDetails()
+    return render_template("Profile2.html", loggedIn=loggedIn, firstName=firstName, )
 
 @app.route("/account/profile/edit")
 def editProfile():
     if 'email' not in session:
         return redirect(url_for('root'))
-    loggedIn, firstName, noOfItems = getLoginDetails()
+    login = loginClass()
+    loggedIn, firstName = login.getLoginDetails()
     with sqlite3.connect('database.db') as conn:
         cur = conn.cursor()
         cur.execute("SELECT userId, email, firstName, lastName, address1, address2, zipcode, city, state, country, phone FROM users WHERE email = '" + session['email'] + "'")
         profileData = cur.fetchone()
     conn.close()
-    return render_template("editProfile.html", profileData=profileData, loggedIn=loggedIn, firstName=firstName, noOfItems=noOfItems)
+    return render_template("editProfile.html", profileData=profileData, loggedIn=loggedIn, firstName=firstName, )
 
 @app.route("/account/profile/changePassword", methods=["GET", "POST"])
 def changePassword():
@@ -180,22 +173,8 @@ def register():
 def registrationForm():
     return render_template("register.html")
 
-def allowed_file(filename):
-    return '.' in filename and \
-            filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
-def parse(data):
-    ans = []
-    i = 0
-    while i < len(data):
-        curr = []
-        for j in range(7):
-            if i >= len(data):
-                break
-            curr.append(data[i])
-            i += 1
-        ans.append(curr)
-    return ans
+
 
 if __name__ == '__main__':
     app.run(debug=True)
