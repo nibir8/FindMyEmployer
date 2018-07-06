@@ -5,59 +5,25 @@ from werkzeug.utils import secure_filename
 app = Flask(__name__)
 app.secret_key = 'random string'
 
-class loginClass:
-    def getLoginDetails(self):
-        loggedIn = True
-        with sqlite3.connect('database.db') as conn:
-            cur = conn.cursor()
-            cur.execute("SELECT userId, firstName FROM users WHERE email = '" + session['email'] + "'")
-            userId, firstName = cur.fetchone()
-        conn.close()
-        return (loggedIn, firstName)
+#Seperated to different classes
+class UpdateMyProfile:
+    def updateMyProfileMethod(Self,email,firstName,lastName,address1,address2,zipcode,city,state,country,phone):
+            with sqlite3.connect('database.db') as con:
+                    try:
+                        cur = con.cursor()
+                        cur.execute('UPDATE users SET firstName = ?, lastName = ?, address1 = ?, address2 = ?, zipcode = ?, city = ?, state = ?, country = ?, phone = ? WHERE email = ?', (firstName, lastName, address1, address2, zipcode, city, state, country, phone, email))
+
+                        con.commit()
+                        msg = "Saved Successfully"
+                    except:
+                        con.rollback()
+                        msg = "Error occured"
+            con.close()
+            return msg
 
 
-
-@app.route("/")
-def root():
-    if 'email' not in session:
-        loggedIn = False
-        firstName = ''
-        return render_template('home.html',  loggedIn=loggedIn, firstName=firstName)
-    else:
-        loggedIn = True
-        login = loginClass()
-        loggedIn, firstName = login.getLoginDetails()
-        return render_template("Profile2.html", loggedIn=loggedIn, firstName=firstName, )
-
-
-@app.route("/account/profile")
-def profileHome():
-    if 'email' not in session:
-        return redirect(url_for('root'))
-    else:
-        loggedIn = True
-        login = loginClass()
-        loggedIn, firstName = login.getLoginDetails()
-    return render_template("Profile2.html", loggedIn=loggedIn, firstName=firstName, )
-
-@app.route("/account/profile/edit")
-def editProfile():
-    if 'email' not in session:
-        return redirect(url_for('root'))
-    login = loginClass()
-    loggedIn, firstName = login.getLoginDetails()
-    with sqlite3.connect('database.db') as conn:
-        cur = conn.cursor()
-        cur.execute("SELECT userId, email, firstName, lastName, address1, address2, zipcode, city, state, country, phone FROM users WHERE email = '" + session['email'] + "'")
-        profileData = cur.fetchone()
-    conn.close()
-    return render_template("editProfile.html", profileData=profileData, loggedIn=loggedIn, firstName=firstName, )
-
-@app.route("/account/profile/changePassword", methods=["GET", "POST"])
-def changePassword():
-    if 'email' not in session:
-        return redirect(url_for('loginForm'))
-    if request.method == "POST":
+class ChangeMyPassword:
+    def changeMyProfilePassword(Self):
         oldPassword = request.form['oldpassword']
         oldPassword = hashlib.md5(oldPassword.encode()).hexdigest()
         newPassword = request.form['newpassword']
@@ -74,10 +40,99 @@ def changePassword():
                 except:
                     conn.rollback()
                     msg = "Failed"
-                return render_template("changePassword.html", msg=msg)
+                #return render_template("changePassword.html", msg=msg)
             else:
                 msg = "Wrong password"
         conn.close()
+        return msg
+
+class CheckIfUserValid:
+    def isValid(Self,email, password):
+        con = sqlite3.connect('database.db')
+        cur = con.cursor()
+        cur.execute('SELECT email, password FROM users')
+        data = cur.fetchall()
+        for row in data:
+            if row[0] == email and row[1] == hashlib.md5(password.encode()).hexdigest():
+                return True
+        return False
+
+class LoginClass:
+    def getLoginDetails(self):
+        loggedIn = True
+        with sqlite3.connect('database.db') as conn:
+            cur = conn.cursor()
+            cur.execute("SELECT userId, firstName FROM users WHERE email = '" + session['email'] + "'")
+            userId, firstName = cur.fetchone()
+        conn.close()
+        return (loggedIn, firstName)
+
+class InsertUser:
+    def insertNewUser(Self,password,email,firstName,lastName,address1,address2,zipcode,city,state,country,phone):
+        with sqlite3.connect('database.db') as con:
+            try:
+                cur = con.cursor()
+                cur.execute('INSERT INTO users (password, email, firstName, lastName, address1, address2, zipcode, city, state, country, phone) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', (hashlib.md5(password.encode()).hexdigest(), email, firstName, lastName, address1, address2, zipcode, city, state, country, phone))
+
+                con.commit()
+
+                msg = "Registered Successfully"
+            except:
+                con.rollback()
+                msg = "Error occured"
+        con.close()
+        return msg
+
+
+class FetchUserData:
+    def getProfileData(Self):
+        with sqlite3.connect('database.db') as conn:
+            cur = conn.cursor()
+            cur.execute("SELECT userId, email, firstName, lastName, address1, address2, zipcode, city, state, country, phone FROM users WHERE email = '" + session['email'] + "'")
+            profileData = cur.fetchone()
+        conn.close()
+        return profileData
+
+@app.route("/")
+def root():
+    if 'email' not in session:
+        loggedIn = False
+        firstName = ''
+        return render_template('home.html',  loggedIn=loggedIn, firstName=firstName)
+    else:
+        loggedIn = True
+        login = LoginClass()
+        loggedIn, firstName = login.getLoginDetails()
+        return render_template("Profile2.html", loggedIn=loggedIn, firstName=firstName, )
+
+
+@app.route("/account/profile")
+def profileHome():
+    if 'email' not in session:
+        return redirect(url_for('root'))
+    else:
+        loggedIn = True
+        login = LoginClass()
+        loggedIn, firstName = login.getLoginDetails()
+    return render_template("Profile2.html", loggedIn=loggedIn, firstName=firstName, )
+
+@app.route("/account/profile/edit")
+def editProfile():
+    if 'email' not in session:
+        return redirect(url_for('root'))
+    login_object = LoginClass()
+    loggedIn, firstName = login_object.getLoginDetails()
+    fetchuserdata = FetchUserData()
+    profileData = fetchuserdata.getProfileData()
+    return render_template("editProfile.html", profileData=profileData, loggedIn=loggedIn, firstName=firstName )
+
+@app.route("/account/profile/changePassword", methods=["GET", "POST"])
+def changePassword():
+    if 'email' not in session:
+        return redirect(url_for('loginForm'))
+    if request.method == "POST":
+        changemypassword = ChangeMyPassword()
+        msg = changemypassword.changeMyProfilePassword()
         return render_template("changePassword.html", msg=msg)
     else:
         return render_template("changePassword.html")
@@ -95,17 +150,8 @@ def updateProfile():
         state = request.form['state']
         country = request.form['country']
         phone = request.form['phone']
-        with sqlite3.connect('database.db') as con:
-                try:
-                    cur = con.cursor()
-                    cur.execute('UPDATE users SET firstName = ?, lastName = ?, address1 = ?, address2 = ?, zipcode = ?, city = ?, state = ?, country = ?, phone = ? WHERE email = ?', (firstName, lastName, address1, address2, zipcode, city, state, country, phone, email))
-
-                    con.commit()
-                    msg = "Saved Successfully"
-                except:
-                    con.rollback()
-                    msg = "Error occured"
-        con.close()
+        updatemyprofile = UpdateMyProfile()
+        msg = updatemyprofile.updateMyProfileMethod(email,firstName,lastName,address1,address2,zipcode,city,state,country,phone)
         return redirect(url_for('editProfile'))
 
 @app.route("/loginForm")
@@ -120,10 +166,12 @@ def login():
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
-        if is_valid(email, password):
+        checkifuservalid = CheckIfUserValid()
+        value  = checkifuservalid.isValid(email, password)
+        if value == True:
             session['email'] = email
             return redirect(url_for('root'))
-        else:
+        elif value == False:
             error = 'Invalid UserId / Password'
             return render_template('login.html', error=error)
 
@@ -133,15 +181,7 @@ def logout():
     session.pop('email', None)
     return redirect(url_for('root'))
 
-def is_valid(email, password):
-    con = sqlite3.connect('database.db')
-    cur = con.cursor()
-    cur.execute('SELECT email, password FROM users')
-    data = cur.fetchall()
-    for row in data:
-        if row[0] == email and row[1] == hashlib.md5(password.encode()).hexdigest():
-            return True
-    return False
+
 
 @app.route("/register", methods = ['GET', 'POST'])
 def register():
@@ -158,20 +198,11 @@ def register():
         state = request.form['state']
         country = request.form['country']
         phone = request.form['phone']
+        insertuser = InsertUser()
+        msg = insertuser.insertNewUser(password,email,firstName,lastName,address1,address2,zipcode,city,state,country,phone)
+        return render_template("login.html", error=msg)
 
-        with sqlite3.connect('database.db') as con:
-            try:
-                cur = con.cursor()
-                cur.execute('INSERT INTO users (password, email, firstName, lastName, address1, address2, zipcode, city, state, country, phone) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', (hashlib.md5(password.encode()).hexdigest(), email, firstName, lastName, address1, address2, zipcode, city, state, country, phone))
 
-                con.commit()
-
-                msg = "Registered Successfully"
-            except:
-                con.rollback()
-                msg = "Error occured"
-        con.close()
-        return render_template("home.html", error=msg)
 
 @app.route("/registerationForm")
 def registrationForm():
