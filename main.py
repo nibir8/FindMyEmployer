@@ -171,7 +171,7 @@ def register():
                 con.rollback()
                 msg = "Error occured"
         con.close()
-        return render_template("login.html", error=msg)
+        return render_template("home.html", error=msg)
 
 @app.route("/registerationForm")
 def registrationForm():
