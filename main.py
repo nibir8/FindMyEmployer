@@ -7,15 +7,11 @@ app.secret_key = 'random string'
 
 class loginClass:
     def getLoginDetails(self):
+        loggedIn = True
         with sqlite3.connect('database.db') as conn:
             cur = conn.cursor()
-            if 'email' not in session:
-                loggedIn = False
-                firstName = ''
-            else:
-                loggedIn = True
-                cur.execute("SELECT userId, firstName FROM users WHERE email = '" + session['email'] + "'")
-                userId, firstName = cur.fetchone()
+            cur.execute("SELECT userId, firstName FROM users WHERE email = '" + session['email'] + "'")
+            userId, firstName = cur.fetchone()
         conn.close()
         return (loggedIn, firstName)
 
@@ -23,17 +19,25 @@ class loginClass:
 
 @app.route("/")
 def root():
-    login = loginClass()
-    loggedIn, firstName = login.getLoginDetails()
-    return render_template('home.html',  loggedIn=loggedIn, firstName=firstName)
+    if 'email' not in session:
+        loggedIn = False
+        firstName = ''
+        return render_template('home.html',  loggedIn=loggedIn, firstName=firstName)
+    else:
+        loggedIn = True
+        login = loginClass()
+        loggedIn, firstName = login.getLoginDetails()
+        return render_template("Profile2.html", loggedIn=loggedIn, firstName=firstName, )
 
 
 @app.route("/account/profile")
 def profileHome():
     if 'email' not in session:
         return redirect(url_for('root'))
-    login = loginClass()
-    loggedIn, firstName = login.getLoginDetails()
+    else:
+        loggedIn = True
+        login = loginClass()
+        loggedIn, firstName = login.getLoginDetails()
     return render_template("Profile2.html", loggedIn=loggedIn, firstName=firstName, )
 
 @app.route("/account/profile/edit")
