@@ -1,3 +1,5 @@
 # Group15
 
-Project repo for Group 15 New Jenkins Deploy
+Project Member: 
+Rohit Gollarahalli (B00779758)
+Nibir Mukherjee (B00768437)
