@@ -171,6 +171,14 @@ def registrationForm():
     except:
         msg = "Error in view registerform"
         logging.info(msg, exc_info=True)
+		
+@app.route("/jobs")
+def jobs():
+    try:
+        return render_template("jobs.html")
+    except:
+        msg = "Error in view jobs"
+        logging.info(msg, exc_info=True)
 
 
 
