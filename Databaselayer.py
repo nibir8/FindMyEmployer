@@ -1,9 +1,20 @@
 import sqlite3, hashlib, os
 import logging
+import unittest
+
+
+class IProfileInterface:
+    def updateMyProfileMethod_DBL(Self,email,firstName,lastName,address1,address2,zipcode,city,state,country,phone):  raise NotImplementedError
+    def changeMyProfilePassword_DBL(Self,myemail,oldPassword,newPassword): raise NotImplementedError
+    def isValid_DBL(Self,email, password): raise NotImplementedError
+    def getLoginDetails_DBL(self,myemail): raise NotImplementedError
+    def insertNewUser_DBL(Self,password,email,firstName,lastName,address1,address2,zipcode,city,state,country,phone): raise NotImplementedError
+    def getProfileData_DBL(Self,myemail): raise NotImplementedError
+
 
 
 #Seperated to different classes
-class Databaselayer_UpdateMyProfile:
+class Databaselayer_UpdateMyProfile(IProfileInterface):
     def updateMyProfileMethod_DBL(Self,email,firstName,lastName,address1,address2,zipcode,city,state,country,phone):
             with sqlite3.connect('database.db') as con:
                     try:
@@ -20,13 +31,15 @@ class Databaselayer_UpdateMyProfile:
             return msg
 
 
-class Databaselayer_ChangeMyPassword:
+class Databaselayer_ChangeMyPassword(IProfileInterface):
     def changeMyProfilePassword_DBL(Self,myemail,oldPassword,newPassword):
         try:
+            msg=""
             with sqlite3.connect('database.db') as conn:
                 cur = conn.cursor()
                 cur.execute("SELECT userId, password FROM users WHERE email = '" + myemail + "'")
                 userId, password = cur.fetchone()
+                print password
                 if (password == oldPassword):
                         cur.execute("UPDATE users SET password = ? WHERE userId = ?", (newPassword, userId))
                         conn.commit()
@@ -40,7 +53,7 @@ class Databaselayer_ChangeMyPassword:
         conn.close()
         return msg
 
-class Databaselayer_CheckIfUserValid:
+class Databaselayer_CheckIfUserValid(IProfileInterface):
     def isValid_DBL(Self,email, password):
         try:
             con = sqlite3.connect('database.db')
@@ -56,7 +69,7 @@ class Databaselayer_CheckIfUserValid:
                 return True
         return False
 
-class Databaselayer_LoginClass:
+class Databaselayer_LoginClass(IProfileInterface):
     def getLoginDetails_DBL(self,myemail):
         try:
             loggedIn = True
@@ -70,7 +83,7 @@ class Databaselayer_LoginClass:
         conn.close()
         return (loggedIn, firstName)
 
-class Databaselayer_InsertUser:
+class Databaselayer_InsertUser(IProfileInterface):
     def insertNewUser_DBL(Self,password,email,firstName,lastName,address1,address2,zipcode,city,state,country,phone):
         try:
             with sqlite3.connect('database.db') as con:
@@ -87,7 +100,7 @@ class Databaselayer_InsertUser:
         return msg
 
 
-class Databaselayer_FetchUserData:
+class Databaselayer_FetchUserData(IProfileInterface):
     def getProfileData_DBL(Self,myemail):
         try:
             with sqlite3.connect('database.db') as conn:
