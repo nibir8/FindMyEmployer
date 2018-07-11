@@ -8,7 +8,7 @@ class IProfileInterface:
     def getLoginDetails_DBL(self,myemail): raise NotImplementedError
     def insertNewUser_DBL(Self,password,email,firstName,lastName,address1,address2,zipcode,city,state,country,phone): raise NotImplementedError
     def getProfileData_DBL(Self,myemail): raise NotImplementedError
-	def getJob_DBL(Self,jobId): raise NotImplementedError
+    def getJob_DBL(Self,jobId): raise NotImplementedError
 
 #Seperated to different classes
 class Databaselayer_UpdateMyProfile(IProfileInterface):
