@@ -7,7 +7,6 @@ from .. import Databaselayer
 from Databaselayer import *
 
 class Databaselayer_Tests(unittest.TestCase):
-
 '''
     def test_updateMyProfileMethod_DBL(self):
         obj1 = Databaselayer.Databaselayer_UpdateMyProfile()
@@ -25,7 +24,6 @@ class Databaselayer_Tests(unittest.TestCase):
         msg = database.Databaselayer.Databaselayer_UpdateMyProfile.updateMyProfileMethod_DBL(email,firstName,lastName,address1,address2,zipcode,city,state,country,phone)
         print msg
         self.assertEqual(msg,"Saved Successfully")
-
 
     def test_changeMyProfilePassword_DBL(self):
         obj2 = Databaselayer.Databaselayer_ChangeMyPassword()
@@ -52,9 +50,6 @@ class Databaselayer_Tests(unittest.TestCase):
         obj5 = Databaselayer.Databaselayer_LoginClass()
         email = "rohit.gs28@gmail.com"
         self.assertEqual(obj5.getLoginDetails_DBL(email),("rohit.gs28@gmail.com","Rohit"))
-
-
-
 '''
 
 if __name__ == '__main__':

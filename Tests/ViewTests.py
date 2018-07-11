@@ -32,6 +32,5 @@ class FlasApp(unittest.TestCase):
     def deleteDatabase(self):
         os.remove("database.db")
 
-
 if __name__ == '__main__':
     unittest.main()
