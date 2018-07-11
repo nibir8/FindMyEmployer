@@ -1,17 +1,29 @@
 import sqlite3, hashlib, os
 import logging
+import unittest
 
-class IProfileInterface:
+
+class IProfileUpdate:
     def updateMyProfileMethod_DBL(Self,email,firstName,lastName,address1,address2,zipcode,city,state,country,phone):  raise NotImplementedError
+class IPasswordUpdate:
     def changeMyProfilePassword_DBL(Self,myemail,oldPassword,newPassword): raise NotImplementedError
+class ICheckValidity:
     def isValid_DBL(Self,email, password): raise NotImplementedError
+class IFetchLoginDetails:
     def getLoginDetails_DBL(self,myemail): raise NotImplementedError
+class IInsertnewUser:
     def insertNewUser_DBL(Self,password,email,firstName,lastName,address1,address2,zipcode,city,state,country,phone): raise NotImplementedError
+class IFtechProfileDetails:
     def getProfileData_DBL(Self,myemail): raise NotImplementedError
+class IFetchJobDetails:
     def getJob_DBL(Self,jobId): raise NotImplementedError
+class IInsertJobDetails:
+    def insertJob_DBL(Self,jobId,companyName,title,manager,location,jobDetails): raise NotImplementedError
+
+
 
 #Seperated to different classes
-class Databaselayer_UpdateMyProfile(IProfileInterface):
+class Databaselayer_UpdateMyProfile(IProfileUpdate):
     def updateMyProfileMethod_DBL(Self,email,firstName,lastName,address1,address2,zipcode,city,state,country,phone):
             with sqlite3.connect('database.db') as con:
                     try:
@@ -28,13 +40,15 @@ class Databaselayer_UpdateMyProfile(IProfileInterface):
             return msg
 
 
-class Databaselayer_ChangeMyPassword(IProfileInterface):
+class Databaselayer_ChangeMyPassword(IPasswordUpdate):
     def changeMyProfilePassword_DBL(Self,myemail,oldPassword,newPassword):
         try:
+            msg=""
             with sqlite3.connect('database.db') as conn:
                 cur = conn.cursor()
                 cur.execute("SELECT userId, password FROM users WHERE email = '" + myemail + "'")
                 userId, password = cur.fetchone()
+                print password
                 if (password == oldPassword):
                         cur.execute("UPDATE users SET password = ? WHERE userId = ?", (newPassword, userId))
                         conn.commit()
@@ -48,7 +62,7 @@ class Databaselayer_ChangeMyPassword(IProfileInterface):
         conn.close()
         return msg
 
-class Databaselayer_CheckIfUserValid(IProfileInterface):
+class Databaselayer_CheckIfUserValid(ICheckValidity):
     def isValid_DBL(Self,email, password):
         try:
             con = sqlite3.connect('database.db')
@@ -64,7 +78,7 @@ class Databaselayer_CheckIfUserValid(IProfileInterface):
                 return True
         return False
 
-class Databaselayer_LoginClass(IProfileInterface):
+class Databaselayer_LoginClass(IFetchLoginDetails):
     def getLoginDetails_DBL(self,myemail):
         try:
             loggedIn = True
@@ -78,7 +92,7 @@ class Databaselayer_LoginClass(IProfileInterface):
         conn.close()
         return (loggedIn, firstName)
 
-class Databaselayer_InsertUser(IProfileInterface):
+class Databaselayer_InsertUser(IInsertnewUser):
     def insertNewUser_DBL(Self,password,email,firstName,lastName,address1,address2,zipcode,city,state,country,phone):
         try:
             with sqlite3.connect('database.db') as con:
@@ -95,7 +109,7 @@ class Databaselayer_InsertUser(IProfileInterface):
         return msg
 
 
-class Databaselayer_FetchUserData(IProfileInterface):
+class Databaselayer_FetchUserData(IFtechProfileDetails):
     def getProfileData_DBL(Self,myemail):
         try:
             with sqlite3.connect('database.db') as conn:
@@ -109,7 +123,8 @@ class Databaselayer_FetchUserData(IProfileInterface):
         conn.close()
         return profileData
 
-class Databaselayer_InsertJob(IProfileInterface):
+
+class Databaselayer_InsertJob(IInsertJobDetails):
     def insertJob_DBL(Self,jobId,companyName,title,manager,location,jobDetails):
         try:
             with sqlite3.connect('database.db') as con:
@@ -125,7 +140,7 @@ class Databaselayer_InsertJob(IProfileInterface):
         con.close()
         return msg
 
-class Databaselayer_FetchJob(IProfileInterface):
+class Databaselayer_FetchJob(IFetchJobDetails):
     def getJob_DBL(Self,jobId):
         try:
             with sqlite3.connect('database.db') as conn:
