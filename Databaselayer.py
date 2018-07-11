@@ -1,7 +1,5 @@
 import sqlite3, hashlib, os
 import logging
-import unittest
-
 
 class IProfileInterface:
     def updateMyProfileMethod_DBL(Self,email,firstName,lastName,address1,address2,zipcode,city,state,country,phone):  raise NotImplementedError
@@ -10,8 +8,7 @@ class IProfileInterface:
     def getLoginDetails_DBL(self,myemail): raise NotImplementedError
     def insertNewUser_DBL(Self,password,email,firstName,lastName,address1,address2,zipcode,city,state,country,phone): raise NotImplementedError
     def getProfileData_DBL(Self,myemail): raise NotImplementedError
-
-
+	def getJob_DBL(Self,jobId): raise NotImplementedError
 
 #Seperated to different classes
 class Databaselayer_UpdateMyProfile(IProfileInterface):
@@ -34,12 +31,10 @@ class Databaselayer_UpdateMyProfile(IProfileInterface):
 class Databaselayer_ChangeMyPassword(IProfileInterface):
     def changeMyProfilePassword_DBL(Self,myemail,oldPassword,newPassword):
         try:
-            msg=""
             with sqlite3.connect('database.db') as conn:
                 cur = conn.cursor()
                 cur.execute("SELECT userId, password FROM users WHERE email = '" + myemail + "'")
                 userId, password = cur.fetchone()
-                print password
                 if (password == oldPassword):
                         cur.execute("UPDATE users SET password = ? WHERE userId = ?", (newPassword, userId))
                         conn.commit()
@@ -113,3 +108,33 @@ class Databaselayer_FetchUserData(IProfileInterface):
             logging.info(excep_msg, exc_info=True)
         conn.close()
         return profileData
+
+class Databaselayer_InsertJob(IProfileInterface):
+    def insertJob_DBL(Self,jobId,companyName,title,manager,location,jobDetails):
+        try:
+            with sqlite3.connect('database.db') as con:
+
+                    cur = con.cursor()
+                    cur.execute('INSERT INTO jobs (jobId,companyName,title,manager,location,jobDetails) VALUES (?, ?, ?, ?, ?, ?)', (jobId,companyName,title,manager,location,jobDetails))
+                    con.commit()
+                    msg = "Job Added Successfully"
+        except:
+                con.rollback()
+                excep_msg = "Error occured in insertJob_DBL method"
+                logging.info(excep_msg, exc_info=True)
+        con.close()
+        return msg
+
+class Databaselayer_FetchJob(IProfileInterface):
+    def getJob_DBL(Self,jobId):
+        try:
+            with sqlite3.connect('database.db') as conn:
+                cur = conn.cursor()
+                cur.execute("SELECT * FROM jobs") # WHERE jobId = '" + jobId + "'")
+                jobData = cur.fetchmany(10)
+        except:
+            conn.rollback()
+            excep_msg = "Error occured in getJob_DBL method"
+            logging.info(excep_msg, exc_info=True)
+        conn.close()
+        return jobData

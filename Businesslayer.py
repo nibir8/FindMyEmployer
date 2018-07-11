@@ -1,7 +1,6 @@
 import Databaselayer
 from Databaselayer import *
 
-
 class Businesslayer_LoginClass:
     def getLoginDetails_BSL(self,myemail):
         try:
@@ -61,4 +60,23 @@ class Businesslayer_InsertUser:
             insertuser.insertNewUser_DBL(password,email,firstName,lastName,address1,address2,zipcode,city,state,country,phone)
         except:
             msg = "Error occured in method insertNewUser_BSL method"
+            logging.info(msg, exc_info=True)
+			
+class Businesslayer_InsertJob:
+    def insertJob_BSL(self,jobId,companyName,title,manager,location,jobDetails):
+        try:
+            insertjob = Databaselayer_InsertJob()
+            insertjob.insertJob_DBL(jobId,companyName,title,manager,location,jobDetails)
+        except:
+            msg = "Error occured in method insertJob_BSL method"
+            logging.info(msg, exc_info=True)
+
+class Businesslayer_FetchJobData:
+    def getJobData_BSL(Self,jobId):
+        try:
+            fetchjobdata = Databaselayer_FetchJob()
+            jobData = fetchjobdata.getJob_DBL(jobId)
+            return jobData
+        except:
+            msg = "Error occured in method getJobData_BSL method"
             logging.info(msg, exc_info=True)

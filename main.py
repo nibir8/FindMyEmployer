@@ -8,8 +8,6 @@ import os.path
 app = Flask(__name__)
 app.secret_key = 'random string'
 
-
-
 @app.route("/")
 def root():
     try:
@@ -54,8 +52,6 @@ def editProfile():
     except:
         msg = "Error in view edit profile"
         logging.info(msg, exc_info=True)
-
-
 
 
 @app.route("/account/profile/changePassword", methods=["GET", "POST"])
@@ -137,8 +133,6 @@ def logout():
         msg = "Error in view logout"
         logging.info(msg, exc_info=True)
 
-
-
 @app.route("/register", methods = ['GET', 'POST'])
 def register():
     try:
@@ -157,11 +151,31 @@ def register():
             phone = request.form['phone']
             insertuser = Businesslayer.Businesslayer_InsertUser()
             msg = insertuser.insertNewUser_BSL(password,email,firstName,lastName,address1,address2,zipcode,city,state,country,phone)
-            return render_template("login.html", error=msg)
+            return render_template("home.html", error=msg)
     except:
         msg = "Error in view register"
         logging.info(msg, exc_info=True)
 
+@app.route("/jobs", methods = ['GET', 'POST'])
+def jobs():
+    try:
+        if request.method == 'POST':
+            #Parse form data
+            jobId = request.form['jobId']
+            companyName = request.form['companyName']
+            title = request.form['title']
+            manager = request.form['manager']
+            location = request.form['location']
+            jobDetails = request.form['jobDetails']
+            insertjob = Businesslayer.Businesslayer_InsertJob()
+            msg = insertjob.insertJob_BSL(jobId,companyName,title,manager,location,jobDetails)
+            fetchjobdata = Businesslayer.Businesslayer_FetchJobData()
+            jobData = fetchjobdata.getJobData_BSL('12345')
+            return render_template("jobs.html", jobData=jobData)
+    except:
+        msg = "Error in view jobs"
+        logging.info(msg, exc_info=True)		
+		
 
 
 @app.route("/registerationForm")
@@ -172,15 +186,15 @@ def registrationForm():
         msg = "Error in view registerform"
         logging.info(msg, exc_info=True)
 		
-@app.route("/jobs")
-def jobs():
+@app.route("/addJobs")
+def addJobs():
     try:
-        return render_template("jobs.html")
+        fetchjobdata = Businesslayer.Businesslayer_FetchJobData()
+        jobData = fetchjobdata.getJobData_BSL('12345')
+        return render_template("jobs.html", jobData=jobData)
     except:
         msg = "Error in view jobs"
         logging.info(msg, exc_info=True)
-
-
 
 
 if __name__ == '__main__':

@@ -32,9 +32,85 @@
   </div>
 </nav>
 
+<div class="container">
+        <div class="row centered-form">
+        <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+        	<div class="panel panel-default">
+        		<div class="panel-heading">
+			    		<h1 style="text-align:center;" class="panel-title">Add Jobs</h1>
+			 			</div>
+			 			<div class="panel-body">
+			    		<form action="/jobs" method="POST">
+			    			<div class="row">
+			    				<div class="col-xs-6 col-sm-6 col-md-6">
+			    					<div class="form-group">
+			                <input type="text" name="jobId" id="jobId" class="form-control input-sm" placeholder="Job ID">
+			    					</div>
+			    				</div>
+			    				<div class="col-xs-6 col-sm-6 col-md-6">
+			    					<div class="form-group">
+			    						<input type="text" name="companyName" id="companyName" class="form-control input-sm" placeholder="Company Name">
+			    					</div>
+			    				</div>
+			    			</div>
 
+			    			<div class="form-group">
+			    				<input type="text" name="title" id="title" class="form-control input-sm" placeholder="Job Title">
+			    			</div>
 
+			    			<div class="row">
+			    				<div class="col-xs-6 col-sm-6 col-md-6">
+			    					<div class="form-group">
+			    						<input type="text" name="manager" id="manager" class="form-control input-sm" placeholder="Manager's Name">
+			    					</div>
+			    				</div>
+			    				<div class="col-xs-6 col-sm-6 col-md-6">
+			    					<div class="form-group">
+			    						<input type="text" name="location" id="location" class="form-control input-sm" placeholder="Job Location">
+			    					</div>
+			    				</div>
+			    			</div>
+							
+							<div class="form-group">
+			    				<input type="text" name="jobDetails" id="jobDetails" class="form-control input-sm" placeholder="Enter Job Details">
+			    			</div>
+			    			
+			    			<input type="submit" value="Add" class="btn btn-info btn-block">
+			    		
+			    		</form>
+			    	</div>
+	    		</div>
+    		</div>
+    	</div>
+    </div>
+	
+	<div style="margin:auto; width:40%; text-align:center;">
+	<table>
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+       
+        <tr>
+            <td>{{jobData[0]}}</td>
+		</tr>
+		<tr>
+            <td>{{jobData[1]}}</td>
+		</tr>
+		<tr>
+            <td>{{jobData[2]}}</td> 	
+        </tr>
+		<tr>
+            <td>{{jobData[3]}}</td> 	
+        </tr>
+    </tbody>
+</table>
 
+</div>
 
 
 </body>
