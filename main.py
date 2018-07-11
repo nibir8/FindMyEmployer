@@ -1,5 +1,4 @@
 from flask import *
-
 from werkzeug.utils import secure_filename
 import Businesslayer
 from Businesslayer import *
@@ -23,7 +22,6 @@ def root():
     except:
         msg = "Error in view Homepage"
         logging.info(msg, exc_info=True)
-
 
 @app.route("/account/profile")
 def profileHome():
@@ -52,7 +50,6 @@ def editProfile():
     except:
         msg = "Error in view edit profile"
         logging.info(msg, exc_info=True)
-
 
 @app.route("/account/profile/changePassword", methods=["GET", "POST"])
 def changePassword():
@@ -123,7 +120,6 @@ def login():
         msg = "Error in view login"
         logging.info(msg, exc_info=True)
 
-
 @app.route("/logout")
 def logout():
     try:
@@ -174,9 +170,7 @@ def jobs():
             return render_template("jobs.html", jobData=jobData)
     except:
         msg = "Error in view jobs"
-        logging.info(msg, exc_info=True)		
-		
-
+        logging.info(msg, exc_info=True)
 
 @app.route("/registerationForm")
 def registrationForm():
@@ -195,7 +189,6 @@ def addJobs():
     except:
         msg = "Error in view jobs"
         logging.info(msg, exc_info=True)
-
 
 if __name__ == '__main__':
     logging.basicConfig(filename='Log1.log',level=logging.DEBUG,format='%(asctime)s %(levelname)s %(name)s %(message)s')

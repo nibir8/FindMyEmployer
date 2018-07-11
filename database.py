@@ -30,4 +30,3 @@ conn. execute('''CREATE TABLE jobs
 		 )''')
 		 
 conn.close()
-

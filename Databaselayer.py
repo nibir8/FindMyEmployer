@@ -2,7 +2,6 @@ import sqlite3, hashlib, os
 import logging
 import unittest
 
-
 class IProfileUpdate:
     def updateMyProfileMethod_DBL(Self,email,firstName,lastName,address1,address2,zipcode,city,state,country,phone):  raise NotImplementedError
 class IPasswordUpdate:
@@ -19,8 +18,6 @@ class IFetchJobDetails:
     def getJob_DBL(Self,jobId): raise NotImplementedError
 class IInsertJobDetails:
     def insertJob_DBL(Self,jobId,companyName,title,manager,location,jobDetails): raise NotImplementedError
-
-
 
 #Seperated to different classes
 class Databaselayer_UpdateMyProfile(IProfileUpdate):
@@ -39,7 +36,6 @@ class Databaselayer_UpdateMyProfile(IProfileUpdate):
             con.close()
             return msg
 
-
 class Databaselayer_ChangeMyPassword(IPasswordUpdate):
     def changeMyProfilePassword_DBL(Self,myemail,oldPassword,newPassword):
         try:
@@ -48,7 +44,7 @@ class Databaselayer_ChangeMyPassword(IPasswordUpdate):
                 cur = conn.cursor()
                 cur.execute("SELECT userId, password FROM users WHERE email = '" + myemail + "'")
                 userId, password = cur.fetchone()
-                print password
+                print (password)
                 if (password == oldPassword):
                         cur.execute("UPDATE users SET password = ? WHERE userId = ?", (newPassword, userId))
                         conn.commit()
@@ -108,7 +104,6 @@ class Databaselayer_InsertUser(IInsertnewUser):
         con.close()
         return msg
 
-
 class Databaselayer_FetchUserData(IFtechProfileDetails):
     def getProfileData_DBL(Self,myemail):
         try:
@@ -122,7 +117,6 @@ class Databaselayer_FetchUserData(IFtechProfileDetails):
             logging.info(excep_msg, exc_info=True)
         conn.close()
         return profileData
-
 
 class Databaselayer_InsertJob(IInsertJobDetails):
     def insertJob_DBL(Self,jobId,companyName,title,manager,location,jobDetails):

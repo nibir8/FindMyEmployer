@@ -21,7 +21,6 @@ class Businesslayer_UpdateMyProfile:
             msg = "Error occured in method updateMyProfileMethod_BSL method"
             logging.info(msg, exc_info=True)
 
-
 class Businesslayer_ChangeMyPassword:
     def changeMyProfilePassword_BSL(Self,myemail,oldPassword,newPassword):
         try:
@@ -41,7 +40,6 @@ class Businesslayer_FetchUserData:
         except:
             msg = "Error occured in method getProfileData_BSL method"
             logging.info(msg, exc_info=True)
-
 
 class Businesslayer_CheckIfUserValid:
     def isValid_BSL(self,email, password):
