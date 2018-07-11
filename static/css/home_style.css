@@ -1,35 +1,42 @@
-
 body {
-    
-    background: rgba(0,0,0); 
+	background: rgba(0, 0, 0);
 }
 
 @media (min-width: 768px) {
-    .omb_row-sm-offset-3 div:first-child[class*="col-"] {
-        margin-left: 25%;
-    }
+	.row_col-3 div:first-child[class*="col-"] {
+		margin-left: 25%;
+	}
 }
 
-.omb_login .omb_authTitle {
-    text-align: center;
+.login .login_Title {
+	text-align: center;
 	line-height: 300%;
 	color: white;
 }
-	
-.omb_login .omb_socialButtons a {
-	color: white; // In yourUse @body-bg 
-	opacity:0.9;
-}
-.omb_login .omb_socialButtons a:hover {
-    color: white;
-	opacity:1;    	
-}
-.omb_login .omb_socialButtons .omb_btn-facebook {background: #3b5998;}
-.omb_login .omb_socialButtons .omb_btn-twitter {background: #00aced;}
-.omb_login .omb_socialButtons .omb_btn-google {background: #c32f10;}
 
+.login .socialButtons a {
+	color: white; 
+	opacity: 0.9;
+}
 
-.omb_login .omb_loginOr {
+.login .socialButtons a:hover {
+	color: white;
+	opacity: 1;
+}
+
+.login .socialButtons .btn_facebook {
+	background: #3b5998;
+}
+
+.login .socialButtons .btn_twitter {
+	background: #00aced;
+}
+
+.login .socialButtons .btn_google {
+	background: #c32f10;
+}
+
+.login .loginOr {
 	position: relative;
 	font-size: 1.5em;
 	color: #aaa;
@@ -38,13 +45,15 @@ body {
 	padding-top: 0.5em;
 	padding-bottom: 0.5em;
 }
-.omb_login .omb_loginOr .omb_hrOr {
+
+.login .loginOr .hrOr {
 	background-color: #cdcdcd;
 	height: 1px;
-	margin-top: 0px !important;
-	margin-bottom: 0px !important;
+	margin-top: 0px;
+	margin-bottom: 0px;
 }
-.omb_login .omb_loginOr .omb_spanOr {
+
+.login .loginOr .spanOr {
 	display: block;
 	position: absolute;
 	left: 50%;
@@ -53,19 +62,8 @@ body {
 	background-color: white;
 	width: 3em;
 	text-align: center;
-}			
+}
 
-.omb_login .omb_loginForm .input-group.i {
+.login .loginForm .input-group.i {
 	width: 2em;
-}
-.omb_login .omb_loginForm  .help-block {
-    color: red;
-}
-
-	
-@media (min-width: 768px) {
-    .omb_login .omb_forgotPwd {
-        text-align: right;
-		margin-top:10px;
- 	}		
 }
