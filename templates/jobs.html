@@ -1,119 +1,107 @@
 <!DOCTYPE HTML>
 <html>
-<head>
-<title>Group15</title>
-<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-<link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-<link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-</head>
-<body>
-	
-	<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#"></a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Messages</a></li>
-        <li>  <a href="/account/profile/edit">Edit Profile</a></li>
-        <li><a href="/account/profile/changePassword">Change password</a></li>
-        <li class="active"><a href="/addJobs">Jobs</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="/logout"><span class="glyphicon glyphicon-user"></span> Sign Out</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-<div class="container">
-        <div class="row centered-form">
-        <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
-        	<div class="panel panel-default">
-        		<div class="panel-heading">
-			    		<h1 style="text-align:center;" class="panel-title">Add Jobs</h1>
-			 			</div>
-			 			<div class="panel-body">
-			    		<form action="/jobs" method="POST">
-			    			<div class="row">
-			    				<div class="col-xs-6 col-sm-6 col-md-6">
-			    					<div class="form-group">
-			                <input type="text" name="jobId" id="jobId" class="form-control input-sm" placeholder="Job ID">
-			    					</div>
-			    				</div>
-			    				<div class="col-xs-6 col-sm-6 col-md-6">
-			    					<div class="form-group">
-			    						<input type="text" name="companyName" id="companyName" class="form-control input-sm" placeholder="Company Name">
-			    					</div>
-			    				</div>
-			    			</div>
-
-			    			<div class="form-group">
-			    				<input type="text" name="title" id="title" class="form-control input-sm" placeholder="Job Title">
-			    			</div>
-
-			    			<div class="row">
-			    				<div class="col-xs-6 col-sm-6 col-md-6">
-			    					<div class="form-group">
-			    						<input type="text" name="manager" id="manager" class="form-control input-sm" placeholder="Manager's Name">
-			    					</div>
-			    				</div>
-			    				<div class="col-xs-6 col-sm-6 col-md-6">
-			    					<div class="form-group">
-			    						<input type="text" name="location" id="location" class="form-control input-sm" placeholder="Job Location">
-			    					</div>
-			    				</div>
-			    			</div>
-							
-							<div class="form-group">
-			    				<input type="text" name="jobDetails" id="jobDetails" class="form-control input-sm" placeholder="Enter Job Details">
-			    			</div>
-			    			
-			    			<input type="submit" value="Add" class="btn btn-info btn-block">
-			    		
-			    		</form>
-			    	</div>
-	    		</div>
-    		</div>
-    	</div>
-    </div>
-	
-	<div style="margin:auto; width:40%; text-align:center;">
-	<table>
-    <thead>
-        <tr>
-            <th></th>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-       
-        <tr>
-            <td>{{jobData[0]}}</td>
-		</tr>
-		<tr>
-            <td>{{jobData[1]}}</td>
-		</tr>
-		<tr>
-            <td>{{jobData[2]}}</td> 	
-        </tr>
-		<tr>
-            <td>{{jobData[3]}}</td> 	
-        </tr>
-    </tbody>
-</table>
-
-</div>
-
-
-</body>
+    <head>
+        <title>Group15</title>
+        <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+        <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"></a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="#">Messages</a></li>
+                        <li>  <a href="/account/profile/edit">Edit Profile</a></li>
+                        <li><a href="/account/profile/changePassword">Change password</a></li>
+                        <li class="active"><a href="/addJobs">Jobs</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/logout"><span class="glyphicon glyphicon-user"></span> Sign Out</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="row centered-form">
+                <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h1 style="text-align:center;" class="panel-title">Add Jobs</h1>
+                        </div>
+                        <div class="panel-body">
+                            <form action="/jobs" method="POST">
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" name="jobId" id="jobId" class="form-control input-sm" placeholder="Job ID">
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" name="companyName" id="companyName" class="form-control input-sm" placeholder="Company Name">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="title" id="title" class="form-control input-sm" placeholder="Job Title">
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" name="manager" id="manager" class="form-control input-sm" placeholder="Manager's Name">
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" name="location" id="location" class="form-control input-sm" placeholder="Job Location">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="jobDetails" id="jobDetails" class="form-control input-sm" placeholder="Enter Job Details">
+                                </div>
+                                <input type="submit" value="Add" class="btn btn-info btn-block">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="margin:auto; width:40%; text-align:center;">
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{jobData[0]}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{jobData[1]}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{jobData[2]}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{jobData[3]}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
 </html>
