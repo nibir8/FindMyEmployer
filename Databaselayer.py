@@ -109,7 +109,7 @@ class Databaselayer_FetchUserData(IFtechProfileDetails):
         try:
             with sqlite3.connect('database.db') as conn:
                 cur = conn.cursor()
-                cur.execute("SELECT userId, email, firstName, lastName, address1, address2, zipcode, city, state, country, phone FROM users WHERE email = '" + myemail + "'")
+                cur.execute("SELECT userId, email, firstName, lastName, address1, address2, zipcode, city, state, country, phone FROM jobs WHERE email = '" + myemail + "'")
                 profileData = cur.fetchone()
         except:
             con.rollback()
@@ -124,7 +124,7 @@ class Databaselayer_InsertJob(IInsertJobDetails):
             with sqlite3.connect('database.db') as con:
 
                     cur = con.cursor()
-                    cur.execute('INSERT INTO jobs (jobId,companyName,title,manager,location,jobDetails) VALUES (?, ?, ?, ?, ?, ?)', (jobId,companyName,title,manager,location,jobDetails))
+                    cur.execute('INSERT INTO users (jobId,companyName,title,manager,location,jobDetails) VALUES (?, ?, ?, ?, ?, ?)', (jobId,companyName,title,manager,location,jobDetails))
                     con.commit()
                     msg = "Job Added Successfully"
         except:
