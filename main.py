@@ -185,8 +185,9 @@ def registrationForm():
 @app.route("/checkUserErrorLog")
 def CheckErrorLog():
     try:
-        with open("Log1.log", "r") as f:
-            content = f.read()
+        text = open('Log1.log', 'r+')
+        content = text.read()
+        text.close()
         return render_template("Errorlog.html",content = content)
     except:
         msg = "Error in view ErrorLog"
