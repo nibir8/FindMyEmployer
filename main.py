@@ -179,7 +179,21 @@ def registrationForm():
     except:
         msg = "Error in view registerform"
         logging.info(msg, exc_info=True)
-		
+
+##Added Error log
+
+@app.route("/checkUserErrorLog")
+def CheckErrorLog():
+    try:
+        with open("Log1.log", "r") as f:
+            content = f.read()
+        return render_template("Errorlog.html",content = content)
+    except:
+        msg = "Error in view ErrorLog"
+        logging.info(msg, exc_info=True)
+##Added Error log
+
+
 @app.route("/addJobs")
 def addJobs():
     try:
