@@ -5,13 +5,11 @@ from Businesslayer import *
 import os.path
 from extensions import mysql
 
-
-
 app = Flask(__name__)
-app.config['MYSQL_DATABASE_USER'] = 'root'
-app.config['MYSQL_DATABASE_PASSWORD'] = 'root12345'
-app.config['MYSQL_DATABASE_DB'] = 'findmyemployer'
-app.config['MYSQL_DATABASE_HOST'] = 'localhost'
+app.config['MYSQL_DATABASE_USER'] = 'CSCI5308_15_DEVINT_USER'
+app.config['MYSQL_DATABASE_PASSWORD'] = 'CSCI5308_15_DEVINT_15142'
+app.config['MYSQL_DATABASE_DB'] = 'CSCI5308_15_DEVINT'
+app.config['MYSQL_DATABASE_HOST'] = 'db-5308.cs.dal.ca'
 mysql.init_app(app)
 app.secret_key = 'random string'
 
