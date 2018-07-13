@@ -3,8 +3,16 @@ from werkzeug.utils import secure_filename
 import Businesslayer
 from Businesslayer import *
 import os.path
+from extensions import mysql
+
+
 
 app = Flask(__name__)
+app.config['MYSQL_DATABASE_USER'] = 'root'
+app.config['MYSQL_DATABASE_PASSWORD'] = 'root12345'
+app.config['MYSQL_DATABASE_DB'] = 'findmyemployer'
+app.config['MYSQL_DATABASE_HOST'] = 'localhost'
+mysql.init_app(app)
 app.secret_key = 'random string'
 
 @app.route("/")
@@ -185,7 +193,7 @@ def registrationForm():
 @app.route("/checkUserErrorLog")
 def CheckErrorLog():
     try:
-        text = open("Log1.log", "r+")
+        text = open('Log1.log', 'r+')
         content = text.read()
         text.close()
         return render_template("Errorlog.html",content = content)
@@ -206,6 +214,6 @@ def addJobs():
         logging.info(msg, exc_info=True)
 
 if __name__ == '__main__':
-    logging.basicConfig(filename="Log1.log",level=logging.DEBUG,format='%(asctime)s %(levelname)s %(name)s %(message)s')
+    logging.basicConfig(filename='Log1.log',level=logging.DEBUG,format='%(asctime)s %(levelname)s %(name)s %(message)s')
     logger=logging.getLogger(__name__)
     app.run(debug=True)
