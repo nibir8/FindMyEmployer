@@ -6,7 +6,36 @@
         <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
         <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-    </head>
+		<script>
+		console.log({{noOfJobs}});
+		$(document).ready(function(){
+			if ({{noOfJobs}} !=0 ){
+				document.getElementById('viewJobsBtn').style.display = "block";
+			}
+			$("#viewJobsBtn").click(function(){
+				document.getElementById('jobsList').style.display = "block";
+			});
+		});
+		
+		</script>
+		<style>
+		table {
+			font-family: arial, sans-serif;
+			border-collapse: collapse;
+			width: 100%;
+		}
+
+		td, th {
+			border: 1px solid #dddddd;
+			text-align: left;
+			padding: 8px;
+		}
+
+		tr:nth-child(even) {
+			background-color: #dddddd;
+		}
+		</style>
+	</head>
     <body>
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
@@ -45,64 +74,56 @@
                                 <div class="row">
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            <input type="text" name="jobId" id="jobId" class="form-control input-sm" placeholder="Job ID">
+                                            <input type="text" name="jobId" id="jobId" class="form-control input-sm" placeholder="Job ID" required>
                                         </div>
                                     </div>
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            <input type="text" name="companyName" id="companyName" class="form-control input-sm" placeholder="Company Name">
+                                            <input type="text" name="companyName" id="companyName" class="form-control input-sm" placeholder="Company Name" required>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" name="title" id="title" class="form-control input-sm" placeholder="Job Title">
+                                    <input type="text" name="title" id="title" class="form-control input-sm" placeholder="Job Title" required>
                                 </div>
                                 <div class="row">
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            <input type="text" name="manager" id="manager" class="form-control input-sm" placeholder="Manager's Name">
+                                            <input type="text" name="manager" id="manager" class="form-control input-sm" placeholder="Manager's Name" required>
                                         </div>
                                     </div>
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            <input type="text" name="location" id="location" class="form-control input-sm" placeholder="Job Location">
+                                            <input type="text" name="location" id="location" class="form-control input-sm" placeholder="Job Location" required>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" name="jobDetails" id="jobDetails" class="form-control input-sm" placeholder="Enter Job Details">
+                                    <input type="text" name="jobDetails" id="jobDetails" class="form-control input-sm" placeholder="Enter Job Details" required>
                                 </div>
-                                <input type="submit" value="Add" class="btn btn-info btn-block">
+                                <input type="submit" id="Add" value="Add" class="btn btn-info btn-block">
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div style="margin:auto; width:40%; text-align:center;">
-            <table>
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>{{jobData[0]}}</td>
-                    </tr>
-                    <tr>
-                        <td>{{jobData[1]}}</td>
-                    </tr>
-                    <tr>
-                        <td>{{jobData[2]}}</td>
-                    </tr>
-                    <tr>
-                        <td>{{jobData[3]}}</td>
-                    </tr>
-                </tbody>
-            </table>
+		<div class="container" style="text-align:center;">
+			<h5 style="color:red;">{{jobId}} {{msg}}</h5>
         </div>
+		<div style="width:15%;" class="container">
+            <input type="button" id="viewJobsBtn" value="View Posted Jobs" style="text-align:center; display:none;" class="btn btn-info btn-block"></input>
+        </div>
+		<div  style="display:none;" id="jobsList">
+		{% for i in range(noOfJobs) %}
+           <p>{{jobData[i]}}</p>
+        {% endfor %}
+		{% if (noOfJobs ==0) %}
+		</div>
+            <div style="text-align:center;">
+			    <h5 style="color:red;">No Jobs Posted Yet!</h5>
+            </div>
+        {% endif %}
+		
     </body>
 </html>
