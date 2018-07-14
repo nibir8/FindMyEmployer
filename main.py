@@ -81,6 +81,7 @@ def updateProfile():
     try:
         if request.method == 'POST':
             email = request.form['email']
+            email = null_check(email)
             firstName = request.form['firstName']
             lastName = request.form['lastName']
             address1 = request.form['address1']
@@ -103,7 +104,7 @@ def loginForm():
         if 'email' in session:
             return redirect(url_for('root'))
         else:
-            return render_template('login.html', error='')
+            return render_template('home.html', error='')
     except:
         msg = "Error in view loginform"
         logging.info(msg, exc_info=True)
@@ -121,7 +122,7 @@ def login():
                 return redirect(url_for('root'))
             elif value == False:
                 error = 'Invalid UserId / Password'
-                return render_template('login.html', error=error)
+                return render_template('home.html', error=error)
     except:
         msg = "Error in view login"
         logging.info(msg, exc_info=True)
@@ -142,6 +143,8 @@ def register():
             #Parse form data
             password = request.form['password']
             email = request.form['email']
+            fetchuserdata = Businesslayer.Businesslayer_FetchUserData()
+            profileData = fetchuserdata.getProfileData_BSL(email)
             firstName = request.form['firstName']
             lastName = request.form['lastName']
             address1 = request.form['address1']
@@ -151,9 +154,14 @@ def register():
             state = request.form['state']
             country = request.form['country']
             phone = request.form['phone']
+            print profileData
+            # if(profileData[1] == email):
+                # msg = "Email already exists"
+                # return render_template("register.html", error=msg, profileData=profileData[1])
+            # else:
             insertuser = Businesslayer.Businesslayer_InsertUser()
             msg = insertuser.insertNewUser_BSL(password,email,firstName,lastName,address1,address2,zipcode,city,state,country,phone)
-            return render_template("home.html", error=msg)
+            return render_template("home.html")
     except:
         msg = "Error in view register"
         logging.info(msg, exc_info=True)
@@ -172,8 +180,10 @@ def jobs():
             insertjob = Businesslayer.Businesslayer_InsertJob()
             msg = insertjob.insertJob_BSL(jobId,companyName,title,manager,location,jobDetails)
             fetchjobdata = Businesslayer.Businesslayer_FetchJobData()
-            jobData = fetchjobdata.getJobData_BSL('12345')
-            return render_template("jobs.html", jobData=jobData)
+            jobData = fetchjobdata.getJobData_BSL()
+            noOfJobs = len(jobData)	
+            print noOfJobs
+            return render_template("jobs.html", jobData=jobData, noOfJobs=noOfJobs, msg=msg, jobId="Job with job id:" + jobId)
     except:
         msg = "Error in view jobs"
         logging.info(msg, exc_info=True)
@@ -205,8 +215,13 @@ def CheckErrorLog():
 def addJobs():
     try:
         fetchjobdata = Businesslayer.Businesslayer_FetchJobData()
-        jobData = fetchjobdata.getJobData_BSL('12345')
-        return render_template("jobs.html", jobData=jobData)
+        jobData = fetchjobdata.getJobData_BSL()
+        noOfJobs = len(jobData)
+        print noOfJobs
+        if(noOfJobs == 0):
+            return render_template("jobs.html",noOfJobs=noOfJobs,jobData=jobData)
+        else:
+            return render_template("jobs.html", jobData=jobData, noOfJobs=noOfJobs)
     except:
         msg = "Error in view jobs"
         logging.info(msg, exc_info=True)

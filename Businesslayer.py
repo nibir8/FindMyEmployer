@@ -64,16 +64,17 @@ class Businesslayer_InsertJob:
     def insertJob_BSL(self,jobId,companyName,title,manager,location,jobDetails):
         try:
             insertjob = Databaselayer_InsertJob()
-            insertjob.insertJob_DBL(jobId,companyName,title,manager,location,jobDetails)
+            msg = insertjob.insertJob_DBL(jobId,companyName,title,manager,location,jobDetails)
         except:
             msg = "Error occured in method insertJob_BSL method"
             logging.info(msg, exc_info=True)
+        return msg
 
 class Businesslayer_FetchJobData:
-    def getJobData_BSL(Self,jobId):
+    def getJobData_BSL(self):
         try:
             fetchjobdata = Databaselayer_FetchJob()
-            jobData = fetchjobdata.getJob_DBL(jobId)
+            jobData = fetchjobdata.getJob_DBL()
             return jobData
         except:
             msg = "Error occured in method getJobData_BSL method"

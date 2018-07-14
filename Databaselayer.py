@@ -126,9 +126,9 @@ class Databaselayer_InsertJob(IInsertJobDetails):
         try:
             conn = mysql.connect()
             cur = conn.cursor()
-            cur.callproc('spInsertJobDetails',[companyName,title,manager,location,jobDetails])
+            cur.callproc('spInsertJobDetails',[jobId,companyName,title,manager,location,jobDetails])
             conn.commit()
-            msg = "Job Added Successfully"
+            msg = "Successfully Added"
         except:
             conn.rollback()
             excep_msg = "Error occured in insertJob_DBL method"
@@ -137,12 +137,12 @@ class Databaselayer_InsertJob(IInsertJobDetails):
         return msg
 
 class Databaselayer_FetchJob(IFetchJobDetails):
-    def getJob_DBL(Self,jobId):
+    def getJob_DBL(self):
         try:
             conn = mysql.connect()
             cur = conn.cursor()
-            cur.callproc('spFetchJobdetails')# WHERE jobId = '" + jobId + "'")
-            jobData = cur.fetchmany(10)
+            cur.callproc('spFetchJobdetails')
+            jobData = cur.fetchall()
         except:
             conn.rollback()
             excep_msg = "Error occured in getJob_DBL method"
