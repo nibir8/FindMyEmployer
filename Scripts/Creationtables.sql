@@ -19,9 +19,9 @@ phone varchar(50)
 )
 
 
-CREATE TABLE tbl_jobs
+CREATE TABLE tbl_Jobs
 (
-jobId INTEGER PRIMARY KEY AUTO_INCREMENT,
+jobId INTEGER PRIMARY KEY,
 companyName varchar(50),
 title varchar(50),
 manager varchar(50),
