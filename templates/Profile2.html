@@ -16,8 +16,6 @@
         </style>
     </head>
     <body>
-        <div class="display">
-        </div>
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -43,9 +41,11 @@
                 </div>
             </div>
         </nav>
+
         <div class="container text-center">
+        <div style="width:1650px">
         <div class="row">
-            <div class="col-sm-3 well">
+            <div class="col-sm-3 well" style="width:300px">
                 <div class="well">
                     <p><a href="#">My Profile</a></p>
                     <img src={{ url_for('static', filename='images/img1.png') }} alt="Avatar"/>
@@ -70,26 +70,41 @@
                 <p><a href="#">Link</a></p>
                 <p><a href="#">Link</a></p>
             </div>
-            <div class="col-sm-7">
+            <div class="col-sm-7" >
                 <div class="row">
-                    <div class="col-sm-12">
-                        <div class="panel panel-default text-left">
+                        <div class="col-sm-12">
+                          <div class="panel panel-default text-left">
                             <div class="panel-body">
-                                <p contenteditable="true">Share something,post an image or video</p>
-                                <button type="button" class="btn btn-default btn-sm">
-                                Post
-                                </button>
-                                <button type="button" class="btn btn-default btn-sm">
-                                Photo/Video
-                                </button>
+                              <form action="{{ url_for('postStatus') }}" method="post">
+                                      <textarea class="form-control" id="txtPost" name="inputPost" rows="4" cols="50"></textarea>
+                              <input type="submit"  value="Status">
+                              </form>
                             </div>
+                          </div>
                         </div>
+                      </div>
+                      {% for item in userStatus %}
+                      <div class="row">
+                        <div class="col-sm-3" >
+                          <div class="well">
+                           <p>{{item[4]}}</p>
+                           <p>{{item[5]}}</p>
+                             <img src={{ url_for('static', filename='images/img1.png') }} class="img-circle" height="55" width="55" alt="Avatar"/>
+                          </div>
+                        </div>
+                        <div class="col-sm-9">
+                          <div class="well">
+                              {{item[2]}}
+                          </div>
+                        </div>
+                      </div>
+                      {% endfor %}
                     </div>
-                </div>
             </div>
         </div>
         <footer class="container-fluid text-center">
             <p>Footer Text</p>
         </footer>
+      </div>
     </body>
 </html>
