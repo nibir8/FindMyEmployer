@@ -81,7 +81,6 @@ def updateProfile():
     try:
         if request.method == 'POST':
             email = request.form['email']
-            email = null_check(email)
             firstName = request.form['firstName']
             lastName = request.form['lastName']
             address1 = request.form['address1']
