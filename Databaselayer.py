@@ -22,6 +22,10 @@ class IFetchJobDetails:
 class IInsertJobDetails:
     def insertJob_DBL(Self,jobId,companyName,title,manager,location,jobDetails): raise NotImplementedError
 
+class IPostStatus:
+    def insertUserStatus(Self,email,status): raise NotImplementedError
+    def getUserStatus_DBL(Self): raise NotImplementedError
+
 #Seperated to different classes
 class Databaselayer_UpdateMyProfile(IProfileUpdate):
     def updateMyProfileMethod_DBL(Self,email,firstName,lastName,address1,address2,zipcode,city,state,country,phone):
@@ -48,7 +52,7 @@ class Databaselayer_ChangeMyPassword(IPasswordUpdate):
             cur.callproc('spFetchUserPassword',[email])
             userId, password = cur.fetchone()
             if (password == oldPassword):
-                cur.callproc('spUpdatePassword',[password,userId])
+                cur.callproc('spUpdatePassword',[newPassword,userId])
                 conn.commit()
                 msg="Changed successfully"
             else:
@@ -120,6 +124,40 @@ class Databaselayer_FetchUserData(IFtechProfileDetails):
             logging.info(excep_msg, exc_info=True)
         conn.close()
         return profileData
+
+
+class Databaselayer_PostStatus(IPostStatus):
+    def insertUserStatus_DBL(Self,email,status):
+        try:
+            conn = mysql.connect()
+            cur = conn.cursor()
+            cur.callproc('spInsertUserStatus',[email,status])
+            conn.commit()
+            msg = "Status Added Successfully"
+        except:
+            conn.rollback()
+            excep_msg = "Error occured in getProfileData_DBL method"
+            logging.info(excep_msg, exc_info=True)
+        conn.close()
+        return msg
+
+class Databaselayer_FetchStatus(IPostStatus):
+    def getUserStatus_DBL(Self):
+        try:
+            conn = mysql.connect()
+            cur = conn.cursor()
+            cur.callproc('spGetUserStatus')
+            statusData = cur.fetchall()
+            #print statusData
+            conn.commit()
+        except:
+            conn.rollback()
+            excep_msg = "Error occured in getProfileData_DBL method"
+            logging.info(excep_msg, exc_info=True)
+        conn.close()
+        return statusData
+
+
 
 class Databaselayer_InsertJob(IInsertJobDetails):
     def insertJob_DBL(Self,jobId,companyName,title,manager,location,jobDetails):

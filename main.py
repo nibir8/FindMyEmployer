@@ -24,7 +24,9 @@ def root():
             loggedIn = True
             loginclassdetails = Businesslayer.Businesslayer_LoginClass()
             loggedIn, firstName = loginclassdetails.getLoginDetails_BSL(session['email'])
-            return render_template("Profile2.html", loggedIn=loggedIn, firstName=firstName )
+            fetchuserstatus = Businesslayer.Businesslayer_GetStatus()
+            userStatus = fetchuserstatus.getUserStatus_BSL()
+            return render_template("Profile2.html",loggedIn=loggedIn, firstName=firstName,userStatus=userStatus )
     except:
         msg = "Error in view Homepage"
         logging.info(msg, exc_info=True)
@@ -38,7 +40,9 @@ def profileHome():
             loggedIn = True
             loginclassdetails = Businesslayer.Businesslayer_LoginClass()
             loggedIn, firstName = loginclassdetails.getLoginDetails_BSL(session['email'])
-        return render_template("Profile2.html", loggedIn=loggedIn, firstName=firstName )
+            fetchuserstatus = Businesslayer.Businesslayer_GetStatus()
+            userStatus = fetchuserstatus.getUserStatus_BSL()
+            return render_template("Profile2.html",loggedIn=loggedIn, firstName=firstName,userStatus=userStatus )
     except:
         msg = "Error in view profile"
         logging.info(msg, exc_info=True)
@@ -97,6 +101,18 @@ def updateProfile():
         msg = "Error in view update profile"
         logging.info(msg, exc_info=True)
 
+
+@app.route("/postStatus" , methods=['POST'])
+def postStatus():
+    try:
+        text = request.form['inputPost']
+        insertuserstatus = Businesslayer.Businesslayer_PostStatus()
+        insertuserstatus.insertUserStatus_BSL(session['email'],text)
+        return redirect(url_for('profileHome'))
+    except:
+        msg = "Error in view poststatus"
+        logging.info(msg, exc_info=True)
+
 @app.route("/loginForm")
 def loginForm():
     try:
@@ -153,7 +169,6 @@ def register():
             state = request.form['state']
             country = request.form['country']
             phone = request.form['phone']
-            print profileData
             # if(profileData[1] == email):
                 # msg = "Email already exists"
                 # return render_template("register.html", error=msg, profileData=profileData[1])
@@ -180,8 +195,7 @@ def jobs():
             msg = insertjob.insertJob_BSL(jobId,companyName,title,manager,location,jobDetails)
             fetchjobdata = Businesslayer.Businesslayer_FetchJobData()
             jobData = fetchjobdata.getJobData_BSL()
-            noOfJobs = len(jobData)	
-            print noOfJobs
+            noOfJobs = len(jobData)
             return render_template("jobs.html", jobData=jobData, noOfJobs=noOfJobs, msg=msg, jobId="Job with job id:" + jobId)
     except:
         msg = "Error in view jobs"
@@ -216,7 +230,6 @@ def addJobs():
         fetchjobdata = Businesslayer.Businesslayer_FetchJobData()
         jobData = fetchjobdata.getJobData_BSL()
         noOfJobs = len(jobData)
-        print noOfJobs
         if(noOfJobs == 0):
             return render_template("jobs.html",noOfJobs=noOfJobs,jobData=jobData)
         else:

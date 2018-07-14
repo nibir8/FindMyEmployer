@@ -59,7 +59,7 @@ class Businesslayer_InsertUser:
         except:
             msg = "Error occured in method insertNewUser_BSL method"
             logging.info(msg, exc_info=True)
-			
+
 class Businesslayer_InsertJob:
     def insertJob_BSL(self,jobId,companyName,title,manager,location,jobDetails):
         try:
@@ -69,6 +69,28 @@ class Businesslayer_InsertJob:
             msg = "Error occured in method insertJob_BSL method"
             logging.info(msg, exc_info=True)
         return msg
+
+
+class Businesslayer_PostStatus:
+    def insertUserStatus_BSL(Self,email,status):
+        try:
+            databaselayerupdatestatus = Databaselayer_PostStatus()
+            databaselayerupdatestatus.insertUserStatus_DBL(email,status)
+        except:
+            msg = "Error occured in method insertUserStatus_BSL method"
+            logging.info(msg, exc_info=True)
+
+class Businesslayer_GetStatus:
+    def getUserStatus_BSL(Self):
+        try:
+
+            fetchuserStatus = Databaselayer_FetchStatus()
+            statusData  = fetchuserStatus.getUserStatus_DBL()
+            return statusData
+        except:
+            msg = "Error occured in method getJobData_BSL method"
+            logging.info(msg, exc_info=True)
+    
 
 class Businesslayer_FetchJobData:
     def getJobData_BSL(self):
