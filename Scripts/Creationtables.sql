@@ -1,6 +1,7 @@
 
 DROP TABLE IF EXISTS tbl_users;
 DROP TABLE IF EXISTS tbl_jobs;
+DROP TABLE IF EXISTS tbl_user_status;
 
 CREATE TABLE tbl_users
 (
@@ -27,4 +28,16 @@ title varchar(50),
 manager varchar(50),
 location varchar(50),
 jobDetails varchar(50)
+)
+
+
+CREATE TABLE tbl_user_status
+(
+status_id  INTEGER PRIMARY KEY AUTO_INCREMENT,
+email varchar(50),
+userstatus varchar(500),
+userId integer,
+firstname varchar(50),
+lastname varchar(50),
+FOREIGN KEY (userId) REFERENCES tbl_users(userId)
 )
