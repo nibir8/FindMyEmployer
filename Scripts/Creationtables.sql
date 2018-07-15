@@ -3,6 +3,8 @@ DROP TABLE IF EXISTS tbl_users;
 DROP TABLE IF EXISTS tbl_jobs;
 DROP TABLE IF EXISTS tbl_user_status;
 
+
+
 CREATE TABLE tbl_users
 (
 userId INTEGER PRIMARY KEY AUTO_INCREMENT,
@@ -16,7 +18,9 @@ zipcode varchar(50),
 city varchar(50),
 state varchar(50),
 country varchar(50),
-phone varchar(50)
+phone varchar(50),
+typeofuser varchar(50),
+typeofplan varchar(50)
 )
 
 
