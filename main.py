@@ -201,12 +201,15 @@ def register():
             state = request.form['state']
             country = request.form['country']
             phone = request.form['phone']
+            userType = request.form['userOptions']
+            planType = request.form['planOptions']
+
             # if(profileData[1] == email):
                 # msg = "Email already exists"
                 # return render_template("register.html", error=msg, profileData=profileData[1])
             # else:
             insertuser = Businesslayer.Businesslayer_InsertUser()
-            msg = insertuser.insertNewUser_BSL(password,email,firstName,lastName,address1,address2,zipcode,city,state,country,phone)
+            msg = insertuser.insertNewUser_BSL(password,email,firstName,lastName,address1,address2,zipcode,city,state,country,phone,userType,planType)
             return render_template("home.html")
     except:
         msg = "Error in view register"

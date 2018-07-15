@@ -14,7 +14,7 @@ class ICheckValidity:
 class IFetchLoginDetails:
     def getLoginDetails_DBL(self,email): raise NotImplementedError
 class IInsertnewUser:
-    def insertNewUser_DBL(Self,password,email,firstName,lastName,address1,address2,zipcode,city,state,country,phone): raise NotImplementedError
+    def insertNewUser_DBL(Self,password,email,firstName,lastName,address1,address2,zipcode,city,state,country,phone,userType,planType): raise NotImplementedError
 class IFtechProfileDetails:
     def getProfileData_DBL(Self,email): raise NotImplementedError
 class IFetchJobDetails:
@@ -95,13 +95,13 @@ class Databaselayer_LoginClass(IFetchLoginDetails):
         return (loggedIn, firstName)
 
 class Databaselayer_InsertUser(IInsertnewUser):
-    def insertNewUser_DBL(Self,password,email,firstName,lastName,address1,address2,zipcode,city,state,country,phone):
+    def insertNewUser_DBL(Self,password,email,firstName,lastName,address1,address2,zipcode,city,state,country,phone,userType,planType):
         try:
             msg=""
             password = hashlib.md5(password.encode()).hexdigest()
             conn = mysql.connect()
             cur = conn.cursor()
-            cur.callproc('spCreateUser',[password,email,firstName,lastName,address1,address2,zipcode,city,state,country,phone])
+            cur.callproc('spCreateUser',[password,email,firstName,lastName,address1,address2,zipcode,city,state,country,phone,userType,planType])
             conn.commit()
             msg = "Registered Successfully"
         except:
