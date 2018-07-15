@@ -1,4 +1,3 @@
-
 DROP PROCEDURE IF EXISTS spCreateUser;
 
 CREATE PROCEDURE spCreateUser
@@ -13,8 +12,10 @@ CREATE PROCEDURE spCreateUser
  city varchar(50),
  state varchar(50),
  country varchar(50),
- phone varchar(50)
+ phone varchar(50),
+usertype varchar(50),
+plantype varchar(50)
  )
-INSERT INTO tbl_users (password, email, firstName, lastName, address1, address2, zipcode, city, state, country, phone)
+INSERT INTO tbl_users (password, email, firstName, lastName, address1, address2, zipcode, city, state, country, phone,typeofuser,typeofplan)
 VALUES
-(Password_given, email, firstname , lastname, address1,address2 ,zipcode ,city ,state,country,phone)
+(Password_given, email, firstname , lastname, address1,address2 ,zipcode ,city ,state,country,phone,usertype,plantype)
