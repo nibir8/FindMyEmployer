@@ -3,7 +3,7 @@ drop procedure spUpdateUser
 
 CREATE PROCEDURE spUpdateUser
 (
- email varchar(50),
+ myemail varchar(50),
  firstname varchar(50),
  lastname varchar(50),
  address1 varchar(50),
@@ -24,4 +24,4 @@ CREATE PROCEDURE spUpdateUser
  state = state,
  country = country,
  phone = phone
- where  email = email
+ where  email = myemail
