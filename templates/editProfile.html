@@ -33,21 +33,63 @@
                 </div>
             </div>
         </nav>
-        <div class="display">
-            <h2>Edit profile</h2>
-            <form action="/updateProfile" method="POST">
-                <p>Email:<input type="email" name="email" value={{profileData[1]}} readonly="readonly"></p>
-                <p>First Name:<input type="text" name="firstName" value={{profileData[2]}}></p>
-                <p>Last Name: <input type="text" name="lastName" value={{profileData[3]}}></p>
-                <p>Address 1: <input type="text" name="address1" value={{profileData[4]}}></p>
-                <p>Address 2: <input type="text" name="address2" value={{profileData[5]}}></p>
-                <p>Zip Code: <input type="text" name="zipcode" value={{profileData[6]}}></p>
-                <p>City: <input type="text" name="city" value={{profileData[7]}}></p>
-                <p>State: <input type="text" name="state" value={{profileData[8]}}></p>
-                <p>Country: <input type="text" name="country" value={{profileData[9]}}></p>
-                <p>Phone Number: <input type="text" name="phone" value={{profileData[10]}}></p>
-                <input type="submit" value="Save">
-            </form>
+		        <div class="container">
+            <div class="row centered-form">
+                <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h1 style="text-align:center;" class="panel-title">Edit Profile</h1>
+                        </div>
+                        <div class="panel-body">
+                            <form action="/updateProfile" method="POST">
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <input class="form-control input-sm" type="email" name="email" value={{profileData[1]}} readonly="readonly">
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <input class="form-control input-sm" type="text" name="firstName" value={{profileData[2]}}>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control input-sm" input type="text" name="lastName" value={{profileData[3]}}>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <input class="form-control input-sm" type="text" name="address1" value={{profileData[4]}}>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <input class="form-control input-sm" type="text" name="address2" value={{profileData[5]}}>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control input-sm" type="text" name="zipcode" value={{profileData[6]}}>
+                                </div>
+								<div class="form-group">
+                                    <input class="form-control input-sm" type="text" name="city" value={{profileData[7]}}>
+                                </div>
+								<div class="form-group">
+                                    <input class="form-control input-sm" type="text" name="state" value={{profileData[8]}}>
+                                </div>
+								<div class="form-group">
+                                    <input class="form-control input-sm" type="text" name="country" value={{profileData[9]}}>
+                                </div>
+								<div class="form-group">
+                                    <input class="form-control input-sm" type="text" name="phone" value={{profileData[10]}}>
+                                </div>
+                                <input type="submit" value="Update" class="btn btn-info btn-block">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </body>
 </html>
