@@ -1,3 +1,7 @@
+import os
+import time
+import hashlib
+import glob
 from flask import *
 from werkzeug.utils import secure_filename
 import Businesslayer
@@ -5,6 +9,18 @@ from Businesslayer import *
 import os.path
 from extensions import mysql
 from flask_mail import Mail, Message
+from flask import Flask, render_template, redirect, url_for, request
+from flask_uploads import UploadSet, configure_uploads, IMAGES, patch_request_class
+from flask_wtf import FlaskForm
+from flask_wtf.file import FileField, FileRequired, FileAllowed
+from wtforms import SubmitField
+from flask import *
+from werkzeug.utils import secure_filename
+import Businesslayer
+from Businesslayer import *
+import os.path
+from extensions import mysql
+from shutil import copyfile
 
 app = Flask(__name__)
 app.config['MYSQL_DATABASE_USER'] = 'CSCI5308_15_DEVINT_USER'
@@ -17,9 +33,17 @@ app.config['MAIL_USERNAME'] = 'rohit.gs28@gmail.com'
 app.config['MAIL_PASSWORD'] = 'realmadrid098'
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
+app.config['UPLOADED_PHOTOS_DEST'] = os.getcwd() + '/static' + '/images'
 mysql.init_app(app)
 app.secret_key = 'random string'
 mail = Mail(app)
+photos = UploadSet('photos', IMAGES)
+configure_uploads(app, photos)
+patch_request_class(app)
+
+class UploadForm(FlaskForm):
+    photo = FileField(validators=[FileAllowed(photos, u'Image Only!'), FileRequired(u'Choose a file!')])
+    submit = SubmitField(u'Upload')
 
 @app.route("/")
 def root():
@@ -270,6 +294,47 @@ def messageForm():
     except:
         msg = "Error in view messaging"
         logging.info(msg, exc_info=True)
+
+
+@app.route('/upload', methods=['GET', 'POST'])
+def upload_file():
+    form = UploadForm()
+    name = session['email']
+    if form.validate_on_submit():
+        for filename in request.files.getlist('photo'):
+            photos.save(filename, name=name + '.')
+        success = True
+    else:
+        success = False
+    path = app.config['UPLOADED_PHOTOS_DEST']  + "/"+ session['email']+ "/"
+    if not os.path.exists(path):
+        os.makedirs(path)
+    for fname in os.listdir(app.config['UPLOADED_PHOTOS_DEST']):
+        if fname.endswith('.jpg'):
+            copyfile(app.config['UPLOADED_PHOTOS_DEST']  +"/" + name+ ".jpg", path + name+ ".jpg")
+        elif fname.endswith('.jpeg'):
+            copyfile(app.config['UPLOADED_PHOTOS_DEST']  + "/" + name+ ".jpeg", path + name+ ".jpeg")
+        elif fname.endswith('.png'):
+            copyfile(app.config['UPLOADED_PHOTOS_DEST'] +"/" + name+ ".png", path + name+ ".png")
+    fileUploaded = False
+    if glob.glob(path + name + ".*"):
+        fileUploaded = True
+    files_list = os.listdir(app.config['UPLOADED_PHOTOS_DEST'] +"/" +name)
+    return render_template('Uploadphoto.html', form=form, success=success,files_list=files_list,fileUploaded = fileUploaded)
+
+@app.route('/open/<filename>')
+def open_file(filename):
+    file_url = photos.url(filename)
+    return render_template('ViewImage.html', file_url=file_url)
+
+@app.route('/delete/<filename>')
+def delete_file(filename):
+    uploaded = False
+    file_path = photos.path(filename)
+    os.remove(file_path)
+    path = app.config['UPLOADED_PHOTOS_DEST']  + "/"+ session['email']+ "/" + filename
+    os.remove(path)
+    return redirect(url_for('upload_file'))
 
 if __name__ == '__main__':
     logging.basicConfig(filename='Log1.log',level=logging.DEBUG,format='%(asctime)s %(levelname)s %(name)s %(message)s')
