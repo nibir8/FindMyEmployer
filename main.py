@@ -4,14 +4,22 @@ import Businesslayer
 from Businesslayer import *
 import os.path
 from extensions import mysql
+from flask_mail import Mail, Message
 
 app = Flask(__name__)
 app.config['MYSQL_DATABASE_USER'] = 'CSCI5308_15_DEVINT_USER'
 app.config['MYSQL_DATABASE_PASSWORD'] = 'CSCI5308_15_DEVINT_15142'
 app.config['MYSQL_DATABASE_DB'] = 'CSCI5308_15_DEVINT'
 app.config['MYSQL_DATABASE_HOST'] = 'db-5308.cs.dal.ca'
+app.config['MAIL_SERVER']='smtp.gmail.com'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USERNAME'] = 'rohit.gs28@gmail.com'
+app.config['MAIL_PASSWORD'] = 'realmadrid098'
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
 mysql.init_app(app)
 app.secret_key = 'random string'
+mail = Mail(app)
 
 @app.route("/")
 def root():
@@ -246,6 +254,10 @@ def messaging():
             recipientAddress = request.form['recipientAddress']
             mailSubject = request.form['mailSubject']
             mailBody = request.form['mailBody']
+            email = session['email']
+            msg = Message(mailSubject, sender = email, recipients = [recipientAddress])
+            msg.body = mailBody
+            mail.send(msg)
             return render_template("messaging.html")
     except:
         msg = "Error in view messaging"
