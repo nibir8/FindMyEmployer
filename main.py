@@ -238,6 +238,27 @@ def addJobs():
         msg = "Error in view jobs"
         logging.info(msg, exc_info=True)
 
+@app.route("/messaging", methods = ['GET', 'POST'])
+def messaging():
+    try:
+        if request.method == 'POST':
+            #Parse form data
+            recipientAddress = request.form['recipientAddress']
+            mailSubject = request.form['mailSubject']
+            mailBody = request.form['mailBody']
+            return render_template("messaging.html")
+    except:
+        msg = "Error in view messaging"
+        logging.info(msg, exc_info=True)
+
+@app.route("/messageForm")
+def messageForm():
+    try:
+        return render_template("messaging.html")
+    except:
+        msg = "Error in view messaging"
+        logging.info(msg, exc_info=True)
+
 if __name__ == '__main__':
     logging.basicConfig(filename='Log1.log',level=logging.DEBUG,format='%(asctime)s %(levelname)s %(name)s %(message)s')
     logger=logging.getLogger(__name__)
