@@ -14,7 +14,7 @@
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>                        
+                    <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="/">FindMyEmployer</a>
                 </div>
@@ -83,9 +83,26 @@
                                 <div class="form-group">
                                     <input type="text" name="country" id="country" class="form-control input-sm" placeholder="Country" required>
                                 </div>
+
                                 <div class="form-group">
                                     <input type="text" name="phone" id="phone" class="form-control input-sm" placeholder="Phone" required>
                                 </div>
+
+                                <h4>Are you an Employee or Employer?<h4>
+                                <div class="radio">
+                                <label><input type="radio" name="userOptions" id="employee" value="employee" checked="checked">Employee(Need a job?)</label>
+                                </div>
+                                <div class="radio">
+                                <label><input type="radio" name="userOptions" id="employer" value="employer">Employer(Want to hire?)</label>
+                                </div>
+                                <h4>Select Plan<h4>
+                                <div class="radio">
+                                <label><input type="radio" name="planOptions" id="plan1" value="plan1"  checked="checked">Premium($40/month)</label>
+                                </div>
+                                <div class="radio">
+                                <label><input type="radio" name="planOptions" id="plan2" value="plan2">Premium($100/month)</label>
+                                </div>
+
                                 <input type="submit" value="Register" class="btn btn-info btn-block">
                             </form>
                         </div>
