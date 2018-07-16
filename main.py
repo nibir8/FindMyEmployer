@@ -29,8 +29,8 @@ app.config['MYSQL_DATABASE_DB'] = 'CSCI5308_15_DEVINT'
 app.config['MYSQL_DATABASE_HOST'] = 'db-5308.cs.dal.ca'
 app.config['MAIL_SERVER']='smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
-app.config['MAIL_USERNAME'] = 'rohit.gs28@gmail.com'
-app.config['MAIL_PASSWORD'] = 'realmadrid098'
+app.config['MAIL_USERNAME'] = 'noreply.findmyemployer@gmail.com'
+app.config['MAIL_PASSWORD'] = 'Nibir88**'
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 app.config['UPLOADED_PHOTOS_DEST'] = os.getcwd() + '/static' + '/images'
@@ -280,11 +280,12 @@ def messaging():
             #Parse form data
             recipientAddress = request.form['recipientAddress']
             mailSubject = request.form['mailSubject']
-            mailBody = request.form['mailBody']
             email = session['email']
+            mailBody = request.form['mailBody'] + " Sent by: " + email + " from FindMyEmployer"
             msg = Message(mailSubject, sender = email, recipients = [recipientAddress])
             msg.body = mailBody
             mail.send(msg)
+            print email
             return render_template("messaging.html")
     except:
         msg = "Error in view messaging"
@@ -338,6 +339,26 @@ def delete_file(filename):
     path = app.config['UPLOADED_PHOTOS_DEST']  + "/"+ session['email']+ "/" + filename
     os.remove(path)
     return redirect(url_for('upload_file'))
+
+@app.route("/searchProfile", methods = ['GET', 'POST'])
+def searchProfile():
+    try:
+        if request.method == 'POST':
+            #Parse form data
+            searchProf = request.form['searchProf']
+            if (searchProf == ''):
+                return render_template("searchProfile.html",error="Enter Name to Search", noOfProfilesFetched=0)
+            else:
+                fetchSearchedProfile = Businesslayer.Businesslayer_FetchSearchedProfile()
+                fetchSearchedProfileData = fetchSearchedProfile.fetchSearchedProfile_BSL(searchProf)
+                noOfProfilesFetched = len(fetchSearchedProfileData)
+                if (noOfProfilesFetched == 0):
+                    return render_template("searchProfile.html", fetchSearchedProfileData=fetchSearchedProfileData, noOfProfilesFetched=noOfProfilesFetched,error="No Results Found")
+                else:
+                    return render_template("searchProfile.html", fetchSearchedProfileData=fetchSearchedProfileData, noOfProfilesFetched=noOfProfilesFetched)
+    except:
+        msg = "Error in view searchProfile"
+        logging.info(msg, exc_info=True)
 
 if __name__ == '__main__':
     logging.basicConfig(filename='Log1.log',level=logging.DEBUG,format='%(asctime)s %(levelname)s %(name)s %(message)s')

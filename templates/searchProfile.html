@@ -1,11 +1,29 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="en">
     <head>
-        <title>Messaging</title>
+        <title>My Profile</title>
+        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <style>
+		table {
+			font-family: arial, sans-serif;
+			border-collapse: collapse;
+			width: 100%;
+		}
+
+		td, th {
+			border: 1px solid #dddddd;
+			text-align: left;
+			padding: 8px;
+		}
+
+		tr:nth-child(even) {
+			background-color: #dddddd;
+		}
+		</style>
     </head>
     <body>
         <nav class="navbar navbar-inverse">
@@ -20,14 +38,15 @@
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
-                        <li><a href="/">Home</a></li>
-                        <li class="active"><a href="/messageForm">Messages</a></li>
+                        <li class="active"><a href="/">Home</a></li>
+                        <li><a href="/messageForm">Messages</a></li>
                         <li><a href="/account/profile/edit">Edit Profile</a></li>
                         <li><a href="/account/profile/changePassword">Change password</a></li>
                         <li><a href="/addJobs">Jobs</a></li>
                     </ul>
+					
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="/checkUserErrorLog"></span> CheckErrorlog</a></li>
+                            <li><a href="/checkUserErrorLog"></span> CheckErrorlog</a></li>
                         <li><a href="/logout"><span class="glyphicon glyphicon-user"></span> Sign Out</a></li>
                     </ul>
 					<ul class="navbar-form navbar-right">
@@ -45,34 +64,39 @@
                 </div>
             </div>
         </nav>
-<div class="container">
-            <div class="row centered-form">
-                <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h1 style="text-align:center;" class="panel-title">Send Email</h1>
-                        </div>
-                        <div class="panel-body">
-                            <form action="/messaging" method="POST">
-                                
-                                <div class="form-group">
-                                    <input class="form-control input-sm" type="email" name="recipientAddress" id="recipientAddress" placeholder="Enter Mail Id of Receiver" required>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <input class="form-control input-sm" type="text" name="mailSubject" id="mailSubject" placeholder="Enter Subject" required>
-                                </div>
-                                <div class="form-group">
-                                    <textarea class="form-control" rows="5" name="mailBody" id="mailBody" placeholder="Type Message to Send..." required></textarea>
-                                </div>
-                                
-                                <input type="submit" value="Send Mail" class="btn btn-info btn-block">
-                            </form>
-                        </div>
-                    </div>
-                </div>
+		<div style="text-align:center; margin-top:5%;">
+			    <h3 style="color:red;">{{error}}</h3>
             </div>
-        </div>
+			
+		
+		{% if (noOfProfilesFetched !=0 ) %}
+		<div style="text-align:center;">
+			    <h2>Profiles Found</h2>
+            </div>
+		<div style="margin-top:2%;" class="container">
+	<table>
+  <tr>
+    <th>Email</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+	<th>Address</th>
+	<th>Phone</th>
+  </tr>
+  {% for i in range(noOfProfilesFetched) %}
+  <tr>
+    <td>{{fetchSearchedProfileData[i][1]}}</td>
+    <td>{{fetchSearchedProfileData[i][2]}}</td>
+    <td>{{fetchSearchedProfileData[i][3]}}</td>
+	<td>{{fetchSearchedProfileData[i][4]}} {{fetchSearchedProfileData[i][5]}} {{fetchSearchedProfileData[i][7]}} {{fetchSearchedProfileData[i][8]}} {{fetchSearchedProfileData[i][6]}} {{fetchSearchedProfileData[i][9]}}</td>
+    <td>{{fetchSearchedProfileData[i][10]}}</td>
+  </tr>
+{% endfor %}
+</table>
+		
+</div>
+
+        {% endif %}
+
         
     </body>
 </html>

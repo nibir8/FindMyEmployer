@@ -30,6 +30,18 @@
                         <li><a href="/checkUserErrorLog"></span> CheckErrorlog</a></li>
                         <li><a href="/logout"><span class="glyphicon glyphicon-user"></span> Sign Out</a></li>
                     </ul>
+					<ul class="navbar-form navbar-right">
+					      <form role="search" action="/searchProfile" method="POST">
+        <div class="form-group input-group">
+          <input type="text" class="form-control" name="searchProf" id="searchProf" placeholder="Enter First Name to Search.." required>
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="submit">
+              <span class="glyphicon glyphicon-search"></span>
+            </button>
+          </span>        
+        </div>
+      </form>
+	  </ul>
                 </div>
             </div>
         </nav>
@@ -42,8 +54,8 @@
                         </div>
                         <div class="panel-body">
                             <form action="/updateProfile" method="POST">
-                              <a href="{{ url_for('upload_file') }}">Edit Profile picture</a>
-                                <div class="row">
+                              <a style="margin-left:30%;" href="{{ url_for('upload_file') }}">Edit Profile picture</a>
+                                <div style="margin-top:4%;" class="row">
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <input class="form-control input-sm" type="email" name="email" value={{profileData[1]}} readonly="readonly">

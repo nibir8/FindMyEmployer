@@ -21,7 +21,8 @@ class IFetchJobDetails:
     def getJob_DBL(Self,jobId): raise NotImplementedError
 class IInsertJobDetails:
     def insertJob_DBL(Self,jobId,companyName,title,manager,location,jobDetails): raise NotImplementedError
-
+class IFetchSearchedProfile:
+    def fetchSearchedProfile_DBL(Self,firstName): raise NotImplementedError
 class IPostStatus:
     def insertUserStatus(Self,email,status): raise NotImplementedError
     def getUserStatus_DBL(Self): raise NotImplementedError
@@ -157,8 +158,6 @@ class Databaselayer_FetchStatus(IPostStatus):
         conn.close()
         return statusData
 
-
-
 class Databaselayer_InsertJob(IInsertJobDetails):
     def insertJob_DBL(Self,jobId,companyName,title,manager,location,jobDetails):
         try:
@@ -187,3 +186,17 @@ class Databaselayer_FetchJob(IFetchJobDetails):
             logging.info(excep_msg, exc_info=True)
         conn.close()
         return jobData
+
+class Databaselayer_FetchSearchedProfile(IFetchSearchedProfile):
+    def fetchSearchedProfile_DBL(self,firstName):
+        try:
+            conn = mysql.connect()
+            cur = conn.cursor()
+            cur.callproc('spGetSearchedUser',[firstName])
+            searchedProfileData = cur.fetchall()
+        except:
+            conn.rollback()
+            excep_msg = "Error occured in fetchSearchedProfile_DBL method"
+            logging.info(excep_msg, exc_info=True)
+        conn.close()
+        return searchedProfileData

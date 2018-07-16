@@ -91,7 +91,6 @@ class Businesslayer_GetStatus:
             msg = "Error occured in method getJobData_BSL method"
             logging.info(msg, exc_info=True)
 
-
 class Businesslayer_FetchJobData:
     def getJobData_BSL(self):
         try:
@@ -100,4 +99,14 @@ class Businesslayer_FetchJobData:
             return jobData
         except:
             msg = "Error occured in method getJobData_BSL method"
+            logging.info(msg, exc_info=True)
+
+class Businesslayer_FetchSearchedProfile:
+    def fetchSearchedProfile_BSL(self,firstName):
+        try:
+            fetchSearchedProfile = Databaselayer_FetchSearchedProfile()
+            fetchSearchedProfileData = fetchSearchedProfile.fetchSearchedProfile_DBL(firstName)
+            return fetchSearchedProfileData
+        except:
+            msg = "Error occured in method fetchSearchedProfile_BSL method"
             logging.info(msg, exc_info=True)
