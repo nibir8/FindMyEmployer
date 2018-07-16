@@ -285,7 +285,6 @@ def messaging():
             msg = Message(mailSubject, sender = email, recipients = [recipientAddress])
             msg.body = mailBody
             mail.send(msg)
-            print email
             return render_template("messaging.html")
     except:
         msg = "Error in view messaging"
