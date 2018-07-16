@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Messaging</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"></a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/">Home</a></li>
+                        <li class="active"><a href="/messageForm">Messages</a></li>
+                        <li><a href="/account/profile/edit">Edit Profile</a></li>
+                        <li><a href="/account/profile/changePassword">Change password</a></li>
+                        <li><a href="/addJobs">Jobs</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/checkUserErrorLog"></span> CheckErrorlog</a></li>
+                        <li><a href="/logout"><span class="glyphicon glyphicon-user"></span> Sign Out</a></li>
+                    </ul>
+					<ul class="navbar-form navbar-right">
+					      <form role="search" action="/searchProfile" method="POST">
+        <div class="form-group input-group">
+          <input type="text" class="form-control" name="searchProf" id="searchProf" placeholder="Enter First Name to Search.." required>
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="submit">
+              <span class="glyphicon glyphicon-search"></span>
+            </button>
+          </span>        
+        </div>
+      </form>
+	  </ul>
+                </div>
+            </div>
+        </nav>
+<div class="container">
+            <div class="row centered-form">
+                <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h1 style="text-align:center;" class="panel-title">Send Email</h1>
+                        </div>
+                        <div class="panel-body">
+                            <form action="/messaging" method="POST">
+                                
+                                <div class="form-group">
+                                    <input class="form-control input-sm" type="email" name="recipientAddress" id="recipientAddress" placeholder="Enter Mail Id of Receiver" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <input class="form-control input-sm" type="text" name="mailSubject" id="mailSubject" placeholder="Enter Subject" required>
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="form-control" rows="5" name="mailBody" id="mailBody" placeholder="Type Message to Send..." required></textarea>
+                                </div>
+                                
+                                <input type="submit" value="Send Mail" class="btn btn-info btn-block">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </body>
+</html>

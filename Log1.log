@@ -1,0 +1,749 @@
+2018-07-10 02:09:39,389 INFO werkzeug  * Restarting with stat
+2018-07-10 02:09:40,100 WARNING werkzeug  * Debugger is active!
+2018-07-10 02:09:40,109 INFO werkzeug  * Debugger PIN: 149-083-935
+2018-07-10 02:09:40,446 INFO werkzeug  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2018-07-10 02:10:41,699 INFO werkzeug 127.0.0.1 - - [10/Jul/2018 02:10:41] "GET / HTTP/1.1" 200 -
+2018-07-10 02:10:41,902 INFO werkzeug 127.0.0.1 - - [10/Jul/2018 02:10:41] "GET /static/css/home_style.css HTTP/1.1" 200 -
+2018-07-10 02:10:42,640 INFO werkzeug 127.0.0.1 - - [10/Jul/2018 02:10:42] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-10 02:10:45,098 INFO werkzeug 127.0.0.1 - - [10/Jul/2018 02:10:45] "GET /registerationForm HTTP/1.1" 200 -
+2018-07-10 02:10:45,129 INFO werkzeug 127.0.0.1 - - [10/Jul/2018 02:10:45] "GET /register_Style.css HTTP/1.1" 404 -
+2018-07-10 02:10:45,139 INFO werkzeug 127.0.0.1 - - [10/Jul/2018 02:10:45] "GET /static/css/register_style.css HTTP/1.1" 200 -
+2018-07-10 02:10:45,562 INFO werkzeug 127.0.0.1 - - [10/Jul/2018 02:10:45] "GET /register_Style.css HTTP/1.1" 404 -
+2018-07-10 02:10:46,268 INFO werkzeug 127.0.0.1 - - [10/Jul/2018 02:10:46] "GET / HTTP/1.1" 200 -
+2018-07-10 02:23:07,339 INFO werkzeug 127.0.0.1 - - [10/Jul/2018 02:23:07] "GET / HTTP/1.1" 200 -
+2018-07-10 02:23:14,017 INFO werkzeug 127.0.0.1 - - [10/Jul/2018 02:23:14] "POST /login HTTP/1.1" 302 -
+2018-07-10 02:23:14,033 INFO werkzeug 127.0.0.1 - - [10/Jul/2018 02:23:14] "GET / HTTP/1.1" 200 -
+2018-07-10 02:23:14,094 INFO werkzeug 127.0.0.1 - - [10/Jul/2018 02:23:14] "GET /static/css/bootstrap.min.css HTTP/1.1" 200 -
+2018-07-10 02:23:14,103 INFO werkzeug 127.0.0.1 - - [10/Jul/2018 02:23:14] "GET /static/js/jquery-1.11.1.min.js HTTP/1.1" 200 -
+2018-07-10 02:23:14,115 INFO werkzeug 127.0.0.1 - - [10/Jul/2018 02:23:14] "GET /static/js/bootstrap.min.js HTTP/1.1" 200 -
+2018-07-10 02:23:14,386 INFO werkzeug 127.0.0.1 - - [10/Jul/2018 02:23:14] "GET /static/images/img1.png/ HTTP/1.1" 200 -
+2018-07-10 02:23:48,570 INFO werkzeug  * Restarting with stat
+2018-07-10 02:23:49,158 WARNING werkzeug  * Debugger is active!
+2018-07-10 02:23:49,163 INFO werkzeug  * Debugger PIN: 149-083-935
+2018-07-10 02:23:49,175 INFO werkzeug  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2018-07-10 02:23:53,285 INFO werkzeug 127.0.0.1 - - [10/Jul/2018 02:23:53] "GET / HTTP/1.1" 200 -
+2018-07-10 02:23:55,573 INFO werkzeug 127.0.0.1 - - [10/Jul/2018 02:23:55] "GET /logout HTTP/1.1" 302 -
+2018-07-10 02:23:55,586 INFO werkzeug 127.0.0.1 - - [10/Jul/2018 02:23:55] "GET / HTTP/1.1" 200 -
+2018-07-10 02:24:01,342 INFO werkzeug 127.0.0.1 - - [10/Jul/2018 02:24:01] "POST /login HTTP/1.1" 302 -
+2018-07-10 02:24:01,663 INFO werkzeug 127.0.0.1 - - [10/Jul/2018 02:24:01] "GET / HTTP/1.1" 200 -
+2018-07-10 02:32:21,703 INFO werkzeug 127.0.0.1 - - [10/Jul/2018 02:32:21] "GET / HTTP/1.1" 200 -
+2018-07-10 02:32:21,918 INFO werkzeug 127.0.0.1 - - [10/Jul/2018 02:32:21] "GET /static/css/bootstrap.min.css HTTP/1.1" 200 -
+2018-07-10 02:32:22,070 INFO werkzeug 127.0.0.1 - - [10/Jul/2018 02:32:22] "GET /static/js/jquery-1.11.1.min.js HTTP/1.1" 200 -
+2018-07-10 02:32:22,071 INFO werkzeug 127.0.0.1 - - [10/Jul/2018 02:32:22] "GET /static/js/bootstrap.min.js HTTP/1.1" 200 -
+2018-07-10 02:32:22,078 INFO werkzeug 127.0.0.1 - - [10/Jul/2018 02:32:22] "GET /static/images/img1.png/ HTTP/1.1" 200 -
+2018-07-10 02:32:22,357 INFO werkzeug 127.0.0.1 - - [10/Jul/2018 02:32:22] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-10 02:32:24,720 INFO werkzeug 127.0.0.1 - - [10/Jul/2018 02:32:24] "GET /jobs.html HTTP/1.1" 404 -
+2018-07-10 02:33:20,340 INFO werkzeug 127.0.0.1 - - [10/Jul/2018 02:33:20] "GET / HTTP/1.1" 200 -
+2018-07-10 02:33:20,567 INFO werkzeug 127.0.0.1 - - [10/Jul/2018 02:33:20] "GET /static/css/bootstrap.min.css HTTP/1.1" 200 -
+2018-07-10 02:33:20,696 INFO werkzeug 127.0.0.1 - - [10/Jul/2018 02:33:20] "GET /static/js/jquery-1.11.1.min.js HTTP/1.1" 200 -
+2018-07-10 02:33:20,696 INFO werkzeug 127.0.0.1 - - [10/Jul/2018 02:33:20] "GET /static/js/bootstrap.min.js HTTP/1.1" 200 -
+2018-07-10 02:33:20,697 INFO werkzeug 127.0.0.1 - - [10/Jul/2018 02:33:20] "GET /static/images/img1.png/ HTTP/1.1" 200 -
+2018-07-10 02:33:20,986 INFO werkzeug 127.0.0.1 - - [10/Jul/2018 02:33:20] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-10 02:33:23,508 INFO werkzeug 127.0.0.1 - - [10/Jul/2018 02:33:23] "GET /jobs.html HTTP/1.1" 404 -
+2018-07-10 02:34:07,354 INFO werkzeug  * Detected change in 'C:\\Users\\lenovo pc\\Desktop\\Group15\\main.py', reloading
+2018-07-10 02:34:07,413 INFO werkzeug  * Restarting with stat
+2018-07-10 02:40:36,598 INFO werkzeug  * Restarting with stat
+2018-07-10 02:40:37,232 WARNING werkzeug  * Debugger is active!
+2018-07-10 02:40:37,238 INFO werkzeug  * Debugger PIN: 149-083-935
+2018-07-10 02:40:37,253 INFO werkzeug  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2018-07-10 02:40:42,613 INFO werkzeug 127.0.0.1 - - [10/Jul/2018 02:40:42] "GET / HTTP/1.1" 200 -
+2018-07-10 02:40:42,845 INFO werkzeug 127.0.0.1 - - [10/Jul/2018 02:40:42] "GET /static/css/bootstrap.min.css HTTP/1.1" 200 -
+2018-07-10 02:40:42,962 INFO werkzeug 127.0.0.1 - - [10/Jul/2018 02:40:42] "GET /static/js/bootstrap.min.js HTTP/1.1" 200 -
+2018-07-10 02:40:42,963 INFO werkzeug 127.0.0.1 - - [10/Jul/2018 02:40:42] "GET /static/js/jquery-1.11.1.min.js HTTP/1.1" 200 -
+2018-07-10 02:40:42,963 INFO werkzeug 127.0.0.1 - - [10/Jul/2018 02:40:42] "GET /static/images/img1.png/ HTTP/1.1" 200 -
+2018-07-10 02:40:43,243 INFO werkzeug 127.0.0.1 - - [10/Jul/2018 02:40:43] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-10 02:40:45,938 INFO werkzeug 127.0.0.1 - - [10/Jul/2018 02:40:45] "GET /jobs.html HTTP/1.1" 404 -
+2018-07-10 02:41:02,015 INFO werkzeug 127.0.0.1 - - [10/Jul/2018 02:41:02] "GET / HTTP/1.1" 200 -
+2018-07-10 02:41:02,052 INFO werkzeug 127.0.0.1 - - [10/Jul/2018 02:41:02] "GET /static/js/jquery-1.11.1.min.js HTTP/1.1" 200 -
+2018-07-10 02:41:02,059 INFO werkzeug 127.0.0.1 - - [10/Jul/2018 02:41:02] "GET /static/js/bootstrap.min.js HTTP/1.1" 200 -
+2018-07-10 02:41:02,067 INFO werkzeug 127.0.0.1 - - [10/Jul/2018 02:41:02] "GET /static/css/bootstrap.min.css HTTP/1.1" 200 -
+2018-07-10 02:41:02,359 INFO werkzeug 127.0.0.1 - - [10/Jul/2018 02:41:02] "GET /static/images/img1.png/ HTTP/1.1" 200 -
+2018-07-10 02:41:02,693 INFO werkzeug 127.0.0.1 - - [10/Jul/2018 02:41:02] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-10 02:41:04,766 INFO werkzeug 127.0.0.1 - - [10/Jul/2018 02:41:04] "GET /jobs HTTP/1.1" 200 -
+2018-07-10 02:42:05,210 INFO werkzeug 127.0.0.1 - - [10/Jul/2018 02:42:05] "GET /jobs HTTP/1.1" 200 -
+2018-07-10 02:42:05,797 INFO werkzeug 127.0.0.1 - - [10/Jul/2018 02:42:05] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-11 13:26:34,211 INFO werkzeug  * Restarting with stat
+2018-07-11 13:26:34,912 WARNING werkzeug  * Debugger is active!
+2018-07-11 13:26:34,917 INFO werkzeug  * Debugger PIN: 149-083-935
+2018-07-11 13:26:34,933 INFO werkzeug  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2018-07-11 13:26:39,105 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:26:39] "GET / HTTP/1.1" 200 -
+2018-07-11 13:26:45,853 INFO root Error in view login
+Traceback (most recent call last):
+  File "main.py", line 118, in login
+    return render_template('login.html', error=error)
+  File "C:\Users\lenovo pc\AppData\Local\Programs\Python\Python36-32\lib\site-packages\flask\templating.py", line 134, in render_template
+    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "C:\Users\lenovo pc\AppData\Local\Programs\Python\Python36-32\lib\site-packages\jinja2\environment.py", line 869, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "C:\Users\lenovo pc\AppData\Local\Programs\Python\Python36-32\lib\site-packages\jinja2\environment.py", line 830, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "C:\Users\lenovo pc\AppData\Local\Programs\Python\Python36-32\lib\site-packages\jinja2\environment.py", line 804, in _load_template
+    template = self.loader.load(self, name, globals)
+  File "C:\Users\lenovo pc\AppData\Local\Programs\Python\Python36-32\lib\site-packages\jinja2\loaders.py", line 113, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "C:\Users\lenovo pc\AppData\Local\Programs\Python\Python36-32\lib\site-packages\flask\templating.py", line 58, in get_source
+    return self._get_source_fast(environment, template)
+  File "C:\Users\lenovo pc\AppData\Local\Programs\Python\Python36-32\lib\site-packages\flask\templating.py", line 86, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: login.html
+2018-07-11 13:26:45,997 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:26:45] "POST /login HTTP/1.1" 500 -
+2018-07-11 13:26:46,100 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:26:46] "GET /login?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2018-07-11 13:26:46,102 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:26:46] "GET /login?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2018-07-11 13:26:46,433 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:26:46] "GET /login?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2018-07-11 13:26:46,894 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:26:46] "GET /login?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2018-07-11 13:26:47,144 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:26:47] "GET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2018-07-11 13:26:47,259 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:26:47] "GET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2018-07-11 13:26:54,803 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:26:54] "POST /login HTTP/1.1" 302 -
+2018-07-11 13:26:54,819 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:26:54] "GET / HTTP/1.1" 200 -
+2018-07-11 13:26:54,878 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:26:54] "GET /static/images/img1.png HTTP/1.1" 200 -
+2018-07-11 13:26:57,674 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:26:57] "GET /account/profile/edit HTTP/1.1" 200 -
+2018-07-11 13:26:57,746 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:26:57] "GET /static/css/editProfile.css HTTP/1.1" 404 -
+2018-07-11 13:26:58,030 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:26:58] "GET /static/css/topStyle.css HTTP/1.1" 200 -
+2018-07-11 13:27:08,959 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:27:08] "GET /account/profile/changePassword HTTP/1.1" 200 -
+2018-07-11 13:27:09,262 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:27:09] "GET /static/js/changePassword.js HTTP/1.1" 200 -
+2018-07-11 13:27:13,290 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:27:13] "GET /account/profile/changePassword HTTP/1.1" 200 -
+2018-07-11 13:27:16,653 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:27:16] "GET /account/profile/changePassword HTTP/1.1" 200 -
+2018-07-11 13:27:19,502 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:27:19] "GET /account/profile/edit HTTP/1.1" 200 -
+2018-07-11 13:27:19,855 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:27:19] "GET /static/css/editProfile.css HTTP/1.1" 404 -
+2018-07-11 13:27:22,304 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:27:22] "GET /account/profile/changePassword HTTP/1.1" 200 -
+2018-07-11 13:27:25,957 INFO root Error occured in getJob_DBL method
+Traceback (most recent call last):
+  File "C:\Users\lenovo pc\Desktop\latest\Group15\Databaselayer.py", line 142, in getJob_DBL
+    cur.execute("SELECT * FROM jobs") # WHERE jobId = '" + jobId + "'")
+sqlite3.OperationalError: no such table: jobs
+2018-07-11 13:27:25,960 INFO root Error occured in method getJobData_BSL method
+Traceback (most recent call last):
+  File "C:\Users\lenovo pc\Desktop\latest\Group15\Businesslayer.py", line 76, in getJobData_BSL
+    jobData = fetchjobdata.getJob_DBL(jobId)
+  File "C:\Users\lenovo pc\Desktop\latest\Group15\Databaselayer.py", line 149, in getJob_DBL
+    return jobData
+UnboundLocalError: local variable 'jobData' referenced before assignment
+2018-07-11 13:27:25,978 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:27:25] "GET /addJobs HTTP/1.1" 200 -
+2018-07-11 13:27:32,888 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:27:32] "GET /account/profile/edit HTTP/1.1" 200 -
+2018-07-11 13:27:33,241 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:27:33] "GET /static/css/editProfile.css HTTP/1.1" 404 -
+2018-07-11 13:27:36,472 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:27:36] "GET /account/profile/changePassword HTTP/1.1" 200 -
+2018-07-11 13:27:39,357 INFO root Error occured in getJob_DBL method
+Traceback (most recent call last):
+  File "C:\Users\lenovo pc\Desktop\latest\Group15\Databaselayer.py", line 142, in getJob_DBL
+    cur.execute("SELECT * FROM jobs") # WHERE jobId = '" + jobId + "'")
+sqlite3.OperationalError: no such table: jobs
+2018-07-11 13:27:39,358 INFO root Error occured in method getJobData_BSL method
+Traceback (most recent call last):
+  File "C:\Users\lenovo pc\Desktop\latest\Group15\Businesslayer.py", line 76, in getJobData_BSL
+    jobData = fetchjobdata.getJob_DBL(jobId)
+  File "C:\Users\lenovo pc\Desktop\latest\Group15\Databaselayer.py", line 149, in getJob_DBL
+    return jobData
+UnboundLocalError: local variable 'jobData' referenced before assignment
+2018-07-11 13:27:39,359 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:27:39] "GET /addJobs HTTP/1.1" 200 -
+2018-07-11 13:27:55,014 INFO root Error occured in getJob_DBL method
+Traceback (most recent call last):
+  File "C:\Users\lenovo pc\Desktop\latest\Group15\Databaselayer.py", line 142, in getJob_DBL
+    cur.execute("SELECT * FROM jobs") # WHERE jobId = '" + jobId + "'")
+sqlite3.OperationalError: no such table: jobs
+2018-07-11 13:27:55,015 INFO root Error occured in method getJobData_BSL method
+Traceback (most recent call last):
+  File "C:\Users\lenovo pc\Desktop\latest\Group15\Businesslayer.py", line 76, in getJobData_BSL
+    jobData = fetchjobdata.getJob_DBL(jobId)
+  File "C:\Users\lenovo pc\Desktop\latest\Group15\Databaselayer.py", line 149, in getJob_DBL
+    return jobData
+UnboundLocalError: local variable 'jobData' referenced before assignment
+2018-07-11 13:27:55,017 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:27:55] "GET /addJobs HTTP/1.1" 200 -
+2018-07-11 13:28:04,368 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:28:04] "GET /account/profile/edit HTTP/1.1" 200 -
+2018-07-11 13:28:04,712 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:28:04] "GET /static/css/editProfile.css HTTP/1.1" 404 -
+2018-07-11 13:29:08,066 INFO werkzeug  * Restarting with stat
+2018-07-11 13:29:08,733 WARNING werkzeug  * Debugger is active!
+2018-07-11 13:29:08,742 INFO werkzeug  * Debugger PIN: 149-083-935
+2018-07-11 13:29:08,762 INFO werkzeug  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2018-07-11 13:29:11,361 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:29:11] "GET / HTTP/1.1" 200 -
+2018-07-11 13:29:11,629 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:29:11] "GET /static/images/img1.png HTTP/1.1" 200 -
+2018-07-11 13:29:12,124 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:29:12] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-11 13:29:15,137 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:29:15] "GET /account/profile/edit HTTP/1.1" 200 -
+2018-07-11 13:29:15,360 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:29:15] "GET /static/css/editProfile.css HTTP/1.1" 404 -
+2018-07-11 13:29:17,976 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:29:17] "GET /account/profile/changePassword HTTP/1.1" 200 -
+2018-07-11 13:29:21,181 INFO root Error occured in getJob_DBL method
+Traceback (most recent call last):
+  File "C:\Users\lenovo pc\Desktop\latest\Group15\Databaselayer.py", line 142, in getJob_DBL
+    cur.execute("SELECT * FROM jobs") # WHERE jobId = '" + jobId + "'")
+sqlite3.OperationalError: no such table: jobs
+2018-07-11 13:29:21,184 INFO root Error occured in method getJobData_BSL method
+Traceback (most recent call last):
+  File "C:\Users\lenovo pc\Desktop\latest\Group15\Businesslayer.py", line 76, in getJobData_BSL
+    jobData = fetchjobdata.getJob_DBL(jobId)
+  File "C:\Users\lenovo pc\Desktop\latest\Group15\Databaselayer.py", line 149, in getJob_DBL
+    return jobData
+UnboundLocalError: local variable 'jobData' referenced before assignment
+2018-07-11 13:29:21,195 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:29:21] "GET /addJobs HTTP/1.1" 200 -
+2018-07-11 13:29:25,532 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:29:25] "GET /account/profile/changePassword HTTP/1.1" 200 -
+2018-07-11 13:29:28,041 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:29:28] "GET /account/profile/changePassword HTTP/1.1" 200 -
+2018-07-11 13:29:30,516 INFO root Error occured in getJob_DBL method
+Traceback (most recent call last):
+  File "C:\Users\lenovo pc\Desktop\latest\Group15\Databaselayer.py", line 142, in getJob_DBL
+    cur.execute("SELECT * FROM jobs") # WHERE jobId = '" + jobId + "'")
+sqlite3.OperationalError: no such table: jobs
+2018-07-11 13:29:30,516 INFO root Error occured in method getJobData_BSL method
+Traceback (most recent call last):
+  File "C:\Users\lenovo pc\Desktop\latest\Group15\Businesslayer.py", line 76, in getJobData_BSL
+    jobData = fetchjobdata.getJob_DBL(jobId)
+  File "C:\Users\lenovo pc\Desktop\latest\Group15\Databaselayer.py", line 149, in getJob_DBL
+    return jobData
+UnboundLocalError: local variable 'jobData' referenced before assignment
+2018-07-11 13:29:30,517 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:29:30] "GET /addJobs HTTP/1.1" 200 -
+2018-07-11 13:29:35,921 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:29:35] "GET /account/profile/changePassword HTTP/1.1" 200 -
+2018-07-11 13:29:38,770 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:29:38] "GET /account/profile/edit HTTP/1.1" 200 -
+2018-07-11 13:29:39,124 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:29:39] "GET /static/css/editProfile.css HTTP/1.1" 404 -
+2018-07-11 13:33:09,126 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:33:09] "GET /logout HTTP/1.1" 302 -
+2018-07-11 13:33:09,433 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:33:09] "GET / HTTP/1.1" 200 -
+2018-07-11 13:33:11,669 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:33:11] "GET /registerationForm HTTP/1.1" 200 -
+2018-07-11 13:33:12,013 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:33:12] "GET /static/css/register_style.css HTTP/1.1" 200 -
+2018-07-11 13:37:40,442 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:37:40] "GET / HTTP/1.1" 200 -
+2018-07-11 13:37:42,781 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:37:42] "GET / HTTP/1.1" 200 -
+2018-07-11 13:37:43,142 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:37:43] "GET /static/css/home_style.css HTTP/1.1" 200 -
+2018-07-11 13:37:43,585 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:37:43] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-11 13:37:45,389 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:37:45] "GET / HTTP/1.1" 200 -
+2018-07-11 13:37:45,645 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:37:45] "GET /static/css/home_style.css HTTP/1.1" 200 -
+2018-07-11 13:37:45,769 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:37:45] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-11 13:37:46,455 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:37:46] "GET / HTTP/1.1" 200 -
+2018-07-11 13:37:46,842 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:37:46] "GET /static/css/home_style.css HTTP/1.1" 200 -
+2018-07-11 13:37:47,087 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:37:47] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-11 13:40:37,131 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:40:37] "GET / HTTP/1.1" 200 -
+2018-07-11 13:40:37,379 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:40:37] "GET /static/css/home_style.css HTTP/1.1" 200 -
+2018-07-11 13:40:37,892 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:40:37] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-11 13:45:28,668 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:45:28] "GET / HTTP/1.1" 200 -
+2018-07-11 13:45:28,931 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:45:28] "GET /static/css/home_style.css HTTP/1.1" 200 -
+2018-07-11 13:45:29,439 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:45:29] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-11 13:45:37,721 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:45:37] "GET / HTTP/1.1" 200 -
+2018-07-11 13:45:37,968 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:45:37] "GET /static/css/home_style.css HTTP/1.1" 200 -
+2018-07-11 13:45:38,100 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:45:38] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-11 13:46:06,342 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:46:06] "GET / HTTP/1.1" 200 -
+2018-07-11 13:46:06,601 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:46:06] "GET /static/css/home_style.css HTTP/1.1" 200 -
+2018-07-11 13:46:07,114 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:46:07] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-11 13:46:08,019 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:46:08] "GET / HTTP/1.1" 200 -
+2018-07-11 13:46:08,271 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:46:08] "GET /static/css/home_style.css HTTP/1.1" 200 -
+2018-07-11 13:46:08,401 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:46:08] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-11 13:46:08,992 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:46:08] "GET / HTTP/1.1" 200 -
+2018-07-11 13:46:09,368 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:46:09] "GET /static/css/home_style.css HTTP/1.1" 200 -
+2018-07-11 13:46:09,625 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:46:09] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-11 13:47:59,417 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:47:59] "GET / HTTP/1.1" 200 -
+2018-07-11 13:47:59,673 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:47:59] "GET /static/css/home_style.css HTTP/1.1" 200 -
+2018-07-11 13:48:00,258 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:48:00] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-11 13:49:16,712 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:49:16] "GET / HTTP/1.1" 200 -
+2018-07-11 13:49:16,950 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:49:16] "GET /static/css/home_style.css HTTP/1.1" 200 -
+2018-07-11 13:49:17,414 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:49:17] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-11 13:49:57,685 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:49:57] "GET / HTTP/1.1" 200 -
+2018-07-11 13:49:57,938 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:49:57] "GET /static/css/home_style.css HTTP/1.1" 200 -
+2018-07-11 13:50:22,569 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:50:22] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-11 13:51:06,762 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:51:06] "GET / HTTP/1.1" 200 -
+2018-07-11 13:51:07,017 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:51:07] "GET /static/css/home_style.css HTTP/1.1" 200 -
+2018-07-11 13:51:07,651 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:51:07] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-11 13:51:58,432 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:51:58] "GET / HTTP/1.1" 200 -
+2018-07-11 13:51:58,683 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:51:58] "GET /static/css/home_style.css HTTP/1.1" 200 -
+2018-07-11 13:51:59,159 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:51:59] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-11 13:52:07,644 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:52:07] "GET / HTTP/1.1" 200 -
+2018-07-11 13:52:07,880 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:52:07] "GET /static/css/home_style.css HTTP/1.1" 200 -
+2018-07-11 13:52:08,074 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:52:08] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-11 13:52:12,599 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:52:12] "GET / HTTP/1.1" 200 -
+2018-07-11 13:52:12,821 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:52:12] "GET /static/css/home_style.css HTTP/1.1" 200 -
+2018-07-11 13:52:13,051 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:52:13] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-11 13:52:44,122 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:52:44] "GET / HTTP/1.1" 200 -
+2018-07-11 13:52:44,365 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:52:44] "GET /static/css/home_style.css HTTP/1.1" 200 -
+2018-07-11 13:52:44,925 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:52:44] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-11 13:53:15,015 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:53:15] "GET / HTTP/1.1" 200 -
+2018-07-11 13:53:15,261 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:53:15] "GET /static/css/home_style.css HTTP/1.1" 200 -
+2018-07-11 13:53:15,816 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:53:15] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-11 13:55:28,360 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:55:28] "GET / HTTP/1.1" 200 -
+2018-07-11 13:55:28,612 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:55:28] "GET /static/css/home_style.css HTTP/1.1" 200 -
+2018-07-11 13:55:29,094 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:55:29] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-11 13:56:30,146 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:56:30] "GET / HTTP/1.1" 200 -
+2018-07-11 13:56:30,395 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:56:30] "GET /static/css/home_style.css HTTP/1.1" 200 -
+2018-07-11 13:56:30,851 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:56:30] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-11 13:56:31,689 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:56:31] "GET / HTTP/1.1" 200 -
+2018-07-11 13:56:31,941 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:56:31] "GET /static/css/home_style.css HTTP/1.1" 200 -
+2018-07-11 13:56:32,123 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 13:56:32] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-11 14:00:18,186 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:00:18] "GET / HTTP/1.1" 200 -
+2018-07-11 14:00:18,433 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:00:18] "GET /static/css/home_style.css HTTP/1.1" 200 -
+2018-07-11 14:00:19,120 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:00:19] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-11 14:02:26,901 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:02:26] "GET / HTTP/1.1" 200 -
+2018-07-11 14:02:27,135 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:02:27] "GET /static/css/home_style.css HTTP/1.1" 200 -
+2018-07-11 14:02:27,612 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:02:27] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-11 14:02:51,267 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:02:51] "GET / HTTP/1.1" 200 -
+2018-07-11 14:02:51,494 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:02:51] "GET /static/css/home_style.css HTTP/1.1" 200 -
+2018-07-11 14:02:51,984 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:02:51] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-11 14:03:10,911 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:03:10] "GET / HTTP/1.1" 200 -
+2018-07-11 14:03:11,157 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:03:11] "GET /static/css/home_style.css HTTP/1.1" 200 -
+2018-07-11 14:03:11,647 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:03:11] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-11 14:03:19,101 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:03:19] "GET / HTTP/1.1" 200 -
+2018-07-11 14:03:19,347 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:03:19] "GET /static/css/home_style.css HTTP/1.1" 200 -
+2018-07-11 14:03:19,449 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:03:19] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-11 14:09:24,218 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:09:24] "GET / HTTP/1.1" 200 -
+2018-07-11 14:09:24,476 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:09:24] "GET /static/css/home_style.css HTTP/1.1" 200 -
+2018-07-11 14:09:25,055 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:09:25] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-11 14:09:41,414 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:09:41] "GET / HTTP/1.1" 200 -
+2018-07-11 14:09:41,658 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:09:41] "GET /static/css/home_style.css HTTP/1.1" 200 -
+2018-07-11 14:09:42,143 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:09:42] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-11 14:10:51,541 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:10:51] "POST /login HTTP/1.1" 302 -
+2018-07-11 14:10:51,789 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:10:51] "GET / HTTP/1.1" 200 -
+2018-07-11 14:11:50,267 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:11:50] "GET / HTTP/1.1" 200 -
+2018-07-11 14:11:50,499 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:11:50] "GET /static/images/img1.png HTTP/1.1" 200 -
+2018-07-11 14:11:51,056 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:11:51] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-11 14:13:39,531 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:13:39] "GET / HTTP/1.1" 200 -
+2018-07-11 14:13:39,785 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:13:39] "GET /static/images/img1.png HTTP/1.1" 200 -
+2018-07-11 14:13:40,240 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:13:40] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-11 14:13:41,796 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:13:41] "GET /account/profile/edit HTTP/1.1" 200 -
+2018-07-11 14:13:42,025 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:13:42] "GET /static/css/editProfile.css HTTP/1.1" 404 -
+2018-07-11 14:14:11,386 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:14:11] "GET /account/profile/edit HTTP/1.1" 200 -
+2018-07-11 14:14:11,634 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:14:11] "GET /static/css/editProfile.css HTTP/1.1" 404 -
+2018-07-11 14:14:11,759 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:14:11] "GET /static/css/topStyle.css HTTP/1.1" 200 -
+2018-07-11 14:14:11,967 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:14:11] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-11 14:15:06,668 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:15:06] "GET /account/profile/edit HTTP/1.1" 200 -
+2018-07-11 14:15:06,912 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:15:06] "GET /static/css/editProfile.css HTTP/1.1" 404 -
+2018-07-11 14:15:07,031 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:15:07] "GET /static/css/topStyle.css HTTP/1.1" 200 -
+2018-07-11 14:15:07,165 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:15:07] "GET /static/css/editProfile.css HTTP/1.1" 404 -
+2018-07-11 14:15:07,681 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:15:07] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-11 14:15:41,560 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:15:41] "GET /account/profile/edit HTTP/1.1" 200 -
+2018-07-11 14:15:41,812 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:15:41] "GET /static/css/editProfile.css HTTP/1.1" 404 -
+2018-07-11 14:15:41,940 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:15:41] "GET /static/css/topStyle.css HTTP/1.1" 200 -
+2018-07-11 14:15:42,028 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:15:42] "GET /static/css/editProfile.css HTTP/1.1" 404 -
+2018-07-11 14:15:42,570 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:15:42] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-11 14:16:08,054 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:16:08] "GET /account/profile/edit HTTP/1.1" 200 -
+2018-07-11 14:16:08,297 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:16:08] "GET /static/css/editProfile.css HTTP/1.1" 404 -
+2018-07-11 14:16:08,418 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:16:08] "GET /static/css/topStyle.css HTTP/1.1" 200 -
+2018-07-11 14:16:08,494 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:16:08] "GET /static/css/editProfile.css HTTP/1.1" 404 -
+2018-07-11 14:16:09,070 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:16:09] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-11 14:16:12,368 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:16:12] "GET / HTTP/1.1" 200 -
+2018-07-11 14:16:14,152 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:16:14] "GET /account/profile/edit HTTP/1.1" 200 -
+2018-07-11 14:16:14,403 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:16:14] "GET /static/css/editProfile.css HTTP/1.1" 404 -
+2018-07-11 14:16:28,677 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:16:28] "GET /account/profile/edit HTTP/1.1" 200 -
+2018-07-11 14:16:28,927 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:16:28] "GET /static/css/editProfile.css HTTP/1.1" 404 -
+2018-07-11 14:16:29,100 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:16:29] "GET /static/css/editProfile.css HTTP/1.1" 404 -
+2018-07-11 14:16:30,808 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:16:30] "GET / HTTP/1.1" 200 -
+2018-07-11 14:18:10,781 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:18:10] "GET /account/profile/edit HTTP/1.1" 200 -
+2018-07-11 14:18:10,996 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:18:10] "GET /static/css/editProfile.css HTTP/1.1" 404 -
+2018-07-11 14:18:11,221 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:18:11] "GET /static/css/editProfile.css HTTP/1.1" 404 -
+2018-07-11 14:18:13,631 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:18:13] "GET /account/profile/changePassword HTTP/1.1" 200 -
+2018-07-11 14:20:27,722 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:20:27] "GET /account/profile/edit HTTP/1.1" 200 -
+2018-07-11 14:20:27,970 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:20:27] "GET /static/css/editProfile.css HTTP/1.1" 404 -
+2018-07-11 14:20:28,078 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:20:28] "GET /static/css/topStyle.css HTTP/1.1" 200 -
+2018-07-11 14:20:28,212 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:20:28] "GET /static/css/editProfile.css HTTP/1.1" 404 -
+2018-07-11 14:20:28,747 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:20:28] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-11 14:20:29,671 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:20:29] "GET /account/profile/changePassword HTTP/1.1" 200 -
+2018-07-11 14:20:31,335 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:20:31] "GET /account/profile/changePassword HTTP/1.1" 200 -
+2018-07-11 14:20:31,579 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:20:31] "GET /static/js/changePassword.js HTTP/1.1" 200 -
+2018-07-11 14:20:31,710 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:20:31] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-11 14:20:34,885 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:20:34] "GET /account/profile HTTP/1.1" 200 -
+2018-07-11 14:20:37,024 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:20:37] "GET /account/profile/changePassword HTTP/1.1" 200 -
+2018-07-11 14:20:53,929 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:20:53] "GET /account/profile/changePassword HTTP/1.1" 200 -
+2018-07-11 14:20:54,166 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:20:54] "GET /static/js/changePassword.js HTTP/1.1" 200 -
+2018-07-11 14:20:54,634 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:20:54] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-11 14:21:03,371 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:21:03] "GET /account/profile/edit HTTP/1.1" 200 -
+2018-07-11 14:21:03,615 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:21:03] "GET /static/css/editProfile.css HTTP/1.1" 404 -
+2018-07-11 14:21:04,205 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:21:04] "GET /account/profile/changePassword HTTP/1.1" 200 -
+2018-07-11 14:21:05,763 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:21:05] "GET /logout HTTP/1.1" 302 -
+2018-07-11 14:21:06,022 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:21:06] "GET / HTTP/1.1" 200 -
+2018-07-11 14:21:10,428 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:21:10] "POST /login HTTP/1.1" 302 -
+2018-07-11 14:21:10,758 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:21:10] "GET / HTTP/1.1" 200 -
+2018-07-11 14:21:13,484 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:21:13] "GET /account/profile/changePassword HTTP/1.1" 200 -
+2018-07-11 14:21:14,872 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:21:14] "GET /account/profile/edit HTTP/1.1" 200 -
+2018-07-11 14:21:15,128 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:21:15] "GET /static/css/editProfile.css HTTP/1.1" 404 -
+2018-07-11 14:21:16,546 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:21:16] "GET / HTTP/1.1" 200 -
+2018-07-11 14:21:18,489 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:21:18] "GET /account/profile/changePassword HTTP/1.1" 200 -
+2018-07-11 14:21:19,375 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:21:19] "GET / HTTP/1.1" 200 -
+2018-07-11 14:21:20,680 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:21:20] "GET /account/profile/changePassword HTTP/1.1" 200 -
+2018-07-11 14:21:26,649 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:21:26] "GET /account/profile/edit HTTP/1.1" 200 -
+2018-07-11 14:21:27,005 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:21:27] "GET /static/css/editProfile.css HTTP/1.1" 404 -
+2018-07-11 14:21:28,015 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:21:28] "GET / HTTP/1.1" 200 -
+2018-07-11 14:21:29,257 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:21:29] "GET /account/profile/changePassword HTTP/1.1" 200 -
+2018-07-11 14:27:23,751 INFO root Error occured in getJob_DBL method
+Traceback (most recent call last):
+  File "C:\Users\lenovo pc\Desktop\latest\Group15\Databaselayer.py", line 142, in getJob_DBL
+    cur.execute("SELECT * FROM jobs") # WHERE jobId = '" + jobId + "'")
+sqlite3.OperationalError: no such table: jobs
+2018-07-11 14:27:23,754 INFO root Error occured in method getJobData_BSL method
+Traceback (most recent call last):
+  File "C:\Users\lenovo pc\Desktop\latest\Group15\Businesslayer.py", line 76, in getJobData_BSL
+    jobData = fetchjobdata.getJob_DBL(jobId)
+  File "C:\Users\lenovo pc\Desktop\latest\Group15\Databaselayer.py", line 149, in getJob_DBL
+    return jobData
+UnboundLocalError: local variable 'jobData' referenced before assignment
+2018-07-11 14:27:23,776 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:27:23] "GET /addJobs HTTP/1.1" 200 -
+2018-07-11 14:27:26,952 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:27:26] "GET /account/profile/edit HTTP/1.1" 200 -
+2018-07-11 14:27:27,317 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:27:27] "GET /static/css/editProfile.css HTTP/1.1" 404 -
+2018-07-11 14:27:27,946 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:27:27] "GET /account/profile/changePassword HTTP/1.1" 200 -
+2018-07-11 14:27:28,996 INFO root Error occured in getJob_DBL method
+Traceback (most recent call last):
+  File "C:\Users\lenovo pc\Desktop\latest\Group15\Databaselayer.py", line 142, in getJob_DBL
+    cur.execute("SELECT * FROM jobs") # WHERE jobId = '" + jobId + "'")
+sqlite3.OperationalError: no such table: jobs
+2018-07-11 14:27:28,997 INFO root Error occured in method getJobData_BSL method
+Traceback (most recent call last):
+  File "C:\Users\lenovo pc\Desktop\latest\Group15\Businesslayer.py", line 76, in getJobData_BSL
+    jobData = fetchjobdata.getJob_DBL(jobId)
+  File "C:\Users\lenovo pc\Desktop\latest\Group15\Databaselayer.py", line 149, in getJob_DBL
+    return jobData
+UnboundLocalError: local variable 'jobData' referenced before assignment
+2018-07-11 14:27:28,998 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:27:28] "GET /addJobs HTTP/1.1" 200 -
+2018-07-11 14:27:29,741 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:27:29] "GET / HTTP/1.1" 200 -
+2018-07-11 14:27:31,870 INFO root Error occured in getJob_DBL method
+Traceback (most recent call last):
+  File "C:\Users\lenovo pc\Desktop\latest\Group15\Databaselayer.py", line 142, in getJob_DBL
+    cur.execute("SELECT * FROM jobs") # WHERE jobId = '" + jobId + "'")
+sqlite3.OperationalError: no such table: jobs
+2018-07-11 14:27:31,871 INFO root Error occured in method getJobData_BSL method
+Traceback (most recent call last):
+  File "C:\Users\lenovo pc\Desktop\latest\Group15\Businesslayer.py", line 76, in getJobData_BSL
+    jobData = fetchjobdata.getJob_DBL(jobId)
+  File "C:\Users\lenovo pc\Desktop\latest\Group15\Databaselayer.py", line 149, in getJob_DBL
+    return jobData
+UnboundLocalError: local variable 'jobData' referenced before assignment
+2018-07-11 14:27:31,873 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:27:31] "GET /addJobs HTTP/1.1" 200 -
+2018-07-11 14:27:34,124 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:27:34] "GET /logout HTTP/1.1" 302 -
+2018-07-11 14:27:34,451 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:27:34] "GET / HTTP/1.1" 200 -
+2018-07-11 14:27:39,757 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:27:39] "POST /login HTTP/1.1" 302 -
+2018-07-11 14:27:40,089 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:27:40] "GET / HTTP/1.1" 200 -
+2018-07-11 14:27:42,468 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:27:42] "GET /logout HTTP/1.1" 302 -
+2018-07-11 14:27:42,798 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:27:42] "GET / HTTP/1.1" 200 -
+2018-07-11 14:32:53,250 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:32:53] "POST /login HTTP/1.1" 302 -
+2018-07-11 14:32:53,507 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:32:53] "GET / HTTP/1.1" 200 -
+2018-07-11 14:32:54,850 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:32:54] "GET /account/profile/changePassword HTTP/1.1" 200 -
+2018-07-11 14:33:17,765 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:33:17] "GET /account/profile/edit HTTP/1.1" 200 -
+2018-07-11 14:33:18,012 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:33:18] "GET /static/css/editProfile.css HTTP/1.1" 404 -
+2018-07-11 14:33:23,017 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:33:23] "GET /account/profile/edit HTTP/1.1" 200 -
+2018-07-11 14:33:23,372 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:33:23] "GET /static/css/editProfile.css HTTP/1.1" 404 -
+2018-07-11 14:33:23,629 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:33:23] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-11 14:33:24,389 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:33:24] "GET /account/profile/edit HTTP/1.1" 200 -
+2018-07-11 14:33:24,750 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:33:24] "GET /static/css/editProfile.css HTTP/1.1" 404 -
+2018-07-11 14:33:25,001 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:33:25] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-11 14:33:25,289 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:33:25] "GET /account/profile/edit HTTP/1.1" 200 -
+2018-07-11 14:33:25,644 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:33:25] "GET /static/css/editProfile.css HTTP/1.1" 404 -
+2018-07-11 14:33:25,903 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:33:25] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-11 14:33:34,301 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:33:34] "GET /account/profile/edit HTTP/1.1" 200 -
+2018-07-11 14:33:34,906 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:33:34] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-11 14:33:35,665 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:33:35] "GET /account/profile/edit HTTP/1.1" 200 -
+2018-07-11 14:33:36,235 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:33:36] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-11 14:33:36,498 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:33:36] "GET /account/profile/edit HTTP/1.1" 200 -
+2018-07-11 14:33:36,776 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:33:36] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-11 14:33:37,610 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:33:37] "GET /account/profile/edit HTTP/1.1" 200 -
+2018-07-11 14:33:37,898 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:33:37] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-11 14:35:20,604 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:35:20] "GET /logout HTTP/1.1" 302 -
+2018-07-11 14:35:20,858 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:35:20] "GET / HTTP/1.1" 200 -
+2018-07-11 14:35:29,831 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:35:29] "GET /registerationForm HTTP/1.1" 200 -
+2018-07-11 14:38:02,036 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:38:02] "GET /registerationForm HTTP/1.1" 200 -
+2018-07-11 14:38:02,284 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:38:02] "GET /static/css/register_style.css HTTP/1.1" 200 -
+2018-07-11 14:38:02,534 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:38:02] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-11 14:38:07,453 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:38:07] "GET / HTTP/1.1" 200 -
+2018-07-11 14:38:08,469 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:38:08] "GET / HTTP/1.1" 200 -
+2018-07-11 14:38:13,196 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:38:13] "POST /login HTTP/1.1" 302 -
+2018-07-11 14:38:13,444 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:38:13] "GET / HTTP/1.1" 200 -
+2018-07-11 14:38:15,312 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:38:15] "GET /account/profile/edit HTTP/1.1" 200 -
+2018-07-11 14:38:17,026 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:38:17] "GET /account/profile/changePassword HTTP/1.1" 200 -
+2018-07-11 14:38:17,458 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:38:17] "GET /account/profile/changePassword HTTP/1.1" 200 -
+2018-07-11 14:38:19,226 INFO root Error occured in getJob_DBL method
+Traceback (most recent call last):
+  File "C:\Users\lenovo pc\Desktop\latest\Group15\Databaselayer.py", line 142, in getJob_DBL
+    cur.execute("SELECT * FROM jobs") # WHERE jobId = '" + jobId + "'")
+sqlite3.OperationalError: no such table: jobs
+2018-07-11 14:38:19,227 INFO root Error occured in method getJobData_BSL method
+Traceback (most recent call last):
+  File "C:\Users\lenovo pc\Desktop\latest\Group15\Businesslayer.py", line 76, in getJobData_BSL
+    jobData = fetchjobdata.getJob_DBL(jobId)
+  File "C:\Users\lenovo pc\Desktop\latest\Group15\Databaselayer.py", line 149, in getJob_DBL
+    return jobData
+UnboundLocalError: local variable 'jobData' referenced before assignment
+2018-07-11 14:38:19,229 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:38:19] "GET /addJobs HTTP/1.1" 200 -
+2018-07-11 14:38:20,798 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:38:20] "GET / HTTP/1.1" 200 -
+2018-07-11 14:38:22,899 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:38:22] "GET /logout HTTP/1.1" 302 -
+2018-07-11 14:38:23,147 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:38:23] "GET / HTTP/1.1" 200 -
+2018-07-11 14:39:24,434 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:39:24] "GET / HTTP/1.1" 200 -
+2018-07-11 14:39:24,683 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:39:24] "GET /static/css/home_style.css HTTP/1.1" 200 -
+2018-07-11 14:39:25,164 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:39:25] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-11 14:39:27,571 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:39:27] "GET /registerationForm HTTP/1.1" 200 -
+2018-07-11 14:39:28,584 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 14:39:28] "GET / HTTP/1.1" 200 -
+2018-07-11 15:22:01,118 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 15:22:01] "GET / HTTP/1.1" 200 -
+2018-07-11 15:22:01,378 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 15:22:01] "GET /static/css/home_style.css HTTP/1.1" 200 -
+2018-07-11 15:22:01,922 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 15:22:01] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-11 15:23:46,251 INFO werkzeug  * Restarting with stat
+2018-07-11 15:23:46,875 WARNING werkzeug  * Debugger is active!
+2018-07-11 15:23:46,881 INFO werkzeug  * Debugger PIN: 149-083-935
+2018-07-11 15:23:46,893 INFO werkzeug  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2018-07-11 15:23:48,753 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 15:23:48] "GET / HTTP/1.1" 200 -
+2018-07-11 15:23:48,972 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 15:23:48] "GET /static/css/home_style.css HTTP/1.1" 200 -
+2018-07-11 15:23:49,582 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 15:23:49] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-11 15:23:50,772 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 15:23:50] "GET / HTTP/1.1" 200 -
+2018-07-11 15:23:51,026 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 15:23:51] "GET /static/css/home_style.css HTTP/1.1" 200 -
+2018-07-11 15:23:51,163 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 15:23:51] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-11 15:23:56,906 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 15:23:56] "GET / HTTP/1.1" 200 -
+2018-07-11 15:23:57,164 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 15:23:57] "GET /static/css/home_style.css HTTP/1.1" 200 -
+2018-07-11 15:24:13,577 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 15:24:13] "GET /registerationForm HTTP/1.1" 200 -
+2018-07-11 15:24:13,829 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 15:24:13] "GET /static/css/register_style.css HTTP/1.1" 200 -
+2018-07-11 15:24:15,117 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 15:24:15] "GET / HTTP/1.1" 200 -
+2018-07-11 15:24:16,523 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 15:24:16] "GET / HTTP/1.1" 200 -
+2018-07-11 15:24:20,485 INFO werkzeug 127.0.0.1 - - [11/Jul/2018 15:24:20] "GET /registerationForm HTTP/1.1" 200 -
+2018-07-12 10:46:25,013 INFO werkzeug  * Restarting with stat
+2018-07-12 10:46:26,224 WARNING werkzeug  * Debugger is active!
+2018-07-12 10:46:26,297 INFO werkzeug  * Debugger PIN: 149-083-935
+2018-07-12 10:46:26,528 INFO werkzeug  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2018-07-12 10:46:28,835 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 10:46:28] "GET / HTTP/1.1" 200 -
+2018-07-12 10:46:29,198 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 10:46:29] "GET /static/css/home_style.css HTTP/1.1" 304 -
+2018-07-12 10:46:30,067 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 10:46:30] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-12 10:46:34,824 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 10:46:34] "POST /login HTTP/1.1" 302 -
+2018-07-12 10:46:34,916 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 10:46:34] "GET / HTTP/1.1" 200 -
+2018-07-12 10:46:35,002 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 10:46:35] "GET /static/images/img1.png HTTP/1.1" 304 -
+2018-07-12 10:46:38,200 INFO root Error occured in getJob_DBL method
+Traceback (most recent call last):
+  File "C:\Users\lenovo pc\Desktop\latest\Group15\Databaselayer.py", line 142, in getJob_DBL
+    cur.execute("SELECT * FROM jobs") # WHERE jobId = '" + jobId + "'")
+sqlite3.OperationalError: no such table: jobs
+2018-07-12 10:46:38,306 INFO root Error occured in method getJobData_BSL method
+Traceback (most recent call last):
+  File "C:\Users\lenovo pc\Desktop\latest\Group15\Businesslayer.py", line 76, in getJobData_BSL
+    jobData = fetchjobdata.getJob_DBL(jobId)
+  File "C:\Users\lenovo pc\Desktop\latest\Group15\Databaselayer.py", line 149, in getJob_DBL
+    return jobData
+UnboundLocalError: local variable 'jobData' referenced before assignment
+2018-07-12 10:46:38,355 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 10:46:38] "GET /addJobs HTTP/1.1" 200 -
+2018-07-12 10:47:47,565 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 10:47:47] "GET /logout HTTP/1.1" 302 -
+2018-07-12 10:47:47,817 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 10:47:47] "GET / HTTP/1.1" 200 -
+2018-07-12 10:48:27,657 INFO werkzeug  * Restarting with stat
+2018-07-12 10:48:28,324 WARNING werkzeug  * Debugger is active!
+2018-07-12 10:48:28,330 INFO werkzeug  * Debugger PIN: 149-083-935
+2018-07-12 10:48:28,342 INFO werkzeug  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2018-07-12 10:48:31,691 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 10:48:31] "GET /registerationForm HTTP/1.1" 200 -
+2018-07-12 10:48:31,923 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 10:48:31] "GET /static/css/register_style.css HTTP/1.1" 200 -
+2018-07-12 10:48:49,709 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 10:48:49] "POST /register HTTP/1.1" 200 -
+2018-07-12 10:48:55,207 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 10:48:55] "POST /login HTTP/1.1" 302 -
+2018-07-12 10:48:55,560 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 10:48:55] "GET / HTTP/1.1" 200 -
+2018-07-12 10:49:01,522 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 10:49:01] "GET /addJobs HTTP/1.1" 200 -
+2018-07-12 10:49:17,534 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 10:49:17] "POST /jobs HTTP/1.1" 200 -
+2018-07-12 10:49:29,836 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 10:49:29] "GET /logout HTTP/1.1" 302 -
+2018-07-12 10:49:30,077 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 10:49:30] "GET / HTTP/1.1" 200 -
+2018-07-12 10:49:34,700 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 10:49:34] "POST /login HTTP/1.1" 302 -
+2018-07-12 10:49:35,020 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 10:49:35] "GET / HTTP/1.1" 200 -
+2018-07-12 10:49:36,959 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 10:49:36] "GET /addJobs HTTP/1.1" 200 -
+2018-07-12 11:43:27,645 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 11:43:27] "GET /logout HTTP/1.1" 302 -
+2018-07-12 11:43:28,047 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 11:43:28] "GET / HTTP/1.1" 200 -
+2018-07-12 11:43:29,310 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 11:43:29] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-12 11:46:29,979 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 11:46:29] "GET / HTTP/1.1" 200 -
+2018-07-12 11:46:30,265 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 11:46:30] "GET /static/css/home_style.css HTTP/1.1" 200 -
+2018-07-12 11:46:30,909 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 11:46:30] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-12 11:50:05,807 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 11:50:05] "GET / HTTP/1.1" 200 -
+2018-07-12 11:50:06,038 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 11:50:06] "GET /static/css/home_style.css HTTP/1.1" 200 -
+2018-07-12 11:50:06,768 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 11:50:06] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-12 11:53:03,145 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 11:53:03] "GET / HTTP/1.1" 200 -
+2018-07-12 11:53:03,398 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 11:53:03] "GET /static/css/home_style.css HTTP/1.1" 200 -
+2018-07-12 11:53:03,971 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 11:53:03] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-12 11:53:24,121 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 11:53:24] "GET / HTTP/1.1" 200 -
+2018-07-12 11:53:24,344 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 11:53:24] "GET /static/css/home_style.css HTTP/1.1" 200 -
+2018-07-12 11:53:25,035 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 11:53:25] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-12 11:53:48,205 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 11:53:48] "GET / HTTP/1.1" 200 -
+2018-07-12 11:53:48,448 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 11:53:48] "GET /static/css/home_style.css HTTP/1.1" 200 -
+2018-07-12 11:53:49,059 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 11:53:49] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-12 11:54:22,324 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 11:54:22] "GET / HTTP/1.1" 200 -
+2018-07-12 11:54:22,580 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 11:54:22] "GET /static/css/home_style.css HTTP/1.1" 200 -
+2018-07-12 11:54:23,143 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 11:54:23] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-12 11:54:31,747 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 11:54:31] "GET / HTTP/1.1" 200 -
+2018-07-12 11:54:31,988 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 11:54:31] "GET /static/css/home_style.css HTTP/1.1" 200 -
+2018-07-12 11:54:32,260 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 11:54:32] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-12 11:55:20,940 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 11:55:20] "GET / HTTP/1.1" 200 -
+2018-07-12 11:55:21,197 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 11:55:21] "GET /static/css/home_style.css HTTP/1.1" 200 -
+2018-07-12 11:55:21,827 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 11:55:21] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-12 12:02:43,697 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 12:02:43] "GET / HTTP/1.1" 200 -
+2018-07-12 12:02:43,947 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 12:02:43] "GET /static/css/home_style.css HTTP/1.1" 200 -
+2018-07-12 12:02:44,648 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 12:02:44] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-12 13:11:03,541 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 13:11:03] "POST /login HTTP/1.1" 302 -
+2018-07-12 13:11:03,757 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 13:11:03] "GET / HTTP/1.1" 200 -
+2018-07-12 13:11:06,531 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 13:11:06] "GET /logout HTTP/1.1" 302 -
+2018-07-12 13:11:06,850 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 13:11:06] "GET / HTTP/1.1" 200 -
+2018-07-12 13:18:46,367 WARNING werkzeug  * Debugger is active!
+2018-07-12 13:18:46,410 INFO werkzeug  * Debugger PIN: 191-455-816
+2018-07-12 13:18:59,488 INFO root Error occured in method getProfileData_BSL method
+Traceback (most recent call last):
+  File "/Users/rohitgs/Desktop/MileStone-2-Presentation/Businesslayer.py", line 38, in getProfileData_BSL
+    profileData = fetchuserdata.getProfileData_DBL(myemail)
+  File "/Users/rohitgs/Desktop/MileStone-2-Presentation/Databaselayer.py", line 115, in getProfileData_DBL
+    con.rollback()
+NameError: global name 'con' is not defined
+2018-07-12 13:18:59,502 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 13:18:59] "GET /account/profile/edit HTTP/1.1" 200 -
+2018-07-12 13:19:43,845 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 13:19:43] "GET /account/profile/changePassword HTTP/1.1" 200 -
+2018-07-12 13:19:43,888 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 13:19:43] "GET /static/js/changePassword.js HTTP/1.1" 200 -
+2018-07-12 13:19:44,636 INFO root Error occured in method getProfileData_BSL method
+Traceback (most recent call last):
+  File "/Users/rohitgs/Desktop/MileStone-2-Presentation/Businesslayer.py", line 38, in getProfileData_BSL
+    profileData = fetchuserdata.getProfileData_DBL(myemail)
+  File "/Users/rohitgs/Desktop/MileStone-2-Presentation/Databaselayer.py", line 115, in getProfileData_DBL
+    con.rollback()
+NameError: global name 'con' is not defined
+2018-07-12 13:19:44,637 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 13:19:44] "GET /account/profile/edit HTTP/1.1" 200 -
+2018-07-12 13:19:51,814 INFO root Error occured in method getProfileData_BSL method
+Traceback (most recent call last):
+  File "/Users/rohitgs/Desktop/MileStone-2-Presentation/Businesslayer.py", line 38, in getProfileData_BSL
+    profileData = fetchuserdata.getProfileData_DBL(myemail)
+  File "/Users/rohitgs/Desktop/MileStone-2-Presentation/Databaselayer.py", line 115, in getProfileData_DBL
+    con.rollback()
+NameError: global name 'con' is not defined
+2018-07-12 13:19:51,816 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 13:19:51] "GET /account/profile/edit HTTP/1.1" 200 -
+2018-07-12 13:19:53,124 INFO root Error occured in method getProfileData_BSL method
+Traceback (most recent call last):
+  File "/Users/rohitgs/Desktop/MileStone-2-Presentation/Businesslayer.py", line 38, in getProfileData_BSL
+    profileData = fetchuserdata.getProfileData_DBL(myemail)
+  File "/Users/rohitgs/Desktop/MileStone-2-Presentation/Databaselayer.py", line 115, in getProfileData_DBL
+    con.rollback()
+NameError: global name 'con' is not defined
+2018-07-12 13:19:53,125 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 13:19:53] "GET /account/profile/edit HTTP/1.1" 200 -
+2018-07-12 13:20:59,429 INFO werkzeug  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2018-07-12 13:20:59,431 INFO werkzeug  * Restarting with stat
+2018-07-12 13:20:59,717 WARNING werkzeug  * Debugger is active!
+2018-07-12 13:20:59,760 INFO werkzeug  * Debugger PIN: 191-455-816
+2018-07-12 13:21:12,037 INFO root Error occured in method getProfileData_BSL method
+Traceback (most recent call last):
+  File "/Users/rohitgs/Desktop/MileStone-2-Presentation/Businesslayer.py", line 38, in getProfileData_BSL
+    profileData = fetchuserdata.getProfileData_DBL(myemail)
+  File "/Users/rohitgs/Desktop/MileStone-2-Presentation/Databaselayer.py", line 115, in getProfileData_DBL
+    con.rollback()
+NameError: global name 'con' is not defined
+2018-07-12 13:21:12,065 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 13:21:12] "GET /account/profile/edit HTTP/1.1" 200 -
+2018-07-12 13:21:13,282 INFO root Error occured in method getProfileData_BSL method
+Traceback (most recent call last):
+  File "/Users/rohitgs/Desktop/MileStone-2-Presentation/Businesslayer.py", line 38, in getProfileData_BSL
+    profileData = fetchuserdata.getProfileData_DBL(myemail)
+  File "/Users/rohitgs/Desktop/MileStone-2-Presentation/Databaselayer.py", line 115, in getProfileData_DBL
+    con.rollback()
+NameError: global name 'con' is not defined
+2018-07-12 13:21:13,283 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 13:21:13] "GET /account/profile/edit HTTP/1.1" 200 -
+2018-07-12 13:54:42,872 INFO werkzeug  * Detected change in '/Users/rohitgs/Desktop/MileStone-2-Presentation/main.py', reloading
+2018-07-12 13:54:42,955 INFO werkzeug  * Restarting with stat
+2018-07-12 13:54:44,337 WARNING werkzeug  * Debugger is active!
+2018-07-12 13:54:44,415 INFO werkzeug  * Debugger PIN: 191-455-816
+2018-07-12 13:55:09,009 INFO werkzeug  * Detected change in '/Users/rohitgs/Desktop/MileStone-2-Presentation/main.py', reloading
+2018-07-12 13:55:09,038 INFO werkzeug  * Restarting with stat
+2018-07-12 13:55:09,621 WARNING werkzeug  * Debugger is active!
+2018-07-12 13:55:09,683 INFO werkzeug  * Debugger PIN: 191-455-816
+2018-07-12 14:00:36,865 INFO werkzeug  * Detected change in '/Users/rohitgs/Desktop/MileStone-2-Presentation/main.py', reloading
+2018-07-12 14:00:36,937 INFO werkzeug  * Restarting with stat
+2018-07-12 14:00:37,544 WARNING werkzeug  * Debugger is active!
+2018-07-12 14:00:37,580 INFO werkzeug  * Debugger PIN: 191-455-816
+2018-07-12 14:01:33,800 INFO werkzeug  * Detected change in '/Users/rohitgs/Desktop/MileStone-2-Presentation/main.py', reloading
+2018-07-12 14:01:33,843 INFO werkzeug  * Restarting with stat
+2018-07-12 14:01:34,452 WARNING werkzeug  * Debugger is active!
+2018-07-12 14:01:34,499 INFO werkzeug  * Debugger PIN: 191-455-816
+2018-07-12 14:03:56,769 INFO werkzeug  * Detected change in '/Users/rohitgs/Desktop/MileStone-2-Presentation/main.py', reloading
+2018-07-12 14:03:56,832 INFO werkzeug  * Restarting with stat
+2018-07-12 14:09:48,498 INFO werkzeug  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2018-07-12 14:09:48,500 INFO werkzeug  * Restarting with stat
+2018-07-12 14:09:48,761 WARNING werkzeug  * Debugger is active!
+2018-07-12 14:09:48,799 INFO werkzeug  * Debugger PIN: 191-455-816
+2018-07-12 14:09:54,303 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:09:54] "GET / HTTP/1.1" 200 -
+2018-07-12 14:09:54,359 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:09:54] "GET /static/css/home_style.css HTTP/1.1" 200 -
+2018-07-12 14:09:56,767 INFO root Error in view ErrorLog
+Traceback (most recent call last):
+  File "main.py", line 188, in CheckErrorLog
+    with open("logs.log", "r") as f:
+IOError: [Errno 2] No such file or directory: 'logs.log'
+2018-07-12 14:09:56,781 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:09:56] "GET /checkUserErrorLog HTTP/1.1" 500 -
+2018-07-12 14:09:56,800 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:09:56] "GET /checkUserErrorLog?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2018-07-12 14:09:56,801 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:09:56] "GET /checkUserErrorLog?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2018-07-12 14:09:56,801 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:09:56] "GET /checkUserErrorLog?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2018-07-12 14:09:56,846 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:09:56] "GET /checkUserErrorLog?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2018-07-12 14:09:56,980 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:09:56] "GET /checkUserErrorLog?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2018-07-12 14:09:57,041 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:09:57] "GET /checkUserErrorLog?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2018-07-12 14:10:20,521 INFO werkzeug  * Detected change in '/Users/rohitgs/Desktop/MileStone-2-Presentation/main.py', reloading
+2018-07-12 14:10:20,560 INFO werkzeug  * Restarting with stat
+2018-07-12 14:10:21,144 WARNING werkzeug  * Debugger is active!
+2018-07-12 14:10:21,178 INFO werkzeug  * Debugger PIN: 191-455-816
+2018-07-12 14:10:21,195 INFO root Error in view ErrorLog
+Traceback (most recent call last):
+  File "main.py", line 188, in CheckErrorLog
+    with open("logs.log", "r") as f:
+IOError: [Errno 2] No such file or directory: 'logs.log'
+2018-07-12 14:10:21,213 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:10:21] "GET /checkUserErrorLog HTTP/1.1" 500 -
+2018-07-12 14:10:21,342 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:10:21] "GET /checkUserErrorLog?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2018-07-12 14:10:21,343 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:10:21] "GET /checkUserErrorLog?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2018-07-12 14:10:21,345 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:10:21] "GET /checkUserErrorLog?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2018-07-12 14:10:21,371 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:10:21] "GET /checkUserErrorLog?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2018-07-12 14:10:21,402 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:10:21] "GET /checkUserErrorLog?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2018-07-12 14:10:21,443 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:10:21] "GET /checkUserErrorLog?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2018-07-12 14:10:24,820 INFO root Error in view ErrorLog
+Traceback (most recent call last):
+  File "main.py", line 188, in CheckErrorLog
+    with open("logs.log", "r") as f:
+IOError: [Errno 2] No such file or directory: 'logs.log'
+2018-07-12 14:10:24,829 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:10:24] "GET /checkUserErrorLog HTTP/1.1" 500 -
+2018-07-12 14:10:24,856 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:10:24] "GET /checkUserErrorLog?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2018-07-12 14:10:24,857 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:10:24] "GET /checkUserErrorLog?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2018-07-12 14:10:24,860 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:10:24] "GET /checkUserErrorLog?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2018-07-12 14:10:24,888 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:10:24] "GET /checkUserErrorLog?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2018-07-12 14:10:24,922 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:10:24] "GET /checkUserErrorLog?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2018-07-12 14:10:24,966 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:10:24] "GET /checkUserErrorLog?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2018-07-12 14:10:33,561 INFO werkzeug  * Detected change in '/Users/rohitgs/Desktop/MileStone-2-Presentation/main.py', reloading
+2018-07-12 14:10:33,614 INFO werkzeug  * Restarting with stat
+2018-07-12 14:10:34,146 WARNING werkzeug  * Debugger is active!
+2018-07-12 14:10:34,174 INFO werkzeug  * Debugger PIN: 191-455-816
+2018-07-12 14:10:38,513 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:10:38] "GET /checkUserErrorLog HTTP/1.1" 200 -
+2018-07-12 14:12:49,584 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:12:49] "GET /checkUserErrorLog HTTP/1.1" 200 -
+2018-07-12 14:12:50,926 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:12:50] "GET / HTTP/1.1" 200 -
+2018-07-12 14:12:53,910 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:12:53] "GET / HTTP/1.1" 200 -
+2018-07-12 14:12:54,131 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:12:54] "GET / HTTP/1.1" 200 -
+2018-07-12 14:13:12,957 INFO werkzeug  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2018-07-12 14:13:12,958 INFO werkzeug  * Restarting with stat
+2018-07-12 14:13:13,236 WARNING werkzeug  * Debugger is active!
+2018-07-12 14:13:13,268 INFO werkzeug  * Debugger PIN: 191-455-816
+2018-07-12 14:13:15,539 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:13:15] "GET / HTTP/1.1" 200 -
+2018-07-12 14:13:17,226 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:13:17] "GET / HTTP/1.1" 200 -
+2018-07-12 14:13:17,454 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:13:17] "GET / HTTP/1.1" 200 -
+2018-07-12 14:13:17,618 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:13:17] "GET / HTTP/1.1" 200 -
+2018-07-12 14:14:11,804 INFO werkzeug  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2018-07-12 14:14:11,806 INFO werkzeug  * Restarting with stat
+2018-07-12 14:14:12,073 WARNING werkzeug  * Debugger is active!
+2018-07-12 14:14:12,097 INFO werkzeug  * Debugger PIN: 191-455-816
+2018-07-12 14:14:14,481 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:14:14] "GET / HTTP/1.1" 200 -
+2018-07-12 14:14:15,111 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:14:15] "GET / HTTP/1.1" 200 -
+2018-07-12 14:14:15,310 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:14:15] "GET / HTTP/1.1" 200 -
+2018-07-12 14:14:24,273 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:14:24] "POST /login HTTP/1.1" 302 -
+2018-07-12 14:14:24,284 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:14:24] "GET / HTTP/1.1" 200 -
+2018-07-12 14:14:24,318 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:14:24] "GET /static/images/img1.png HTTP/1.1" 200 -
+2018-07-12 14:14:28,808 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:14:28] "GET /checkUserErrorLog HTTP/1.1" 200 -
+2018-07-12 14:15:16,978 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:15:16] "GET / HTTP/1.1" 200 -
+2018-07-12 14:15:21,725 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:15:21] "GET /checkUserErrorLog HTTP/1.1" 200 -
+2018-07-12 14:15:32,626 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:15:32] "GET /addJobs HTTP/1.1" 200 -
+2018-07-12 14:15:40,276 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:15:40] "POST /jobs HTTP/1.1" 200 -
+2018-07-12 14:19:56,828 INFO werkzeug  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2018-07-12 14:19:56,830 INFO werkzeug  * Restarting with stat
+2018-07-12 14:19:57,120 WARNING werkzeug  * Debugger is active!
+2018-07-12 14:19:57,153 INFO werkzeug  * Debugger PIN: 191-455-816
+2018-07-12 14:20:02,023 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:20:02] "GET / HTTP/1.1" 200 -
+2018-07-12 14:20:04,510 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:20:04] "GET /checkUserErrorLog HTTP/1.1" 200 -
+2018-07-12 14:20:22,589 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:20:22] "GET /jobs HTTP/1.1" 500 -
+2018-07-12 14:20:22,699 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:20:22] "GET /jobs?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2018-07-12 14:20:22,700 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:20:22] "GET /jobs?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2018-07-12 14:20:22,702 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:20:22] "GET /jobs?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2018-07-12 14:20:22,743 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:20:22] "GET /jobs?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2018-07-12 14:20:22,790 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:20:22] "GET /jobs?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2018-07-12 14:20:22,833 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:20:22] "GET /jobs?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2018-07-12 14:20:43,179 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:20:43] "GET /account/profile/changePassword HTTP/1.1" 200 -
+2018-07-12 14:20:43,208 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:20:43] "GET /static/js/changePassword.js HTTP/1.1" 200 -
+2018-07-12 14:20:44,546 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:20:44] "GET /checkUserErrorLog HTTP/1.1" 200 -
+2018-07-12 14:21:21,561 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:21:21] "GET /checkUserErrorLog HTTP/1.1" 200 -
+2018-07-12 14:21:23,431 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:21:23] "GET /addJobs HTTP/1.1" 200 -
+2018-07-12 14:21:30,169 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:21:30] "GET / HTTP/1.1" 200 -
+2018-07-12 14:21:53,608 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:21:53] "GET /checkUserErrorLog HTTP/1.1" 200 -
+2018-07-12 14:22:02,022 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:22:02] "GET /addJobs HTTP/1.1" 200 -
+2018-07-12 14:22:10,400 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:22:10] "POST /jobs HTTP/1.1" 200 -
+2018-07-12 14:22:13,222 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:22:13] "GET /checkUserErrorLog HTTP/1.1" 200 -
+2018-07-12 14:23:06,254 INFO werkzeug  * Detected change in '/Users/rohitgs/Desktop/MileStone-2-Presentation/Databaselayer.py', reloading
+2018-07-12 14:23:06,317 INFO werkzeug  * Restarting with stat
+2018-07-12 14:23:06,991 WARNING werkzeug  * Debugger is active!
+2018-07-12 14:23:07,021 INFO werkzeug  * Debugger PIN: 191-455-816
+2018-07-12 14:23:07,608 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:23:07] "GET /checkUserErrorLog HTTP/1.1" 200 -
+2018-07-12 14:23:10,158 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:23:10] "GET /addJobs HTTP/1.1" 200 -
+2018-07-12 14:23:18,234 INFO root Error occured in insertJob_DBL method
+Traceback (most recent call last):
+  File "/Users/rohitgs/Desktop/MileStone-2-Presentation/Databaselayer.py", line 127, in insertJob_DBL
+    cur.execute('INSERT INTO users (jobId,companyName,title,manager,location,jobDetails) VALUES (?, ?, ?, ?, ?, ?)', (jobId,companyName,title,manager,location,jobDetails))
+OperationalError: table users has no column named jobId
+2018-07-12 14:23:18,235 INFO root Error occured in method insertJob_BSL method
+Traceback (most recent call last):
+  File "/Users/rohitgs/Desktop/MileStone-2-Presentation/Businesslayer.py", line 67, in insertJob_BSL
+    insertjob.insertJob_DBL(jobId,companyName,title,manager,location,jobDetails)
+  File "/Users/rohitgs/Desktop/MileStone-2-Presentation/Databaselayer.py", line 135, in insertJob_DBL
+    return msg
+UnboundLocalError: local variable 'msg' referenced before assignment
+2018-07-12 14:23:18,237 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:23:18] "POST /jobs HTTP/1.1" 200 -
+2018-07-12 14:23:20,874 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:23:20] "GET /checkUserErrorLog HTTP/1.1" 200 -
