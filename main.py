@@ -126,8 +126,56 @@ def updateProfile():
             state = request.form['state']
             country = request.form['country']
             phone = request.form['phone']
+            user_details = []
+            About = request.form['About']
+            Current_Employer = request.form['Current_Employer']
+            Current_Employer_start_date = request.form['Current_Employer_start_date']
+            Current_Employer_end_date = request.form['Current_Employer_end_date']
+            Previous_Employer = request.form['Previous_Employer']
+            Previous_Employer_start_date = request.form['Previous_Employer_start_date']
+            Previous_Employer_end_date = request.form['Previous_Employer_end_date']
+            Education_details_1 = request.form['Education_details_1']
+            Education_details_1_start_date = request.form['Education_details_1_start_date']
+            Education_details_1_end_date = request.form['Education_details_1_end_date']
+            Education_details_2 = request.form['Education_details_2']
+            Education_details_2_start_date = request.form['Education_details_2_start_date']
+            Education_details_2_end_date = request.form['Education_details_2_end_date']
+            Skill_1 = request.form['Skill_1']
+            Skill_2 = request.form['Skill_2']
+            Skill_3 = request.form['Skill_3']
+            Skill_4 = request.form['Skill_4']
+            Project_Name_1 = request.form['Project_Name_1']
+            Project_Details_1 = request.form['Project_Details_1']
+            Project_Name_2 = request.form['Project_Name_2']
+            Project_Details_2 = request.form['Project_Details_2']
+            Project_Name_3 = request.form['Project_Name_3']
+            Project_Details_3 = request.form['Project_Details_3']
+            user_details.append(About)
+            user_details.append(Current_Employer)
+            user_details.append(Current_Employer_start_date)
+            user_details.append(Current_Employer_end_date)
+            user_details.append(Previous_Employer)
+            user_details.append(Previous_Employer_start_date)
+            user_details.append(Previous_Employer_end_date)
+            user_details.append(Education_details_1)
+            user_details.append(Education_details_1_start_date)
+            user_details.append(Education_details_1_end_date)
+            user_details.append(Education_details_2)
+            user_details.append(Education_details_2_start_date)
+            user_details.append(Education_details_2_end_date)
+            user_details.append(Skill_1)
+            user_details.append(Skill_2)
+            user_details.append(Skill_3)
+            user_details.append(Skill_4)
+            user_details.append(Project_Name_1)
+            user_details.append(Project_Details_1)
+            user_details.append(Project_Name_2)
+            user_details.append(Project_Details_2)
+            user_details.append(Project_Name_3)
+            user_details.append(Project_Details_3)
+
             updatemyprofile = Businesslayer.Businesslayer_UpdateMyProfile()
-            msg = updatemyprofile.updateMyProfileMethod_BSL(email,firstName,lastName,address1,address2,zipcode,city,state,country,phone)
+            msg = updatemyprofile.updateMyProfileMethod_BSL(email,firstName,lastName,address1,address2,zipcode,city,state,country,phone,user_details)
             return redirect(url_for('editProfile'))
     except:
         msg = "Error in view update profile"
