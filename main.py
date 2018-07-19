@@ -1,38 +1,7 @@
-import os
-import time
-import hashlib
-import glob
-#from flask import *
-from werkzeug.utils import secure_filename
-import Businesslayer
-from Businesslayer import *
-import os.path
-from extensions import mysql
-from flask_mail import Mail, Message
-from flask import Flask, render_template, redirect, url_for, request
-from flask_uploads import UploadSet, configure_uploads, IMAGES, patch_request_class
-from flask_wtf import FlaskForm
-from flask_wtf.file import FileField, FileRequired, FileAllowed
-from wtforms import SubmitField
-from flask import *
-from werkzeug.utils import secure_filename
-import Businesslayer
-from Businesslayer import *
-import os.path
-from extensions import mysql
-from shutil import copyfile
+from module_settings import *
 
 app = Flask(__name__)
-app.config['MYSQL_DATABASE_USER'] = 'CSCI5308_15_DEVINT_USER'
-app.config['MYSQL_DATABASE_PASSWORD'] = 'CSCI5308_15_DEVINT_15142'
-app.config['MYSQL_DATABASE_DB'] = 'CSCI5308_15_DEVINT'
-app.config['MYSQL_DATABASE_HOST'] = 'db-5308.cs.dal.ca'
-app.config['MAIL_SERVER']='smtp.gmail.com'
-app.config['MAIL_PORT'] = 465
-app.config['MAIL_USERNAME'] = 'noreply.findmyemployer@gmail.com'
-app.config['MAIL_PASSWORD'] = 'Nibir88**'
-app.config['MAIL_USE_TLS'] = False
-app.config['MAIL_USE_SSL'] = True
+app.config.from_pyfile('config.cfg')
 app.config['UPLOADED_PHOTOS_DEST'] = os.getcwd() + '/static' + '/images'
 mysql.init_app(app)
 app.secret_key = 'random string'
@@ -54,9 +23,9 @@ def root():
             return render_template('home.html',  loggedIn=loggedIn, firstName=firstName)
         else:
             loggedIn = True
-            loginclassdetails = Businesslayer.Businesslayer_LoginClass()
+            loginclassdetails = Businesslayer_LoginClass.Businesslayer_LoginClass()
             loggedIn, firstName = loginclassdetails.getLoginDetails_BSL(session['email'])
-            fetchuserstatus = Businesslayer.Businesslayer_GetStatus()
+            fetchuserstatus = Businesslayer_GetStatus.Businesslayer_GetStatus()
             userStatus = fetchuserstatus.getUserStatus_BSL()
             return render_template("Profile2.html",loggedIn=loggedIn, firstName=firstName,userStatus=userStatus )
     except:
@@ -70,9 +39,9 @@ def profileHome():
             return redirect(url_for('root'))
         else:
             loggedIn = True
-            loginclassdetails = Businesslayer.Businesslayer_LoginClass()
+            loginclassdetails = Businesslayer_LoginClass.Businesslayer_LoginClass()
             loggedIn, firstName = loginclassdetails.getLoginDetails_BSL(session['email'])
-            fetchuserstatus = Businesslayer.Businesslayer_GetStatus()
+            fetchuserstatus = Businesslayer_GetStatus.Businesslayer_GetStatus()
             userStatus = fetchuserstatus.getUserStatus_BSL()
             return render_template("Profile2.html",loggedIn=loggedIn, firstName=firstName,userStatus=userStatus )
     except:
@@ -84,9 +53,9 @@ def editProfile():
     try:
         if 'email' not in session:
             return redirect(url_for('root'))
-        loginclassdetails = Businesslayer.Businesslayer_LoginClass()
+        loginclassdetails = Businesslayer_LoginClass.Businesslayer_LoginClass()
         loggedIn, firstName = loginclassdetails.getLoginDetails_BSL(session['email'])
-        fetchuserdata = Businesslayer.Businesslayer_FetchUserData()
+        fetchuserdata = Businesslayer_FetchUserData.Businesslayer_FetchUserData()
         profileData = fetchuserdata.getProfileData_BSL(session['email'])
         return render_template("editProfile.html", profileData=profileData, loggedIn=loggedIn, firstName=firstName )
     except:
@@ -103,7 +72,7 @@ def changePassword():
             oldPassword = hashlib.md5(oldPassword.encode()).hexdigest()
             newPassword = request.form['newpassword']
             newPassword = hashlib.md5(newPassword.encode()).hexdigest()
-            changemypassword = Businesslayer.Businesslayer_ChangeMyPassword()
+            changemypassword = Businesslayer_ChangeMyPassword.Businesslayer_ChangeMyPassword()
             msg = changemypassword.changeMyProfilePassword_BSL(session['email'],oldPassword,newPassword)
             return render_template("changePassword.html", msg=msg)
         else:
@@ -126,8 +95,56 @@ def updateProfile():
             state = request.form['state']
             country = request.form['country']
             phone = request.form['phone']
-            updatemyprofile = Businesslayer.Businesslayer_UpdateMyProfile()
-            msg = updatemyprofile.updateMyProfileMethod_BSL(email,firstName,lastName,address1,address2,zipcode,city,state,country,phone)
+            user_details = []
+            About = request.form['About']
+            Current_Employer = request.form['Current_Employer']
+            Current_Employer_start_date = request.form['Current_Employer_start_date']
+            Current_Employer_end_date = request.form['Current_Employer_end_date']
+            Previous_Employer = request.form['Previous_Employer']
+            Previous_Employer_start_date = request.form['Previous_Employer_start_date']
+            Previous_Employer_end_date = request.form['Previous_Employer_end_date']
+            Education_details_1 = request.form['Education_details_1']
+            Education_details_1_start_date = request.form['Education_details_1_start_date']
+            Education_details_1_end_date = request.form['Education_details_1_end_date']
+            Education_details_2 = request.form['Education_details_2']
+            Education_details_2_start_date = request.form['Education_details_2_start_date']
+            Education_details_2_end_date = request.form['Education_details_2_end_date']
+            Skill_1 = request.form['Skill_1']
+            Skill_2 = request.form['Skill_2']
+            Skill_3 = request.form['Skill_3']
+            Skill_4 = request.form['Skill_4']
+            Project_Name_1 = request.form['Project_Name_1']
+            Project_Details_1 = request.form['Project_Details_1']
+            Project_Name_2 = request.form['Project_Name_2']
+            Project_Details_2 = request.form['Project_Details_2']
+            Project_Name_3 = request.form['Project_Name_3']
+            Project_Details_3 = request.form['Project_Details_3']
+            user_details.append(About)
+            user_details.append(Current_Employer)
+            user_details.append(Current_Employer_start_date)
+            user_details.append(Current_Employer_end_date)
+            user_details.append(Previous_Employer)
+            user_details.append(Previous_Employer_start_date)
+            user_details.append(Previous_Employer_end_date)
+            user_details.append(Education_details_1)
+            user_details.append(Education_details_1_start_date)
+            user_details.append(Education_details_1_end_date)
+            user_details.append(Education_details_2)
+            user_details.append(Education_details_2_start_date)
+            user_details.append(Education_details_2_end_date)
+            user_details.append(Skill_1)
+            user_details.append(Skill_2)
+            user_details.append(Skill_3)
+            user_details.append(Skill_4)
+            user_details.append(Project_Name_1)
+            user_details.append(Project_Details_1)
+            user_details.append(Project_Name_2)
+            user_details.append(Project_Details_2)
+            user_details.append(Project_Name_3)
+            user_details.append(Project_Details_3)
+
+            updatemyprofile = Businesslayer_UpdateMyProfile.Businesslayer_UpdateMyProfile()
+            msg = updatemyprofile.updateMyProfileMethod_BSL(email,firstName,lastName,address1,address2,zipcode,city,state,country,phone,user_details)
             return redirect(url_for('editProfile'))
     except:
         msg = "Error in view update profile"
@@ -138,7 +155,7 @@ def updateProfile():
 def postStatus():
     try:
         text = request.form['inputPost']
-        insertuserstatus = Businesslayer.Businesslayer_PostStatus()
+        insertuserstatus = Businesslayer_PostStatus.Businesslayer_PostStatus()
         insertuserstatus.insertUserStatus_BSL(session['email'],text)
         return redirect(url_for('profileHome'))
     except:
@@ -162,7 +179,7 @@ def login():
         if request.method == 'POST':
             email = request.form['email']
             password = request.form['password']
-            checkifuservalid = Businesslayer.Businesslayer_CheckIfUserValid()
+            checkifuservalid = Businesslayer_CheckIfUserValid.Businesslayer_CheckIfUserValid()
             value  = checkifuservalid.isValid_BSL(email, password)
             if value == True:
                 session['email'] = email
@@ -190,7 +207,7 @@ def register():
             #Parse form data
             password = request.form['password']
             email = request.form['email']
-            fetchuserdata = Businesslayer.Businesslayer_FetchUserData()
+            fetchuserdata = Businesslayer_FetchUserData.Businesslayer_FetchUserData()
             profileData = fetchuserdata.getProfileData_BSL(email)
             firstName = request.form['firstName']
             lastName = request.form['lastName']
@@ -208,7 +225,7 @@ def register():
                 # msg = "Email already exists"
                 # return render_template("register.html", error=msg, profileData=profileData[1])
             # else:
-            insertuser = Businesslayer.Businesslayer_InsertUser()
+            insertuser = Businesslayer_InsertUser.Businesslayer_InsertUser()
             msg = insertuser.insertNewUser_BSL(password,email,firstName,lastName,address1,address2,zipcode,city,state,country,phone,userType,planType)
             return render_template("home.html")
     except:
@@ -226,9 +243,9 @@ def jobs():
             manager = request.form['manager']
             location = request.form['location']
             jobDetails = request.form['jobDetails']
-            insertjob = Businesslayer.Businesslayer_InsertJob()
+            insertjob = Businesslayer_InsertJob.Businesslayer_InsertJob()
             msg = insertjob.insertJob_BSL(jobId,companyName,title,manager,location,jobDetails)
-            fetchjobdata = Businesslayer.Businesslayer_FetchJobData()
+            fetchjobdata = Businesslayer_FetchJobData.Businesslayer_FetchJobData()
             jobData = fetchjobdata.getJobData_BSL()
             noOfJobs = len(jobData)
             return render_template("jobs.html", jobData=jobData, noOfJobs=noOfJobs, msg=msg, jobId="Job with job id:" + jobId)
@@ -262,7 +279,7 @@ def CheckErrorLog():
 @app.route("/addJobs")
 def addJobs():
     try:
-        fetchjobdata = Businesslayer.Businesslayer_FetchJobData()
+        fetchjobdata = Businesslayer_FetchJobData.Businesslayer_FetchJobData()
         jobData = fetchjobdata.getJobData_BSL()
         noOfJobs = len(jobData)
         if(noOfJobs == 0):
@@ -348,7 +365,7 @@ def searchProfile():
             if (searchProf == ''):
                 return render_template("searchProfile.html",error="Enter Name to Search", noOfProfilesFetched=0)
             else:
-                fetchSearchedProfile = Businesslayer.Businesslayer_FetchSearchedProfile()
+                fetchSearchedProfile = Businesslayer_FetchSearchedProfile.Businesslayer_FetchSearchedProfile()
                 fetchSearchedProfileData = fetchSearchedProfile.fetchSearchedProfile_BSL(searchProf)
                 noOfProfilesFetched = len(fetchSearchedProfileData)
                 if (noOfProfilesFetched == 0):
