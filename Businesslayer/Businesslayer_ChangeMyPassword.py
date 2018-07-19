@@ -5,6 +5,8 @@ import sys
 
 sys.path.append(os.path.abspath(os.path.join('0','../Databaselayer')))
 from Databaselayer_ChangeMyPassword import Databaselayer_ChangeMyPassword
+sys.path.append(os.path.abspath(os.path.join('0', '../extensions')))
+from extensions_logging import logmyerror
 
 
 class Businesslayer_ChangeMyPassword:
@@ -13,6 +15,8 @@ class Businesslayer_ChangeMyPassword:
             changemypassword = Databaselayer_ChangeMyPassword()
             msg = changemypassword.changeMyProfilePassword_DBL(myemail,oldPassword,newPassword)
             return msg
-        except:
-            msg = "Error occured in method changeMyProfilePassword_BSL method"
-            logging.info(msg, exc_info=True)
+        except Exception as e:
+            excep_msg = "Error occured in method changeMyProfilePassword_BSL method"
+            level = logging.getLogger().getEffectiveLevel()
+            logmyerror.loadMyExceptionInDb(level,excep_msg,e)
+            logging.info(excep_msg, exc_info=True)
