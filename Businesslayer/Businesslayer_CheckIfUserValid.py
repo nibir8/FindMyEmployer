@@ -12,6 +12,8 @@ class Businesslayer_CheckIfUserValid:
             checkifuseremailisvalid = Databaselayer_CheckIfUserValid()
             value = checkifuseremailisvalid.isValid_DBL(email, password)
             return value
-        except:
+        except Exception as e:
             msg = "Error occured in method isValid_BSL method"
+            level = logging.getLogger().getEffectiveLevel()
+            logmyerror.loadMyExceptionInDb(level,excep_msg,e)
             logging.info(msg, exc_info=True)

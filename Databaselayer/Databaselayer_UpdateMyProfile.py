@@ -1,10 +1,11 @@
 import hashlib, os
 import logging
-from extensions import mysql
 import IProfileUpdate
 import sys
 sys.path.append(os.path.abspath(os.path.join('0', '../extensions')))
 from extensions import mysql
+from extensions_logging import logmyerror
+
 
 
 class Databaselayer_UpdateMyProfile(IProfileUpdate.IProfileUpdate):
@@ -22,9 +23,11 @@ class Databaselayer_UpdateMyProfile(IProfileUpdate.IProfileUpdate):
             user_details_list[19],user_details_list[20],user_details_list[21],user_details_list[22]])
             conn.commit()
             msg = "Saved Successfully"
-        except:
+        except Exception as e:
             conn.rollback()
-            excep_msg = "Error occured in updateMyProfileMethod_DBL method"
+            excep_msg = "Error occured in changeMyProfilePassword_DBL method"
+            level = logging.getLogger().getEffectiveLevel()
+            logmyerror.loadMyExceptionInDb(level,excep_msg,e)
             logging.info(excep_msg, exc_info=True)
             conn.close()
         return msg

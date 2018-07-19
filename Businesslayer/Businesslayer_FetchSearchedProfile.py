@@ -12,6 +12,8 @@ class Businesslayer_FetchSearchedProfile:
             fetchSearchedProfile = Databaselayer_FetchSearchedProfile()
             fetchSearchedProfileData = fetchSearchedProfile.fetchSearchedProfile_DBL(firstName)
             return fetchSearchedProfileData
-        except:
+        except Exception as e:
             msg = "Error occured in method fetchSearchedProfile_BSL method"
+            level = logging.getLogger().getEffectiveLevel()
+            logmyerror.loadMyExceptionInDb(level,excep_msg,e)
             logging.info(msg, exc_info=True)

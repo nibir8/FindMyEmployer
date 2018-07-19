@@ -10,6 +10,8 @@ class Businesslayer_InsertUser:
         try:
             insertuser = Databaselayer_InsertUser()
             insertuser.insertNewUser_DBL(password,email,firstName,lastName,address1,address2,zipcode,city,state,country,phone,userType,planType)
-        except:
+        except Exception as e:
             msg = "Error occured in method insertNewUser_BSL method"
+            level = logging.getLogger().getEffectiveLevel()
+            logmyerror.loadMyExceptionInDb(level,excep_msg,e)
             logging.info(msg, exc_info=True)

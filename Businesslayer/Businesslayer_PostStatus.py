@@ -9,6 +9,8 @@ class Businesslayer_PostStatus:
         try:
             databaselayerupdatestatus = Databaselayer_PostStatus()
             databaselayerupdatestatus.insertUserStatus_DBL(email,status)
-        except:
+        except Exception as e:
             msg = "Error occured in method insertUserStatus_BSL method"
+            level = logging.getLogger().getEffectiveLevel()
+            logmyerror.loadMyExceptionInDb(level,excep_msg,e)
             logging.info(msg, exc_info=True)

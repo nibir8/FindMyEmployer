@@ -12,6 +12,8 @@ class Businesslayer_FetchUserData:
             fetchuserdata = Databaselayer_FetchUserData()
             profileData = fetchuserdata.getProfileData_DBL(myemail)
             return profileData
-        except:
+        except Exception as e:
             msg = "Error occured in method getProfileData_BSL method"
+            level = logging.getLogger().getEffectiveLevel()
+            logmyerror.loadMyExceptionInDb(level,excep_msg,e)
             logging.info(msg, exc_info=True)

@@ -13,6 +13,8 @@ class Businesslayer_ChangeMyPassword:
             changemypassword = Databaselayer_ChangeMyPassword()
             msg = changemypassword.changeMyProfilePassword_DBL(myemail,oldPassword,newPassword)
             return msg
-        except:
+        except Exception as e:
             msg = "Error occured in method changeMyProfilePassword_BSL method"
-            logging.info(msg, exc_info=True)
+            level = logging.getLogger().getEffectiveLevel()
+            logmyerror.loadMyExceptionInDb(level,excep_msg,e)
+            logging.info(excep_msg, exc_info=True)

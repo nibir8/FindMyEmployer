@@ -11,6 +11,8 @@ class Businesslayer_FetchJobData:
             fetchjobdata = Databaselayer_FetchJob()
             jobData = fetchjobdata.getJob_DBL()
             return jobData
-        except:
+        except Exception as e:
             msg = "Error occured in method getJobData_BSL method"
+            level = logging.getLogger().getEffectiveLevel()
+            logmyerror.loadMyExceptionInDb(level,excep_msg,e)
             logging.info(msg, exc_info=True)

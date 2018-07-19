@@ -11,6 +11,8 @@ class Businesslayer_LoginClass:
             getlogindetails = Databaselayer_LoginClass()
             loggedIn, firstName = getlogindetails.getLoginDetails_DBL(myemail)
             return (loggedIn, firstName)
-        except:
+        except Exception as e:
             msg = "Error occured in method getLoginDetails_BSL method"
+            level = logging.getLogger().getEffectiveLevel()
+            logmyerror.loadMyExceptionInDb(level,excep_msg,e)
             logging.info(msg, exc_info=True)

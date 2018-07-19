@@ -22,7 +22,9 @@ from Businesslayer import Businesslayer_InsertJob
 from Businesslayer import Businesslayer_InsertUser
 from Businesslayer import Businesslayer_LoginClass
 from Businesslayer import Businesslayer_PostStatus
+from Businesslayer import Businesslayer_UpdateMyProfile
 from shutil import copyfile
-import sys
+import sys,os
 sys.path.append(os.path.abspath(os.path.join('0','/extensions')))
 from extensions import mysql
+from extensions_logging import logmyerror
