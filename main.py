@@ -10,8 +10,6 @@ photos = UploadSet('photos', IMAGES)
 configure_uploads(app, photos)
 patch_request_class(app)
 
-
-
 class UploadForm(FlaskForm):
     photo = FileField(validators=[FileAllowed(photos, u'Image Only!'), FileRequired(u'Choose a file!')])
     submit = SubmitField(u'Upload')
@@ -156,7 +154,7 @@ def updateProfile():
 
             updatemyprofile = Businesslayer_UpdateMyProfile.Businesslayer_UpdateMyProfile()
             msg = updatemyprofile.updateMyProfileMethod_BSL(email,firstName,lastName,address1,address2,zipcode,city,state,country,phone,user_details)
-            return redirect(url_for('editProfile'))
+            return redirect(url_for('editProfile',msg=msg))
     except Exception as e:
         excep_msg = "Error in view update profile"
         level = logging.getLogger().getEffectiveLevel()
@@ -196,14 +194,17 @@ def login():
         if request.method == 'POST':
             email = request.form['email']
             password = request.form['password']
-            checkifuservalid = Businesslayer_CheckIfUserValid.Businesslayer_CheckIfUserValid()
-            value  = checkifuservalid.isValid_BSL(email, password)
-            if value == True:
-                session['email'] = email
-                return redirect(url_for('root'))
-            elif value == False:
-                error = 'Invalid UserId / Password'
-                return render_template('home.html', error=error)
+            if ((email == "")or(password == "")):
+                error = 'Dont leave userId/Password blank'
+            else:
+                checkifuservalid = Businesslayer_CheckIfUserValid.Businesslayer_CheckIfUserValid()
+                value  = checkifuservalid.isValid_BSL(email, password)
+                if value == True:
+                    session['email'] = email
+                    return redirect(url_for('root'))
+                elif value == False:
+                    error = 'Invalid UserId / Password'
+                    return render_template('home.html', error=error)
     except Exception as e:
         excep_msg = "Error in view login"
         level = logging.getLogger().getEffectiveLevel()
@@ -241,14 +242,14 @@ def register():
             phone = request.form['phone']
             userType = request.form['userOptions']
             planType = request.form['planOptions']
-
-            # if(profileData[1] == email):
-                # msg = "Email already exists"
-                # return render_template("register.html", error=msg, profileData=profileData[1])
-            # else:
-            insertuser = Businesslayer_InsertUser.Businesslayer_InsertUser()
-            msg = insertuser.insertNewUser_BSL(password,email,firstName,lastName,address1,address2,zipcode,city,state,country,phone,userType,planType)
-            return render_template("home.html")
+            if(not profileData):
+                insertuser = Businesslayer_InsertUser.Businesslayer_InsertUser()
+                msg = insertuser.insertNewUser_BSL(password,email,firstName,lastName,address1,address2,zipcode,city,state,country,phone,userType,planType)
+                print msg
+                return render_template("home.html")
+            else:
+                msg = "Email ID already exists"
+                return render_template("register.html", error=msg)
     except Exception as e:
         excep_msg = "Error in view register"
         level = logging.getLogger().getEffectiveLevel()
@@ -333,7 +334,7 @@ def messaging():
             msg = Message(mailSubject, sender = email, recipients = [recipientAddress])
             msg.body = mailBody
             mail.send(msg)
-            return render_template("messaging.html")
+            return render_template("messaging.html",msg="Message Sent!!")
     except Exception as e:
         excep_msg = "Error in view messaging"
         level = logging.getLogger().getEffectiveLevel()
