@@ -1,51 +1,7 @@
-import os
-import time
-import hashlib
-import glob
-#from flask import *
-from werkzeug.utils import secure_filename
-import Businesslayer
-from Businesslayer import *
-import os.path
-from flask_mail import Mail, Message
-from flask import Flask, render_template, redirect, url_for, request
-from flask_uploads import UploadSet, configure_uploads, IMAGES, patch_request_class
-from flask_wtf import FlaskForm
-from flask_wtf.file import FileField, FileRequired, FileAllowed
-from wtforms import SubmitField
-from flask import *
-from werkzeug.utils import secure_filename
-import logging
-from Businesslayer import Businesslayer_ChangeMyPassword
-from Businesslayer import Businesslayer_CheckIfUserValid
-from Businesslayer import Businesslayer_FetchJobData
-from Businesslayer import Businesslayer_FetchSearchedProfile
-from Businesslayer import Businesslayer_FetchUserData
-from Businesslayer import Businesslayer_GetStatus
-from Businesslayer import Businesslayer_InsertJob
-from Businesslayer import Businesslayer_InsertUser
-from Businesslayer import Businesslayer_LoginClass
-from Businesslayer import Businesslayer_PostStatus
-
-import os.path
-
-from shutil import copyfile
-
-import sys
-sys.path.append(os.path.abspath(os.path.join('0','/extensions')))
-from extensions import mysql
+from module_settings import *
 
 app = Flask(__name__)
-app.config['MYSQL_DATABASE_USER'] = 'CSCI5308_15_DEVINT_USER'
-app.config['MYSQL_DATABASE_PASSWORD'] = 'CSCI5308_15_DEVINT_15142'
-app.config['MYSQL_DATABASE_DB'] = 'CSCI5308_15_DEVINT'
-app.config['MYSQL_DATABASE_HOST'] = 'db-5308.cs.dal.ca'
-app.config['MAIL_SERVER']='smtp.gmail.com'
-app.config['MAIL_PORT'] = 465
-app.config['MAIL_USERNAME'] = 'noreply.findmyemployer@gmail.com'
-app.config['MAIL_PASSWORD'] = 'Nibir88**'
-app.config['MAIL_USE_TLS'] = False
-app.config['MAIL_USE_SSL'] = True
+app.config.from_pyfile('config.cfg')
 app.config['UPLOADED_PHOTOS_DEST'] = os.getcwd() + '/static' + '/images'
 mysql.init_app(app)
 app.secret_key = 'random string'
