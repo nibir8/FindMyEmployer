@@ -10,6 +10,8 @@ photos = UploadSet('photos', IMAGES)
 configure_uploads(app, photos)
 patch_request_class(app)
 
+
+
 class UploadForm(FlaskForm):
     photo = FileField(validators=[FileAllowed(photos, u'Image Only!'), FileRequired(u'Choose a file!')])
     submit = SubmitField(u'Upload')
@@ -23,16 +25,17 @@ def root():
             return render_template('home.html',  loggedIn=loggedIn, firstName=firstName)
         else:
             loggedIn = True
+            #logmyerror.captureUserId(session['email'])
             loginclassdetails = Businesslayer_LoginClass.Businesslayer_LoginClass()
             loggedIn, firstName = loginclassdetails.getLoginDetails_BSL(session['email'])
             fetchuserstatus = Businesslayer_GetStatus.Businesslayer_GetStatus()
             userStatus = fetchuserstatus.getUserStatus_BSL()
             return render_template("Profile2.html",loggedIn=loggedIn, firstName=firstName,userStatus=userStatus )
     except Exception as e:
-        msg = "Error in view Homepage"
+        excep_msg = "Error in view Homepage"
         level = logging.getLogger().getEffectiveLevel()
         logmyerror.loadMyExceptionInDb(level,excep_msg,e)
-        logging.info(msg, exc_info=True)
+        logging.info(excep_msg, exc_info=True)
 
 @app.route("/account/profile")
 def profileHome():
@@ -47,10 +50,10 @@ def profileHome():
             userStatus = fetchuserstatus.getUserStatus_BSL()
             return render_template("Profile2.html",loggedIn=loggedIn, firstName=firstName,userStatus=userStatus )
     except Exception as e:
-        msg = "Error in view profile"
+        excep_msg = "Error in view profile"
         level = logging.getLogger().getEffectiveLevel()
         logmyerror.loadMyExceptionInDb(level,excep_msg,e)
-        logging.info(msg, exc_info=True)
+        logging.info(excep_msg, exc_info=True)
 
 @app.route("/account/profile/edit")
 def editProfile():
@@ -63,10 +66,10 @@ def editProfile():
         profileData = fetchuserdata.getProfileData_BSL(session['email'])
         return render_template("editProfile.html", profileData=profileData, loggedIn=loggedIn, firstName=firstName )
     except Exception as e:
-        msg = "Error in view edit profile"
+        excep_msg = "Error in view edit profile"
         level = logging.getLogger().getEffectiveLevel()
         logmyerror.loadMyExceptionInDb(level,excep_msg,e)
-        logging.info(msg, exc_info=True)
+        logging.info(excep_msg, exc_info=True)
 
 @app.route("/account/profile/changePassword", methods=["GET", "POST"])
 def changePassword():
@@ -84,10 +87,10 @@ def changePassword():
         else:
             return render_template("changePassword.html")
     except Exception as e:
-        msg = "Error in view changepassword"
+        excep_msg = "Error in view changepassword"
         level = logging.getLogger().getEffectiveLevel()
         logmyerror.loadMyExceptionInDb(level,excep_msg,e)
-        logging.info(msg, exc_info=True)
+        logging.info(excep_msg, exc_info=True)
 
 @app.route("/updateProfile", methods=["GET", "POST"])
 def updateProfile():
@@ -155,10 +158,10 @@ def updateProfile():
             msg = updatemyprofile.updateMyProfileMethod_BSL(email,firstName,lastName,address1,address2,zipcode,city,state,country,phone,user_details)
             return redirect(url_for('editProfile'))
     except Exception as e:
-        msg = "Error in view update profile"
+        excep_msg = "Error in view update profile"
         level = logging.getLogger().getEffectiveLevel()
         logmyerror.loadMyExceptionInDb(level,excep_msg,e)
-        logging.info(msg, exc_info=True)
+        logging.info(excep_msg, exc_info=True)
 
 
 @app.route("/postStatus" , methods=['POST'])
@@ -169,10 +172,10 @@ def postStatus():
         insertuserstatus.insertUserStatus_BSL(session['email'],text)
         return redirect(url_for('profileHome'))
     except Exception as e:
-        msg = "Error in view poststatus"
+        excep_msg = "Error in view poststatus"
         level = logging.getLogger().getEffectiveLevel()
         logmyerror.loadMyExceptionInDb(level,excep_msg,e)
-        logging.info(msg, exc_info=True)
+        logging.info(excep_msg, exc_info=True)
 
 @app.route("/loginForm")
 def loginForm():
@@ -182,10 +185,10 @@ def loginForm():
         else:
             return render_template('home.html', error='')
     except Exception as e:
-        msg = "Error in view loginform"
+        excep_msg = "Error in view loginform"
         level = logging.getLogger().getEffectiveLevel()
         logmyerror.loadMyExceptionInDb(level,excep_msg,e)
-        logging.info(msg, exc_info=True)
+        logging.info(excep_msg, exc_info=True)
 
 @app.route("/login", methods = ['POST', 'GET'])
 def login():
@@ -202,10 +205,10 @@ def login():
                 error = 'Invalid UserId / Password'
                 return render_template('home.html', error=error)
     except Exception as e:
-        msg = "Error in view login"
+        excep_msg = "Error in view login"
         level = logging.getLogger().getEffectiveLevel()
         logmyerror.loadMyExceptionInDb(level,excep_msg,e)
-        logging.info(msg, exc_info=True)
+        logging.info(excep_msg, exc_info=True)
 
 @app.route("/logout")
 def logout():
@@ -213,10 +216,10 @@ def logout():
         session.pop('email', None)
         return redirect(url_for('root'))
     except Exception as e:
-        msg = "Error in view logout"
+        excep_msg = "Error in view logout"
         level = logging.getLogger().getEffectiveLevel()
         logmyerror.loadMyExceptionInDb(level,excep_msg,e)
-        logging.info(msg, exc_info=True)
+        logging.info(excep_msg, exc_info=True)
 
 @app.route("/register", methods = ['GET', 'POST'])
 def register():
@@ -247,10 +250,10 @@ def register():
             msg = insertuser.insertNewUser_BSL(password,email,firstName,lastName,address1,address2,zipcode,city,state,country,phone,userType,planType)
             return render_template("home.html")
     except Exception as e:
-        msg = "Error in view register"
+        excep_msg = "Error in view register"
         level = logging.getLogger().getEffectiveLevel()
         logmyerror.loadMyExceptionInDb(level,excep_msg,e)
-        logging.info(msg, exc_info=True)
+        logging.info(excep_msg, exc_info=True)
 
 @app.route("/jobs", methods = ['GET', 'POST'])
 def jobs():
@@ -270,20 +273,20 @@ def jobs():
             noOfJobs = len(jobData)
             return render_template("jobs.html", jobData=jobData, noOfJobs=noOfJobs, msg=msg, jobId="Job with job id:" + jobId)
     except Exception as e:
-        msg = "Error in view jobs"
+        excep_msg = "Error in view jobs"
         level = logging.getLogger().getEffectiveLevel()
         logmyerror.loadMyExceptionInDb(level,excep_msg,e)
-        logging.info(msg, exc_info=True)
+        logging.info(excep_msg, exc_info=True)
 
 @app.route("/registerationForm")
 def registrationForm():
     try:
         return render_template("register.html")
     except Exception as e:
-        msg = "Error in view registerform"
+        excep_msg = "Error in view registerform"
         level = logging.getLogger().getEffectiveLevel()
         logmyerror.loadMyExceptionInDb(level,excep_msg,e)
-        logging.info(msg, exc_info=True)
+        logging.info(excep_msg, exc_info=True)
 
 ##Added Error log
 
@@ -295,10 +298,10 @@ def CheckErrorLog():
         text.close()
         return render_template("Errorlog.html",content = content)
     except Exception as e:
-        msg = "Error in view ErrorLog"
+        excep_msg = "Error in view ErrorLog"
         level = logging.getLogger().getEffectiveLevel()
         logmyerror.loadMyExceptionInDb(level,excep_msg,e)
-        logging.info(msg, exc_info=True)
+        logging.info(excep_msg, exc_info=True)
 ##Added Error log
 
 
@@ -313,10 +316,10 @@ def addJobs():
         else:
             return render_template("jobs.html", jobData=jobData, noOfJobs=noOfJobs)
     except Exception as e:
-        msg = "Error in view jobs"
+        excep_msg = "Error in view jobs"
         level = logging.getLogger().getEffectiveLevel()
         logmyerror.loadMyExceptionInDb(level,excep_msg,e)
-        logging.info(msg, exc_info=True)
+        logging.info(excep_msg, exc_info=True)
 
 @app.route("/messaging", methods = ['GET', 'POST'])
 def messaging():
@@ -332,20 +335,20 @@ def messaging():
             mail.send(msg)
             return render_template("messaging.html")
     except Exception as e:
-        msg = "Error in view messaging"
+        excep_msg = "Error in view messaging"
         level = logging.getLogger().getEffectiveLevel()
         logmyerror.loadMyExceptionInDb(level,excep_msg,e)
-        logging.info(msg, exc_info=True)
+        logging.info(excep_msg, exc_info=True)
 
 @app.route("/messageForm")
 def messageForm():
     try:
         return render_template("messaging.html")
     except Exception as e:
-        msg = "Error in view messaging"
+        excep_msg = "Error in view messaging"
         level = logging.getLogger().getEffectiveLevel()
         logmyerror.loadMyExceptionInDb(level,excep_msg,e)
-        logging.info(msg, exc_info=True)
+        logging.info(excep_msg, exc_info=True)
 
 
 @app.route('/upload', methods=['GET', 'POST'])
@@ -375,10 +378,10 @@ def upload_file():
         files_list = os.listdir(app.config['UPLOADED_PHOTOS_DEST'] +"/" +name)
         return render_template('Uploadphoto.html', form=form, success=success,files_list=files_list,fileUploaded = fileUploaded)
     except Exception as e:
-        msg = "Error in uploading file"
+        excep_msg = "Error in uploading file"
         level = logging.getLogger().getEffectiveLevel()
         logmyerror.loadMyExceptionInDb(level,excep_msg,e)
-        logging.info(msg, exc_info=True)
+        logging.info(excep_msg, exc_info=True)
 
 @app.route('/open/<filename>')
 def open_file(filename):
@@ -386,10 +389,10 @@ def open_file(filename):
         file_url = photos.url(filename)
         return render_template('ViewImage.html', file_url=file_url)
     except Exception as e:
-        msg = "Error in openning file"
+        excep_msg = "Error in openning file"
         level = logging.getLogger().getEffectiveLevel()
         logmyerror.loadMyExceptionInDb(level,excep_msg,e)
-        logging.info(msg, exc_info=True)
+        logging.info(excep_msg, exc_info=True)
 
 @app.route('/delete/<filename>')
 def delete_file(filename):
@@ -401,10 +404,10 @@ def delete_file(filename):
         os.remove(path)
         return redirect(url_for('upload_file'))
     except Exception as e:
-        msg = "Error in deleting file"
+        excep_msg = "Error in deleting file"
         level = logging.getLogger().getEffectiveLevel()
         logmyerror.loadMyExceptionInDb(level,excep_msg,e)
-        logging.info(msg, exc_info=True)
+        logging.info(excep_msg, exc_info=True)
 
 @app.route("/searchProfile", methods = ['GET', 'POST'])
 def searchProfile():
@@ -423,10 +426,10 @@ def searchProfile():
                 else:
                     return render_template("searchProfile.html", fetchSearchedProfileData=fetchSearchedProfileData, noOfProfilesFetched=noOfProfilesFetched)
     except Exception as e:
-        msg = "Error in view searchProfile"
+        excep_msg = "Error in view searchProfile"
         level = logging.getLogger().getEffectiveLevel()
         logmyerror.loadMyExceptionInDb(level,excep_msg,e)
-        logging.info(msg, exc_info=True)
+        logging.info(excep_msg, exc_info=True)
 
 if __name__ == '__main__':
     logging.basicConfig(filename='Log1.log',level=logging.DEBUG,format='%(asctime)s %(levelname)s %(name)s %(message)s')

@@ -27,17 +27,10 @@ class LogggingExceptions_Database:
             currenttime = datetime.datetime.now()
             currenttime = str(currenttime)
             logMsg = str(logMsg)
-            print currenttime
-            print logLevel
-            print customMsg
-            print logMsg
-            print userEmailId
-            print loglevelname
             cur.callproc('spInserErrorLogInDB',[logLevel,loglevelname,customMsg,logMsg,currenttime,userEmailId])
             conn.commit()
         except Exception as e:
             conn.rollback()
             excep_msg = "CRITICAL DB ERROR! Logging to database not possible!"
-            print excep_msg
             logging.warning(excep_msg, exc_info=True)
         conn.close()

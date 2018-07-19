@@ -6,6 +6,9 @@ import sys
 sys.path.append(os.path.abspath(os.path.join('0','../Databaselayer')))
 from Databaselayer_FetchUserData import Databaselayer_FetchUserData
 
+sys.path.append(os.path.abspath(os.path.join('0', '../extensions')))
+from extensions_logging import logmyerror
+
 class Businesslayer_FetchUserData:
     def getProfileData_BSL(Self,myemail):
         try:
@@ -13,7 +16,7 @@ class Businesslayer_FetchUserData:
             profileData = fetchuserdata.getProfileData_DBL(myemail)
             return profileData
         except Exception as e:
-            msg = "Error occured in method getProfileData_BSL method"
+            excep_msg = "Error occured in method getProfileData_BSL method"
             level = logging.getLogger().getEffectiveLevel()
             logmyerror.loadMyExceptionInDb(level,excep_msg,e)
-            logging.info(msg, exc_info=True)
+            logging.info(excep_msg, exc_info=True)
