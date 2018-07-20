@@ -25,7 +25,7 @@ def root():
             loggedIn = True
             #logmyerror.captureUserId(session['email'])
             loginclassdetails = Businesslayer_LoginClass.Businesslayer_LoginClass()
-            loggedIn, firstName = loginclassdetails.getLoginDetails_BSL(session['email'])
+            loggedIn, firstName, typeOfUser = loginclassdetails.getLoginDetails_BSL(session['email'])
             fetchuserstatus = Businesslayer_GetStatus.Businesslayer_GetStatus()
             userStatus = fetchuserstatus.getUserStatus_BSL()
             return render_template("Profile2.html",loggedIn=loggedIn, firstName=firstName,userStatus=userStatus )
@@ -59,7 +59,7 @@ def editProfile():
         if 'email' not in session:
             return redirect(url_for('root'))
         loginclassdetails = Businesslayer_LoginClass.Businesslayer_LoginClass()
-        loggedIn, firstName = loginclassdetails.getLoginDetails_BSL(session['email'])
+        loggedIn, firstName, typeOfUser = loginclassdetails.getLoginDetails_BSL(session['email'])
         fetchuserdata = Businesslayer_FetchUserData.Businesslayer_FetchUserData()
         profileData = fetchuserdata.getProfileData_BSL(session['email'])
         return render_template("editProfile.html", profileData=profileData, loggedIn=loggedIn, firstName=firstName )
@@ -309,13 +309,21 @@ def CheckErrorLog():
 @app.route("/addJobs")
 def addJobs():
     try:
+        getUserType = Businesslayer_GetUserType.Businesslayer_GetUserType()
+        getUserTypeData = getUserType.getUserType_BSL(session['email'])
+        print getUserTypeData
+        if (getUserTypeData[2] == 'employee'):
+            userType = 'employee'
+        else:
+            userType = 'employer'
         fetchjobdata = Businesslayer_FetchJobData.Businesslayer_FetchJobData()
         jobData = fetchjobdata.getJobData_BSL()
         noOfJobs = len(jobData)
+        print userType
         if(noOfJobs == 0):
-            return render_template("jobs.html",noOfJobs=noOfJobs,jobData=jobData)
+            return render_template("jobs.html",noOfJobs=noOfJobs,jobData=jobData,userType=userType)
         else:
-            return render_template("jobs.html", jobData=jobData, noOfJobs=noOfJobs)
+            return render_template("jobs.html", jobData=jobData, noOfJobs=noOfJobs,userType=userType)
     except Exception as e:
         excep_msg = "Error in view jobs"
         level = logging.getLogger().getEffectiveLevel()
