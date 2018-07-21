@@ -14,11 +14,7 @@ class Businesslayer_FetchUserData:
         try:
             fetchuserdata = Databaselayer_FetchUserData()
             profileData = fetchuserdata.getProfileData_DBL(myemail)
-            if (not profileData):
-                return profileData
-            else:
-                msg = "Email ID already exists"
-                return msg
+            return profileData
         except Exception as e:
             excep_msg = "Error occured in method getProfileData_BSL method"
             level = logging.getLogger().getEffectiveLevel()
