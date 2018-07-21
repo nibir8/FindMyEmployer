@@ -192,9 +192,9 @@ def login():
             email = request.form['email']
             password = request.form['password']
             value = ""
-            checkEmail = Businesslayer_Validator.Businesslayer_Email_NullCheck()
+            checkEmail = Businesslayer_Validator_Email_NullCheck.Businesslayer_Email_NullCheck()
             checkEmailNull = checkEmail.Businesslayer_Email_NullCheck_BSL(email)
-            checkPass = Businesslayer_Validator.Businesslayer_Pass_NullCheck()
+            checkPass = Businesslayer_Validator_Pass_NullCheck.Businesslayer_Pass_NullCheck()
             checkPassNull = checkPass.Businesslayer_Pass_NullCheck_BSL(password)
             if ((not checkEmailNull)and(not checkPassNull)):
                 checkifuservalid = Businesslayer_CheckIfUserValid.Businesslayer_CheckIfUserValid()
@@ -231,7 +231,9 @@ def register():
         if request.method == 'POST':
             #Parse form data
             password = request.form['password']
+            cpassword = request.form['cpassword']
             email = request.form['email']
+            email = email.lower()
             firstName = request.form['firstName']
             lastName = request.form['lastName']
             address1 = request.form['address1']
@@ -243,17 +245,34 @@ def register():
             phone = request.form['phone']
             userType = request.form['userOptions']
             planType = request.form['planOptions']
-            fetchuserdata = Businesslayer_FetchUserData.Businesslayer_FetchUserData()
-            profileData = fetchuserdata.getProfileData_BSL(email)
             user_details = []
-            if(not profileData):
-                insertuser = Businesslayer_InsertUser.Businesslayer_InsertUser()
-                insertuser = Businesslayer_InsertUser.Businesslayer_InsertUser()
-                myuser = User(email,password,firstName,lastName,address1,address2,zipcode,city,state,country,phone,userType,planType,user_details)
-                msg = insertuser.insertNewUser_BSL(myuser)
-                return render_template("home.html")
+            firstNameValidate = Businesslayer_Validator_FirstName_SpaceCheck.Businesslayer_FirstName_SpaceCheck()
+            firstNameValidateFormat = firstNameValidate.Businesslayer_FirstName_SpaceCheck_BSL(firstName)
+            if (firstNameValidateFormat != firstName):
+                return render_template("register.html", error=firstNameValidateFormat)
+            passwordSpaceCheck = Businesslayer_Validator_Password_SpaceCheck.Businesslayer_Password_SpaceCheck()
+            passwordSpaceCheckValidate = passwordSpaceCheck.Businesslayer_Password_SpaceCheck_BSL(password)
+            if (passwordSpaceCheckValidate != password):
+                return render_template("register.html", error=passwordSpaceCheckValidate)
+            passwordEquate = Businesslayer_Validator_Password_Equate.Businesslayer_Password_Equate()
+            passwordEquateCheck = passwordEquate.Businesslayer_Password_Equate_BSL(password,cpassword)
+            if (passwordEquateCheck != password):
+                return render_template("register.html", error=passwordEquateCheck)
+            emailValidate = Businesslayer_Validator_Email_Validate.Businesslayer_Email_Validate()
+            emailValidateFormat = emailValidate.Businesslayer_Email_Validate_BSL(email)
+            if (emailValidateFormat == email):
+                fetchuserdata = Businesslayer_FetchUserData.Businesslayer_FetchUserData()
+                profileData = fetchuserdata.getProfileData_BSL(email)
+                if(not profileData):
+                    insertuser = Businesslayer_InsertUser.Businesslayer_InsertUser()
+                    insertuser = Businesslayer_InsertUser.Businesslayer_InsertUser()
+                    myuser = User(email,password,firstName,lastName,address1,address2,zipcode,city,state,country,phone,userType,planType,user_details)
+                    msg = insertuser.insertNewUser_BSL(myuser)
+                    return render_template("home.html")
+                else:
+                    return render_template("register.html", error="Email Id already exists")
             else:
-                return render_template("register.html", error=profileData)
+                return render_template("register.html", error=emailValidateFormat)
     except Exception as e:
         excep_msg = "Error in view register"
         level = logging.getLogger().getEffectiveLevel()
