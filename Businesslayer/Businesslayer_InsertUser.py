@@ -9,10 +9,11 @@ sys.path.append(os.path.abspath(os.path.join('0', '../extensions')))
 from extensions_logging import logmyerror
 
 class Businesslayer_InsertUser:
-    def insertNewUser_BSL(self,password,email,firstName,lastName,address1,address2,zipcode,city,state,country,phone,userType,planType):
+    def insertNewUser_BSL(self,myuser):
         try:
             insertuser = Databaselayer_InsertUser()
-            insertuser.insertNewUser_DBL(password,email,firstName,lastName,address1,address2,zipcode,city,state,country,phone,userType,planType)
+            print myuser.firstName
+            insertuser.insertNewUser_DBL(myuser)
         except Exception as e:
             excep_msg = "Error occured in method insertNewUser_BSL method"
             level = logging.getLogger().getEffectiveLevel()

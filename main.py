@@ -245,9 +245,12 @@ def register():
             planType = request.form['planOptions']
             fetchuserdata = Businesslayer_FetchUserData.Businesslayer_FetchUserData()
             profileData = fetchuserdata.getProfileData_BSL(email)
+            user_details = []
             if(not profileData):
                 insertuser = Businesslayer_InsertUser.Businesslayer_InsertUser()
-                msg = insertuser.insertNewUser_BSL(password,email,firstName,lastName,address1,address2,zipcode,city,state,country,phone,userType,planType)
+                insertuser = Businesslayer_InsertUser.Businesslayer_InsertUser()
+                myuser = User(email,password,firstName,lastName,address1,address2,zipcode,city,state,country,phone,userType,planType,user_details)
+                msg = insertuser.insertNewUser_BSL(myuser)
                 return render_template("home.html")
             else:
                 return render_template("register.html", error=profileData)
