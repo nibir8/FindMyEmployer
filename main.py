@@ -23,7 +23,6 @@ def root():
             return render_template('home.html',  loggedIn=loggedIn, firstName=firstName)
         else:
             loggedIn = True
-            #logmyerror.captureUserId(session['email'])
             loginclassdetails = Businesslayer_LoginClass.Businesslayer_LoginClass()
             loggedIn, firstName, typeOfUser = loginclassdetails.getLoginDetails_BSL(session['email'])
             fetchuserstatus = Businesslayer_GetStatus.Businesslayer_GetStatus()
@@ -151,7 +150,6 @@ def updateProfile():
             user_details.append(Project_Details_2)
             user_details.append(Project_Name_3)
             user_details.append(Project_Details_3)
-
             updatemyprofile = Businesslayer_UpdateMyProfile.Businesslayer_UpdateMyProfile()
             msg = updatemyprofile.updateMyProfileMethod_BSL(email,firstName,lastName,address1,address2,zipcode,city,state,country,phone,user_details)
             return redirect(url_for('editProfile',msg=msg))
@@ -160,7 +158,6 @@ def updateProfile():
         level = logging.getLogger().getEffectiveLevel()
         logmyerror.loadMyExceptionInDb(level,excep_msg,e)
         logging.info(excep_msg, exc_info=True)
-
 
 @app.route("/postStatus" , methods=['POST'])
 def postStatus():
@@ -194,17 +191,23 @@ def login():
         if request.method == 'POST':
             email = request.form['email']
             password = request.form['password']
-            if ((email == "")or(password == "")):
-                error = 'Dont leave userId/Password blank'
-            else:
+            value = ""
+            checkEmail = Businesslayer_Validator.Businesslayer_Email_NullCheck()
+            checkEmailNull = checkEmail.Businesslayer_Email_NullCheck_BSL(email)
+            checkPass = Businesslayer_Validator.Businesslayer_Pass_NullCheck()
+            checkPassNull = checkPass.Businesslayer_Pass_NullCheck_BSL(password)
+            if ((not checkEmailNull)and(not checkPassNull)):
                 checkifuservalid = Businesslayer_CheckIfUserValid.Businesslayer_CheckIfUserValid()
-                value  = checkifuservalid.isValid_BSL(email, password)
-                if value == True:
+                value = checkifuservalid.isValid_BSL(email, password)
+                checkEmailNull = ""
+                checkPassNull = ""
+                if (value == True):
                     session['email'] = email
                     return redirect(url_for('root'))
-                elif value == False:
-                    error = 'Invalid UserId / Password'
-                    return render_template('home.html', error=error)
+                else:
+                    return render_template('home.html', passwordNull=checkPassNull,userPassIncorrect=value)
+            else:
+	            return render_template('home.html', passwordNull=checkPassNull,userPassIncorrect=value)
     except Exception as e:
         excep_msg = "Error in view login"
         level = logging.getLogger().getEffectiveLevel()
@@ -229,8 +232,6 @@ def register():
             #Parse form data
             password = request.form['password']
             email = request.form['email']
-            fetchuserdata = Businesslayer_FetchUserData.Businesslayer_FetchUserData()
-            profileData = fetchuserdata.getProfileData_BSL(email)
             firstName = request.form['firstName']
             lastName = request.form['lastName']
             address1 = request.form['address1']
@@ -242,14 +243,14 @@ def register():
             phone = request.form['phone']
             userType = request.form['userOptions']
             planType = request.form['planOptions']
+            fetchuserdata = Businesslayer_FetchUserData.Businesslayer_FetchUserData()
+            profileData = fetchuserdata.getProfileData_BSL(email)
             if(not profileData):
                 insertuser = Businesslayer_InsertUser.Businesslayer_InsertUser()
                 msg = insertuser.insertNewUser_BSL(password,email,firstName,lastName,address1,address2,zipcode,city,state,country,phone,userType,planType)
-                print msg
                 return render_template("home.html")
             else:
-                msg = "Email ID already exists"
-                return render_template("register.html", error=msg)
+                return render_template("register.html", error=profileData)
     except Exception as e:
         excep_msg = "Error in view register"
         level = logging.getLogger().getEffectiveLevel()
@@ -311,7 +312,6 @@ def addJobs():
     try:
         getUserType = Businesslayer_GetUserType.Businesslayer_GetUserType()
         getUserTypeData = getUserType.getUserType_BSL(session['email'])
-        print getUserTypeData
         if (getUserTypeData[2] == 'employee'):
             userType = 'employee'
         else:
@@ -319,7 +319,6 @@ def addJobs():
         fetchjobdata = Businesslayer_FetchJobData.Businesslayer_FetchJobData()
         jobData = fetchjobdata.getJobData_BSL()
         noOfJobs = len(jobData)
-        print userType
         if(noOfJobs == 0):
             return render_template("jobs.html",noOfJobs=noOfJobs,jobData=jobData,userType=userType)
         else:

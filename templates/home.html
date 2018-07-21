@@ -40,12 +40,12 @@
                         <form class="loginForm" action="/login" autocomplete="off" method="POST">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                <input type="text" class="form-control" name="email" placeholder="email address" required>
+                                <input type="text" class="form-control" name="email" placeholder="email address">
                             </div>
 							<br>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                <input  type="password" class="form-control" name="password" placeholder="Password" required>
+                                <input  type="password" class="form-control" name="password" placeholder="Password">
                             </div>
                             <br>
                             <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
@@ -54,7 +54,7 @@
                 </div>
 				<br>
                 <div style="text-align:center;">
-					<h4 style="color:red;">{{error}}</h4>
+					<h4 style="color:red;">{{passwordNull}}{{userPassIncorrect}}</h4>
                 </div>
             </div>
         </div>
