@@ -14,7 +14,7 @@ class Databaselayer_InsertUser(IInsertnewUser.IInsertnewUser):
     def insertNewUser_DBL(self,myuser):
         try:
             msg=""
-            password = hashlib.md5(myuser.password.encode()).hexdigest()
+            myuser.password = hashlib.md5(myuser.password.encode()).hexdigest()
             conn = mysql.connect()
             cur = conn.cursor()
             cur.callproc('spCreateUser',[myuser.password,myuser.email,myuser.firstName,myuser.lastName,myuser.address1,myuser.address2,myuser.zipcode,myuser.city,myuser.state,myuser.country,myuser.phone,myuser.userType,myuser.planType])
