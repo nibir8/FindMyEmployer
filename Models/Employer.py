@@ -1,3 +1,5 @@
+from User import User
+
 class Employer(User):
     def __init__(self,email,password,firstName,lastName,address1,address2,zipcode,city,state,country,phone,userType,planType,user_details):
         self.email = email

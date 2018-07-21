@@ -151,7 +151,7 @@ def updateProfile():
             user_details.append(Project_Name_3)
             user_details.append(Project_Details_3)
             updatemyprofile = Businesslayer_UpdateMyProfile.Businesslayer_UpdateMyProfile()
-            msg = updatemyprofile.updateMyProfileMethod_BSL(email,firstName,lastName,address1,address2,zipcode,city,state,country,phone,user_details)
+            msg = updatemyprofile.updateMyProfileMethod_BSL(email,firstName,lastName,address1,address2,zipcode,city,state,country,phone,user_details,myUser.userType,myUser.planType)
             return redirect(url_for('editProfile',msg=msg))
     except Exception as e:
         excep_msg = "Error in view update profile"
@@ -246,6 +246,20 @@ def register():
             userType = request.form['userOptions']
             planType = request.form['planOptions']
             user_details = []
+            myUser.email = email
+            myUser.password = password
+            myUser.firstName = firstName
+            myUser.lastName = lastName
+            myUser.address1 = address1
+            myUser.address2 = address2
+            myUser.zipcode = zipcode
+            myUser.city = city
+            myUser.state = state
+            myUser.country = country
+            myUser.phone = phone
+            myUser.userType = userType
+            myUser.planType = planType
+            myUser.user_details = user_details
             firstNameValidate = Businesslayer_Validator_FirstName_SpaceCheck.Businesslayer_FirstName_SpaceCheck()
             firstNameValidateFormat = firstNameValidate.Businesslayer_FirstName_SpaceCheck_BSL(firstName)
             if (firstNameValidateFormat != firstName):
@@ -265,9 +279,9 @@ def register():
                 profileData = fetchuserdata.getProfileData_BSL(email)
                 if(not profileData):
                     insertuser = Businesslayer_InsertUser.Businesslayer_InsertUser()
-                    insertuser = Businesslayer_InsertUser.Businesslayer_InsertUser()
-                    myuser = User(email,password,firstName,lastName,address1,address2,zipcode,city,state,country,phone,userType,planType,user_details)
-                    msg = insertuser.insertNewUser_BSL(myuser)
+                    updateMyobject = Businesslayer_UpdateMyobject.Businesslayer_UpdateMyobject()
+                    updateMyobject.updateMyObjectBSL(email,firstName,lastName,address1,address2,zipcode,city,state,country,phone,user_details,userType,planType)
+                    msg = insertuser.insertNewUser_BSL(myUser)
                     return render_template("home.html")
                 else:
                     return render_template("register.html", error="Email Id already exists")
