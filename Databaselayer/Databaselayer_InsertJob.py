@@ -10,11 +10,11 @@ from extensions_logging import logmyerror
 
 
 class Databaselayer_InsertJob(IInsertJobDetails.IInsertJobDetails):
-    def insertJob_DBL(Self,jobId,companyName,title,manager,location,jobDetails):
+    def insertJob_DBL(Self,jobId,companyName,title,manager,location,jobDetails,emailid):
         try:
             conn = mysql.connect()
             cur = conn.cursor()
-            cur.callproc('spInsertJobDetails',[jobId,companyName,title,manager,location,jobDetails])
+            cur.callproc('spInsertJobDetails',[jobId,companyName,title,manager,location,jobDetails,emailid])
             conn.commit()
             msg = "Successfully Added"
         except Exception as e:
