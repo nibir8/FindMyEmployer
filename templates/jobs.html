@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<script>
+		console.log({{noOfJobs}});
 		$(document).ready(function(){
 			userType = "{{userType}}";
 		    if(userType === "employer")
@@ -155,19 +156,22 @@
 	<td>{{jobData[i][4]}}</td>
     <td>{{jobData[i][5]}}</td>
     <td>{{jobData[i][6]}}</td>
-	<td><input type="button" value="Apply" class="btn-primary"</td>
+	<td><form id="applicationSubmit" action="/addJobApplication" method="POST"><button type="submit" class="btn-primary">Apply</button></form></td>
   </tr>
 {% endfor %}
 </table>
-		{% if (noOfJobs ==0) %}
 		</div>
+
+		{% if (noOfJobs == 0) %}
             <div style="text-align:center;">
 			    <h5 style="color:red;">No Jobs Posted Yet!</h5>
             </div>
-        {% endif %}
+        {% endif %}	
 		
 </div>
-		  
+		<div style="text-align:center;">
+			    <h5 style="color:red;">{{application_msg}}</h5>
+            </div>  
 		
     </body>
 </html>

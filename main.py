@@ -345,8 +345,34 @@ def addJobs():
             return render_template("jobs.html",noOfJobs=noOfJobs,jobData=jobData,userType=userType)
         else:
             return render_template("jobs.html", jobData=jobData, noOfJobs=noOfJobs,userType=userType)
+        if request.method == 'POST':
+            email = session['email']
+            insertJobApplication = Businesslayer_InsertJobApplication.Businesslayer_InsertJobApplication()
+            insertJobApplicationData = insertJobApplication.insertJobApplication_BSL(email)
+            print insertJobApplicationData
+            return render_template("jobs.html", application_msg = "")
     except Exception as e:
         excep_msg = "Error in view jobs"
+        level = logging.getLogger().getEffectiveLevel()
+        logmyerror.loadMyExceptionInDb(level,excep_msg,e)
+        logging.info(excep_msg, exc_info=True)
+		
+@app.route("/addJobApplication", methods = ['GET', 'POST'])
+def addJobApplication():
+    try:
+        if request.method == 'POST':
+            email = session['email']
+            getUserType = Businesslayer_GetUserType.Businesslayer_GetUserType()
+            getUserTypeData = getUserType.getUserType_BSL(session['email'])
+            fetchjobdata = Businesslayer_FetchJobData.Businesslayer_FetchJobData()
+            jobData = fetchjobdata.getJobData_BSL()
+            insertJobApplication = Businesslayer_InsertJobApplication.Businesslayer_InsertJobApplication()
+            insertJobApplicationData = insertJobApplication.insertJobApplication_BSL(email)
+            noOfJobs = len(jobData)
+            print insertJobApplicationData
+            return render_template("jobs.html", application_msg = insertJobApplicationData,userType=getUserTypeData,jobData=jobData,noOfJobs=noOfJobs)
+    except Exception as e:
+        excep_msg = "Error in view job application"
         level = logging.getLogger().getEffectiveLevel()
         logmyerror.loadMyExceptionInDb(level,excep_msg,e)
         logging.info(excep_msg, exc_info=True)
