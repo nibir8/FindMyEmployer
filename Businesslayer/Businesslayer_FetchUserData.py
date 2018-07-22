@@ -1,8 +1,7 @@
 import os.path
 import logging
-
+from Businesslayer_RulesEngine import Businesslayer_RulesEngine
 import sys
-from Businesslayer_UpdateMyobject import Businesslayer_UpdateMyobject
 sys.path.append(os.path.abspath(os.path.join('0','../Databaselayer')))
 from Databaselayer_FetchUserData import Databaselayer_FetchUserData
 
@@ -14,11 +13,11 @@ class Businesslayer_FetchUserData:
         try:
             fetchuserdata = Databaselayer_FetchUserData()
             profileData = fetchuserdata.getProfileData_DBL(myemail)
-            updateMyobject = Businesslayer_UpdateMyobject()
+            runRulesEngine = Businesslayer_RulesEngine()
             profileData_list = profileData
             profileData_list = list(profileData_list)
             user_details_list = profileData_list[11:33]
-            updateMyobject.updateMyObjectBSL(profileData[1],profileData[2],profileData[3],profileData[4],profileData[5],profileData[6],profileData[7],profileData[8],profileData[9],profileData[10],user_details_list,profileData[34],profileData[35])
+            runRulesEngine.rulesEngine_BSL(profileData[1],profileData[2],profileData[3],profileData[4],profileData[5],profileData[6],profileData[7],profileData[8],profileData[9],profileData[10],user_details_list,profileData[34],profileData[35])
             return profileData
         except Exception as e:
             excep_msg = "Error occured in method getProfileData_BSL method"

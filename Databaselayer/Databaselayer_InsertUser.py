@@ -11,13 +11,13 @@ from User import User
 
 
 class Databaselayer_InsertUser(IInsertnewUser.IInsertnewUser):
-    def insertNewUser_DBL(self,myuser):
+    def insertNewUser_DBL(self,email,password,firstName,lastName,address1,address2,zipcode,city,state,country,phone,user_details_list,typeOfUser,typeOfPlan):
         try:
             msg=""
-            myuser.password = hashlib.md5(myuser.password.encode()).hexdigest()
+            password = hashlib.md5(password.encode()).hexdigest()
             conn = mysql.connect()
             cur = conn.cursor()
-            cur.callproc('spCreateUser',[myuser.password,myuser.email,myuser.firstName,myuser.lastName,myuser.address1,myuser.address2,myuser.zipcode,myuser.city,myuser.state,myuser.country,myuser.phone,myuser.userType,myuser.planType])
+            cur.callproc('spCreateUser',[password,email,firstName,lastName,address1,address2,zipcode,city,state,country,phone,typeOfUser,typeOfPlan])
             conn.commit()
             msg = "Registered Successfully"
         except Exception as e:
