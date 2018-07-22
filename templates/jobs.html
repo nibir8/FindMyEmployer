@@ -17,7 +17,12 @@
 				document.getElementById('viewJobsBtn').style.display = "block";
 			}
 			$("#viewJobsBtn").click(function(){
-				document.getElementById('jobsList').style.display = "block";
+			var x = document.getElementById("jobsList");
+			if (x.style.display === "none") {
+			x.style.display = "block";
+			} else {
+			x.style.display = "none";
+			}
 			});
 		});
 		
@@ -150,6 +155,7 @@
 	<td>{{jobData[i][4]}}</td>
     <td>{{jobData[i][5]}}</td>
     <td>{{jobData[i][6]}}</td>
+	<td><input type="button" value="Apply" class="btn-primary"</td>
   </tr>
 {% endfor %}
 </table>
