@@ -13,9 +13,13 @@ class Businesslayer_CheckIfUserValid:
         try:
             checkifuseremailisvalid = Databaselayer_CheckIfUserValid()
             value = checkifuseremailisvalid.isValid_DBL(email, password)
-            return value
+            if value == False:
+                error = 'Invalid UserId / Password'
+                return error
+            else:
+                return value
         except Exception as e:
             excep_msg = "Error occured in method isValid_BSL method"
             level = logging.getLogger().getEffectiveLevel()
             logmyerror.loadMyExceptionInDb(level,excep_msg,e)
-            logging.info(msg, exc_info=True)
+            logging.info(excep_msg, exc_info=True)

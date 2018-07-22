@@ -40,7 +40,9 @@ CREATE PROCEDURE spGetCompleteUserDetails
  project_Name_2 ,
  project_Details_2 ,
  project_Name_3 ,
- project_Details_3
+ project_Details_3,
+ typeofuser,
+ typeofplan
   FROM tbl_users us
   inner join  tbl_user_details ud on us.userId= ud.userId
   where email=myemail;

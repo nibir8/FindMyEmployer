@@ -14,6 +14,7 @@ class Databaselayer_UpdateMyProfile(IProfileUpdate.IProfileUpdate):
             msg=""
             conn = mysql.connect()
             cur = conn.cursor()
+            logging.info("Creating a new database connection")
             cur.callproc('spUpdateUser',[email,firstName,lastName,address1,address2,city,zipcode,state,country,phone,
             user_details_list[0],user_details_list[1],user_details_list[2],user_details_list[3],
             user_details_list[4],user_details_list[5],user_details_list[6],
@@ -22,6 +23,7 @@ class Databaselayer_UpdateMyProfile(IProfileUpdate.IProfileUpdate):
             user_details_list[15],user_details_list[16],user_details_list[17],user_details_list[18],
             user_details_list[19],user_details_list[20],user_details_list[21],user_details_list[22]])
             conn.commit()
+            logging.info("Changes updated in the database")
             msg = "Saved Successfully"
         except Exception as e:
             conn.rollback()
@@ -29,5 +31,6 @@ class Databaselayer_UpdateMyProfile(IProfileUpdate.IProfileUpdate):
             level = logging.getLogger().getEffectiveLevel()
             logmyerror.loadMyExceptionInDb(level,excep_msg,e)
             logging.info(excep_msg, exc_info=True)
-            conn.close()
+        conn.close()
+        logging.info("Closing database connection")
         return msg
