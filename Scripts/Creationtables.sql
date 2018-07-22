@@ -32,7 +32,8 @@ companyName varchar(50),
 title varchar(50),
 manager varchar(50),
 location varchar(50),
-jobDetails varchar(50)
+jobDetails varchar(50),
+emailid varchar(50)
 );
 
 

@@ -22,7 +22,9 @@ def root():
             firstName = ''
             return render_template('home.html',  loggedIn=loggedIn, firstName=firstName)
         else:
-            loggedIn = True
+            fetchuserdata = Businesslayer_FetchUserData.Businesslayer_FetchUserData()
+            profileData = fetchuserdata.getProfileData_BSL(session['email'])
+
             loginclassdetails = Businesslayer_LoginClass.Businesslayer_LoginClass()
             loggedIn, firstName, typeOfUser = loginclassdetails.getLoginDetails_BSL(session['email'])
             fetchuserstatus = Businesslayer_GetStatus.Businesslayer_GetStatus()
@@ -43,6 +45,8 @@ def profileHome():
             loggedIn = True
             loginclassdetails = Businesslayer_LoginClass.Businesslayer_LoginClass()
             loggedIn, firstName = loginclassdetails.getLoginDetails_BSL(session['email'])
+            fetchuserdata = Businesslayer_FetchUserData.Businesslayer_FetchUserData()
+            profileData = fetchuserdata.getProfileData_BSL(session['email'])
             fetchuserstatus = Businesslayer_GetStatus.Businesslayer_GetStatus()
             userStatus = fetchuserstatus.getUserStatus_BSL()
             return render_template("Profile2.html",loggedIn=loggedIn, firstName=firstName,userStatus=userStatus )
@@ -59,6 +63,7 @@ def editProfile():
             return redirect(url_for('root'))
         loginclassdetails = Businesslayer_LoginClass.Businesslayer_LoginClass()
         loggedIn, firstName, typeOfUser = loginclassdetails.getLoginDetails_BSL(session['email'])
+
         fetchuserdata = Businesslayer_FetchUserData.Businesslayer_FetchUserData()
         profileData = fetchuserdata.getProfileData_BSL(session['email'])
         return render_template("editProfile.html", profileData=profileData, loggedIn=loggedIn, firstName=firstName )
@@ -264,9 +269,9 @@ def register():
                 fetchuserdata = Businesslayer_FetchUserData.Businesslayer_FetchUserData()
                 profileData = fetchuserdata.getProfileData_BSL(email)
                 if(not profileData):
+                    updateMyobject = Businesslayer_UpdateMyobject.Businesslayer_UpdateMyobject()
+                    updateMyobject.updateMyObjectBSL(email,firstName,lastName,address1,address2,zipcode,city,state,country,phone,userType,planType,user_details)
                     insertuser = Businesslayer_InsertUser.Businesslayer_InsertUser()
-                    runRulesEngine = Businesslayer_RulesEngine.Businesslayer_RulesEngine()
-                    runRulesEngine.rulesEngine_BSL(email,firstName,lastName,address1,address2,zipcode,city,state,country,phone,user_details,userType,planType)
                     msg = insertuser.insertNewUser_BSL(email,password,firstName,lastName,address1,address2,zipcode,city,state,country,phone,user_details,userType,planType)
                     return render_template("home.html")
                 else:
@@ -283,7 +288,6 @@ def register():
 def jobs():
     try:
         if request.method == 'POST':
-            #Parse form data
             jobId = request.form['jobId']
             companyName = request.form['companyName']
             title = request.form['title']
@@ -291,10 +295,14 @@ def jobs():
             location = request.form['location']
             jobDetails = request.form['jobDetails']
             insertjob = Businesslayer_InsertJob.Businesslayer_InsertJob()
-            msg = insertjob.insertJob_BSL(jobId,companyName,title,manager,location,jobDetails)
+            msg = insertjob.insertJob_BSL(jobId,companyName,title,manager,location,jobDetails,session['email'])
             fetchjobdata = Businesslayer_FetchJobData.Businesslayer_FetchJobData()
             jobData = fetchjobdata.getJobData_BSL()
             noOfJobs = len(jobData)
+            relesEngine = Businesslayer_RulesEngine.Businesslayer_RulesEngine()
+            allow = relesEngine.rulesEngine_Employer_BSL(myUser.email,myUser.planType)
+            print "Look result2"
+            print allow
             return render_template("jobs.html", jobData=jobData, noOfJobs=noOfJobs, msg=msg, jobId="Job with job id:" + jobId)
     except Exception as e:
         excep_msg = "Error in view jobs"
@@ -338,6 +346,10 @@ def addJobs():
             userType = 'employee'
         else:
             userType = 'employer'
+            relesEngine = Businesslayer_RulesEngine.Businesslayer_RulesEngine()
+            allow = relesEngine.rulesEngine_Employer_BSL(myUser.email,myUser.planType)
+            print "Look result"
+            print allow
         fetchjobdata = Businesslayer_FetchJobData.Businesslayer_FetchJobData()
         jobData = fetchjobdata.getJobData_BSL()
         noOfJobs = len(jobData)
@@ -356,7 +368,7 @@ def addJobs():
         level = logging.getLogger().getEffectiveLevel()
         logmyerror.loadMyExceptionInDb(level,excep_msg,e)
         logging.info(excep_msg, exc_info=True)
-		
+
 @app.route("/addJobApplication", methods = ['GET', 'POST'])
 def addJobApplication():
     try:
@@ -369,7 +381,10 @@ def addJobApplication():
             insertJobApplication = Businesslayer_InsertJobApplication.Businesslayer_InsertJobApplication()
             insertJobApplicationData = insertJobApplication.insertJobApplication_BSL(email)
             noOfJobs = len(jobData)
-            print insertJobApplicationData
+            relesEngine = Businesslayer_RulesEngine.Businesslayer_RulesEngine()
+            allow = relesEngine.rulesEngine_Employee_BSL(myUser.email,myUser.planType)
+            print "Rohit"
+            print allow
             return render_template("jobs.html", application_msg = insertJobApplicationData,userType=getUserTypeData,jobData=jobData,noOfJobs=noOfJobs)
     except Exception as e:
         excep_msg = "Error in view job application"

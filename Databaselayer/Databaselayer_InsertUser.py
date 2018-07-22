@@ -6,8 +6,6 @@ import sys
 sys.path.append(os.path.abspath(os.path.join('0', '../extensions')))
 from extensions import mysql
 from extensions_logging import logmyerror
-sys.path.append(os.path.abspath(os.path.join('0', '../models')))
-from User import User
 
 
 class Databaselayer_InsertUser(IInsertnewUser.IInsertnewUser):

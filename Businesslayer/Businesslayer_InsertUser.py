@@ -8,9 +8,6 @@ from Databaselayer_InsertUser import Databaselayer_InsertUser
 sys.path.append(os.path.abspath(os.path.join('0', '../extensions')))
 from extensions_logging import logmyerror
 
-sys.path.append(os.path.abspath(os.path.join('0', '../models')))
-from User import User
-
 class Businesslayer_InsertUser:
     def insertNewUser_BSL(self,email,password,firstName,lastName,address1,address2,zipcode,city,state,country,phone,user_details_list,typeOfUser,typeOfPlan):
         try:

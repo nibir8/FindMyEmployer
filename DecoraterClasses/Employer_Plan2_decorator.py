@@ -1,11 +1,12 @@
-from EmployeeDecorator import EmployeeDecorator
+from EmployerDecorator import EmployerDecorator
 
-class Employee_Plan1_decorator(EmployeeDecorator):
+
+class Employer_Plan2_decorator(EmployerDecorator):
   def __init__(self, user):
-      super(Employee_Plan1_decorator, self).__init__(user)
+      super(Employer_Plan2_decorator, self).__init__(user)
 
   def plan_rules(self,givenCount):
-      print "This is for plan 1 for Employee "
+      print "This is for plan 1 for EmployerDecorator "
       plan1Count= 5
       allow = False
       if givenCount<=plan1Count:

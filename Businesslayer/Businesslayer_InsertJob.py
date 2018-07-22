@@ -8,10 +8,10 @@ sys.path.append(os.path.abspath(os.path.join('0', '../extensions')))
 from extensions_logging import logmyerror
 
 class Businesslayer_InsertJob:
-    def insertJob_BSL(self,jobId,companyName,title,manager,location,jobDetails):
+    def insertJob_BSL(self,jobId,companyName,title,manager,location,jobDetails,email):
         try:
             insertjob = Databaselayer_InsertJob()
-            msg = insertjob.insertJob_DBL(jobId,companyName,title,manager,location,jobDetails)
+            msg = insertjob.insertJob_DBL(jobId,companyName,title,manager,location,jobDetails,email)
         except Exception as e:
             excep_msg = "Error occured in method insertJob_BSL method"
             level = logging.getLogger().getEffectiveLevel()
