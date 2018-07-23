@@ -23,7 +23,6 @@ class Businesslayer_RulesEngine:
         try:
             fetchApplicationCount = Databaselayer_FetchApplicationCount()
             applicationcount = fetchApplicationCount.getApplicationCount_DBL(email)
-            print applicationcount
             concreteComponent =  NormalEmployee()
             concrete_decorator_planA =  Employee_Plan1_decorator(concreteComponent)
             concrete_decorator_planB =  Employer_Plan2_decorator(concrete_decorator_planA)
@@ -41,9 +40,6 @@ class Businesslayer_RulesEngine:
 
     def rulesEngine_Employer_BSL(self,email,typeOfPlan):
         try:
-            print "This"
-            print email
-            print typeOfPlan
             fetchJobsCount = Databaselayer_FetchJobsCount()
             jobsCount  = fetchJobsCount.getJobsCount_DBL(email)
             concreteComponent = NormalEmployer()

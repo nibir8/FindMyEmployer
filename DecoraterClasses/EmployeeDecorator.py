@@ -5,4 +5,4 @@ class EmployeeDecorator(Employee):
         self.employee = employee
 
     def plan_rules(self):
-        print "This is Employee class"
+        return "This is Employee class"

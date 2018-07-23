@@ -5,7 +5,6 @@ class Employee_Plan1_decorator(EmployeeDecorator):
       super(Employee_Plan1_decorator, self).__init__(employee)
 
   def plan_rules(self,givenCount):
-      print "This is for plan 1 for Employee "
       plan1Count= 5
       allow = False
       if givenCount<=plan1Count:
