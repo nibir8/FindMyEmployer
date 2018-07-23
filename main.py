@@ -197,10 +197,11 @@ def login():
             email = request.form['email']
             password = request.form['password']
             value = ""
-            checkEmail = Businesslayer_Validator_Email_NullCheck.Businesslayer_Email_NullCheck()
-            checkEmailNull = checkEmail.Businesslayer_Email_NullCheck_BSL(email)
-            checkPass = Businesslayer_Validator_Pass_NullCheck.Businesslayer_Pass_NullCheck()
-            checkPassNull = checkPass.Businesslayer_Pass_NullCheck_BSL(password)
+            factoryObject = Businesslayer_FactoryPattern.Businesslayer_FactoryPattern()
+            factoryObject_Validator_emailNullCheck = factoryObject.factoryPattern_BSL('Email NullCheck')
+            checkEmailNull = factoryObject_Validator_emailNullCheck.formValidate_BSL(email)
+            factoryObject_Validator_passNullCheck = factoryObject.factoryPattern_BSL('Password NullCheck')
+            checkPassNull = factoryObject_Validator_passNullCheck.formValidate_BSL(password)
             if ((not checkEmailNull)and(not checkPassNull)):
                 checkifuservalid = Businesslayer_CheckIfUserValid.Businesslayer_CheckIfUserValid()
                 value = checkifuservalid.isValid_BSL(email, password)
@@ -251,21 +252,22 @@ def register():
             userType = request.form['userOptions']
             planType = request.form['planOptions']
             user_details = []
-            firstNameValidate = Businesslayer_Validator_FirstName_SpaceCheck.Businesslayer_FirstName_SpaceCheck()
-            firstNameValidateFormat = firstNameValidate.Businesslayer_FirstName_SpaceCheck_BSL(firstName)
-            if (firstNameValidateFormat != firstName):
-                return render_template("register.html", error=firstNameValidateFormat)
-            passwordSpaceCheck = Businesslayer_Validator_Password_SpaceCheck.Businesslayer_Password_SpaceCheck()
-            passwordSpaceCheckValidate = passwordSpaceCheck.Businesslayer_Password_SpaceCheck_BSL(password)
-            if (passwordSpaceCheckValidate != password):
-                return render_template("register.html", error=passwordSpaceCheckValidate)
-            passwordEquate = Businesslayer_Validator_Password_Equate.Businesslayer_Password_Equate()
-            passwordEquateCheck = passwordEquate.Businesslayer_Password_Equate_BSL(password,cpassword)
-            if (passwordEquateCheck != password):
-                return render_template("register.html", error=passwordEquateCheck)
-            emailValidate = Businesslayer_Validator_Email_Validate.Businesslayer_Email_Validate()
-            emailValidateFormat = emailValidate.Businesslayer_Email_Validate_BSL(email)
-            if (emailValidateFormat == email):
+            factoryObject = Businesslayer_FactoryPattern.Businesslayer_FactoryPattern()
+            factoryObject_Validator_firstNameSpaceCheck = factoryObject.factoryPattern_BSL('FirstName SpaceCheck')
+            checkfirstNameSpaceCheck = factoryObject_Validator_firstNameSpaceCheck.formValidate_BSL(firstName)
+            if (checkfirstNameSpaceCheck != firstName):
+                return render_template("register.html", error=checkfirstNameSpaceCheck)
+            factoryObject_Validator_passwordSpaceCheck = factoryObject.factoryPattern_BSL('Password SpaceCheck') 
+            checkPasswordSpaceCheck = factoryObject_Validator_passwordSpaceCheck.formValidate_BSL(password)
+            if (checkPasswordSpaceCheck != password):
+                return render_template("register.html", error=checkPasswordSpaceCheck)
+            factoryObject_Validator_passwordEquateCheck = factoryObject.factoryPattern_BSL('Password Equate') 
+            checkPasswordEquate = factoryObject_Validator_passwordEquateCheck.formValidate_BSL(password,cpassword)
+            if (checkPasswordEquate != password):
+                return render_template("register.html", error=checkPasswordEquate)
+            factoryObject_Validator_emailValidateCheck = factoryObject.factoryPattern_BSL('Email Validate') 
+            checkEmailValidate = factoryObject_Validator_emailValidateCheck.formValidate_BSL(email)
+            if (checkEmailValidate == email):
                 fetchuserdata = Businesslayer_FetchUserData.Businesslayer_FetchUserData()
                 profileData = fetchuserdata.getProfileData_BSL(email)
                 if(not profileData):
