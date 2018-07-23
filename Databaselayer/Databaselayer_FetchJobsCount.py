@@ -14,7 +14,6 @@ class Databaselayer_FetchJobsCount(IFetchJobCount.IFetchJobCount):
             cur = conn.cursor()
             cur.callproc('spGetAllJobs',[email])
             JobsCount = len(cur.fetchall())
-            print JobsCount
         except Exception as e:
             conn.rollback()
             excep_msg = "Error occured in getJobsCount_DBL method"

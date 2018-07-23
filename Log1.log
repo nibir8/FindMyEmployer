@@ -747,3 +747,147 @@ Traceback (most recent call last):
 UnboundLocalError: local variable 'msg' referenced before assignment
 2018-07-12 14:23:18,237 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:23:18] "POST /jobs HTTP/1.1" 200 -
 2018-07-12 14:23:20,874 INFO werkzeug 127.0.0.1 - - [12/Jul/2018 14:23:20] "GET /checkUserErrorLog HTTP/1.1" 200 -
+2018-07-23 17:25:04,286 INFO werkzeug  * Restarting with stat
+2018-07-23 17:25:05,543 WARNING werkzeug  * Debugger is active!
+2018-07-23 17:25:05,563 INFO werkzeug  * Debugger PIN: 208-925-374
+2018-07-23 17:25:05,584 INFO werkzeug  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2018-07-23 17:25:09,917 INFO werkzeug 127.0.0.1 - - [23/Jul/2018 17:25:09] "GET / HTTP/1.1" 200 -
+2018-07-23 17:25:10,900 INFO werkzeug 127.0.0.1 - - [23/Jul/2018 17:25:10] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-23 17:29:08,901 INFO werkzeug  * Detected change in 'C:\\Users\\lenovo pc\\Desktop\\qagroup15-findmyemployer\\Businesslayer\\Businesslayer_FetchUserData.py', reloading
+2018-07-23 17:29:08,994 INFO werkzeug  * Restarting with stat
+2018-07-23 17:29:09,786 WARNING werkzeug  * Debugger is active!
+2018-07-23 17:29:09,803 INFO werkzeug  * Debugger PIN: 208-925-374
+2018-07-23 17:29:09,822 INFO werkzeug  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2018-07-23 17:32:15,013 INFO werkzeug  * Detected change in 'C:\\Users\\lenovo pc\\Desktop\\qagroup15-findmyemployer\\module_settings.py', reloading
+2018-07-23 17:32:15,102 INFO werkzeug  * Restarting with stat
+2018-07-23 17:32:16,066 WARNING werkzeug  * Debugger is active!
+2018-07-23 17:32:16,091 INFO werkzeug  * Debugger PIN: 208-925-374
+2018-07-23 17:32:16,112 INFO werkzeug  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2018-07-23 17:35:04,960 INFO werkzeug  * Detected change in 'C:\\Users\\lenovo pc\\Desktop\\qagroup15-findmyemployer\\module_settings.py', reloading
+2018-07-23 17:35:05,009 INFO werkzeug  * Restarting with stat
+2018-07-23 17:35:05,951 WARNING werkzeug  * Debugger is active!
+2018-07-23 17:35:05,971 INFO werkzeug  * Debugger PIN: 208-925-374
+2018-07-23 17:35:05,993 INFO werkzeug  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2018-07-23 17:42:06,476 INFO werkzeug  * Detected change in 'C:\\Users\\lenovo pc\\Desktop\\qagroup15-findmyemployer\\module_settings.py', reloading
+2018-07-23 17:42:06,558 INFO werkzeug  * Restarting with stat
+2018-07-23 17:42:07,500 WARNING werkzeug  * Debugger is active!
+2018-07-23 17:42:07,516 INFO werkzeug  * Debugger PIN: 208-925-374
+2018-07-23 17:42:07,536 INFO werkzeug  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2018-07-23 17:42:17,247 INFO werkzeug  * Detected change in 'C:\\Users\\lenovo pc\\Desktop\\qagroup15-findmyemployer\\module_settings.py', reloading
+2018-07-23 17:42:17,282 INFO werkzeug  * Restarting with stat
+2018-07-23 17:42:18,164 WARNING werkzeug  * Debugger is active!
+2018-07-23 17:42:18,180 INFO werkzeug  * Debugger PIN: 208-925-374
+2018-07-23 17:42:18,203 INFO werkzeug  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2018-07-23 17:42:24,923 INFO werkzeug  * Detected change in 'C:\\Users\\lenovo pc\\Desktop\\qagroup15-findmyemployer\\module_settings.py', reloading
+2018-07-23 17:42:24,973 INFO werkzeug  * Restarting with stat
+2018-07-23 17:42:25,842 WARNING werkzeug  * Debugger is active!
+2018-07-23 17:42:25,864 INFO werkzeug  * Debugger PIN: 208-925-374
+2018-07-23 17:42:25,882 INFO werkzeug  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2018-07-23 17:43:29,709 INFO werkzeug  * Detected change in 'C:\\Users\\lenovo pc\\Desktop\\qagroup15-findmyemployer\\module_settings.py', reloading
+2018-07-23 17:43:29,759 INFO werkzeug  * Restarting with stat
+2018-07-23 17:43:30,727 WARNING werkzeug  * Debugger is active!
+2018-07-23 17:43:30,744 INFO werkzeug  * Debugger PIN: 208-925-374
+2018-07-23 17:43:30,766 INFO werkzeug  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2018-07-23 17:43:38,582 INFO werkzeug  * Detected change in 'C:\\Users\\lenovo pc\\Desktop\\qagroup15-findmyemployer\\module_settings.py', reloading
+2018-07-23 17:43:38,641 INFO werkzeug  * Restarting with stat
+2018-07-23 17:43:39,769 WARNING werkzeug  * Debugger is active!
+2018-07-23 17:43:39,792 INFO werkzeug  * Debugger PIN: 208-925-374
+2018-07-23 17:43:39,812 INFO werkzeug  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2018-07-23 17:43:46,460 INFO werkzeug  * Detected change in 'C:\\Users\\lenovo pc\\Desktop\\qagroup15-findmyemployer\\module_settings.py', reloading
+2018-07-23 17:43:46,516 INFO werkzeug  * Restarting with stat
+2018-07-23 17:43:47,437 WARNING werkzeug  * Debugger is active!
+2018-07-23 17:43:47,459 INFO werkzeug  * Debugger PIN: 208-925-374
+2018-07-23 17:43:47,477 INFO werkzeug  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2018-07-23 17:44:00,486 INFO werkzeug  * Restarting with stat
+2018-07-23 17:44:01,176 WARNING werkzeug  * Debugger is active!
+2018-07-23 17:44:01,188 INFO werkzeug  * Debugger PIN: 208-925-374
+2018-07-23 17:44:01,219 INFO werkzeug  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2018-07-23 17:44:05,145 INFO werkzeug 127.0.0.1 - - [23/Jul/2018 17:44:05] "GET / HTTP/1.1" 200 -
+2018-07-23 17:44:08,282 INFO werkzeug 127.0.0.1 - - [23/Jul/2018 17:44:08] "POST /login HTTP/1.1" 200 -
+2018-07-23 17:44:13,733 INFO werkzeug 127.0.0.1 - - [23/Jul/2018 17:44:13] "POST /login HTTP/1.1" 302 -
+2018-07-23 17:44:14,193 INFO werkzeug 127.0.0.1 - - [23/Jul/2018 17:44:14] "GET / HTTP/1.1" 200 -
+2018-07-23 17:44:14,569 INFO werkzeug 127.0.0.1 - - [23/Jul/2018 17:44:14] "GET /static/images/default/img1.png HTTP/1.1" 200 -
+2018-07-23 17:44:16,375 INFO werkzeug 127.0.0.1 - - [23/Jul/2018 17:44:16] "GET /account/profile/edit HTTP/1.1" 200 -
+2018-07-23 17:44:18,460 INFO werkzeug 127.0.0.1 - - [23/Jul/2018 17:44:18] "GET /account/profile/changePassword HTTP/1.1" 200 -
+2018-07-23 17:44:18,851 INFO werkzeug 127.0.0.1 - - [23/Jul/2018 17:44:18] "GET /static/js/changePassword.js HTTP/1.1" 200 -
+2018-07-23 17:44:20,391 INFO werkzeug 127.0.0.1 - - [23/Jul/2018 17:44:20] "GET /addJobs HTTP/1.1" 200 -
+2018-07-23 17:44:22,121 INFO werkzeug 127.0.0.1 - - [23/Jul/2018 17:44:22] "GET /messageForm HTTP/1.1" 200 -
+2018-07-23 17:44:26,796 INFO werkzeug 127.0.0.1 - - [23/Jul/2018 17:44:26] "GET / HTTP/1.1" 200 -
+2018-07-23 17:52:02,904 INFO werkzeug  * Restarting with stat
+2018-07-23 17:52:03,509 WARNING werkzeug  * Debugger is active!
+2018-07-23 17:52:03,523 INFO werkzeug  * Debugger PIN: 208-925-374
+2018-07-23 17:52:03,542 INFO werkzeug  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2018-07-23 17:52:42,913 INFO werkzeug  * Detected change in 'C:\\Users\\lenovo pc\\Desktop\\qagroup15-findmyemployer\\Businesslayer\\Businesslayer_UpdateMyProfile.py', reloading
+2018-07-23 17:52:42,960 INFO werkzeug  * Restarting with stat
+2018-07-23 17:52:43,770 WARNING werkzeug  * Debugger is active!
+2018-07-23 17:52:43,796 INFO werkzeug  * Debugger PIN: 208-925-374
+2018-07-23 17:52:43,829 INFO werkzeug  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2018-07-23 17:53:42,680 INFO werkzeug  * Detected change in 'C:\\Users\\lenovo pc\\Desktop\\qagroup15-findmyemployer\\Businesslayer\\Businesslayer_UpdateMyProfile.py', reloading
+2018-07-23 17:53:42,720 INFO werkzeug  * Restarting with stat
+2018-07-23 17:53:43,575 WARNING werkzeug  * Debugger is active!
+2018-07-23 17:53:43,592 INFO werkzeug  * Debugger PIN: 208-925-374
+2018-07-23 17:53:43,612 INFO werkzeug  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2018-07-23 17:54:51,765 INFO werkzeug  * Restarting with stat
+2018-07-23 17:54:52,371 WARNING werkzeug  * Debugger is active!
+2018-07-23 17:54:52,384 INFO werkzeug  * Debugger PIN: 208-925-374
+2018-07-23 17:54:52,401 INFO werkzeug  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2018-07-23 17:54:57,111 INFO werkzeug 127.0.0.1 - - [23/Jul/2018 17:54:57] "GET / HTTP/1.1" 200 -
+2018-07-23 17:55:00,335 INFO werkzeug 127.0.0.1 - - [23/Jul/2018 17:55:00] "GET /account/profile/edit HTTP/1.1" 200 -
+2018-07-23 17:55:10,967 INFO root Creating a new database connection
+2018-07-23 17:55:11,084 INFO root Changes updated in the database
+2018-07-23 17:55:11,085 INFO root Closing database connection
+2018-07-23 17:55:11,096 INFO werkzeug 127.0.0.1 - - [23/Jul/2018 17:55:11] "POST /updateProfile HTTP/1.1" 302 -
+2018-07-23 17:55:11,392 INFO werkzeug 127.0.0.1 - - [23/Jul/2018 17:55:11] "GET /account/profile/edit?msg=Saved+Successfully HTTP/1.1" 200 -
+2018-07-23 17:55:13,914 INFO werkzeug 127.0.0.1 - - [23/Jul/2018 17:55:13] "GET /messageForm HTTP/1.1" 200 -
+2018-07-23 17:56:37,789 INFO werkzeug  * Detected change in 'C:\\Users\\lenovo pc\\Desktop\\qagroup15-findmyemployer\\Businesslayer\\Businesslayer_RulesEngine.py', reloading
+2018-07-23 17:56:37,826 INFO werkzeug  * Restarting with stat
+2018-07-23 17:56:38,802 WARNING werkzeug  * Debugger is active!
+2018-07-23 17:56:38,819 INFO werkzeug  * Debugger PIN: 208-925-374
+2018-07-23 17:56:38,838 INFO werkzeug  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2018-07-23 18:04:02,387 INFO werkzeug  * Restarting with stat
+2018-07-23 18:04:03,158 WARNING werkzeug  * Debugger is active!
+2018-07-23 18:04:03,177 INFO werkzeug  * Debugger PIN: 208-925-374
+2018-07-23 18:04:03,197 INFO werkzeug  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2018-07-23 18:04:28,571 INFO werkzeug  * Detected change in 'C:\\Users\\lenovo pc\\Desktop\\qagroup15-findmyemployer\\DecoraterClasses\\Employee_Plan1_decorator.py', reloading
+2018-07-23 18:04:28,634 INFO werkzeug  * Restarting with stat
+2018-07-23 18:04:29,482 WARNING werkzeug  * Debugger is active!
+2018-07-23 18:04:29,500 INFO werkzeug  * Debugger PIN: 208-925-374
+2018-07-23 18:04:29,519 INFO werkzeug  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2018-07-23 18:04:37,375 INFO werkzeug  * Detected change in 'C:\\Users\\lenovo pc\\Desktop\\qagroup15-findmyemployer\\DecoraterClasses\\Employee_Plan2_decorator.py', reloading
+2018-07-23 18:04:37,401 INFO werkzeug  * Restarting with stat
+2018-07-23 18:04:38,276 WARNING werkzeug  * Debugger is active!
+2018-07-23 18:04:38,299 INFO werkzeug  * Debugger PIN: 208-925-374
+2018-07-23 18:04:38,329 INFO werkzeug  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2018-07-23 18:04:53,848 INFO werkzeug  * Detected change in 'C:\\Users\\lenovo pc\\Desktop\\qagroup15-findmyemployer\\DecoraterClasses\\EmployeeDecorator.py', reloading
+2018-07-23 18:04:53,900 INFO werkzeug  * Restarting with stat
+2018-07-23 18:04:54,973 WARNING werkzeug  * Debugger is active!
+2018-07-23 18:04:55,003 INFO werkzeug  * Debugger PIN: 208-925-374
+2018-07-23 18:04:55,033 INFO werkzeug  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2018-07-23 18:05:09,663 INFO werkzeug  * Detected change in 'C:\\Users\\lenovo pc\\Desktop\\qagroup15-findmyemployer\\DecoraterClasses\\Employer_Plan1_decorator.py', reloading
+2018-07-23 18:05:09,703 INFO werkzeug  * Restarting with stat
+2018-07-23 18:05:10,670 WARNING werkzeug  * Debugger is active!
+2018-07-23 18:05:10,697 INFO werkzeug  * Debugger PIN: 208-925-374
+2018-07-23 18:05:10,717 INFO werkzeug  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2018-07-23 18:05:18,486 INFO werkzeug  * Detected change in 'C:\\Users\\lenovo pc\\Desktop\\qagroup15-findmyemployer\\DecoraterClasses\\Employer_Plan2_decorator.py', reloading
+2018-07-23 18:05:18,542 INFO werkzeug  * Restarting with stat
+2018-07-23 18:05:19,575 WARNING werkzeug  * Debugger is active!
+2018-07-23 18:05:19,591 INFO werkzeug  * Debugger PIN: 208-925-374
+2018-07-23 18:05:19,611 INFO werkzeug  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2018-07-23 18:05:27,243 INFO werkzeug  * Detected change in 'C:\\Users\\lenovo pc\\Desktop\\qagroup15-findmyemployer\\DecoraterClasses\\EmployerDecorator.py', reloading
+2018-07-23 18:05:27,276 INFO werkzeug  * Restarting with stat
+2018-07-23 18:05:28,092 WARNING werkzeug  * Debugger is active!
+2018-07-23 18:05:28,111 INFO werkzeug  * Debugger PIN: 208-925-374
+2018-07-23 18:05:28,131 INFO werkzeug  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2018-07-23 18:05:50,298 INFO werkzeug  * Detected change in 'C:\\Users\\lenovo pc\\Desktop\\qagroup15-findmyemployer\\DecoraterClasses\\NormalEmployee.py', reloading
+2018-07-23 18:05:50,332 INFO werkzeug  * Restarting with stat
+2018-07-23 18:05:51,250 WARNING werkzeug  * Debugger is active!
+2018-07-23 18:05:51,269 INFO werkzeug  * Debugger PIN: 208-925-374
+2018-07-23 18:05:51,296 INFO werkzeug  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2018-07-23 18:11:58,486 INFO werkzeug  * Restarting with stat
+2018-07-23 18:11:59,236 WARNING werkzeug  * Debugger is active!
+2018-07-23 18:11:59,266 INFO werkzeug  * Debugger PIN: 208-925-374
+2018-07-23 18:11:59,292 INFO werkzeug  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2018-07-23 18:12:02,823 INFO werkzeug 127.0.0.1 - - [23/Jul/2018 18:12:02] "GET / HTTP/1.1" 200 -
+2018-07-23 18:12:03,783 INFO werkzeug 127.0.0.1 - - [23/Jul/2018 18:12:03] "GET /favicon.ico HTTP/1.1" 404 -
+2018-07-23 18:12:05,482 INFO werkzeug 127.0.0.1 - - [23/Jul/2018 18:12:05] "GET /logout HTTP/1.1" 302 -
+2018-07-23 18:12:05,492 INFO werkzeug 127.0.0.1 - - [23/Jul/2018 18:12:05] "GET / HTTP/1.1" 200 -

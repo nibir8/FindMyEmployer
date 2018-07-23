@@ -10,13 +10,10 @@ from extensions_logging import logmyerror
 class Databaselayer_FetchApplicationCount(IFetchApplicationDetails.IFetchApplicationDetails):
     def getApplicationCount_DBL(self,email):
         try:
-            print email
             conn = mysql.connect()
             cur = conn.cursor()
             cur.callproc('spGetUserApplications',[email])
             applicationCount = len(cur.fetchall())
-            print "Database layer"
-            print applicationCount
         except Exception as e:
             conn.rollback()
             excep_msg = "Error occured in getApplicationCount_DBL method"
