@@ -303,8 +303,6 @@ def jobs():
             noOfJobs = len(jobData)
             relesEngine = Businesslayer_RulesEngine.Businesslayer_RulesEngine()
             allow = relesEngine.rulesEngine_Employer_BSL(myUser.email,myUser.planType)
-            print "Look result2"
-            print allow
             return render_template("jobs.html", jobData=jobData, noOfJobs=noOfJobs, msg=msg, jobId="Job with job id:" + jobId)
     except Exception as e:
         excep_msg = "Error in view jobs"
@@ -350,8 +348,6 @@ def addJobs():
             userType = 'employer'
             relesEngine = Businesslayer_RulesEngine.Businesslayer_RulesEngine()
             allow = relesEngine.rulesEngine_Employer_BSL(myUser.email,myUser.planType)
-            print "Look result"
-            print allow
         fetchjobdata = Businesslayer_FetchJobData.Businesslayer_FetchJobData()
         jobData = fetchjobdata.getJobData_BSL()
         noOfJobs = len(jobData)
@@ -363,7 +359,6 @@ def addJobs():
             email = session['email']
             insertJobApplication = Businesslayer_InsertJobApplication.Businesslayer_InsertJobApplication()
             insertJobApplicationData = insertJobApplication.insertJobApplication_BSL(email)
-            print insertJobApplicationData
             return render_template("jobs.html", application_msg = "")
     except Exception as e:
         excep_msg = "Error in view jobs"
@@ -385,8 +380,6 @@ def addJobApplication():
             noOfJobs = len(jobData)
             relesEngine = Businesslayer_RulesEngine.Businesslayer_RulesEngine()
             allow = relesEngine.rulesEngine_Employee_BSL(myUser.email,myUser.planType)
-            print "Rohit"
-            print allow
             return render_template("jobs.html", application_msg = insertJobApplicationData,userType=getUserTypeData,jobData=jobData,noOfJobs=noOfJobs)
     except Exception as e:
         excep_msg = "Error in view job application"
