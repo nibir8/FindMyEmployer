@@ -31,6 +31,10 @@ from Businesslayer import Businesslayer_Validator_FirstName_SpaceCheck
 from Businesslayer import Businesslayer_Validator_Password_Equate
 from Businesslayer import Businesslayer_Validator_Password_SpaceCheck
 from Businesslayer import Businesslayer_RulesEngine
+from Businesslayer import Businesslayer_InsertJobApplication
+from Businesslayer import Businesslayer_UpdateMyobject
+from Businesslayer import Businesslayer_FactoryPattern
+
 from shutil import copyfile
 import sys,os
 sys.path.append(os.path.abspath(os.path.join('0','/Models')))
@@ -38,3 +42,4 @@ from User import User
 sys.path.append(os.path.abspath(os.path.join('0','/extensions')))
 from extensions import mysql
 from extensions_logging import logmyerror
+from extensionsUser import myUser

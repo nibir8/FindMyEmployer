@@ -26,12 +26,14 @@ typeofplan varchar(50)
 
 CREATE TABLE tbl_Jobs
 (
-jobId INTEGER PRIMARY KEY,
+postingId INTEGER PRIMARY KEY AUTO_INCREMENT,
+jobId INTEGER,
 companyName varchar(50),
 title varchar(50),
 manager varchar(50),
 location varchar(50),
-jobDetails varchar(50)
+jobDetails varchar(50),
+emailid varchar(50)
 );
 
 
@@ -75,4 +77,10 @@ about varchar(500),
  project_Name_3 varchar(50),
  project_Details_3 varchar(500),
 FOREIGN KEY (userId) REFERENCES tbl_users(userId)
+);
+
+CREATE TABLE tbl_JobsApplication
+(
+application_id  INTEGER PRIMARY KEY AUTO_INCREMENT,
+email varchar(50)
 );

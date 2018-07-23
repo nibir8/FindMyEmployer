@@ -1,8 +1,8 @@
-from User import User
+from Employee import Employee
 
-class EmployeeDecorator(User):
-    def __init__(self, user):
-        self.User = user
+class EmployeeDecorator(Employee):
+    def __init__(self, employee):
+        self.employee = employee
 
     def plan_rules(self):
         print "This is Employee class"

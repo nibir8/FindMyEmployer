@@ -22,7 +22,9 @@ def root():
             firstName = ''
             return render_template('home.html',  loggedIn=loggedIn, firstName=firstName)
         else:
-            loggedIn = True
+            fetchuserdata = Businesslayer_FetchUserData.Businesslayer_FetchUserData()
+            profileData = fetchuserdata.getProfileData_BSL(session['email'])
+
             loginclassdetails = Businesslayer_LoginClass.Businesslayer_LoginClass()
             loggedIn, firstName, typeOfUser = loginclassdetails.getLoginDetails_BSL(session['email'])
             fetchuserstatus = Businesslayer_GetStatus.Businesslayer_GetStatus()
@@ -43,6 +45,8 @@ def profileHome():
             loggedIn = True
             loginclassdetails = Businesslayer_LoginClass.Businesslayer_LoginClass()
             loggedIn, firstName = loginclassdetails.getLoginDetails_BSL(session['email'])
+            fetchuserdata = Businesslayer_FetchUserData.Businesslayer_FetchUserData()
+            profileData = fetchuserdata.getProfileData_BSL(session['email'])
             fetchuserstatus = Businesslayer_GetStatus.Businesslayer_GetStatus()
             userStatus = fetchuserstatus.getUserStatus_BSL()
             return render_template("Profile2.html",loggedIn=loggedIn, firstName=firstName,userStatus=userStatus )
@@ -59,6 +63,7 @@ def editProfile():
             return redirect(url_for('root'))
         loginclassdetails = Businesslayer_LoginClass.Businesslayer_LoginClass()
         loggedIn, firstName, typeOfUser = loginclassdetails.getLoginDetails_BSL(session['email'])
+
         fetchuserdata = Businesslayer_FetchUserData.Businesslayer_FetchUserData()
         profileData = fetchuserdata.getProfileData_BSL(session['email'])
         return render_template("editProfile.html", profileData=profileData, loggedIn=loggedIn, firstName=firstName )
@@ -151,7 +156,7 @@ def updateProfile():
             user_details.append(Project_Name_3)
             user_details.append(Project_Details_3)
             updatemyprofile = Businesslayer_UpdateMyProfile.Businesslayer_UpdateMyProfile()
-            msg = updatemyprofile.updateMyProfileMethod_BSL(email,firstName,lastName,address1,address2,zipcode,city,state,country,phone,user_details)
+            msg = updatemyprofile.updateMyProfileMethod_BSL(email,firstName,lastName,address1,address2,zipcode,city,state,country,phone,user_details,myUser.userType,myUser.planType)
             return redirect(url_for('editProfile',msg=msg))
     except Exception as e:
         excep_msg = "Error in view update profile"
@@ -192,10 +197,11 @@ def login():
             email = request.form['email']
             password = request.form['password']
             value = ""
-            checkEmail = Businesslayer_Validator_Email_NullCheck.Businesslayer_Email_NullCheck()
-            checkEmailNull = checkEmail.Businesslayer_Email_NullCheck_BSL(email)
-            checkPass = Businesslayer_Validator_Pass_NullCheck.Businesslayer_Pass_NullCheck()
-            checkPassNull = checkPass.Businesslayer_Pass_NullCheck_BSL(password)
+            factoryObject = Businesslayer_FactoryPattern.Businesslayer_FactoryPattern()
+            factoryObject_Validator_emailNullCheck = factoryObject.factoryPattern_BSL('Email NullCheck')
+            checkEmailNull = factoryObject_Validator_emailNullCheck.formValidate_BSL(email)
+            factoryObject_Validator_passNullCheck = factoryObject.factoryPattern_BSL('Password NullCheck')
+            checkPassNull = factoryObject_Validator_passNullCheck.formValidate_BSL(password)
             if ((not checkEmailNull)and(not checkPassNull)):
                 checkifuservalid = Businesslayer_CheckIfUserValid.Businesslayer_CheckIfUserValid()
                 value = checkifuservalid.isValid_BSL(email, password)
@@ -246,27 +252,28 @@ def register():
             userType = request.form['userOptions']
             planType = request.form['planOptions']
             user_details = []
-            firstNameValidate = Businesslayer_Validator_FirstName_SpaceCheck.Businesslayer_FirstName_SpaceCheck()
-            firstNameValidateFormat = firstNameValidate.Businesslayer_FirstName_SpaceCheck_BSL(firstName)
-            if (firstNameValidateFormat != firstName):
-                return render_template("register.html", error=firstNameValidateFormat)
-            passwordSpaceCheck = Businesslayer_Validator_Password_SpaceCheck.Businesslayer_Password_SpaceCheck()
-            passwordSpaceCheckValidate = passwordSpaceCheck.Businesslayer_Password_SpaceCheck_BSL(password)
-            if (passwordSpaceCheckValidate != password):
-                return render_template("register.html", error=passwordSpaceCheckValidate)
-            passwordEquate = Businesslayer_Validator_Password_Equate.Businesslayer_Password_Equate()
-            passwordEquateCheck = passwordEquate.Businesslayer_Password_Equate_BSL(password,cpassword)
-            if (passwordEquateCheck != password):
-                return render_template("register.html", error=passwordEquateCheck)
-            emailValidate = Businesslayer_Validator_Email_Validate.Businesslayer_Email_Validate()
-            emailValidateFormat = emailValidate.Businesslayer_Email_Validate_BSL(email)
-            if (emailValidateFormat == email):
+            factoryObject = Businesslayer_FactoryPattern.Businesslayer_FactoryPattern()
+            factoryObject_Validator_firstNameSpaceCheck = factoryObject.factoryPattern_BSL('FirstName SpaceCheck')
+            checkfirstNameSpaceCheck = factoryObject_Validator_firstNameSpaceCheck.formValidate_BSL(firstName)
+            if (checkfirstNameSpaceCheck != firstName):
+                return render_template("register.html", error=checkfirstNameSpaceCheck)
+            factoryObject_Validator_passwordSpaceCheck = factoryObject.factoryPattern_BSL('Password SpaceCheck') 
+            checkPasswordSpaceCheck = factoryObject_Validator_passwordSpaceCheck.formValidate_BSL(password)
+            if (checkPasswordSpaceCheck != password):
+                return render_template("register.html", error=checkPasswordSpaceCheck)
+            factoryObject_Validator_passwordEquateCheck = factoryObject.factoryPattern_BSL('Password Equate') 
+            checkPasswordEquate = factoryObject_Validator_passwordEquateCheck.formValidate_BSL(password,cpassword)
+            if (checkPasswordEquate != password):
+                return render_template("register.html", error=checkPasswordEquate)
+            factoryObject_Validator_emailValidateCheck = factoryObject.factoryPattern_BSL('Email Validate') 
+            checkEmailValidate = factoryObject_Validator_emailValidateCheck.formValidate_BSL(email)
+            if (checkEmailValidate == email):
                 fetchuserdata = Businesslayer_FetchUserData.Businesslayer_FetchUserData()
                 profileData = fetchuserdata.getProfileData_BSL(email)
                 if(not profileData):
+                    updateMyobject = Businesslayer_UpdateMyobject.Businesslayer_UpdateMyobject()
+                    updateMyobject.updateMyObjectBSL(email,firstName,lastName,address1,address2,zipcode,city,state,country,phone,userType,planType,user_details)
                     insertuser = Businesslayer_InsertUser.Businesslayer_InsertUser()
-                    runRulesEngine = Businesslayer_RulesEngine.Businesslayer_RulesEngine()
-                    runRulesEngine.rulesEngine_BSL(email,firstName,lastName,address1,address2,zipcode,city,state,country,phone,user_details,userType,planType)
                     msg = insertuser.insertNewUser_BSL(email,password,firstName,lastName,address1,address2,zipcode,city,state,country,phone,user_details,userType,planType)
                     return render_template("home.html")
                 else:
@@ -283,7 +290,6 @@ def register():
 def jobs():
     try:
         if request.method == 'POST':
-            #Parse form data
             jobId = request.form['jobId']
             companyName = request.form['companyName']
             title = request.form['title']
@@ -291,10 +297,14 @@ def jobs():
             location = request.form['location']
             jobDetails = request.form['jobDetails']
             insertjob = Businesslayer_InsertJob.Businesslayer_InsertJob()
-            msg = insertjob.insertJob_BSL(jobId,companyName,title,manager,location,jobDetails)
+            msg = insertjob.insertJob_BSL(jobId,companyName,title,manager,location,jobDetails,session['email'])
             fetchjobdata = Businesslayer_FetchJobData.Businesslayer_FetchJobData()
             jobData = fetchjobdata.getJobData_BSL()
             noOfJobs = len(jobData)
+            relesEngine = Businesslayer_RulesEngine.Businesslayer_RulesEngine()
+            allow = relesEngine.rulesEngine_Employer_BSL(myUser.email,myUser.planType)
+            print "Look result2"
+            print allow
             return render_template("jobs.html", jobData=jobData, noOfJobs=noOfJobs, msg=msg, jobId="Job with job id:" + jobId)
     except Exception as e:
         excep_msg = "Error in view jobs"
@@ -338,6 +348,10 @@ def addJobs():
             userType = 'employee'
         else:
             userType = 'employer'
+            relesEngine = Businesslayer_RulesEngine.Businesslayer_RulesEngine()
+            allow = relesEngine.rulesEngine_Employer_BSL(myUser.email,myUser.planType)
+            print "Look result"
+            print allow
         fetchjobdata = Businesslayer_FetchJobData.Businesslayer_FetchJobData()
         jobData = fetchjobdata.getJobData_BSL()
         noOfJobs = len(jobData)
@@ -345,8 +359,37 @@ def addJobs():
             return render_template("jobs.html",noOfJobs=noOfJobs,jobData=jobData,userType=userType)
         else:
             return render_template("jobs.html", jobData=jobData, noOfJobs=noOfJobs,userType=userType)
+        if request.method == 'POST':
+            email = session['email']
+            insertJobApplication = Businesslayer_InsertJobApplication.Businesslayer_InsertJobApplication()
+            insertJobApplicationData = insertJobApplication.insertJobApplication_BSL(email)
+            print insertJobApplicationData
+            return render_template("jobs.html", application_msg = "")
     except Exception as e:
         excep_msg = "Error in view jobs"
+        level = logging.getLogger().getEffectiveLevel()
+        logmyerror.loadMyExceptionInDb(level,excep_msg,e)
+        logging.info(excep_msg, exc_info=True)
+
+@app.route("/addJobApplication", methods = ['GET', 'POST'])
+def addJobApplication():
+    try:
+        if request.method == 'POST':
+            email = session['email']
+            getUserType = Businesslayer_GetUserType.Businesslayer_GetUserType()
+            getUserTypeData = getUserType.getUserType_BSL(session['email'])
+            fetchjobdata = Businesslayer_FetchJobData.Businesslayer_FetchJobData()
+            jobData = fetchjobdata.getJobData_BSL()
+            insertJobApplication = Businesslayer_InsertJobApplication.Businesslayer_InsertJobApplication()
+            insertJobApplicationData = insertJobApplication.insertJobApplication_BSL(email)
+            noOfJobs = len(jobData)
+            relesEngine = Businesslayer_RulesEngine.Businesslayer_RulesEngine()
+            allow = relesEngine.rulesEngine_Employee_BSL(myUser.email,myUser.planType)
+            print "Rohit"
+            print allow
+            return render_template("jobs.html", application_msg = insertJobApplicationData,userType=getUserTypeData,jobData=jobData,noOfJobs=noOfJobs)
+    except Exception as e:
+        excep_msg = "Error in view job application"
         level = logging.getLogger().getEffectiveLevel()
         logmyerror.loadMyExceptionInDb(level,excep_msg,e)
         logging.info(excep_msg, exc_info=True)

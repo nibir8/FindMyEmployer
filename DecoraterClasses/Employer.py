@@ -1,5 +1,8 @@
-from User import User
+import abc, six
 
-class Employer(User):
-    def plan_rules(self):
-        print "This is Employee class"
+
+@six.add_metaclass(abc.ABCMeta)
+class Employer:
+    @abc.abstractmethod
+    def plan_rules(self,givenCount):
+        pass
