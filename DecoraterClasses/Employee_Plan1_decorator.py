@@ -1,8 +1,8 @@
 from EmployeeDecorator import EmployeeDecorator
 
 class Employee_Plan1_decorator(EmployeeDecorator):
-  def __init__(self, user):
-      super(Employee_Plan1_decorator, self).__init__(user)
+  def __init__(self, employee):
+      super(Employee_Plan1_decorator, self).__init__(employee)
 
   def plan_rules(self,givenCount):
       print "This is for plan 1 for Employee "

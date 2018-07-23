@@ -10,10 +10,10 @@ sys.path.append(os.path.abspath(os.path.join('0', '../extensions')))
 from extensions_logging import logmyerror
 
 sys.path.append(os.path.abspath(os.path.join('0', '../DecoraterClasses')))
-from Employee import Employee
+from NormalEmployee import NormalEmployee
 from Employee_Plan1_decorator import Employee_Plan1_decorator
 from Employee_Plan2_decorator import Employee_Plan2_decorator
-from Employer import Employer
+from NormalEmployer import NormalEmployer
 from Employer_Plan1_decorator import Employer_Plan1_decorator
 from Employer_Plan2_decorator import Employer_Plan2_decorator
 
@@ -24,7 +24,7 @@ class Businesslayer_RulesEngine:
             fetchApplicationCount = Databaselayer_FetchApplicationCount()
             applicationcount = fetchApplicationCount.getApplicationCount_DBL(email)
             print applicationcount
-            concreteComponent =  Employee()
+            concreteComponent =  NormalEmployee()
             concrete_decorator_planA =  Employee_Plan1_decorator(concreteComponent)
             concrete_decorator_planB =  Employer_Plan2_decorator(concrete_decorator_planA)
             if typeOfPlan == "plan1":
@@ -46,7 +46,7 @@ class Businesslayer_RulesEngine:
             print typeOfPlan
             fetchJobsCount = Databaselayer_FetchJobsCount()
             jobsCount  = fetchJobsCount.getJobsCount_DBL(email)
-            concreteComponent = Employer()
+            concreteComponent = NormalEmployer()
             concrete_decorator_planA = Employer_Plan1_decorator(concreteComponent)
             concrete_decorator_planB = Employer_Plan2_decorator(concrete_decorator_planA)
             if typeOfPlan == "plan1":
