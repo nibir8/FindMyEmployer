@@ -30,22 +30,22 @@
                         <li><a href="/checkUserErrorLog"></span> CheckErrorlog</a></li>
                         <li><a href="/logout"><span class="glyphicon glyphicon-user"></span> Sign Out</a></li>
                     </ul>
-					<ul class="navbar-form navbar-right">
-					      <form role="search" action="/searchProfile" method="POST">
-        <div class="form-group input-group">
-          <input type="text" class="form-control" name="searchProf" id="searchProf" placeholder="Enter First Name to Search.." required>
-          <span class="input-group-btn">
-            <button class="btn btn-default" type="submit">
-              <span class="glyphicon glyphicon-search"></span>
-            </button>
-          </span>        
-        </div>
-      </form>
-	  </ul>
+                    <ul class="navbar-form navbar-right">
+                        <form role="search" action="/searchProfile" method="POST">
+                            <div class="form-group input-group">
+                                <input type="text" class="form-control" name="searchProf" id="searchProf" placeholder="Enter First Name to Search.." required>
+                                <span class="input-group-btn">
+                                <button class="btn btn-default" type="submit">
+                                <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                                </span>        
+                            </div>
+                        </form>
+                    </ul>
                 </div>
             </div>
         </nav>
-<div class="container">
+        <div class="container">
             <div class="row centered-form">
                 <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
                     <div class="panel panel-default">
@@ -54,18 +54,15 @@
                         </div>
                         <div class="panel-body">
                             <form action="/messaging" method="POST">
-                                
                                 <div class="form-group">
                                     <input class="form-control input-sm" type="email" name="recipientAddress" id="recipientAddress" placeholder="Enter Mail Id of Receiver" required>
                                 </div>
-                                
                                 <div class="form-group">
                                     <input class="form-control input-sm" type="text" name="mailSubject" id="mailSubject" placeholder="Enter Subject" required>
                                 </div>
                                 <div class="form-group">
                                     <textarea class="form-control" rows="5" name="mailBody" id="mailBody" placeholder="Type Message to Send..." required></textarea>
                                 </div>
-                                
                                 <input type="submit" value="Send Mail" class="btn btn-info btn-block">
                             </form>
                         </div>
@@ -73,10 +70,8 @@
                 </div>
             </div>
         </div>
-		
-		<div style="text-align:center;">
-					<h4 style="color:red;">{{msg}}</h4>
-                </div>
-        
+        <div style="text-align:center;">
+            <h4 style="color:red;">{{msg}}</h4>
+        </div>
     </body>
 </html>
