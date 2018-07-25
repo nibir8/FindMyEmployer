@@ -3,53 +3,51 @@
     <head>
         <title>Group15</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		<script>
-		console.log({{noOfJobs}});
-	    console.log("{{userType}}");
-		$(document).ready(function(){
-			userType = "{{userType}}";
-			allow = "{{allow}}"
-			if ({{noOfJobs}} !=0 ){
-				document.getElementById('viewJobsBtn').style.display = "block";
-			}
-			$("#viewJobsBtn").click(function(){
-			var x = document.getElementById("jobsList");
-			if (x.style.display === "none") {
-			x.style.display = "block";
-			} else {
-			x.style.display = "none";
-			}
-			});
-		    if(userType === "employer")
-			{
-			 document.getElementById('addJobsForm').style.display = "block";
-			}
-			
-			
-		});
-		
-		</script>
-		<style>
-		table {
-			font-family: arial, sans-serif;
-			border-collapse: collapse;
-			width: 100%;
-		}
-
-		td, th {
-			border: 1px solid #dddddd;
-			text-align: left;
-			padding: 8px;
-		}
-
-		tr:nth-child(even) {
-			background-color: #dddddd;
-		}
-		</style>
-	</head>
+        <script>
+            console.log({{noOfJobs}});
+               console.log("{{userType}}");
+            $(document).ready(function(){
+            	userType = "{{userType}}";
+            	allow = "{{allow}}"
+            	if ({{noOfJobs}} !=0 ){
+            		document.getElementById('viewJobsBtn').style.display = "block";
+            	}
+            	$("#viewJobsBtn").click(function(){
+            	var x = document.getElementById("jobsList");
+            	if (x.style.display === "none") {
+            	x.style.display = "block";
+            	} else {
+            	x.style.display = "none";
+            	}
+            	});
+                if(userType === "employer")
+            	{
+            	 document.getElementById('addJobsForm').style.display = "block";
+            	}
+            	
+            	
+            });
+            
+        </script>
+        <style>
+            table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+            }
+            td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+            }
+            tr:nth-child(even) {
+            background-color: #dddddd;
+            }
+        </style>
+    </head>
     <body>
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
@@ -69,27 +67,26 @@
                         <li><a href="/account/profile/changePassword">Change password</a></li>
                         <li class="active"><a href="/addJobs">Jobs</a></li>
                     </ul>
-					<ul class="nav navbar-nav navbar-right">
+                    <ul class="nav navbar-nav navbar-right">
                         <li><a href="/checkUserErrorLog"></span> CheckErrorlog</a></li>
                         <li><a href="/logout"><span class="glyphicon glyphicon-user"></span> Sign Out</a></li>
                     </ul>
-					<ul class="navbar-form navbar-right">
-					      <form role="search" action="/searchProfile" method="POST">
-        <div class="form-group input-group">
-          <input type="text" class="form-control" name="searchProf" id="searchProf" placeholder="Enter First Name to Search.." required>
-          <span class="input-group-btn">
-            <button class="btn btn-default" type="submit">
-              <span class="glyphicon glyphicon-search"></span>
-            </button>
-          </span>        
-        </div>
-      </form>
-	  </ul>
-					
+                    <ul class="navbar-form navbar-right">
+                        <form role="search" action="/searchProfile" method="POST">
+                            <div class="form-group input-group">
+                                <input type="text" class="form-control" name="searchProf" id="searchProf" placeholder="Enter First Name to Search.." required>
+                                <span class="input-group-btn">
+                                <button class="btn btn-default" type="submit">
+                                <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                                </span>        
+                            </div>
+                        </form>
+                    </ul>
                 </div>
             </div>
         </nav>
-		{% if (allow == True)and(userType == 'employer') %}
+        {% if (allow == True)and(userType == 'employer') %}
         <div class="container" id="addJobsForm" style="display:none">
             <div class="row centered-form">
                 <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
@@ -136,58 +133,62 @@
                 </div>
             </div>
         </div>
-		{% endif %}
-		{% if (allow == False)and(userType == 'employer') %}
-		<div class="container" style="text-align:center;">
-			<h5 style="color:red;">You have reached the Quota Limit of Job Posting</h5>
+        {% endif %}
+        {% if (allow == False)and(userType == 'employer') %}
+        <div class="container" style="text-align:center;">
+            <h5 style="color:red;">You have reached the Quota Limit of Job Posting</h5>
         </div>
-		{% endif %}
-		<div class="container" style="text-align:center;">
-			<h5 style="color:red;">{{jobId}} {{msg}}</h5>
+        {% endif %}
+        <div class="container" style="text-align:center;">
+            <h5 style="color:red;">{{jobId}} {{msg}}</h5>
         </div>
-		<div style="width:15%;" class="container">
+        <div style="width:15%;" class="container">
             <input type="button" id="viewJobsBtn" value="View Posted Jobs" style="text-align:center; display:none;" class="btn btn-info btn-block"></input>
         </div>
-		<div  style="display:none;" id="jobsList">
-		<div style="margin-top:2%;" class="container">
-			<table>
-  <tr>
-    <th>Job ID</th>
-    <th>Company</th>
-    <th>Title</th>
-	<th>Manager</th>
-	<th>Location</th>
-	<th>Description</th>
-  </tr>
-  {% for i in range(noOfJobs) %}
-  <tr>
-    <td>{{jobData[i][1]}}</td>
-    <td>{{jobData[i][2]}}</td>
-    <td>{{jobData[i][3]}}</td>
-	<td>{{jobData[i][4]}}</td>
-    <td>{{jobData[i][5]}}</td>
-    <td>{{jobData[i][6]}}</td>
-    {% if ((allow == True)and(userType == 'employee')) %}
-	<td><form id="applicationSubmit" action="/addJobApplication" method="POST"><button type="submit" class="btn-primary">Apply</button></form></td>
-    {% endif %}
-	{% if (allow == False)and(userType == 'employee') %}
-    <td><form id="applicationSubmit" action="/addJobApplication" method="POST"><button type="submit" class="btn-primary" disabled>Apply</button><h5 style="color:red;">Quota Exceeded</h5></form></td>
-    {% endif %}
-  </tr>
-{% endfor %}
-</table>
-		</div>
-
-		{% if (noOfJobs == 0) %}
-            <div style="text-align:center;">
-			    <h5 style="color:red;">No Jobs Posted Yet!</h5>
+        <div  style="display:none;" id="jobsList">
+            <div style="margin-top:2%;" class="container">
+                <table>
+                    <tr>
+                        <th>Job ID</th>
+                        <th>Company</th>
+                        <th>Title</th>
+                        <th>Manager</th>
+                        <th>Location</th>
+                        <th>Description</th>
+                    </tr>
+                    {% for i in range(noOfJobs) %}
+                    <tr>
+                        <td>{{jobData[i][1]}}</td>
+                        <td>{{jobData[i][2]}}</td>
+                        <td>{{jobData[i][3]}}</td>
+                        <td>{{jobData[i][4]}}</td>
+                        <td>{{jobData[i][5]}}</td>
+                        <td>{{jobData[i][6]}}</td>
+                        {% if ((allow == True)and(userType == 'employee')) %}
+                        <td>
+                            <form id="applicationSubmit" action="/addJobApplication" method="POST"><button type="submit" class="btn-primary">Apply</button></form>
+                        </td>
+                        {% endif %}
+                        {% if (allow == False)and(userType == 'employee') %}
+                        <td>
+                            <form id="applicationSubmit" action="/addJobApplication" method="POST">
+                                <button type="submit" class="btn-primary" disabled>Apply</button>
+                                <h5 style="color:red;">Quota Exceeded</h5>
+                            </form>
+                        </td>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                </table>
             </div>
-        {% endif %}	
-		
-</div>
-		<div style="text-align:center;">
-			    <h5 style="color:red;">{{application_msg}}</h5>
-            </div>  
-		
+            {% if (noOfJobs == 0) %}
+            <div style="text-align:center;">
+                <h5 style="color:red;">No Jobs Posted Yet!</h5>
+            </div>
+            {% endif %}	
+        </div>
+        <div style="text-align:center;">
+            <h5 style="color:red;">{{application_msg}}</h5>
+        </div>
     </body>
 </html>

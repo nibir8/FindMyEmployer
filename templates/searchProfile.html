@@ -1,29 +1,11 @@
 <!DOCTYPE HTML>
-<html lang="en">
+<html>
     <head>
-        <title>My Profile</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <style>
-		table {
-			font-family: arial, sans-serif;
-			border-collapse: collapse;
-			width: 100%;
-		}
-
-		td, th {
-			border: 1px solid #dddddd;
-			text-align: left;
-			padding: 8px;
-		}
-
-		tr:nth-child(even) {
-			background-color: #dddddd;
-		}
-		</style>
+        <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+        <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" href={{ url_for('static', filename='css/register_style.css') }} />
     </head>
     <body>
         <nav class="navbar navbar-inverse">
@@ -34,69 +16,103 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#"></a>
+                    <a class="navbar-brand" href="/">FindMyEmployer</a>
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="/">Home</a></li>
-                        <li><a href="/messageForm">Messages</a></li>
-                        <li><a href="/account/profile/edit">Edit Profile</a></li>
-                        <li><a href="/account/profile/changePassword">Change password</a></li>
-                        <li><a href="/addJobs">Jobs</a></li>
+                        <li><a href="/">Log In</a></li>
+                        <li class="active"><a href="/registerationForm">Register</a></li>
                     </ul>
-					
                     <ul class="nav navbar-nav navbar-right">
-                            <li><a href="/checkUserErrorLog"></span> CheckErrorlog</a></li>
-                        <li><a href="/logout"><span class="glyphicon glyphicon-user"></span> Sign Out</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Group 15</a></li>
                     </ul>
-					<ul class="navbar-form navbar-right">
-					      <form role="search" action="/searchProfile" method="POST">
-        <div class="form-group input-group">
-          <input type="text" class="form-control" name="searchProf" id="searchProf" placeholder="Enter First Name to Search.." required>
-          <span class="input-group-btn">
-            <button class="btn btn-default" type="submit">
-              <span class="glyphicon glyphicon-search"></span>
-            </button>
-          </span>        
-        </div>
-      </form>
-	  </ul>
                 </div>
             </div>
         </nav>
-		<div style="text-align:center; margin-top:5%;">
-			    <h3 style="color:red;">{{error}}</h3>
+        <div class="container" style="text-align:center;">
+            <h4 style="color:red;">{{error}}</h4>
+        </div>
+        <div class="container">
+            <div class="row centered-form">
+                <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h1 style="text-align:center;" class="panel-title">Register</h1>
+                        </div>
+                        <div class="panel-body">
+                            <form action="/register" method="POST">
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" name="firstName" id="firstName" class="form-control input-sm" placeholder="First Name" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" name="lastName" id="lastName" class="form-control input-sm" placeholder="Last Name" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email Address" required>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <input type="password" name="cpassword" id="cpassword" class="form-control input-sm" placeholder="Confirm Password" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="address1" id="address1" class="form-control input-sm" placeholder="Address Line 1" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="address2" id="address2" class="form-control input-sm" placeholder="Address Line 2" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="zipcode" id="zipcode" class="form-control input-sm" placeholder="Zip Code" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="city" id="city" class="form-control input-sm" placeholder="City" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="state" id="state" class="form-control input-sm" placeholder="State" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="country" id="country" class="form-control input-sm" placeholder="Country" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="phone" id="phone" class="form-control input-sm" placeholder="Phone" required>
+                                </div>
+                                <h4>
+                                Are you an Employee or Employer?
+                                <h4>
+                                <div class="radio">
+                                    <label><input type="radio" name="userOptions" id="employee" value="employee" checked="checked">Employee(Need a job?)</label>
+                                </div>
+                                <div class="radio">
+                                    <label><input type="radio" name="userOptions" id="employer" value="employer">Employer(Want to hire?)</label>
+                                </div>
+                                <h4>
+                                Select Plan
+                                <h4>
+                                <div class="radio">
+                                    <label><input type="radio" name="planOptions" id="plan1" value="plan1"  checked="checked">Economy($40/month)</label>
+                                </div>
+                                <div class="radio">
+                                    <label><input type="radio" name="planOptions" id="plan2" value="plan2">Premium($100/month)</label>
+                                </div>
+                                <input type="submit" value="Register" class="btn btn-info btn-block">
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
-			
-		
-		{% if (noOfProfilesFetched !=0 ) %}
-		<div style="text-align:center;">
-			    <h2>Profiles Found</h2>
-            </div>
-		<div style="margin-top:2%;" class="container">
-	<table>
-  <tr>
-    <th>Email</th>
-    <th>First Name</th>
-    <th>Last Name</th>
-	<th>Address</th>
-	<th>Phone</th>
-  </tr>
-  {% for i in range(noOfProfilesFetched) %}
-  <tr>
-    <td>{{fetchSearchedProfileData[i][1]}}</td>
-    <td>{{fetchSearchedProfileData[i][2]}}</td>
-    <td>{{fetchSearchedProfileData[i][3]}}</td>
-	<td>{{fetchSearchedProfileData[i][4]}} {{fetchSearchedProfileData[i][5]}} {{fetchSearchedProfileData[i][7]}} {{fetchSearchedProfileData[i][8]}} {{fetchSearchedProfileData[i][6]}} {{fetchSearchedProfileData[i][9]}}</td>
-    <td>{{fetchSearchedProfileData[i][10]}}</td>
-  </tr>
-{% endfor %}
-</table>
-		
-</div>
-
-        {% endif %}
-
-        
+        </div>
     </body>
 </html>
