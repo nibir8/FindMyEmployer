@@ -44,7 +44,7 @@ def profileHome():
         else:
             loggedIn = True
             loginclassdetails = Businesslayer_LoginClass.Businesslayer_LoginClass()
-            loggedIn, firstName = loginclassdetails.getLoginDetails_BSL(session['email'])
+            loggedIn, firstName,typeOfUser = loginclassdetails.getLoginDetails_BSL(session['email'])
             fetchuserdata = Businesslayer_FetchUserData.Businesslayer_FetchUserData()
             profileData = fetchuserdata.getProfileData_BSL(session['email'])
             fetchuserstatus = Businesslayer_GetStatus.Businesslayer_GetStatus()
@@ -359,6 +359,7 @@ def addJobs():
         fetchjobdata = Businesslayer_FetchJobData.Businesslayer_FetchJobData()
         jobData = fetchjobdata.getJobData_BSL()
         noOfJobs = len(jobData)
+        print allow
         if(noOfJobs == 0):
             return render_template("jobs.html",noOfJobs=noOfJobs,jobData=jobData,userType=userType,allow=allow)
         else:
