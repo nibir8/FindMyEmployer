@@ -35,7 +35,6 @@
                         <li><a href="/addJobs">Jobs</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="/checkUserErrorLog"></span> CheckErrorlog</a></li>
                         <li><a href="/logout"><span class="glyphicon glyphicon-user"></span> Sign Out</a></li>
                     </ul>
                     <ul class="navbar-form navbar-right">
@@ -53,35 +52,35 @@
                 </div>
             </div>
         </nav>
-        <div class="container text-center">
-            <div style="width:1650px">
+        <div class="container">
                 <div class="row">
                     <div class="col-sm-3 well" style="width:300px">
                         <div class="well">
-                            <p><a href="#">My Profile</a></p>
+                            <p><h4>{{firstName}}</h4></p>
                             <img src={{ url_for('static', filename='images/default/img1.png') }} alt="Avatar"/>
                         </div>
                         <div class="well">
-                            <p><a href="#">Skills</a></p>
+                            <p><h5>Skills</h5></p>
                             <p>
-                                <span class="label label-default">HTML5</span>
-                                <span class="label label-primary">Javascript</span>
-                                <span class="label label-success">Python</span>
-                                <span class="label label-info">Flask</span>
-                                <span class="label label-warning">OOPS</span>
-                                <span class="label label-danger">JAVA</span>
+                                <span class="label label-default">{{profileData[24]}}</span>
+                                <span class="label label-primary">{{profileData[25]}}</span>
+                                <span class="label label-success">{{profileData[26]}}</span>
+                                <span class="label label-info">{{profileData[27]}}</span>
                             </p>
                         </div>
                         <div class="alert alert-success fade in">
                             <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
                             <p><strong>About me</strong></p>
-                            Actively looking for Full time opportunities
+                            {{profileData[11]}}
                         </div>
-                        <p><a href="#">Link</a></p>
-                        <p><a href="#">Link</a></p>
-                        <p><a href="#">Link</a></p>
+					    <div class="alert alert-success fade in">
+                        <p><strong>Projects</strong></p>
+                        <p><a href="#">{{profileData[28]}}</a></p>
+                        <p><a href="#">{{profileData[30]}}</a></p>
+                        <p><a href="#">{{profileData[32]}}</a></p>
+						</div>
                     </div>
-                    <div class="col-sm-7" >
+                    <div class="col-sm-8	" >
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="panel panel-default text-left">
@@ -112,9 +111,8 @@
                         {% endfor %}
                     </div>
                 </div>
-            </div>
             <footer class="container-fluid text-center">
-                <p>Footer Text</p>
+                <p>FindMyEmployer</p>
             </footer>
         </div>
     </body>

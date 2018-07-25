@@ -29,7 +29,7 @@ def root():
             loggedIn, firstName, typeOfUser = loginclassdetails.getLoginDetails_BSL(session['email'])
             fetchuserstatus = Businesslayer_GetStatus.Businesslayer_GetStatus()
             userStatus = fetchuserstatus.getUserStatus_BSL()
-            return render_template("Profile2.html",loggedIn=loggedIn, firstName=firstName,userStatus=userStatus )
+            return render_template("Profile2.html",loggedIn=loggedIn, firstName=firstName,userStatus=userStatus,profileData=profileData)
     except Exception as e:
         excep_msg = "Error in view Homepage"
         level = logging.getLogger().getEffectiveLevel()
@@ -49,7 +49,7 @@ def profileHome():
             profileData = fetchuserdata.getProfileData_BSL(session['email'])
             fetchuserstatus = Businesslayer_GetStatus.Businesslayer_GetStatus()
             userStatus = fetchuserstatus.getUserStatus_BSL()
-            return render_template("Profile2.html",loggedIn=loggedIn, firstName=firstName,userStatus=userStatus )
+            return render_template("Profile2.html",loggedIn=loggedIn, firstName=firstName,userStatus=userStatus,profileData=profileData)
     except Exception as e:
         excep_msg = "Error in view profile"
         level = logging.getLogger().getEffectiveLevel()
