@@ -3,6 +3,7 @@ import sys
 import os
 sys.path.append(os.path.abspath(os.path.join('0', '../extensions')))
 from extensions import mysql
+from extensionCaptureSessionId import captureSessionid
 import datetime
 
 
@@ -23,7 +24,7 @@ class LogggingExceptions_Database:
             conn = mysql.connect()
             loglevelname = self.getlevelname(logLevel)
             cur = conn.cursor()
-            userEmailId = "rohit.gs28@gmail.com"
+            userEmailId = captureSessionid.emailid
             currenttime = datetime.datetime.now()
             currenttime = str(currenttime)
             logMsg = str(logMsg)
