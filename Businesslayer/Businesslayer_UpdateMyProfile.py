@@ -2,7 +2,7 @@ import os.path
 import logging
 import sys
 
-from Businesslayer import Businesslayer_UpdateMyobject
+from Businesslayer_UpdateMyobject import Businesslayer_UpdateMyobject
 
 sys.path.append(os.path.abspath(os.path.join('0','../Databaselayer')))
 from Databaselayer_UpdateMyProfile import Databaselayer_UpdateMyProfile

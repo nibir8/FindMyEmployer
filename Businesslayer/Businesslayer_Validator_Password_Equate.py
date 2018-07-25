@@ -2,7 +2,7 @@ import os
 import os.path
 import logging
 import sys
-from Businesslayer import IValidator
+import IValidator
 
 sys.path.append(os.path.abspath(os.path.join('0', '../extensions')))
 from extensions_logging import logmyerror
