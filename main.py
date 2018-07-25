@@ -301,9 +301,11 @@ def jobs():
             fetchjobdata = Businesslayer_FetchJobData.Businesslayer_FetchJobData()
             jobData = fetchjobdata.getJobData_BSL()
             noOfJobs = len(jobData)
+            fetchuserdata = Businesslayer_FetchUserData.Businesslayer_FetchUserData()
+            profileData = fetchuserdata.getProfileData_BSL(session['email'])
             relesEngine = Businesslayer_RulesEngine.Businesslayer_RulesEngine()
             allow = relesEngine.rulesEngine_Employer_BSL(myUser.email,myUser.planType)
-            return render_template("jobs.html", jobData=jobData, noOfJobs=noOfJobs, msg=msg, jobId="Job with job id:" + jobId)
+            return render_template("jobs.html", jobData=jobData, noOfJobs=noOfJobs, msg=msg, jobId="Job with job id:" + jobId,allow=allow)
     except Exception as e:
         excep_msg = "Error in view jobs"
         level = logging.getLogger().getEffectiveLevel()
@@ -344,22 +346,28 @@ def addJobs():
         getUserTypeData = getUserType.getUserType_BSL(session['email'])
         if (getUserTypeData[2] == 'employee'):
             userType = 'employee'
+            fetchuserdata = Businesslayer_FetchUserData.Businesslayer_FetchUserData()
+            profileData = fetchuserdata.getProfileData_BSL(session['email'])
+            relesEngine = Businesslayer_RulesEngine.Businesslayer_RulesEngine()
+            allow = relesEngine.rulesEngine_Employee_BSL(myUser.email,myUser.planType)
         else:
             userType = 'employer'
+            fetchuserdata = Businesslayer_FetchUserData.Businesslayer_FetchUserData()
+            profileData = fetchuserdata.getProfileData_BSL(session['email'])
             relesEngine = Businesslayer_RulesEngine.Businesslayer_RulesEngine()
             allow = relesEngine.rulesEngine_Employer_BSL(myUser.email,myUser.planType)
         fetchjobdata = Businesslayer_FetchJobData.Businesslayer_FetchJobData()
         jobData = fetchjobdata.getJobData_BSL()
         noOfJobs = len(jobData)
         if(noOfJobs == 0):
-            return render_template("jobs.html",noOfJobs=noOfJobs,jobData=jobData,userType=userType)
+            return render_template("jobs.html",noOfJobs=noOfJobs,jobData=jobData,userType=userType,allow=allow)
         else:
-            return render_template("jobs.html", jobData=jobData, noOfJobs=noOfJobs,userType=userType)
+            return render_template("jobs.html", jobData=jobData, noOfJobs=noOfJobs,userType=userType,allow=allow)
         if request.method == 'POST':
             email = session['email']
             insertJobApplication = Businesslayer_InsertJobApplication.Businesslayer_InsertJobApplication()
             insertJobApplicationData = insertJobApplication.insertJobApplication_BSL(email)
-            return render_template("jobs.html", application_msg = "")
+            return render_template("jobs.html", application_msg = "",allow=allow)
     except Exception as e:
         excep_msg = "Error in view jobs"
         level = logging.getLogger().getEffectiveLevel()
@@ -380,7 +388,7 @@ def addJobApplication():
             noOfJobs = len(jobData)
             relesEngine = Businesslayer_RulesEngine.Businesslayer_RulesEngine()
             allow = relesEngine.rulesEngine_Employee_BSL(myUser.email,myUser.planType)
-            return render_template("jobs.html", application_msg = insertJobApplicationData,userType=getUserTypeData,jobData=jobData,noOfJobs=noOfJobs)
+            return render_template("jobs.html", application_msg = insertJobApplicationData,userType=getUserTypeData,jobData=jobData,noOfJobs=noOfJobs,allow=allow)
     except Exception as e:
         excep_msg = "Error in view job application"
         level = logging.getLogger().getEffectiveLevel()
