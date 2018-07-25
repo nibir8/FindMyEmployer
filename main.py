@@ -22,9 +22,9 @@ def root():
             firstName = ''
             return render_template('home.html',  loggedIn=loggedIn, firstName=firstName)
         else:
+            captureSessionid.emailid =  session['email']
             fetchuserdata = Businesslayer_FetchUserData.Businesslayer_FetchUserData()
             profileData = fetchuserdata.getProfileData_BSL(session['email'])
-
             loginclassdetails = Businesslayer_LoginClass.Businesslayer_LoginClass()
             loggedIn, firstName, typeOfUser = loginclassdetails.getLoginDetails_BSL(session['email'])
             fetchuserstatus = Businesslayer_GetStatus.Businesslayer_GetStatus()
@@ -257,15 +257,15 @@ def register():
             checkfirstNameSpaceCheck = factoryObject_Validator_firstNameSpaceCheck.formValidate_BSL(firstName)
             if (checkfirstNameSpaceCheck != firstName):
                 return render_template("register.html", error=checkfirstNameSpaceCheck)
-            factoryObject_Validator_passwordSpaceCheck = factoryObject.factoryPattern_BSL('Password SpaceCheck') 
+            factoryObject_Validator_passwordSpaceCheck = factoryObject.factoryPattern_BSL('Password SpaceCheck')
             checkPasswordSpaceCheck = factoryObject_Validator_passwordSpaceCheck.formValidate_BSL(password)
             if (checkPasswordSpaceCheck != password):
                 return render_template("register.html", error=checkPasswordSpaceCheck)
-            factoryObject_Validator_passwordEquateCheck = factoryObject.factoryPattern_BSL('Password Equate') 
+            factoryObject_Validator_passwordEquateCheck = factoryObject.factoryPattern_BSL('Password Equate')
             checkPasswordEquate = factoryObject_Validator_passwordEquateCheck.formValidate_BSL(password,cpassword)
             if (checkPasswordEquate != password):
                 return render_template("register.html", error=checkPasswordEquate)
-            factoryObject_Validator_emailValidateCheck = factoryObject.factoryPattern_BSL('Email Validate') 
+            factoryObject_Validator_emailValidateCheck = factoryObject.factoryPattern_BSL('Email Validate')
             checkEmailValidate = factoryObject_Validator_emailValidateCheck.formValidate_BSL(email)
             if (checkEmailValidate == email):
                 fetchuserdata = Businesslayer_FetchUserData.Businesslayer_FetchUserData()

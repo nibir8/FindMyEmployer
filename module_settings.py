@@ -46,3 +46,5 @@ sys.path.append(os.path.abspath(os.path.join('0','../extensions')))
 from extensions import mysql
 from extensions_logging import logmyerror
 from extensionsUser import myUser
+from CaptureSessionid import CaptureSessionid
+from extensionCaptureSessionId import captureSessionid
