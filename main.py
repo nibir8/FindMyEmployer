@@ -307,7 +307,7 @@ def jobs():
             fetchuserdata = Businesslayer_FetchUserData.Businesslayer_FetchUserData()
             profileData = fetchuserdata.getProfileData_BSL(session['email'])
             relesEngine = Businesslayer_RulesEngine.Businesslayer_RulesEngine()
-            allow = relesEngine.rulesEngine_Employer_BSL(myUser.email,myUser.planType)
+            allow = relesEngine.rulesEngine_Employer_BSL(myUser.email,myUser.userType,myUser.planType)
             return render_template("jobs.html", jobData=jobData, noOfJobs=noOfJobs, msg=msg, jobId="Job with job id:" + jobId,allow=allow,userType=userType)
     except Exception as e:
         excep_msg = "Error in view jobs"
@@ -352,13 +352,13 @@ def addJobs():
             fetchuserdata = Businesslayer_FetchUserData.Businesslayer_FetchUserData()
             profileData = fetchuserdata.getProfileData_BSL(session['email'])
             relesEngine = Businesslayer_RulesEngine.Businesslayer_RulesEngine()
-            allow = relesEngine.rulesEngine_Employee_BSL(myUser.email,myUser.planType)
+            allow = relesEngine.rulesEngine_Employer_BSL(myUser.email,myUser.userType,myUser.planType)
         else:
             userType = 'employer'
             fetchuserdata = Businesslayer_FetchUserData.Businesslayer_FetchUserData()
             profileData = fetchuserdata.getProfileData_BSL(session['email'])
             relesEngine = Businesslayer_RulesEngine.Businesslayer_RulesEngine()
-            allow = relesEngine.rulesEngine_Employer_BSL(myUser.email,myUser.planType)
+            allow = relesEngine.rulesEngine_Employer_BSL(myUser.email,myUser.userType,myUser.planType)
         fetchjobdata = Businesslayer_FetchJobData.Businesslayer_FetchJobData()
         jobData = fetchjobdata.getJobData_BSL()
         noOfJobs = len(jobData)
@@ -392,7 +392,7 @@ def addJobApplication():
             insertJobApplicationData = insertJobApplication.insertJobApplication_BSL(email)
             noOfJobs = len(jobData)
             relesEngine = Businesslayer_RulesEngine.Businesslayer_RulesEngine()
-            allow = relesEngine.rulesEngine_Employee_BSL(myUser.email,myUser.planType)
+            allow = relesEngine.rulesEngine_Employer_BSL(myUser.email,myUser.userType,myUser.planType)
             return render_template("jobs.html", application_msg = insertJobApplicationData,userType=userType,jobData=jobData,noOfJobs=noOfJobs,allow=allow)
     except Exception as e:
         excep_msg = "Error in view job application"
