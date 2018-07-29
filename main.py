@@ -301,11 +301,14 @@ def jobs():
             fetchjobdata = Businesslayer_FetchJobData.Businesslayer_FetchJobData()
             jobData = fetchjobdata.getJobData_BSL()
             noOfJobs = len(jobData)
+            getUserType = Businesslayer_GetUserType.Businesslayer_GetUserType()
+            getUserTypeData = getUserType.getUserType_BSL(session['email'])
+            userType = getUserTypeData[2]
             fetchuserdata = Businesslayer_FetchUserData.Businesslayer_FetchUserData()
             profileData = fetchuserdata.getProfileData_BSL(session['email'])
             relesEngine = Businesslayer_RulesEngine.Businesslayer_RulesEngine()
             allow = relesEngine.rulesEngine_Employer_BSL(myUser.email,myUser.planType)
-            return render_template("jobs.html", jobData=jobData, noOfJobs=noOfJobs, msg=msg, jobId="Job with job id:" + jobId,allow=allow)
+            return render_template("jobs.html", jobData=jobData, noOfJobs=noOfJobs, msg=msg, jobId="Job with job id:" + jobId,allow=allow,userType=userType)
     except Exception as e:
         excep_msg = "Error in view jobs"
         level = logging.getLogger().getEffectiveLevel()
@@ -368,7 +371,7 @@ def addJobs():
             email = session['email']
             insertJobApplication = Businesslayer_InsertJobApplication.Businesslayer_InsertJobApplication()
             insertJobApplicationData = insertJobApplication.insertJobApplication_BSL(email)
-            return render_template("jobs.html", application_msg = "",allow=allow)
+            return render_template("jobs.html", application_msg = "",allow=allow, userType=userType)
     except Exception as e:
         excep_msg = "Error in view jobs"
         level = logging.getLogger().getEffectiveLevel()
@@ -382,6 +385,7 @@ def addJobApplication():
             email = session['email']
             getUserType = Businesslayer_GetUserType.Businesslayer_GetUserType()
             getUserTypeData = getUserType.getUserType_BSL(session['email'])
+            userType = getUserTypeData[2]
             fetchjobdata = Businesslayer_FetchJobData.Businesslayer_FetchJobData()
             jobData = fetchjobdata.getJobData_BSL()
             insertJobApplication = Businesslayer_InsertJobApplication.Businesslayer_InsertJobApplication()
@@ -389,7 +393,7 @@ def addJobApplication():
             noOfJobs = len(jobData)
             relesEngine = Businesslayer_RulesEngine.Businesslayer_RulesEngine()
             allow = relesEngine.rulesEngine_Employee_BSL(myUser.email,myUser.planType)
-            return render_template("jobs.html", application_msg = insertJobApplicationData,userType=getUserTypeData,jobData=jobData,noOfJobs=noOfJobs,allow=allow)
+            return render_template("jobs.html", application_msg = insertJobApplicationData,userType=userType,jobData=jobData,noOfJobs=noOfJobs,allow=allow)
     except Exception as e:
         excep_msg = "Error in view job application"
         level = logging.getLogger().getEffectiveLevel()
@@ -441,12 +445,8 @@ def upload_file():
         if not os.path.exists(path):
             os.makedirs(path)
         for fname in os.listdir(app.config['UPLOADED_PHOTOS_DEST']):
-            if fname.endswith('.jpg'):
+            if fname.endswith('.*'):
                 copyfile(app.config['UPLOADED_PHOTOS_DEST']  +"/" + name+ ".jpg", path + name+ ".jpg")
-            elif fname.endswith('.jpeg'):
-                copyfile(app.config['UPLOADED_PHOTOS_DEST']  + "/" + name+ ".jpeg", path + name+ ".jpeg")
-            elif fname.endswith('.png'):
-                copyfile(app.config['UPLOADED_PHOTOS_DEST'] +"/" + name+ ".png", path + name+ ".png")
         fileUploaded = False
         if glob.glob(path + name + ".*"):
             fileUploaded = True

@@ -39,12 +39,13 @@
             <div class="row centered-form">
                 <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
                     <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h1 style="text-align:center;" class="panel-title">Edit Profile</h1>
+                        <div style="text-align:center;" class="panel-heading">
+                            <h1 class="panel-title">Edit Profile</h1>
                         </div>
                         <div class="panel-body">
                             <form action="/updateProfile" method="POST">
-                                <a href="{{ url_for('upload_file') }}">Edit Profile picture</a>
+                                <center><a href="{{ url_for('upload_file') }}">Edit Profile picture</a></center>
+								<br>
                                 <div class="row">
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
@@ -94,13 +95,13 @@
                                     <input class="form-control input-sm" type="text" placeholder= "Current Employer" name="Current_Employer" value={{profileData[12]}}>
                                 </div>
                                 <div class="form-group">
-                                    <span style ="text-align: center">start date</span>
+                                    <span style ="text-align: center">Start Date</span>
                                 </div>
                                 <div class="form-group">
                                     <input type="date" placeholder= "From date" name = "Current_Employer_start_date" value={{profileData[13]}} >
                                 </div>
                                 <div class="form-group">
-                                    <span style ="text-align: center">end date</span>
+                                    <span style ="text-align: center">End Date</span>
                                 </div>
                                 <div class="form-group">
                                     <input type="date" placeholder= "From date" name = "Current_Employer_end_date" value={{profileData[14]}} >
@@ -109,13 +110,13 @@
                                     <input class="form-control input-sm" type="text" placeholder= "Previous Employer" name="Previous_Employer"  value={{profileData[15]}}  >
                                 </div>
                                 <div class="form-group">
-                                    <span style ="text-align: center">start date</span>
+                                    <span style ="text-align: center">Start Date</span>
                                 </div>
                                 <div class="form-group">
                                     <input type="date" placeholder= "From date" name = "Previous_Employer_start_date" value={{profileData[16]}} >
                                 </div>
                                 <div class="form-group">
-                                    <span style ="text-align: center">end date</span>
+                                    <span style ="text-align: center">End Date</span>
                                 </div>
                                 <div class="form-group">
                                     <input type="date" placeholder= "From date" name = "Previous_Employer_end_date" value={{profileData[17]}}>
@@ -124,13 +125,13 @@
                                     <input class="form-control input-sm" type="text"  placeholder= "Education details 1"  name="Education_details_1" value={{profileData[18]}} >
                                 </div>
                                 <div class="form-group">
-                                    <span style ="text-align: center">start date</span>
+                                    <span style ="text-align: center">Start Date</span>
                                 </div>
                                 <div class="form-group">
                                     <input type="date" placeholder= "From date" name = "Education_details_1_start_date" value={{profileData[19]}} >
                                 </div>
                                 <div class="form-group">
-                                    <span style ="text-align: center">end date</span>
+                                    <span style ="text-align: center">End Date</span>
                                 </div>
                                 <div class="form-group">
                                     <input type="date" placeholder= "From date" name = "Education_details_1_end_date" value={{profileData[20]}}>
@@ -139,13 +140,13 @@
                                     <input class="form-control input-sm" type="text" placeholder= "Education details 2" name="Education_details_2"  value={{profileData[21]}}>
                                 </div>
                                 <div class="form-group">
-                                    <span style ="text-align: center">start date</span>
+                                    <span style ="text-align: center">Start Date</span>
                                 </div>
                                 <div class="form-group">
                                     <input type="date" placeholder= "From date" name = "Education_details_2_start_date"  value={{profileData[22]}}>
                                 </div>
                                 <div class="form-group">
-                                    <span style ="text-align: center">end date</span>
+                                    <span style ="text-align: center">End Date</span>
                                 </div>
                                 <div class="form-group">
                                     <input type="date" placeholder= "From date" name = "Education_details_2_end_date"  value={{profileData[23]}}>
