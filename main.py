@@ -80,11 +80,9 @@ def changePassword():
             return redirect(url_for('loginForm'))
         if request.method == "POST":
             oldPassword = request.form['oldpassword']
-            oldPassword = hashlib.md5(oldPassword.encode()).hexdigest()
             newPassword = request.form['newpassword']
-            newPassword = hashlib.md5(newPassword.encode()).hexdigest()
-            changemypassword = Businesslayer_ChangeMyPassword.Businesslayer_ChangeMyPassword()
-            msg = changemypassword.changeMyProfilePassword_BSL(session['email'],oldPassword,newPassword)
+            hashmychangingpassword = HashMyChangingPassword.HashMyChangingPassword(session['email'],oldPassword,newPassword,'')
+            msg = hashmychangingpassword.hashMyChangingPassword()
             return render_template("changePassword.html", msg=msg)
         else:
             return render_template("changePassword.html")
