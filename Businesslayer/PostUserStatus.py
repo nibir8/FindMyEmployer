@@ -19,7 +19,7 @@ class PostUserStatus:
             return{
                 'pass': 'Successfully posted status',
                 'fail': 'Could not post status'
-            }[argument]
+            }.get(argument, 'Could not post status')
         def insertUserStatus(self):
             try:
                 if self.finalMessage == "":

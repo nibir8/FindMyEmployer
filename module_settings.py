@@ -36,7 +36,7 @@ from Businesslayer import Businesslayer_Validator_FirstName_SpaceCheck
 from Businesslayer import Businesslayer_Validator_Password_Equate
 from Businesslayer import Businesslayer_Validator_Password_SpaceCheck
 from Businesslayer import Businesslayer_RulesEngine
-from Businesslayer import Businesslayer_InsertJobApplication
+from Businesslayer import InsertJobApplication
 from Businesslayer import Businesslayer_FetchUserData
 from Businesslayer import Businesslayer_FactoryPattern
 
