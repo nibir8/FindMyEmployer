@@ -22,7 +22,7 @@ from Businesslayer import HashMyChangingPassword
 from Businesslayer import Businesslayer_CheckIfUserValid
 from Businesslayer import Businesslayer_FetchJobData
 from Businesslayer import Businesslayer_FetchSearchedProfile
-from Businesslayer import Businesslayer_GetStatus
+from Businesslayer import FetchAllUserStatuses
 from Businesslayer import Businesslayer_InsertJob
 from Businesslayer import Businesslayer_InsertUser
 from Businesslayer import Businesslayer_LoginClass

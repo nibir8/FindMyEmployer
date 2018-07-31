@@ -13,13 +13,13 @@ class ChangeMyPassword(IPasswordUpdate.IPasswordUpdate):
         self.oldPassword =oldPassword
         self.newPassword = newPassword
         self.mysql = mysql
-        self.finalMessage = msg
+        self.result = msg
 
     def changeMyProfilePassword(self):
         try:
             conn = self.mysql.connect()
             cur = conn.cursor()
-            if self.finalMessage == "":
+            if self.result == "":
                 cur.callproc('spFetchUserPassword',[self.myemail])
                 userId, password = cur.fetchone()
                 if (password == self.oldPassword):
@@ -28,10 +28,10 @@ class ChangeMyPassword(IPasswordUpdate.IPasswordUpdate):
                     msg="pass"
                 else:
                     msg = "fail"
-                self.finalMessage = msg
+                self.result = msg
         except Exception as e:
             conn.rollback()
-            excep_msg = "Error occured in changeMyProfilePassword_DBL method"
+            excep_msg = "Error occured in ChangeMyPassword method"
             level = logging.getLogger().getEffectiveLevel()
             logmyerror.loadMyExceptionInDb(level,excep_msg,e)
             logging.info(excep_msg, exc_info=True)
