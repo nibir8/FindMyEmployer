@@ -20,7 +20,7 @@ class FetchUserStatuses(IPostStatus.IPostStatus):
             cur = conn.cursor()
             if self.result == "":
                 cur.callproc('spGetUserStatus')
-                statusData = cur.fetchall()
+                self.StatusData = cur.fetchall()
                 conn.commit()
                 self.result = "pass"
         except Exception as e:
@@ -31,4 +31,4 @@ class FetchUserStatuses(IPostStatus.IPostStatus):
             logmyerror.loadMyExceptionInDb(level,excep_msg,e)
             logging.info(excep_msg, exc_info=True)
         conn.close()
-        return statusData,self.result
+        return self.StatusData,self.result
