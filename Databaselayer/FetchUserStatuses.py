@@ -16,7 +16,7 @@ class FetchUserStatuses(IPostStatus.IPostStatus):
 
     def getUserStatuses(self):
         try:
-            conn = mysql.connect()
+            conn = self.mysql.connect()
             cur = conn.cursor()
             if self.result == "":
                 cur.callproc('spGetUserStatus')
