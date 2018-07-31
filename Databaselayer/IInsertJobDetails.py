@@ -1,5 +1,5 @@
 import hashlib, os
-import logging  
+import logging
 
 class IInsertJobDetails:
-    def insertJob_DBL(Self,jobId,companyName,title,manager,location,jobDetails): raise NotImplementedError
+    def insertMyJob(self): raise NotImplementedError

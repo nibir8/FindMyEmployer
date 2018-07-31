@@ -23,7 +23,7 @@ from Businesslayer import Businesslayer_CheckIfUserValid
 from Businesslayer import Businesslayer_FetchJobData
 from Businesslayer import Businesslayer_FetchSearchedProfile
 from Businesslayer import FetchAllUserStatuses
-from Businesslayer import Businesslayer_InsertJob
+from Businesslayer import InsertUserJob
 from Businesslayer import Businesslayer_InsertUser
 from Businesslayer import Businesslayer_LoginClass
 from Businesslayer import PostUserStatus

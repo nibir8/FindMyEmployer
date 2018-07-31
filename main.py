@@ -296,8 +296,8 @@ def jobs():
             manager = request.form['manager']
             location = request.form['location']
             jobDetails = request.form['jobDetails']
-            insertjob = Businesslayer_InsertJob.Businesslayer_InsertJob()
-            msg = insertjob.insertJob_BSL(jobId,companyName,title,manager,location,jobDetails,session['email'])
+            insertjob = InsertUserJob.InsertUserJob(jobId,companyName,title,manager,location,jobDetails,session['email'],'')
+            msg = insertjob.insertUserJob()
             fetchjobdata = Businesslayer_FetchJobData.Businesslayer_FetchJobData()
             jobData = fetchjobdata.getJobData_BSL()
             noOfJobs = len(jobData)
