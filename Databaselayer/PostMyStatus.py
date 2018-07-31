@@ -8,19 +8,27 @@ from extensions import mysql
 from extensions_logging import logmyerror
 
 
-class Databaselayer_PostStatus(IPostStatus.IPostStatus):
-    def insertUserStatus_DBL(Self,email,status):
+class PostMyStatus(IPostStatus.IPostStatus):
+    def __init__(self,mysql,email,status,msg):
+        self.mysql = mysql
+        self.email = email
+        self.status = status
+        self.result = msg
+
+    def insertMyUserStatus(self):
         try:
-            conn = mysql.connect()
+            conn = self.mysql.connect()
             cur = conn.cursor()
-            cur.callproc('spInsertUserStatus',[email,status])
-            conn.commit()
-            msg = "Status Added Successfully"
+            if self.result == "":
+                cur.callproc('spInsertUserStatus',[self.email,self.status])
+                conn.commit()
+                self.result ="pass"
         except Exception as e:
             conn.rollback()
             excep_msg = "Error occured in getProfileData_DBL method"
+            self.result ="fall"
             level = logging.getLogger().getEffectiveLevel()
             logmyerror.loadMyExceptionInDb(level,excep_msg,e)
             logging.info(excep_msg, exc_info=True)
         conn.close()
-        return msg
+        return self.result

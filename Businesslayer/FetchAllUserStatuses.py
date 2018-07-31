@@ -18,7 +18,7 @@ class FetchAllUserStatuses:
         return{
             'pass': 'User Staus Fetched Successfully',
             'fail': 'Unable to fetch user status'
-        }[argument]
+        }.get(argument, 'Unable to fetch user status')
 
     def getAllUserStatus(self):
         try:

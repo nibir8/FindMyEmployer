@@ -36,4 +36,4 @@ class ChangeMyPassword(IPasswordUpdate.IPasswordUpdate):
             logmyerror.loadMyExceptionInDb(level,excep_msg,e)
             logging.info(excep_msg, exc_info=True)
         conn.close()
-        return self.finalMessage
+        return self.result

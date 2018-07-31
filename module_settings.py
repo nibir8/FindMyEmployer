@@ -23,10 +23,10 @@ from Businesslayer import Businesslayer_CheckIfUserValid
 from Businesslayer import Businesslayer_FetchJobData
 from Businesslayer import Businesslayer_FetchSearchedProfile
 from Businesslayer import FetchAllUserStatuses
-from Businesslayer import Businesslayer_InsertJob
+from Businesslayer import InsertUserJob
 from Businesslayer import Businesslayer_InsertUser
 from Businesslayer import Businesslayer_LoginClass
-from Businesslayer import Businesslayer_PostStatus
+from Businesslayer import PostUserStatus
 from Businesslayer import Businesslayer_UpdateMyProfile
 from Businesslayer import Businesslayer_GetUserType
 from Businesslayer import Businesslayer_Validator_Email_NullCheck
@@ -36,7 +36,7 @@ from Businesslayer import Businesslayer_Validator_FirstName_SpaceCheck
 from Businesslayer import Businesslayer_Validator_Password_Equate
 from Businesslayer import Businesslayer_Validator_Password_SpaceCheck
 from Businesslayer import Businesslayer_RulesEngine
-from Businesslayer import Businesslayer_InsertJobApplication
+from Businesslayer import InsertGivenJobApplication
 from Businesslayer import Businesslayer_FetchUserData
 from Businesslayer import Businesslayer_FactoryPattern
 

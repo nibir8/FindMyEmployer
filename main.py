@@ -168,8 +168,8 @@ def updateProfile():
 def postStatus():
     try:
         text = request.form['inputPost']
-        insertuserstatus = Businesslayer_PostStatus.Businesslayer_PostStatus()
-        insertuserstatus.insertUserStatus_BSL(session['email'],text)
+        insertuserstatus = PostUserStatus.PostUserStatus(session['email'],text,'')
+        message = insertuserstatus.insertUserStatus()
         return redirect(url_for('profileHome'))
     except Exception as e:
         excep_msg = "Error in view poststatus"
@@ -296,8 +296,8 @@ def jobs():
             manager = request.form['manager']
             location = request.form['location']
             jobDetails = request.form['jobDetails']
-            insertjob = Businesslayer_InsertJob.Businesslayer_InsertJob()
-            msg = insertjob.insertJob_BSL(jobId,companyName,title,manager,location,jobDetails,session['email'])
+            insertjob = InsertUserJob.InsertUserJob(jobId,companyName,title,manager,location,jobDetails,session['email'],'')
+            msg = insertjob.insertUserJob()
             fetchjobdata = Businesslayer_FetchJobData.Businesslayer_FetchJobData()
             jobData = fetchjobdata.getJobData_BSL()
             noOfJobs = len(jobData)
@@ -369,8 +369,8 @@ def addJobs():
             return render_template("jobs.html", jobData=jobData, noOfJobs=noOfJobs,userType=userType,allow=allow)
         if request.method == 'POST':
             email = session['email']
-            insertJobApplication = Businesslayer_InsertJobApplication.Businesslayer_InsertJobApplication()
-            insertJobApplicationData = insertJobApplication.insertJobApplication_BSL(email)
+            insertgivenjobapplication = InsertGivenJobApplication.InsertGivenJobApplication(email,'')
+            message = insertgivenjobapplication.insertGivenJobApplication()
             return render_template("jobs.html", application_msg = "",allow=allow, userType=userType)
     except Exception as e:
         excep_msg = "Error in view jobs"
@@ -388,12 +388,12 @@ def addJobApplication():
             userType = getUserTypeData[2]
             fetchjobdata = Businesslayer_FetchJobData.Businesslayer_FetchJobData()
             jobData = fetchjobdata.getJobData_BSL()
-            insertJobApplication = Businesslayer_InsertJobApplication.Businesslayer_InsertJobApplication()
-            insertJobApplicationData = insertJobApplication.insertJobApplication_BSL(email)
+            insertgivenjobapplication = InsertGivenJobApplication.InsertGivenJobApplication(email,'')
+            message = insertgivenjobapplication.insertGivenJobApplication()
             noOfJobs = len(jobData)
             relesEngine = Businesslayer_RulesEngine.Businesslayer_RulesEngine()
             allow = relesEngine.rulesEngine_Employer_BSL(myUser.email,myUser.userType,myUser.planType)
-            return render_template("jobs.html", application_msg = insertJobApplicationData,userType=userType,jobData=jobData,noOfJobs=noOfJobs,allow=allow)
+            return render_template("jobs.html", application_msg = message,userType=userType,jobData=jobData,noOfJobs=noOfJobs,allow=allow)
     except Exception as e:
         excep_msg = "Error in view job application"
         level = logging.getLogger().getEffectiveLevel()

@@ -22,7 +22,7 @@ class HashMyChangingPassword:
         return{
             'pass': 'Password Updated Successfully',
             'fail': 'Invalid password'
-        }[argument]
+        }.get(argument, 'Invalid password')
 
     def hashMyChangingPassword(self):
         try:
