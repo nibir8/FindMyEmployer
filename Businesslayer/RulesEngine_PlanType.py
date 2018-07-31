@@ -3,12 +3,12 @@ import logging
 import sys
 from XmlReader import XmlReader
 sys.path.append(os.path.abspath(os.path.join('0','../Databaselayer')))
-from Databaselayer_UpdateMyProfile import Databaselayer_UpdateMyProfile
 from Databaselayer_FetchApplicationCount import Databaselayer_FetchApplicationCount
-from Databaselayer_FetchJobsCount import Databaselayer_FetchJobsCount
+from FetchJobsCount import FetchJobsCount
 
 sys.path.append(os.path.abspath(os.path.join('0', '../extensions')))
 from extensions_logging import logmyerror
+from extensions import mysql
 
 sys.path.append(os.path.abspath(os.path.join('0', '../DecoraterClasses')))
 from NormalEmployee import NormalEmployee
@@ -17,18 +17,21 @@ from NormalEmployer import NormalEmployer
 from Employer_Plan_decorator import Employer_Plan_decorator
 
 class RulesEngine_PlanType:
+    def __init__(self,count):
+        self.count = count
 
     def rulesEngine_Employee(self,email,UserType,typeOfPlan):
         try:
             reader = XmlReader()
             EmployeePlanName,EmployeePlanCount,EmployeePlanPrice,EmployeeMessagePermission = reader.readmyFile(UserType)
-            fetchApplicationCount = Databaselayer_FetchApplicationCount()
-            applicationcount = fetchApplicationCount.getApplicationCount_DBL(email)
+            if self.count == "":
+                fetchApplicationCount = FetchGetApplicationCount(mysql,email,'','')
+                self.count,result  = fetchApplicationCount.getApplicationCount(email)
             concreteComponent =  NormalEmployee()
             concrete_decorator_plan =  Employee_Plan_decorator(concreteComponent)
             for index, item in enumerate(EmployeePlanName):
                 if typeOfPlan == item:
-                    allowPosting,allowMessagePermission = concrete_decorator_plan.plan_rules(EmployeePlanCount[index],applicationcount,EmployeeMessagePermission[index])
+                    allowPosting,allowMessagePermission = concrete_decorator_plan.plan_rules(EmployeePlanCount[index],self.count,EmployeeMessagePermission[index])
             return allowPosting,allowMessagePermission
         except Exception as e:
             excep_msg = "Error occured in method rulesEngine_Employee_BSL method"
@@ -40,13 +43,14 @@ class RulesEngine_PlanType:
         try:
             reader = XmlReader()
             EmployerPlanName,EmployerPlanCount,EmployerPlanPrice,EmployerMessagePermission = reader.readmyFile(UserType)
-            fetchJobsCount = Databaselayer_FetchJobsCount()
-            jobsCount  = fetchJobsCount.getJobsCount_DBL(email)
+            if self.count == "":
+                fetchJobsCount = FetchJobsCount(mysql,email,'','')
+                self.count,result  = fetchJobsCount.getJobsCount()
             concreteComponent = NormalEmployer()
             concrete_decorator_planA = Employer_Plan_decorator(concreteComponent)
             for index, item in enumerate(EmployerPlanName):
                 if typeOfPlan == item:
-                    allowPosting,allowMessagePermission = concrete_decorator_planA.plan_rules(EmployerPlanCount[index],fetchJobsCount,EmployerMessagePermission[index])
+                    allowPosting,allowMessagePermission = concrete_decorator_planA.plan_rules(EmployerPlanCount[index],self.count,EmployerMessagePermission[index])
             return allowPosting,allowMessagePermission
         except Exception as e:
             excep_msg = "Error occured in method rulesEngine_Employer_BSL method"

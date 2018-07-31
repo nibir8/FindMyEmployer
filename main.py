@@ -306,7 +306,7 @@ def jobs():
             userType = getUserTypeData[2]
             fetchuserdata = Businesslayer_FetchUserData.Businesslayer_FetchUserData()
             profileData = fetchuserdata.getProfileData_BSL(session['email'])
-            rulesEngine = RulesEngine_PlanType.RulesEngine_PlanType()
+            rulesEngine = RulesEngine_PlanType.RulesEngine_PlanType('')
             allowPosting,allowMessages = rulesEngine.rulesEngine_Employer(myUser.email,myUser.userType,myUser.planType)
             return render_template("jobs.html", jobData=jobData, noOfJobs=noOfJobs, msg=msg, jobId="Job with job id:" + jobId,allow=allowPosting,userType=userType)
     except Exception as e:
@@ -351,13 +351,13 @@ def addJobs():
             userType = 'employee'
             fetchuserdata = Businesslayer_FetchUserData.Businesslayer_FetchUserData()
             profileData = fetchuserdata.getProfileData_BSL(session['email'])
-            rulesEngine = RulesEngine_PlanType.RulesEngine_PlanType()
+            rulesEngine = RulesEngine_PlanType.RulesEngine_PlanType('')
             allowPosting,allowMessages = rulesEngine.rulesEngine_Employer(myUser.email,myUser.userType,myUser.planType)
         else:
             userType = 'employer'
             fetchuserdata = Businesslayer_FetchUserData.Businesslayer_FetchUserData()
             profileData = fetchuserdata.getProfileData_BSL(session['email'])
-            rulesEngine = RulesEngine_PlanType.RulesEngine_PlanType()
+            rulesEngine = RulesEngine_PlanType.RulesEngine_PlanType('')
             allowPosting,allowMessages = rulesEngine.rulesEngine_Employer(myUser.email,myUser.userType,myUser.planType)
         fetchjobdata = Businesslayer_FetchJobData.Businesslayer_FetchJobData()
         jobData = fetchjobdata.getJobData_BSL()
@@ -390,7 +390,7 @@ def addJobApplication():
             insertgivenjobapplication = InsertGivenJobApplication.InsertGivenJobApplication(email,'')
             message = insertgivenjobapplication.insertGivenJobApplication()
             noOfJobs = len(jobData)
-            rulesEngine = RulesEngine_PlanType.RulesEngine_PlanType()
+            rulesEngine = RulesEngine_PlanType.RulesEngine_PlanType('')
             allowPosting,allowMessages = rulesEngine.rulesEngine_Employer(myUser.email,myUser.userType,myUser.planType)
             return render_template("jobs.html", application_msg = message,userType=userType,jobData=jobData,noOfJobs=noOfJobs,allow=allowPosting)
     except Exception as e:

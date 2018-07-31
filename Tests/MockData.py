@@ -20,6 +20,9 @@ Messages2 = ['pass','fail']
 Messages3 = ['User Staus Fetched Successfully','Unable to fetch user status']
 Messages4 = ['Successfully posted status','Could not post status']
 Messages5 =['Successfully submitted application','Unable to submit the application']
+Messages5 =['Added Job Successfully', 'Could not add job']
+
+Jobdetails =['1232','Google','Software Engineer-II','Chaz Kirpatrik','Chicago','FullTime','rohit.gs28@gmail.com']
 
 
 Profiledata = [1,'rohit.gs28@gmail.com','Rohit','Gollarahalli','1333,South park street', ' ','B3J2K9','','Halifax','Nova Scotia','Canada',

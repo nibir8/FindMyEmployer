@@ -6,6 +6,8 @@ class Employee_Plan_decorator(EmployeeDecorator):
 
   def plan_rules(self,givenCount,userCount,messagePermission):
       allow = False
+      givenCount = int(givenCount)
+      userCount = int(userCount)
       if givenCount>userCount:
         allow = True
       elif givenCount<=userCount:

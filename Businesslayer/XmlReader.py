@@ -1,11 +1,10 @@
 #!/usr/bin/python
-
+import logging
 import unittest
 from xml.dom.minidom import parse
 import xml.dom.minidom
 from xml.sax.handler import ContentHandler
 from xml.sax import make_parser
-import logging
 from glob import glob
 import sys
 import os
@@ -15,14 +14,6 @@ from extensions_logging import logmyerror
 
 
 class XmlReader:
-
-    def set_messagepermission(self,argument):
-        if argument =='allow':
-            return True
-        elif argument =='deny':
-            return False
-
-
     def readmyFile(self,UserType):
         try:
             Employees = []
@@ -38,7 +29,7 @@ class XmlReader:
             EmployerPlanName = []
             EmployerPlanCount = []
             EmployerPlanPrice = []
-            EmployerMessagePermission =[]
+            EmployerMessagePermission = []
             filename=dir_path + "/parse.xml"
             parser = make_parser()
             parser.setContentHandler(ContentHandler())
@@ -72,16 +63,18 @@ class XmlReader:
                     givenCount =  "%s" % Count.childNodes[0].data
                 Messages = plan.getElementsByTagName("Messages")[0]
                 if not plan.childNodes:
-                    givenMessagesPermission = ""
+                    givenMessagePermission = ""
                 else:
-                    givenMessagesPermission =  "%s" % Messages.childNodes[0].data
+                    givenMessagePermission =  "%s" % Messages.childNodes[0].data
                 EmployeePlanName.append(givenName)
                 EmployeePlanPrice.append(givenPrice)
                 EmployeePlanCount.append(givenCount)
-                EmployeeMessagePermission.append(givenMessagesPermission)
+                EmployeeMessagePermission.append(givenMessagePermission)
             for index,item in enumerate(EmployeeMessagePermission):
-                item = self.set_messagepermission(item)
-                EmployeeMessagePermission[index] = item
+                if item == 'allow':
+                    EmployeeMessagePermission[index] =True
+                elif item == 'deny':
+                    EmployeeMessagePermission[index] =False
 
 
             for plan in EmployerPlans:
@@ -102,17 +95,18 @@ class XmlReader:
                     givenCount =  "%s" % Count.childNodes[0].data
                 Messages = plan.getElementsByTagName("Messages")[0]
                 if not plan.childNodes:
-                    givenMessagesPermission = ""
+                    givenMessagePermission = ""
                 else:
-                    givenMessagesPermission =  "%s" % Messages.childNodes[0].data
+                    givenMessagePermission =  "%s" % Messages.childNodes[0].data
                 EmployerPlanName.append(givenName)
                 EmployerPlanPrice.append(givenPrice)
                 EmployerPlanCount.append(givenCount)
-                EmployerMessagePermission.append(givenMessagesPermission)
+                EmployerMessagePermission.append(givenMessagePermission)
             for index,item in enumerate(EmployerMessagePermission):
-                item = self.set_messagepermission(item)
-                EmployerMessagePermission[index] = item
-
+                if item == 'allow':
+                    EmployerMessagePermission[index] =True
+                elif item == 'deny':
+                    EmployerMessagePermission[index] =False
 
             if UserType =='employee':
                 return EmployeePlanName,EmployeePlanCount,EmployeePlanPrice,EmployeeMessagePermission
@@ -122,7 +116,7 @@ class XmlReader:
         except Exception, e:
             print "Exception"
             print "%s is NOT well-formed! %s" % (filename, e)
-            excep_msg = "Error occured in method rulesEngine_Employer_BSL method"
+            excep_msg = "Error occured in  xml reader method"
             level = logging.getLogger().getEffectiveLevel()
             logmyerror.loadMyExceptionInDb(level,excep_msg,e)
             logging.info(excep_msg, exc_info=True)

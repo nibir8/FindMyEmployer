@@ -22,10 +22,12 @@ class Businesslayer_XmlReader:
             EmployeePlanName = []
             EmployeePlanCount = []
             EmployeePlanPrice = []
+            EmployeeMessagePermission = []
 
             EmployerPlanName = []
             EmployerPlanCount = []
             EmployerPlanPrice = []
+            EmployerMessagePermission = []
             filename=dir_path + "/parse.xml"
             parser = make_parser()
             parser.setContentHandler(ContentHandler())
@@ -57,9 +59,20 @@ class Businesslayer_XmlReader:
                     givenCount = ""
                 else:
                     givenCount =  "%s" % Count.childNodes[0].data
+                Messages = plan.getElementsByTagName("Messages")[0]
+                if not plan.childNodes:
+                    givenMessagePermission = ""
+                else:
+                    givenMessagePermission =  "%s" % Messages.childNodes[0].data
                 EmployeePlanName.append(givenName)
                 EmployeePlanPrice.append(givenPrice)
                 EmployeePlanCount.append(givenCount)
+                EmployeeMessagePermission.append(givenMessagePermission)
+            for index,item in enumerate(EmployeeMessagePermission)
+                if item == 'allow':
+                    EmployeeMessagePermission[index] ==True
+                elif item == 'deny':
+                    EmployeeMessagePermission[index] ==False
 
 
             for plan in EmployerPlans:
@@ -78,13 +91,25 @@ class Businesslayer_XmlReader:
                     givenCount = ""
                 else:
                     givenCount =  "%s" % Count.childNodes[0].data
+                Messages = plan.getElementsByTagName("Messages")[0]
+                if not plan.childNodes:
+                    givenMessagePermission = ""
+                else:
+                    givenMessagePermission =  "%s" % Messages.childNodes[0].data
                 EmployerPlanName.append(givenName)
                 EmployerPlanPrice.append(givenPrice)
                 EmployerPlanCount.append(givenCount)
+                EmployerMessagePermission.append(givenMessagePermission)
+            for index,item in enumerate(EmployerMessagePermission)
+                if item == 'allow':
+                    EmployerMessagePermission[index] ==True
+                elif item == 'deny':
+                    EmployerMessagePermission[index] ==False
+
             if UserType =='employee':
-                return EmployeePlanName,EmployeePlanCount,EmployeePlanPrice
+                return EmployeePlanName,EmployeePlanCount,EmployeePlanPrice,EmployeeMessagePermission
             elif UserType =='employer':
-                return EmployerPlanName,EmployerPlanCount,EmployerPlanPrice
+                return EmployerPlanName,EmployerPlanCount,EmployerPlanPrice,EmployerMessagePermission
 
         except Exception, e:
             print "Exception"
