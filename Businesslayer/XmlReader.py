@@ -1,5 +1,5 @@
 #!/usr/bin/python
-
+import logging
 import unittest
 from xml.dom.minidom import parse
 import xml.dom.minidom
@@ -9,9 +9,11 @@ from glob import glob
 import sys
 import os
 dir_path = os.path.dirname(os.path.realpath(__file__))
+sys.path.append(os.path.abspath(os.path.join('0', '../extensions')))
+from extensions_logging import logmyerror
 
 
-class Businesslayer_XmlReader:
+class XmlReader:
     def readmyFile(self,UserType):
         try:
             Employees = []
@@ -68,11 +70,11 @@ class Businesslayer_XmlReader:
                 EmployeePlanPrice.append(givenPrice)
                 EmployeePlanCount.append(givenCount)
                 EmployeeMessagePermission.append(givenMessagePermission)
-            for index,item in enumerate(EmployeeMessagePermission)
+            for index,item in enumerate(EmployeeMessagePermission):
                 if item == 'allow':
-                    EmployeeMessagePermission[index] ==True
+                    EmployeeMessagePermission[index] =True
                 elif item == 'deny':
-                    EmployeeMessagePermission[index] ==False
+                    EmployeeMessagePermission[index] =False
 
 
             for plan in EmployerPlans:
@@ -100,11 +102,11 @@ class Businesslayer_XmlReader:
                 EmployerPlanPrice.append(givenPrice)
                 EmployerPlanCount.append(givenCount)
                 EmployerMessagePermission.append(givenMessagePermission)
-            for index,item in enumerate(EmployerMessagePermission)
+            for index,item in enumerate(EmployerMessagePermission):
                 if item == 'allow':
-                    EmployerMessagePermission[index] ==True
+                    EmployerMessagePermission[index] =True
                 elif item == 'deny':
-                    EmployerMessagePermission[index] ==False
+                    EmployerMessagePermission[index] =False
 
             if UserType =='employee':
                 return EmployeePlanName,EmployeePlanCount,EmployeePlanPrice,EmployeeMessagePermission
@@ -114,3 +116,7 @@ class Businesslayer_XmlReader:
         except Exception, e:
             print "Exception"
             print "%s is NOT well-formed! %s" % (filename, e)
+            excep_msg = "Error occured in  xml reader method"
+            level = logging.getLogger().getEffectiveLevel()
+            logmyerror.loadMyExceptionInDb(level,excep_msg,e)
+            logging.info(excep_msg, exc_info=True)

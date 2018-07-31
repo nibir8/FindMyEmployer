@@ -306,9 +306,9 @@ def jobs():
             userType = getUserTypeData[2]
             fetchuserdata = Businesslayer_FetchUserData.Businesslayer_FetchUserData()
             profileData = fetchuserdata.getProfileData_BSL(session['email'])
-            relesEngine = Businesslayer_RulesEngine.Businesslayer_RulesEngine()
-            allow = relesEngine.rulesEngine_Employer_BSL(myUser.email,myUser.userType,myUser.planType)
-            return render_template("jobs.html", jobData=jobData, noOfJobs=noOfJobs, msg=msg, jobId="Job with job id:" + jobId,allow=allow,userType=userType)
+            rulesEngine = RulesEngine_PlanType.RulesEngine_PlanType('')
+            allowPosting,allowMessages = rulesEngine.rulesEngine_Employer(myUser.email,myUser.userType,myUser.planType)
+            return render_template("jobs.html", jobData=jobData, noOfJobs=noOfJobs, msg=msg, jobId="Job with job id:" + jobId,allow=allowPosting,userType=userType)
     except Exception as e:
         excep_msg = "Error in view jobs"
         level = logging.getLogger().getEffectiveLevel()
@@ -351,27 +351,26 @@ def addJobs():
             userType = 'employee'
             fetchuserdata = Businesslayer_FetchUserData.Businesslayer_FetchUserData()
             profileData = fetchuserdata.getProfileData_BSL(session['email'])
-            relesEngine = Businesslayer_RulesEngine.Businesslayer_RulesEngine()
-            allow = relesEngine.rulesEngine_Employer_BSL(myUser.email,myUser.userType,myUser.planType)
+            rulesEngine = RulesEngine_PlanType.RulesEngine_PlanType('')
+            allowPosting,allowMessages = rulesEngine.rulesEngine_Employer(myUser.email,myUser.userType,myUser.planType)
         else:
             userType = 'employer'
             fetchuserdata = Businesslayer_FetchUserData.Businesslayer_FetchUserData()
             profileData = fetchuserdata.getProfileData_BSL(session['email'])
-            relesEngine = Businesslayer_RulesEngine.Businesslayer_RulesEngine()
-            allow = relesEngine.rulesEngine_Employer_BSL(myUser.email,myUser.userType,myUser.planType)
+            rulesEngine = RulesEngine_PlanType.RulesEngine_PlanType('')
+            allowPosting,allowMessages = rulesEngine.rulesEngine_Employer(myUser.email,myUser.userType,myUser.planType)
         fetchjobdata = Businesslayer_FetchJobData.Businesslayer_FetchJobData()
         jobData = fetchjobdata.getJobData_BSL()
         noOfJobs = len(jobData)
-        print allow
         if(noOfJobs == 0):
-            return render_template("jobs.html",noOfJobs=noOfJobs,jobData=jobData,userType=userType,allow=allow)
+            return render_template("jobs.html",noOfJobs=noOfJobs,jobData=jobData,userType=userType,allow=allowPosting)
         else:
-            return render_template("jobs.html", jobData=jobData, noOfJobs=noOfJobs,userType=userType,allow=allow)
+            return render_template("jobs.html", jobData=jobData, noOfJobs=noOfJobs,userType=userType,allow=allowPosting)
         if request.method == 'POST':
             email = session['email']
             insertgivenjobapplication = InsertGivenJobApplication.InsertGivenJobApplication(email,'')
             message = insertgivenjobapplication.insertGivenJobApplication()
-            return render_template("jobs.html", application_msg = "",allow=allow, userType=userType)
+            return render_template("jobs.html", application_msg = "",allow=allowPosting, userType=userType)
     except Exception as e:
         excep_msg = "Error in view jobs"
         level = logging.getLogger().getEffectiveLevel()
@@ -391,9 +390,9 @@ def addJobApplication():
             insertgivenjobapplication = InsertGivenJobApplication.InsertGivenJobApplication(email,'')
             message = insertgivenjobapplication.insertGivenJobApplication()
             noOfJobs = len(jobData)
-            relesEngine = Businesslayer_RulesEngine.Businesslayer_RulesEngine()
-            allow = relesEngine.rulesEngine_Employer_BSL(myUser.email,myUser.userType,myUser.planType)
-            return render_template("jobs.html", application_msg = message,userType=userType,jobData=jobData,noOfJobs=noOfJobs,allow=allow)
+            rulesEngine = RulesEngine_PlanType.RulesEngine_PlanType('')
+            allowPosting,allowMessages = rulesEngine.rulesEngine_Employer(myUser.email,myUser.userType,myUser.planType)
+            return render_template("jobs.html", application_msg = message,userType=userType,jobData=jobData,noOfJobs=noOfJobs,allow=allowPosting)
     except Exception as e:
         excep_msg = "Error in view job application"
         level = logging.getLogger().getEffectiveLevel()
