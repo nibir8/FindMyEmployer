@@ -4,11 +4,13 @@
 <Name>plan1</Name>
 <Count>6</Count>
 <Price>40</Price>
+<Messages>deny</Messages>
 </EmployeePlan>
 <EmployeePlan>
 <Name>plan2</Name>
 <Count>30</Count>
 <Price>100</Price>
+<Messages>allow</Messages>
 </EmployeePlan>
 </Employee>
 <Employer>
@@ -16,11 +18,13 @@
 <Name>plan1</Name>
 <Count>6</Count>
 <Price>40</Price>
+<Messages>deny</Messages>
 </EmployerPlan>
 <EmployerPlan>
 <Name>plan2</Name>
 <Count>30</Count>
 <Price>100</Price>
+<Messages>allow</Messages>
 </EmployerPlan>
 </Employer>
 </User>
