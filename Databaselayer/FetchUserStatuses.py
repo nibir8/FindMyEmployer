@@ -8,20 +8,26 @@ from extensions import mysql
 from extensions_logging import logmyerror
 
 
-class Databaselayer_FetchStatus(IPostStatus.IPostStatus):
-    def getUserStatus_DBL(Self):
+class FetchUserStatuses(IPostStatus.IPostStatus):
+    def __init__(self,mysql,msg):
+        self.mysql = mysql
+        self.result = msg
+
+    def getUserStatuses(self):
         try:
             conn = mysql.connect()
             cur = conn.cursor()
-            cur.callproc('spGetUserStatus')
-            statusData = cur.fetchall()
-            #print statusData
-            conn.commit()
+            if self.result == "":
+                cur.callproc('spGetUserStatus')
+                statusData = cur.fetchall()
+                conn.commit()
+                self.result = "pass"
         except Exception as e:
             conn.rollback()
-            excep_msg = "Error occured in getProfileData_DBL method"
+            excep_msg = "Error occured in getUserStatuses method in databaselayer"
+            self.result = "fail"
             level = logging.getLogger().getEffectiveLevel()
             logmyerror.loadMyExceptionInDb(level,excep_msg,e)
             logging.info(excep_msg, exc_info=True)
         conn.close()
-        return statusData
+        return statusData,self.result

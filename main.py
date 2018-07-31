@@ -22,14 +22,15 @@ def root():
             firstName = ''
             return render_template('home.html',  loggedIn=loggedIn, firstName=firstName)
         else:
+            StatusData = []
             captureSessionid.emailid =  session['email']
             fetchuserdata = Businesslayer_FetchUserData.Businesslayer_FetchUserData()
             profileData = fetchuserdata.getProfileData_BSL(session['email'])
             loginclassdetails = Businesslayer_LoginClass.Businesslayer_LoginClass()
             loggedIn, firstName, typeOfUser = loginclassdetails.getLoginDetails_BSL(session['email'])
-            fetchuserstatus = Businesslayer_GetStatus.Businesslayer_GetStatus()
-            userStatus = fetchuserstatus.getUserStatus_BSL()
-            return render_template("Profile2.html",loggedIn=loggedIn, firstName=firstName,userStatus=userStatus,profileData=profileData)
+            fetchuserstatus = FetchUserStatus.FetchUserStatus(StatusData,'')
+            StatusData,message = fetchuserstatus.getUserStatus()
+            return render_template("Profile2.html",loggedIn=loggedIn, firstName=firstName,userStatus=StatusData,profileData=profileData)
     except Exception as e:
         excep_msg = "Error in view Homepage"
         level = logging.getLogger().getEffectiveLevel()
@@ -43,13 +44,14 @@ def profileHome():
             return redirect(url_for('root'))
         else:
             loggedIn = True
+            StatusData = []
             loginclassdetails = Businesslayer_LoginClass.Businesslayer_LoginClass()
             loggedIn, firstName,typeOfUser = loginclassdetails.getLoginDetails_BSL(session['email'])
             fetchuserdata = Businesslayer_FetchUserData.Businesslayer_FetchUserData()
             profileData = fetchuserdata.getProfileData_BSL(session['email'])
-            fetchuserstatus = Businesslayer_GetStatus.Businesslayer_GetStatus()
-            userStatus = fetchuserstatus.getUserStatus_BSL()
-            return render_template("Profile2.html",loggedIn=loggedIn, firstName=firstName,userStatus=userStatus,profileData=profileData)
+            fetchuserstatus = FetchUserStatus.FetchUserStatus(StatusData,'')
+            StatusData,message = fetchuserstatus.getUserStatus()
+            return render_template("Profile2.html",loggedIn=loggedIn, firstName=firstName,userStatus=StatusData,profileData=profileData)
     except Exception as e:
         excep_msg = "Error in view profile"
         level = logging.getLogger().getEffectiveLevel()

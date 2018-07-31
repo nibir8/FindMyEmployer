@@ -34,7 +34,7 @@ class HashMyChangingPassword:
                 self.finalMessage = self.set_messages(status)
             return self.finalMessage
         except Exception as e:
-            excep_msg = "Error occured in method changeMyProfilePassword_BSL method"
+            excep_msg = "Error occured in method HashMyChangingPassword businesslayer"
             level = logging.getLogger().getEffectiveLevel()
             logmyerror.loadMyExceptionInDb(level,excep_msg,e)
             logging.info(excep_msg, exc_info=True)
