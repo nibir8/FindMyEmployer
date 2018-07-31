@@ -26,7 +26,7 @@ from Businesslayer import FetchAllUserStatuses
 from Businesslayer import Businesslayer_InsertJob
 from Businesslayer import Businesslayer_InsertUser
 from Businesslayer import Businesslayer_LoginClass
-from Businesslayer import Businesslayer_PostStatus
+from Businesslayer import PostUserStatus
 from Businesslayer import Businesslayer_UpdateMyProfile
 from Businesslayer import Businesslayer_GetUserType
 from Businesslayer import Businesslayer_Validator_Email_NullCheck

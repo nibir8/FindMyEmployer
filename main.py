@@ -168,8 +168,8 @@ def updateProfile():
 def postStatus():
     try:
         text = request.form['inputPost']
-        insertuserstatus = Businesslayer_PostStatus.Businesslayer_PostStatus()
-        insertuserstatus.insertUserStatus_BSL(session['email'],text)
+        insertuserstatus = PostUserStatus.PostUserStatus(session['email'],text,'')
+        message = insertuserstatus.insertUserStatus()
         return redirect(url_for('profileHome'))
     except Exception as e:
         excep_msg = "Error in view poststatus"
