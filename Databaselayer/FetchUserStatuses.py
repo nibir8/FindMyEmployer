@@ -9,8 +9,9 @@ from extensions_logging import logmyerror
 
 
 class FetchUserStatuses(IPostStatus.IPostStatus):
-    def __init__(self,mysql,msg):
+    def __init__(self,mysql,StatusData,msg):
         self.mysql = mysql
+        self.StatusData = StatusData
         self.result = msg
 
     def getUserStatuses(self):

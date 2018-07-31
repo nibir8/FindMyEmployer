@@ -23,7 +23,7 @@ class FetchAllUserStatuses:
     def getAllUserStatus(self):
         try:
             if self.finalMessage == "":
-                fetchuserStatus = FetchUserStatuses(mysql,'')
+                fetchuserStatus = FetchUserStatuses(mysql,self.StatusData,'')
                 self.StatusData,result  = fetchuserStatus.getUserStatuses()
                 self.finalMessage = self.set_messages(result)
             return self.StatusData,self.finalMessage
