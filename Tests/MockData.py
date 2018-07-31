@@ -17,6 +17,9 @@ Country = ['Canada','Canada','USA','Canada']
 
 Messages1 = ['Changed Successfully','Wrong password','The below password is same as previous password']
 Messages2 = ['pass','fail']
+Messages3 = ['User Staus Fetched Successfully','Unable to fetch user status']
+Messages4 = ['Successfully posted status','Could not post status']
+Messages5 =['Successfully submitted application','Unable to submit the application']
 
 
 Profiledata = [1,'rohit.gs28@gmail.com','Rohit','Gollarahalli','1333,South park street', ' ','B3J2K9','','Halifax','Nova Scotia','Canada',

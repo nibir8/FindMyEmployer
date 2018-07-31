@@ -8,7 +8,7 @@ sys.path.append(os.path.abspath(os.path.join('0', '../extensions')))
 from extensions_logging import logmyerror
 from extensions import mysql
 
-class InsertJobApplication:
+class InsertGivenJobApplication:
     def __init__(self,email,msg):
         self.email = email
         self.finalMessage = msg
@@ -19,7 +19,7 @@ class InsertJobApplication:
             'fail': 'Unable to submit the application'
         }.get(argument, 'Unable to submit the application')
 
-    def insertJobApplication(self):
+    def insertGivenJobApplication(self):
         try:
             if self.finalMessage == "":
                 insertjobApplication = InsertMyJobApplication(mysql,self.email,'')
