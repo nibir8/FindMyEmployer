@@ -7,13 +7,12 @@ import IValidator
 sys.path.append(os.path.abspath(os.path.join('0', '../extensions')))
 from extensions_logging import logmyerror
 
-class Businesslayer_Password_Equate(IValidator.IValidator):
-    def formValidate_BSL(self,password1,password2):
+class Email_NullCheck(IValidator.IValidator):
+    def formValidate_BSL(self,email):
         try:
-            if (password1 == password2):
-                return password1
-            else:
-                return "Two Passwords do not match"
+            if (email == ""):
+                error = 'Dont leave userId/Password blank'
+                return error
         except Exception as e:
             excep_msg = "Error occured in method formValidate_BSL method"
             level = logging.getLogger().getEffectiveLevel()

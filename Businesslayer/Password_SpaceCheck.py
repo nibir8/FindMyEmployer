@@ -7,12 +7,13 @@ import IValidator
 sys.path.append(os.path.abspath(os.path.join('0', '../extensions')))
 from extensions_logging import logmyerror
 
-class Businesslayer_Email_NullCheck(IValidator.IValidator):
-    def formValidate_BSL(self,email):
+class Password_SpaceCheck(IValidator.IValidator):
+    def formValidate_BSL(self,password):
         try:
-            if (email == ""):
-                error = 'Dont leave userId/Password blank'
-                return error
+            if (password.isspace() == True):
+                return "Password not valid"
+            else:
+                return password
         except Exception as e:
             excep_msg = "Error occured in method formValidate_BSL method"
             level = logging.getLogger().getEffectiveLevel()
