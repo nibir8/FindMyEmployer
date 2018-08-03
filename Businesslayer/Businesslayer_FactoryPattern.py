@@ -4,8 +4,8 @@ import logging
 import sys
 from Businesslayer import Email_NullCheck
 from Businesslayer import Password_NullCheck
-from Businesslayer import Businesslayer_Validator_Email_Validate
-from Businesslayer import Businesslayer_Validator_FirstName_SpaceCheck
+from Businesslayer import Email_Validate
+from Businesslayer import FirstName_SpaceCheck
 from Businesslayer import Password_Equate
 from Businesslayer import Password_SpaceCheck
 
@@ -20,9 +20,9 @@ class Businesslayer_FactoryPattern:
             if (validatorName == 'Email NullCheck'):
                 return Email_NullCheck.Email_NullCheck()
             if (validatorName == 'Email Validate'):
-                return Businesslayer_Validator_Email_Validate.Businesslayer_Email_Validate()
+                return Email_Validate.Email_Validate()
             if (validatorName == 'FirstName SpaceCheck'):
-                return Businesslayer_Validator_FirstName_SpaceCheck.Businesslayer_FirstName_SpaceCheck()
+                return FirstName_SpaceCheck.FirstName_SpaceCheck()
             if (validatorName == 'Password NullCheck'):
                 return Password_NullCheck.Password_NullCheck()
             if (validatorName == 'Password Equate'):

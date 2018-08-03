@@ -8,7 +8,7 @@ import re
 sys.path.append(os.path.abspath(os.path.join('0', '../extensions')))
 from extensions_logging import logmyerror
 
-class Businesslayer_Email_Validate(IValidator.IValidator):
+class Email_Validate(IValidator.IValidator):
     def formValidate_BSL(self,email):
         try:
             regex_emailCheck = re.compile("^\S+@\S+$")
