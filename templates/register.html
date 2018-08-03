@@ -6,7 +6,15 @@
         <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
         <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
         <link rel="stylesheet" href={{ url_for('static', filename='css/register_style.css') }} />
-    </head>
+        <script type="text/javascript">
+		$(function() {
+			$("[name=userOptions]").click(function(){
+            $('.employeePlan').hide();
+            $("#blk-"+$(this).val()).show('slow');
+			});
+		});
+		</script>
+	</head>
     <body>
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
@@ -89,22 +97,32 @@
                                 <div class="form-group">
                                     <input type="text" name="phone" id="phone" class="form-control input-sm" placeholder="Phone" required>
                                 </div>
-                                <h4>
-                                For Employee: Choose Plan:
+								<div class="radio">
+                                    <label><input type="radio" name="userOptions" value="employee" id="userEmployee" required>Employee</label>
+								</div>
+								<div class="radio">
+                                    <label><input type="radio" name="userOptions" value="employer" id="userEmployer">Employer</label>
+								</div>
+								<div id="blk-employee" class="employeePlan" style="display:none;">                                
+								<h4>
+                                Choose Plan:
                                 </h4>
 								{% for item in range(noOfPlansEmployee) %}
                                 <div class="radio">
-                                    <label><input type="radio" name="userOptions" id="employee" value="employee" checked="checked">Plan{{item+1}}: No.of.Jobs:{{EmployeePlanCount[item]}} || Price:{{EmployeePlanPrice[item]}} || Can Message:{{EmployeeMessagePermission[item]}}</label>
+                                    <label><input type="radio" value="plan{{item+1}}" name="planOptions" checked="checked">Plan{{item+1}}: No.of.Jobs:{{EmployeePlanCount[item]}} || Price:{{EmployeePlanPrice[item]}} || Can Message:{{EmployeeMessagePermission[item]}}</label>
                                 </div>
 								{% endfor %}
+								</div>
+								<div id="blk-employer" class="employeePlan" style="display:none;">
                                 <h4>
-                                For Employer: Choose Plan:
+                                Choose Plan:
                                 </h4>
                                 {% for item2 in range(noOfPlansEmployer) %}
                                 <div class="radio">
-                                    <label><input type="radio" name="userOptions" id="employee" value="employee" checked="checked">Plan{{item2+1}}: No.of.Jobs:{{EmployerPlanCount[item2]}} || Price:{{EmployerPlanPrice[item2]}} || Can Message:{{EmployerMessagePermission[item2]}}</label>
+                                    <label><input type="radio" value="plan{{item2+1}}" name="planOptions" checked="checked">Plan{{item2+1}}: No.of.Jobs:{{EmployerPlanCount[item2]}} || Price:{{EmployerPlanPrice[item2]}} || Can Message:{{EmployerMessagePermission[item2]}}</label>
                                 </div>
 								{% endfor %}
+								</div>
                                 <input type="submit" value="Register" class="btn btn-info btn-block">
                             </form>
                         </div>
