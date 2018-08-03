@@ -26,8 +26,8 @@ def root():
             captureSessionid.emailid =  session['email']
             fetchuserdata = Businesslayer_FetchUserData.Businesslayer_FetchUserData()
             profileData = fetchuserdata.getProfileData_BSL(session['email'])
-            loginclassdetails = Businesslayer_LoginClass.Businesslayer_LoginClass()
-            loggedIn, firstName, typeOfUser = loginclassdetails.getLoginDetails_BSL(session['email'])
+            loginclassdetails = LoginMyClass.LoginMyClass(session['email'],'','','','','')
+            loggedIn, firstName, typeOfUser = loginclassdetails.getMyLoginDetails()
             fetchuserstatus = FetchAllUserStatuses.FetchAllUserStatuses(StatusData,'')
             StatusData,message = fetchuserstatus.getAllUserStatus()
             return render_template("Profile2.html",loggedIn=loggedIn, firstName=firstName,userStatus=StatusData,profileData=profileData)
@@ -45,8 +45,8 @@ def profileHome():
         else:
             loggedIn = True
             StatusData = []
-            loginclassdetails = Businesslayer_LoginClass.Businesslayer_LoginClass()
-            loggedIn, firstName,typeOfUser = loginclassdetails.getLoginDetails_BSL(session['email'])
+            loginclassdetails = LoginMyClass.LoginMyClass(session['email'],'','','','','')
+            loggedIn, firstName, typeOfUser = loginclassdetails.getMyLoginDetails()
             fetchuserdata = Businesslayer_FetchUserData.Businesslayer_FetchUserData()
             profileData = fetchuserdata.getProfileData_BSL(session['email'])
             fetchuserstatus = FetchAllUserStatuses.FetchAllUserStatuses(StatusData,'')
@@ -63,8 +63,8 @@ def editProfile():
     try:
         if 'email' not in session:
             return redirect(url_for('root'))
-        loginclassdetails = Businesslayer_LoginClass.Businesslayer_LoginClass()
-        loggedIn, firstName, typeOfUser = loginclassdetails.getLoginDetails_BSL(session['email'])
+        loginclassdetails = LoginMyClass.LoginMyClass(session['email'],'','','','','')
+        loggedIn, firstName, typeOfUser = loginclassdetails.getMyLoginDetails()
 
         fetchuserdata = Businesslayer_FetchUserData.Businesslayer_FetchUserData()
         profileData = fetchuserdata.getProfileData_BSL(session['email'])
@@ -155,8 +155,8 @@ def updateProfile():
             user_details.append(Project_Details_2)
             user_details.append(Project_Name_3)
             user_details.append(Project_Details_3)
-            updatemyprofile = UpdateMyGivenProfile.UpdateMyGivenProfile(email,firstName,lastName,address1,address2,zipcode,city,state,country,phone,user_details,myUser.userType,myUser.planType,'')
-            msg = updatemyprofile.updateMyProfileMethod()
+            updatemyprofile = Businesslayer_UpdateMyProfile.Businesslayer_UpdateMyProfile()
+            msg = updatemyprofile.updateMyProfileMethod_BSL(email,firstName,lastName,address1,address2,zipcode,city,state,country,phone,user_details,myUser.userType,myUser.planType)
             return redirect(url_for('editProfile',msg=msg))
     except Exception as e:
         excep_msg = "Error in view update profile"
@@ -203,8 +203,8 @@ def login():
             factoryObject_Validator_passNullCheck = factoryObject.factoryPattern_BSL('Password NullCheck')
             checkPassNull = factoryObject_Validator_passNullCheck.formValidate_BSL(password)
             if ((not checkEmailNull)and(not checkPassNull)):
-                checkifuservalid = Businesslayer_CheckIfUserValid.Businesslayer_CheckIfUserValid()
-                value = checkifuservalid.isValid_BSL(email, password)
+                checkifuservalid = CheckIfMyUserValid.CheckIfMyUserValid(email,password,'','')
+                value = checkifuservalid.isValid()
                 checkEmailNull = ""
                 checkPassNull = ""
                 if (value == True):
