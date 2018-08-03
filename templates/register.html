@@ -90,23 +90,21 @@
                                     <input type="text" name="phone" id="phone" class="form-control input-sm" placeholder="Phone" required>
                                 </div>
                                 <h4>
-                                Are you an Employee or Employer?
+                                For Employee: Choose Plan:
+                                </h4>
+								{% for item in range(noOfPlansEmployee) %}
+                                <div class="radio">
+                                    <label><input type="radio" name="userOptions" id="employee" value="employee" checked="checked">Plan{{item+1}}: No.of.Jobs:{{EmployeePlanCount[item]}} || Price:{{EmployeePlanPrice[item]}} || Can Message:{{EmployeeMessagePermission[item]}}</label>
+                                </div>
+								{% endfor %}
                                 <h4>
+                                For Employer: Choose Plan:
+                                </h4>
+                                {% for item2 in range(noOfPlansEmployer) %}
                                 <div class="radio">
-                                    <label><input type="radio" name="userOptions" id="employee" value="employee" checked="checked">Employee(Need a job?)</label>
+                                    <label><input type="radio" name="userOptions" id="employee" value="employee" checked="checked">Plan{{item2+1}}: No.of.Jobs:{{EmployerPlanCount[item2]}} || Price:{{EmployerPlanPrice[item2]}} || Can Message:{{EmployerMessagePermission[item2]}}</label>
                                 </div>
-                                <div class="radio">
-                                    <label><input type="radio" name="userOptions" id="employer" value="employer">Employer(Want to hire?)</label>
-                                </div>
-                                <h4>
-                                Select Plan
-                                <h4>
-                                <div class="radio">
-                                    <label><input type="radio" name="planOptions" id="plan1" value="plan1"  checked="checked">Economy($40/month)</label>
-                                </div>
-                                <div class="radio">
-                                    <label><input type="radio" name="planOptions" id="plan2" value="plan2">Premium($100/month)</label>
-                                </div>
+								{% endfor %}
                                 <input type="submit" value="Register" class="btn btn-info btn-block">
                             </form>
                         </div>

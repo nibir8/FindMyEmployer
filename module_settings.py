@@ -39,6 +39,7 @@ from Businesslayer import RulesEngine_PlanType
 from Businesslayer import InsertGivenJobApplication
 from Businesslayer import Businesslayer_FetchUserData
 from Businesslayer import Businesslayer_FactoryPattern
+from Businesslayer import XmlReader
 
 sys.path.append(os.path.abspath(os.path.join('0','../Models')))
 from MyUser import MyUser
