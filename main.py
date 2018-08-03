@@ -26,8 +26,8 @@ def root():
             captureSessionid.emailid =  session['email']
             fetchuserdata = Businesslayer_FetchUserData.Businesslayer_FetchUserData()
             profileData = fetchuserdata.getProfileData_BSL(session['email'])
-            loginclassdetails = Businesslayer_LoginClass.Businesslayer_LoginClass()
-            loggedIn, firstName, typeOfUser = loginclassdetails.getLoginDetails_BSL(session['email'])
+            loginclassdetails = LoginMyClass.LoginMyClass(session['email'],'','','','','')
+            loggedIn, firstName, typeOfUser = loginclassdetails.getMyLoginDetails()
             fetchuserstatus = FetchAllUserStatuses.FetchAllUserStatuses(StatusData,'')
             StatusData,message = fetchuserstatus.getAllUserStatus()
             return render_template("Profile2.html",loggedIn=loggedIn, firstName=firstName,userStatus=StatusData,profileData=profileData)
@@ -45,8 +45,8 @@ def profileHome():
         else:
             loggedIn = True
             StatusData = []
-            loginclassdetails = Businesslayer_LoginClass.Businesslayer_LoginClass()
-            loggedIn, firstName,typeOfUser = loginclassdetails.getLoginDetails_BSL(session['email'])
+            loginclassdetails = LoginMyClass.LoginMyClass(session['email'],'','','','','')
+            loggedIn, firstName, typeOfUser = loginclassdetails.getMyLoginDetails()
             fetchuserdata = Businesslayer_FetchUserData.Businesslayer_FetchUserData()
             profileData = fetchuserdata.getProfileData_BSL(session['email'])
             fetchuserstatus = FetchAllUserStatuses.FetchAllUserStatuses(StatusData,'')
@@ -63,8 +63,8 @@ def editProfile():
     try:
         if 'email' not in session:
             return redirect(url_for('root'))
-        loginclassdetails = Businesslayer_LoginClass.Businesslayer_LoginClass()
-        loggedIn, firstName, typeOfUser = loginclassdetails.getLoginDetails_BSL(session['email'])
+        loginclassdetails = LoginMyClass.LoginMyClass(session['email'],'','','','','')
+        loggedIn, firstName, typeOfUser = loginclassdetails.getMyLoginDetails()
 
         fetchuserdata = Businesslayer_FetchUserData.Businesslayer_FetchUserData()
         profileData = fetchuserdata.getProfileData_BSL(session['email'])
@@ -203,8 +203,8 @@ def login():
             factoryObject_Validator_passNullCheck = factoryObject.factoryPattern_BSL('Password NullCheck')
             checkPassNull = factoryObject_Validator_passNullCheck.formValidate_BSL(password)
             if ((not checkEmailNull)and(not checkPassNull)):
-                checkifuservalid = Businesslayer_CheckIfUserValid.Businesslayer_CheckIfUserValid()
-                value = checkifuservalid.isValid_BSL(email, password)
+                checkifuservalid = CheckIfMyUserValid.CheckIfMyUserValid(email,password,'','')
+                value = checkifuservalid.isValid()
                 checkEmailNull = ""
                 checkPassNull = ""
                 if (value == True):
@@ -271,8 +271,8 @@ def register():
                 fetchuserdata = Businesslayer_FetchUserData.Businesslayer_FetchUserData()
                 profileData = fetchuserdata.getProfileData_BSL(email)
                 if(not profileData):
-                    updateMyobject = Businesslayer_UpdateMyobject.Businesslayer_UpdateMyobject()
-                    updateMyobject.updateMyObjectBSL(email,firstName,lastName,address1,address2,zipcode,city,state,country,phone,userType,planType,user_details)
+                    updateMyobject = UpdateMyUserobject.UpdateMyUserobject(email,firstName,lastName,address1,address2,zipcode,city,state,country,phone,userType,planType,user_details)
+                    myuser = updateMyobject.updateMyObject()
                     insertuser = Businesslayer_InsertUser.Businesslayer_InsertUser()
                     msg = insertuser.insertNewUser_BSL(email,password,firstName,lastName,address1,address2,zipcode,city,state,country,phone,user_details,userType,planType)
                     return render_template("home.html")
@@ -492,8 +492,8 @@ def searchProfile():
             if (searchProf == ''):
                 return render_template("searchProfile.html",error="Enter Name to Search", noOfProfilesFetched=0)
             else:
-                fetchSearchedProfile = Businesslayer_FetchSearchedProfile.Businesslayer_FetchSearchedProfile()
-                fetchSearchedProfileData = fetchSearchedProfile.fetchSearchedProfile_BSL(searchProf)
+                fetchSearchedProfile = FetchMySearchedProfile.FetchMySearchedProfile(searchProf,'')
+                fetchSearchedProfileData,msg = fetchSearchedProfile.fetchMySearchedProfile()
                 noOfProfilesFetched = len(fetchSearchedProfileData)
                 if (noOfProfilesFetched == 0):
                     return render_template("searchProfile.html", fetchSearchedProfileData=fetchSearchedProfileData, noOfProfilesFetched=noOfProfilesFetched,error="No Results Found")

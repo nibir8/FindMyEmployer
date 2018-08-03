@@ -8,18 +8,27 @@ from extensions import mysql
 from extensions_logging import logmyerror
 
 
-class Databaselayer_FetchSearchedProfile(IFetchSearchedProfile.IFetchSearchedProfile):
-    def fetchSearchedProfile_DBL(self,firstName):
+class FetchSearchedProfile(IFetchSearchedProfile.IFetchSearchedProfile):
+    def __init__(self,mysql,firstName,result):
+        self.mysql = mysql
+        self.firstName = firstName
+        self.result = result
+
+
+    def fetchSearchedProfile(self):
         try:
-            conn = mysql.connect()
+            conn = self.mysql.connect()
             cur = conn.cursor()
-            cur.callproc('spGetSearchedUser',[firstName])
-            searchedProfileData = cur.fetchall()
+            if self.result == "":
+                cur.callproc('spGetSearchedUser',[self.firstName])
+                searchedProfileData = cur.fetchall()
+                self.result = "pass"
         except Exception as e:
             conn.rollback()
             excep_msg = "Error occured in fetchSearchedProfile_DBL method"
+            self.result = "fail"
             level = logging.getLogger().getEffectiveLevel()
             logmyerror.loadMyExceptionInDb(level,excep_msg,e)
             logging.info(excep_msg, exc_info=True)
         conn.close()
-        return searchedProfileData
+        return searchedProfileData,self.result
