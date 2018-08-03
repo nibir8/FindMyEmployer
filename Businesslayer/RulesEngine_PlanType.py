@@ -3,7 +3,6 @@ import logging
 import sys
 from XmlReader import XmlReader
 sys.path.append(os.path.abspath(os.path.join('0','../Databaselayer')))
-from Databaselayer_FetchApplicationCount import Databaselayer_FetchApplicationCount
 from FetchJobsCount import FetchJobsCount
 
 sys.path.append(os.path.abspath(os.path.join('0', '../extensions')))
