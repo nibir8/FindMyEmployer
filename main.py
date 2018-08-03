@@ -492,8 +492,8 @@ def searchProfile():
             if (searchProf == ''):
                 return render_template("searchProfile.html",error="Enter Name to Search", noOfProfilesFetched=0)
             else:
-                fetchSearchedProfile = Businesslayer_FetchSearchedProfile.Businesslayer_FetchSearchedProfile()
-                fetchSearchedProfileData = fetchSearchedProfile.fetchSearchedProfile_BSL(searchProf)
+                fetchSearchedProfile = FetchMySearchedProfile.FetchMySearchedProfile(searchProf,'')
+                fetchSearchedProfileData,msg = fetchSearchedProfile.fetchMySearchedProfile()
                 noOfProfilesFetched = len(fetchSearchedProfileData)
                 if (noOfProfilesFetched == 0):
                     return render_template("searchProfile.html", fetchSearchedProfileData=fetchSearchedProfileData, noOfProfilesFetched=noOfProfilesFetched,error="No Results Found")

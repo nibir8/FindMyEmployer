@@ -21,7 +21,7 @@ from Businesslayer import UpdateMyUserobject
 from Businesslayer import HashMyChangingPassword
 from Businesslayer import CheckIfMyUserValid
 from Businesslayer import Businesslayer_FetchJobData
-from Businesslayer import Businesslayer_FetchSearchedProfile
+from Businesslayer import FetchMySearchedProfile
 from Businesslayer import FetchAllUserStatuses
 from Businesslayer import InsertUserJob
 from Businesslayer import Businesslayer_InsertUser
