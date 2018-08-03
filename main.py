@@ -197,10 +197,10 @@ def login():
             email = request.form['email']
             password = request.form['password']
             value = ""
-            factoryObject = Businesslayer_FactoryPattern.Businesslayer_FactoryPattern()
-            factoryObject_Validator_emailNullCheck = factoryObject.factoryPattern_BSL('Email NullCheck')
+            factoryObject = FactoryPattern.FactoryPattern()
+            factoryObject_Validator_emailNullCheck = factoryObject.factoryPattern('Email NullCheck')
             checkEmailNull = factoryObject_Validator_emailNullCheck.formValidate_BSL(email)
-            factoryObject_Validator_passNullCheck = factoryObject.factoryPattern_BSL('Password NullCheck')
+            factoryObject_Validator_passNullCheck = factoryObject.factoryPattern('Password NullCheck')
             checkPassNull = factoryObject_Validator_passNullCheck.formValidate_BSL(password)
             if ((not checkEmailNull)and(not checkPassNull)):
                 checkifuservalid = CheckIfMyUserValid.CheckIfMyUserValid(email,password,'','')
@@ -257,23 +257,23 @@ def register():
             EmployerPlanName,EmployerPlanCount,EmployerPlanPrice,EmployerMessagePermission = reader.readmyFile("employer")
             noOfPlansEmployer = len(EmployerPlanName)
             user_details = []
-            factoryObject = Businesslayer_FactoryPattern.Businesslayer_FactoryPattern()
-            factoryObject_Validator_firstNameSpaceCheck = factoryObject.factoryPattern_BSL('FirstName SpaceCheck')
+            factoryObject = FactoryPattern.FactoryPattern()
+            factoryObject_Validator_firstNameSpaceCheck = factoryObject.factoryPattern('FirstName SpaceCheck')
             checkfirstNameSpaceCheck = factoryObject_Validator_firstNameSpaceCheck.formValidate_BSL(firstName)
             if (checkfirstNameSpaceCheck != firstName):
                 return render_template("register.html", error=checkfirstNameSpaceCheck,EmployeePlanName=EmployeePlanName,EmployeePlanCount=EmployeePlanCount,EmployeePlanPrice=EmployeePlanPrice,EmployeeMessagePermission=EmployeeMessagePermission,noOfPlansEmployee=noOfPlansEmployee,
                 EmployerPlanName=EmployerPlanName,EmployerPlanCount=EmployerPlanCount,EmployerPlanPrice=EmployerPlanPrice,EmployerMessagePermission=EmployerMessagePermission,noOfPlansEmployer=noOfPlansEmployer)
-            factoryObject_Validator_passwordSpaceCheck = factoryObject.factoryPattern_BSL('Password SpaceCheck')
+            factoryObject_Validator_passwordSpaceCheck = factoryObject.factoryPattern('Password SpaceCheck')
             checkPasswordSpaceCheck = factoryObject_Validator_passwordSpaceCheck.formValidate_BSL(password)
             if (checkPasswordSpaceCheck != password):
                 return render_template("register.html", error=checkPasswordSpaceCheck,EmployeePlanName=EmployeePlanName,EmployeePlanCount=EmployeePlanCount,EmployeePlanPrice=EmployeePlanPrice,EmployeeMessagePermission=EmployeeMessagePermission,noOfPlansEmployee=noOfPlansEmployee,
                 EmployerPlanName=EmployerPlanName,EmployerPlanCount=EmployerPlanCount,EmployerPlanPrice=EmployerPlanPrice,EmployerMessagePermission=EmployerMessagePermission,noOfPlansEmployer=noOfPlansEmployer)
-            factoryObject_Validator_passwordEquateCheck = factoryObject.factoryPattern_BSL('Password Equate')
+            factoryObject_Validator_passwordEquateCheck = factoryObject.factoryPattern('Password Equate')
             checkPasswordEquate = factoryObject_Validator_passwordEquateCheck.formValidate_BSL(password,cpassword)
             if (checkPasswordEquate != password):
                 return render_template("register.html", error=checkPasswordEquate,EmployeePlanName=EmployeePlanName,EmployeePlanCount=EmployeePlanCount,EmployeePlanPrice=EmployeePlanPrice,EmployeeMessagePermission=EmployeeMessagePermission,noOfPlansEmployee=noOfPlansEmployee,
                 EmployerPlanName=EmployerPlanName,EmployerPlanCount=EmployerPlanCount,EmployerPlanPrice=EmployerPlanPrice,EmployerMessagePermission=EmployerMessagePermission,noOfPlansEmployer=noOfPlansEmployer)
-            factoryObject_Validator_emailValidateCheck = factoryObject.factoryPattern_BSL('Email Validate')
+            factoryObject_Validator_emailValidateCheck = factoryObject.factoryPattern('Email Validate')
             checkEmailValidate = factoryObject_Validator_emailValidateCheck.formValidate_BSL(email)
             if (checkEmailValidate == email):
                 fetchuserdata = Businesslayer_GetUserType.Businesslayer_GetUserType()
