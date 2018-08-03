@@ -474,7 +474,7 @@ def upload_file():
         if not os.path.exists(path):
             os.makedirs(path)
         for fname in os.listdir(app.config['UPLOADED_PHOTOS_DEST']):
-            if fname.endswith('.*'):
+            if fname.endswith('.jpg'):
                 copyfile(app.config['UPLOADED_PHOTOS_DEST']  +"/" + name+ ".jpg", path + name+ ".jpg")
         fileUploaded = False
         if glob.glob(path + name + ".*"):

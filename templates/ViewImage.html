@@ -24,7 +24,7 @@
                     <ul class="nav navbar-nav">
                         <li><a href="/">Home</a></li>
                         <li><a href="/messageForm">Messages</a></li>
-                        <li class="active">  <a href="/account/profile/edit">Edit Profile</a></li>
+                        <li>  <a href="/account/profile/edit">Edit Profile</a></li>
                         <li ><a href="/account/profile/changePassword">Change password</a></li>
                         <li><a href="/addJobs">Jobs</a></li>
                     </ul>
@@ -46,9 +46,8 @@
                 </div>
             </div>
         </nav>
-        <a href="{{ url_for('upload_file') }}">Upload  different picture</a>
-        <hr>
-        <p>URL: {{ file_url }}</p>
-        <img src="{{ file_url }}">
+        <div style="width:17%; margin:0 auto;"><a href="{{ url_for('upload_file') }}">Upload  different picture</a></div>
+		<br>
+        <div style="width:20%; margin:0 auto;"><img width="200" height="200" src="{{ file_url }}"></div>
     </body>
 </html>
