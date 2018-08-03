@@ -29,8 +29,8 @@ from Businesslayer import Businesslayer_LoginClass
 from Businesslayer import PostUserStatus
 from Businesslayer import Businesslayer_UpdateMyProfile
 from Businesslayer import Businesslayer_GetUserType
-from Businesslayer import Businesslayer_Validator_Email_NullCheck
-from Businesslayer import Businesslayer_Validator_Pass_NullCheck
+from Businesslayer import Email_NullCheck
+from Businesslayer import Password_NullCheck
 from Businesslayer import Businesslayer_Validator_Email_Validate
 from Businesslayer import Businesslayer_Validator_FirstName_SpaceCheck
 from Businesslayer import Password_Equate

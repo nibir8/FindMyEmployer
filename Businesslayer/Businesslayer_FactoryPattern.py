@@ -2,8 +2,8 @@ import os
 import os.path
 import logging
 import sys
-from Businesslayer import Businesslayer_Validator_Email_NullCheck
-from Businesslayer import Businesslayer_Validator_Pass_NullCheck
+from Businesslayer import Email_NullCheck
+from Businesslayer import Password_NullCheck
 from Businesslayer import Businesslayer_Validator_Email_Validate
 from Businesslayer import Businesslayer_Validator_FirstName_SpaceCheck
 from Businesslayer import Password_Equate
@@ -18,13 +18,13 @@ class Businesslayer_FactoryPattern:
     def factoryPattern_BSL(validatorName):
         try:
             if (validatorName == 'Email NullCheck'):
-                return Businesslayer_Validator_Email_NullCheck.Businesslayer_Email_NullCheck()
+                return Email_NullCheck.Email_NullCheck()
             if (validatorName == 'Email Validate'):
                 return Businesslayer_Validator_Email_Validate.Businesslayer_Email_Validate()
             if (validatorName == 'FirstName SpaceCheck'):
                 return Businesslayer_Validator_FirstName_SpaceCheck.Businesslayer_FirstName_SpaceCheck()
             if (validatorName == 'Password NullCheck'):
-                return Businesslayer_Validator_Pass_NullCheck.Businesslayer_Pass_NullCheck()
+                return Password_NullCheck.Password_NullCheck()
             if (validatorName == 'Password Equate'):
                 return Password_Equate.Password_Equate()
             if (validatorName == 'Password SpaceCheck'):
