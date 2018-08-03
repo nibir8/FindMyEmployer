@@ -318,7 +318,13 @@ def jobs():
 @app.route("/registerationForm")
 def registrationForm():
     try:
-        return render_template("register.html")
+        reader = XmlReader.XmlReader()
+        EmployeePlanName,EmployeePlanCount,EmployeePlanPrice,EmployeeMessagePermission = reader.readmyFile("employee")
+        noOfPlansEmployee = len(EmployeePlanName)
+        EmployerPlanName,EmployerPlanCount,EmployerPlanPrice,EmployerMessagePermission = reader.readmyFile("employer")
+        noOfPlansEmployer = len(EmployerPlanName)
+        return render_template("register.html",EmployeePlanName=EmployeePlanName,EmployeePlanCount=EmployeePlanCount,EmployeePlanPrice=EmployeePlanPrice,EmployeeMessagePermission=EmployeeMessagePermission,noOfPlansEmployee=noOfPlansEmployee,
+        EmployerPlanName=EmployerPlanName,EmployerPlanCount=EmployerPlanCount,EmployerPlanPrice=EmployerPlanPrice,EmployerMessagePermission=EmployerMessagePermission,noOfPlansEmployer=noOfPlansEmployer)
     except Exception as e:
         excep_msg = "Error in view registerform"
         level = logging.getLogger().getEffectiveLevel()
@@ -421,7 +427,22 @@ def messaging():
 @app.route("/messageForm")
 def messageForm():
     try:
-        return render_template("messaging.html")
+        getUserType = Businesslayer_GetUserType.Businesslayer_GetUserType()
+        getUserTypeData = getUserType.getUserType_BSL(session['email'])
+        if (getUserTypeData[2] == 'employee'):
+            userType = 'employee'
+            fetchuserdata = Businesslayer_FetchUserData.Businesslayer_FetchUserData()
+            profileData = fetchuserdata.getProfileData_BSL(session['email'])
+            rulesEngine = RulesEngine_PlanType.RulesEngine_PlanType('')
+            allowPosting,allowMessages = rulesEngine.rulesEngine_Employer(myUser.email,myUser.userType,myUser.planType)
+        else:
+            userType = 'employer'
+            fetchuserdata = Businesslayer_FetchUserData.Businesslayer_FetchUserData()
+            profileData = fetchuserdata.getProfileData_BSL(session['email'])
+            rulesEngine = RulesEngine_PlanType.RulesEngine_PlanType('')
+            allowPosting,allowMessages = rulesEngine.rulesEngine_Employer(myUser.email,myUser.userType,myUser.planType)
+            fetchjobdata = Businesslayer_FetchJobData.Businesslayer_FetchJobData()
+        return render_template("messaging.html",allowMessages=allowMessages)
     except Exception as e:
         excep_msg = "Error in view messaging"
         level = logging.getLogger().getEffectiveLevel()
