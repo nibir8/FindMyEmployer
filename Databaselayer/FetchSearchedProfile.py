@@ -9,9 +9,10 @@ from extensions_logging import logmyerror
 
 
 class FetchSearchedProfile(IFetchSearchedProfile.IFetchSearchedProfile):
-    def __init__(self,mysql,firstName,result):
+    def __init__(self,mysql,firstName,fetchSearchedProfileData,result):
         self.mysql = mysql
         self.firstName = firstName
+        self.fetchSearchedProfileData = fetchSearchedProfileData
         self.result = result
 
 
@@ -21,7 +22,7 @@ class FetchSearchedProfile(IFetchSearchedProfile.IFetchSearchedProfile):
             cur = conn.cursor()
             if self.result == "":
                 cur.callproc('spGetSearchedUser',[self.firstName])
-                searchedProfileData = cur.fetchall()
+                self.fetchSearchedProfileData = cur.fetchall()
                 self.result = "pass"
         except Exception as e:
             conn.rollback()
@@ -31,4 +32,4 @@ class FetchSearchedProfile(IFetchSearchedProfile.IFetchSearchedProfile):
             logmyerror.loadMyExceptionInDb(level,excep_msg,e)
             logging.info(excep_msg, exc_info=True)
         conn.close()
-        return searchedProfileData,self.result
+        return self.fetchSearchedProfileData,self.result

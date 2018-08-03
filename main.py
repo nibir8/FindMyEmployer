@@ -522,7 +522,7 @@ def searchProfile():
             if (searchProf == ''):
                 return render_template("searchProfile.html",error="Enter Name to Search", noOfProfilesFetched=0)
             else:
-                fetchSearchedProfile = FetchMySearchedProfile.FetchMySearchedProfile(searchProf,'')
+                fetchSearchedProfile = FetchMySearchedProfile.FetchMySearchedProfile(searchProf,'','')
                 fetchSearchedProfileData,msg = fetchSearchedProfile.fetchMySearchedProfile()
                 noOfProfilesFetched = len(fetchSearchedProfileData)
                 if (noOfProfilesFetched == 0):

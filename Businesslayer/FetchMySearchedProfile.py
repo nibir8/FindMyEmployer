@@ -11,9 +11,10 @@ from extensions import mysql
 from extensions_logging import logmyerror
 
 class FetchMySearchedProfile:
-    def __init__(self,firstName,finalMessage):
+    def __init__(self,firstName,finalMessage,fetchSearchedProfileData):
         self.firstName = firstName
         self.finalMessage = finalMessage
+        self.fetchSearchedProfileData = fetchSearchedProfileData
 
     def set_messages(self,argument):
         return{
@@ -25,10 +26,10 @@ class FetchMySearchedProfile:
     def fetchMySearchedProfile(self):
         try:
             if self.finalMessage == "":
-                fetchSearchedProfile = FetchSearchedProfile(mysql,self.firstName,'')
-                fetchSearchedProfileData,status = fetchSearchedProfile.fetchSearchedProfile()
+                fetchSearchedProfile = FetchSearchedProfile(mysql,self.firstName,'','')
+                self.fetchSearchedProfileData,status = fetchSearchedProfile.fetchSearchedProfile()
                 self.finalMessage = self.set_messages(status)
-            return fetchSearchedProfileData,self.finalMessage
+            return self.fetchSearchedProfileData,self.finalMessage
         except Exception as e:
             excep_msg = "Error occured in method fetchSearchedProfile_BSL method"
             level = logging.getLogger().getEffectiveLevel()
