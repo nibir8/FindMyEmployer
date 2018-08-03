@@ -251,35 +251,45 @@ def register():
             phone = request.form['phone']
             userType = request.form['userOptions']
             planType = request.form['planOptions']
+            reader = XmlReader.XmlReader()
+            EmployeePlanName,EmployeePlanCount,EmployeePlanPrice,EmployeeMessagePermission = reader.readmyFile("employee")
+            noOfPlansEmployee = len(EmployeePlanName)
+            EmployerPlanName,EmployerPlanCount,EmployerPlanPrice,EmployerMessagePermission = reader.readmyFile("employer")
+            noOfPlansEmployer = len(EmployerPlanName)
             user_details = []
             factoryObject = Businesslayer_FactoryPattern.Businesslayer_FactoryPattern()
             factoryObject_Validator_firstNameSpaceCheck = factoryObject.factoryPattern_BSL('FirstName SpaceCheck')
             checkfirstNameSpaceCheck = factoryObject_Validator_firstNameSpaceCheck.formValidate_BSL(firstName)
             if (checkfirstNameSpaceCheck != firstName):
-                return render_template("register.html", error=checkfirstNameSpaceCheck)
+                return render_template("register.html", error=checkfirstNameSpaceCheck,EmployeePlanName=EmployeePlanName,EmployeePlanCount=EmployeePlanCount,EmployeePlanPrice=EmployeePlanPrice,EmployeeMessagePermission=EmployeeMessagePermission,noOfPlansEmployee=noOfPlansEmployee,
+                EmployerPlanName=EmployerPlanName,EmployerPlanCount=EmployerPlanCount,EmployerPlanPrice=EmployerPlanPrice,EmployerMessagePermission=EmployerMessagePermission,noOfPlansEmployer=noOfPlansEmployer)
             factoryObject_Validator_passwordSpaceCheck = factoryObject.factoryPattern_BSL('Password SpaceCheck')
             checkPasswordSpaceCheck = factoryObject_Validator_passwordSpaceCheck.formValidate_BSL(password)
             if (checkPasswordSpaceCheck != password):
-                return render_template("register.html", error=checkPasswordSpaceCheck)
+                return render_template("register.html", error=checkPasswordSpaceCheck,EmployeePlanName=EmployeePlanName,EmployeePlanCount=EmployeePlanCount,EmployeePlanPrice=EmployeePlanPrice,EmployeeMessagePermission=EmployeeMessagePermission,noOfPlansEmployee=noOfPlansEmployee,
+                EmployerPlanName=EmployerPlanName,EmployerPlanCount=EmployerPlanCount,EmployerPlanPrice=EmployerPlanPrice,EmployerMessagePermission=EmployerMessagePermission,noOfPlansEmployer=noOfPlansEmployer)
             factoryObject_Validator_passwordEquateCheck = factoryObject.factoryPattern_BSL('Password Equate')
             checkPasswordEquate = factoryObject_Validator_passwordEquateCheck.formValidate_BSL(password,cpassword)
             if (checkPasswordEquate != password):
-                return render_template("register.html", error=checkPasswordEquate)
+                return render_template("register.html", error=checkPasswordEquate,EmployeePlanName=EmployeePlanName,EmployeePlanCount=EmployeePlanCount,EmployeePlanPrice=EmployeePlanPrice,EmployeeMessagePermission=EmployeeMessagePermission,noOfPlansEmployee=noOfPlansEmployee,
+                EmployerPlanName=EmployerPlanName,EmployerPlanCount=EmployerPlanCount,EmployerPlanPrice=EmployerPlanPrice,EmployerMessagePermission=EmployerMessagePermission,noOfPlansEmployer=noOfPlansEmployer)
             factoryObject_Validator_emailValidateCheck = factoryObject.factoryPattern_BSL('Email Validate')
             checkEmailValidate = factoryObject_Validator_emailValidateCheck.formValidate_BSL(email)
             if (checkEmailValidate == email):
-                fetchuserdata = Businesslayer_FetchUserData.Businesslayer_FetchUserData()
-                profileData = fetchuserdata.getProfileData_BSL(email)
+                fetchuserdata = Businesslayer_GetUserType.Businesslayer_GetUserType()
+                profileData = fetchuserdata.getUserType_BSL(email)
                 if(not profileData):
                     updateMyobject = UpdateMyUserobject.UpdateMyUserobject(email,firstName,lastName,address1,address2,zipcode,city,state,country,phone,userType,planType,user_details)
                     myuser = updateMyobject.updateMyObject()
-                    insertuser = Businesslayer_InsertUser.Businesslayer_InsertUser()
-                    msg = insertuser.insertNewUser_BSL(email,password,firstName,lastName,address1,address2,zipcode,city,state,country,phone,user_details,userType,planType)
-                    return render_template("home.html")
+                    insertuser = InsertMyUser.InsertMyUser(email,password,firstName,lastName,address1,address2,zipcode,city,state,country,phone,user_details,userType,planType,'','')
+                    msg = insertuser.insertMyNewUser()
+                    return render_template("home.html",msg=msg)
                 else:
-                    return render_template("register.html", error="Email Id already exists")
+                    return render_template("register.html", error="Email Id already exists",EmployeePlanName=EmployeePlanName,EmployeePlanCount=EmployeePlanCount,EmployeePlanPrice=EmployeePlanPrice,EmployeeMessagePermission=EmployeeMessagePermission,noOfPlansEmployee=noOfPlansEmployee,
+                    EmployerPlanName=EmployerPlanName,EmployerPlanCount=EmployerPlanCount,EmployerPlanPrice=EmployerPlanPrice,EmployerMessagePermission=EmployerMessagePermission,noOfPlansEmployer=noOfPlansEmployer)
             else:
-                return render_template("register.html", error=emailValidateFormat)
+                return render_template("register.html", error=emailValidateFormat,EmployeePlanName=EmployeePlanName,EmployeePlanCount=EmployeePlanCount,EmployeePlanPrice=EmployeePlanPrice,EmployeeMessagePermission=EmployeeMessagePermission,noOfPlansEmployee=noOfPlansEmployee,
+                EmployerPlanName=EmployerPlanName,EmployerPlanCount=EmployerPlanCount,EmployerPlanPrice=EmployerPlanPrice,EmployerMessagePermission=EmployerMessagePermission,noOfPlansEmployer=noOfPlansEmployer)
     except Exception as e:
         excep_msg = "Error in view register"
         level = logging.getLogger().getEffectiveLevel()

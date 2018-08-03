@@ -3,4 +3,4 @@ import logging
 
 
 class IInsertnewUser:
-    def insertNewUser_DBL(self,myuser): raise NotImplementedError
+    def insertNewUser(self): raise NotImplementedError

@@ -24,7 +24,7 @@ from Businesslayer import Businesslayer_FetchJobData
 from Businesslayer import FetchMySearchedProfile
 from Businesslayer import FetchAllUserStatuses
 from Businesslayer import InsertUserJob
-from Businesslayer import Businesslayer_InsertUser
+from Businesslayer import InsertMyUser
 from Businesslayer import LoginMyClass
 from Businesslayer import PostUserStatus
 from Businesslayer import UpdateMyGivenProfile
