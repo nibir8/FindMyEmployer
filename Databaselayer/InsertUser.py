@@ -26,11 +26,11 @@ class InsertUser(IInsertnewUser.IInsertnewUser):
         self.typeOfUser = typeOfUser
         self.typeOfPlan = typeOfPlan
         self.data = data
-	
+
     def insertNewUser(self):
         try:
             self.data=""
-            self.password = hashlib.md5(password.encode()).hexdigest()
+            self.password = hashlib.md5(self.password.encode()).hexdigest()
             conn = self.mysql.connect()
             cur = conn.cursor()
             if (self.data == ''):
