@@ -2,7 +2,7 @@ import os.path
 import logging
 import sys
 
-from Businesslayer_UpdateMyobject import Businesslayer_UpdateMyobject
+from UpdateMyUserobject import UpdateMyUserobject
 
 sys.path.append(os.path.abspath(os.path.join('0','../Databaselayer')))
 from UpdateMyProfile import UpdateMyProfile
@@ -40,8 +40,8 @@ class UpdateMyGivenProfile:
 
     def updateMyProfileMethod(self):
         try:
-            updateMyobject = Businesslayer_UpdateMyobject()
-            updateMyobject.updateMyObjectBSL(self.email,self.firstName,self.lastName,self.address1,self.address2,self.zipcode,self.city,self.state,self.country,self.phone,self.typeOfUser,self.typeOfPlan,self.user_details_list)
+            updateMyobject = UpdateMyUserobject(self.email,self.firstName,self.lastName,self.address1,self.address2,self.zipcode,self.city,self.state,self.country,self.phone,self.typeOfUser,self.typeOfPlan,self.user_details_list)
+            updateMyobject.updateMyObject()
             if self.finalMessage == "":
                 updatemyprofile =UpdateMyProfile(mysql,self.email,self.firstName,self.lastName,self.address1,self.address2,self.zipcode,self.city,self.state,self.country,self.phone,self.user_details_list,'')
                 status = updatemyprofile.updateMyProfileMethod()

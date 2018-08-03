@@ -17,7 +17,7 @@ from shutil import copyfile
 
 sys.path.append(os.path.abspath(os.path.join('0','/Businesslayer')))
 
-from Businesslayer import Businesslayer_UpdateMyobject
+from Businesslayer import UpdateMyUserobject
 from Businesslayer import HashMyChangingPassword
 from Businesslayer import CheckIfMyUserValid
 from Businesslayer import Businesslayer_FetchJobData
@@ -27,7 +27,7 @@ from Businesslayer import InsertUserJob
 from Businesslayer import Businesslayer_InsertUser
 from Businesslayer import LoginMyClass
 from Businesslayer import PostUserStatus
-from Businesslayer import Businesslayer_UpdateMyProfile
+from Businesslayer import UpdateMyGivenProfile
 from Businesslayer import Businesslayer_GetUserType
 from Businesslayer import Email_NullCheck
 from Businesslayer import Password_NullCheck

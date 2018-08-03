@@ -155,8 +155,8 @@ def updateProfile():
             user_details.append(Project_Details_2)
             user_details.append(Project_Name_3)
             user_details.append(Project_Details_3)
-            updatemyprofile = Businesslayer_UpdateMyProfile.Businesslayer_UpdateMyProfile()
-            msg = updatemyprofile.updateMyProfileMethod_BSL(email,firstName,lastName,address1,address2,zipcode,city,state,country,phone,user_details,myUser.userType,myUser.planType)
+            updatemyprofile = UpdateMyGivenProfile.UpdateMyGivenProfile(email,firstName,lastName,address1,address2,zipcode,city,state,country,phone,user_details,myUser.userType,myUser.planType,'')
+            msg = updatemyprofile.updateMyProfileMethod()
             return redirect(url_for('editProfile',msg=msg))
     except Exception as e:
         excep_msg = "Error in view update profile"
@@ -271,8 +271,8 @@ def register():
                 fetchuserdata = Businesslayer_FetchUserData.Businesslayer_FetchUserData()
                 profileData = fetchuserdata.getProfileData_BSL(email)
                 if(not profileData):
-                    updateMyobject = Businesslayer_UpdateMyobject.Businesslayer_UpdateMyobject()
-                    updateMyobject.updateMyObjectBSL(email,firstName,lastName,address1,address2,zipcode,city,state,country,phone,userType,planType,user_details)
+                    updateMyobject = UpdateMyUserobject.UpdateMyUserobject(email,firstName,lastName,address1,address2,zipcode,city,state,country,phone,userType,planType,user_details)
+                    myuser = updateMyobject.updateMyObject()
                     insertuser = Businesslayer_InsertUser.Businesslayer_InsertUser()
                     msg = insertuser.insertNewUser_BSL(email,password,firstName,lastName,address1,address2,zipcode,city,state,country,phone,user_details,userType,planType)
                     return render_template("home.html")
