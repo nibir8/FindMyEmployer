@@ -16,7 +16,7 @@ class CheckIfUserValid(ICheckValidity.ICheckValidity):
         
     def emailIsValid(self):
         try:
-            conn = mysql.connect()
+            conn = self.mysql.connect()
             cur = conn.cursor()
             if (self.data == ""):
                 cur.callproc('spGetAllUsers')
@@ -29,6 +29,7 @@ class CheckIfUserValid(ICheckValidity.ICheckValidity):
             level = logging.getLogger().getEffectiveLevel()
             logmyerror.loadMyExceptionInDb(level,excep_msg,e)
             logging.info(excep_msg, exc_info=True)
+        self.data = list(self.data)
         for row in self.data:
             if row[0] == self.email and row[1] == hashlib.md5(self.password.encode()).hexdigest():
                 return True
