@@ -276,8 +276,8 @@ def register():
             factoryObject_Validator_emailValidateCheck = factoryObject.factoryPattern('Email Validate')
             checkEmailValidate = factoryObject_Validator_emailValidateCheck.formValidate_BSL(email)
             if (checkEmailValidate == email):
-                fetchuserdata = Businesslayer_GetUserType.Businesslayer_GetUserType()
-                profileData = fetchuserdata.getUserType_BSL(email)
+                fetchuserdata = FetchMyUserData.FetchMyUserData(email,'','')
+                profileData,msg = fetchuserdata.getMyProfileData()
                 if(not profileData):
                     updateMyobject = UpdateMyUserobject.UpdateMyUserobject(email,firstName,lastName,address1,address2,zipcode,city,state,country,phone,userType,planType,user_details)
                     myuser = updateMyobject.updateMyObject()
