@@ -31,8 +31,8 @@ from Businesslayer import Businesslayer_UpdateMyProfile
 from Businesslayer import Businesslayer_GetUserType
 from Businesslayer import Email_NullCheck
 from Businesslayer import Password_NullCheck
-from Businesslayer import Businesslayer_Validator_Email_Validate
-from Businesslayer import Businesslayer_Validator_FirstName_SpaceCheck
+from Businesslayer import Email_Validate
+from Businesslayer import FirstName_SpaceCheck
 from Businesslayer import Password_Equate
 from Businesslayer import Password_SpaceCheck
 from Businesslayer import RulesEngine_PlanType

@@ -7,7 +7,7 @@ import IValidator
 sys.path.append(os.path.abspath(os.path.join('0', '../extensions')))
 from extensions_logging import logmyerror
 
-class Businesslayer_FirstName_SpaceCheck(IValidator.IValidator):
+class FirstName_SpaceCheck(IValidator.IValidator):
     def formValidate_BSL(self,firstName):
         try:
             if (firstName.isspace() == True):
