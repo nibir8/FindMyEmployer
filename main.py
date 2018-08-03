@@ -155,8 +155,8 @@ def updateProfile():
             user_details.append(Project_Details_2)
             user_details.append(Project_Name_3)
             user_details.append(Project_Details_3)
-            updatemyprofile = Businesslayer_UpdateMyProfile.Businesslayer_UpdateMyProfile()
-            msg = updatemyprofile.updateMyProfileMethod_BSL(email,firstName,lastName,address1,address2,zipcode,city,state,country,phone,user_details,myUser.userType,myUser.planType)
+            updatemyprofile = UpdateMyGivenProfile.UpdateMyGivenProfile(email,firstName,lastName,address1,address2,zipcode,city,state,country,phone,user_details,myUser.userType,myUser.planType,'')
+            msg = updatemyprofile.updateMyProfileMethod()
             return redirect(url_for('editProfile',msg=msg))
     except Exception as e:
         excep_msg = "Error in view update profile"
@@ -203,8 +203,8 @@ def login():
             factoryObject_Validator_passNullCheck = factoryObject.factoryPattern_BSL('Password NullCheck')
             checkPassNull = factoryObject_Validator_passNullCheck.formValidate_BSL(password)
             if ((not checkEmailNull)and(not checkPassNull)):
-                checkifuservalid = CheckIfMyUserValid.CheckIfMyUserValid(email,password,'','')
-                value = checkifuservalid.isValid()
+                checkifuservalid = Businesslayer_CheckIfUserValid.Businesslayer_CheckIfUserValid()
+                value = checkifuservalid.isValid_BSL(email, password)
                 checkEmailNull = ""
                 checkPassNull = ""
                 if (value == True):
