@@ -24,8 +24,8 @@ def root():
         else:
             StatusData = []
             captureSessionid.emailid =  session['email']
-            fetchuserdata = Businesslayer_FetchUserData.Businesslayer_FetchUserData()
-            profileData = fetchuserdata.getProfileData_BSL(session['email'])
+            fetchuserdata = FetchMyUserData.FetchMyUserData(session['email'],'','')
+            profileData,msg = fetchuserdata.getMyProfileData()
             loginclassdetails = LoginMyClass.LoginMyClass(session['email'],'','','','','')
             loggedIn, firstName, typeOfUser = loginclassdetails.getMyLoginDetails()
             fetchuserstatus = FetchAllUserStatuses.FetchAllUserStatuses(StatusData,'')
@@ -47,8 +47,8 @@ def profileHome():
             StatusData = []
             loginclassdetails = LoginMyClass.LoginMyClass(session['email'],'','','','','')
             loggedIn, firstName, typeOfUser = loginclassdetails.getMyLoginDetails()
-            fetchuserdata = Businesslayer_FetchUserData.Businesslayer_FetchUserData()
-            profileData = fetchuserdata.getProfileData_BSL(session['email'])
+            fetchuserdata = FetchMyUserData.FetchMyUserData(session['email'],'','')
+            profileData,msg = fetchuserdata.getMyProfileData()
             fetchuserstatus = FetchAllUserStatuses.FetchAllUserStatuses(StatusData,'')
             StatusData,message = fetchuserstatus.getAllUserStatus()
             return render_template("Profile2.html",loggedIn=loggedIn, firstName=firstName,userStatus=StatusData,profileData=profileData)
@@ -66,8 +66,8 @@ def editProfile():
         loginclassdetails = LoginMyClass.LoginMyClass(session['email'],'','','','','')
         loggedIn, firstName, typeOfUser = loginclassdetails.getMyLoginDetails()
 
-        fetchuserdata = Businesslayer_FetchUserData.Businesslayer_FetchUserData()
-        profileData = fetchuserdata.getProfileData_BSL(session['email'])
+        fetchuserdata = FetchMyUserData.FetchMyUserData(session['email'],'','')
+        profileData,msg = fetchuserdata.getMyProfileData()
         return render_template("editProfile.html", profileData=profileData, loggedIn=loggedIn, firstName=firstName )
     except Exception as e:
         excep_msg = "Error in view edit profile"
@@ -307,18 +307,18 @@ def jobs():
             location = request.form['location']
             jobDetails = request.form['jobDetails']
             insertjob = InsertUserJob.InsertUserJob(jobId,companyName,title,manager,location,jobDetails,session['email'],'')
-            msg = insertjob.insertUserJob()
-            fetchjobdata = Businesslayer_FetchJobData.Businesslayer_FetchJobData()
-            jobData = fetchjobdata.getJobData_BSL()
+            msg_1 = insertjob.insertUserJob()
+            fetchjobdata = FetchMyJobData.FetchMyJobData('','')
+            jobData,msg = fetchjobdata.getMyJobData()
             noOfJobs = len(jobData)
             getUserType = Businesslayer_GetUserType.Businesslayer_GetUserType()
             getUserTypeData = getUserType.getUserType_BSL(session['email'])
             userType = getUserTypeData[2]
-            fetchuserdata = Businesslayer_FetchUserData.Businesslayer_FetchUserData()
-            profileData = fetchuserdata.getProfileData_BSL(session['email'])
+            fetchuserdata = FetchMyUserData.FetchMyUserData(session['email'],'','')
+            profileData,msg = fetchuserdata.getMyProfileData()
             rulesEngine = RulesEngine_PlanType.RulesEngine_PlanType('')
             allowPosting,allowMessages = rulesEngine.rulesEngine_Employer(myUser.email,myUser.userType,myUser.planType)
-            return render_template("jobs.html", jobData=jobData, noOfJobs=noOfJobs, msg=msg, jobId="Job with job id:" + jobId,allow=allowPosting,userType=userType)
+            return render_template("jobs.html", jobData=jobData, noOfJobs=noOfJobs, msg=msg_1, jobId="Job with job id:" + jobId,allow=allowPosting,userType=userType)
     except Exception as e:
         excep_msg = "Error in view jobs"
         level = logging.getLogger().getEffectiveLevel()
@@ -365,18 +365,18 @@ def addJobs():
         getUserTypeData = getUserType.getUserType_BSL(session['email'])
         if (getUserTypeData[2] == 'employee'):
             userType = 'employee'
-            fetchuserdata = Businesslayer_FetchUserData.Businesslayer_FetchUserData()
-            profileData = fetchuserdata.getProfileData_BSL(session['email'])
+            fetchuserdata = FetchMyUserData.FetchMyUserData(session['email'],'','')
+            profileData,msg = fetchuserdata.getMyProfileData()
             rulesEngine = RulesEngine_PlanType.RulesEngine_PlanType('')
             allowPosting,allowMessages = rulesEngine.rulesEngine_Employer(myUser.email,myUser.userType,myUser.planType)
         else:
             userType = 'employer'
-            fetchuserdata = Businesslayer_FetchUserData.Businesslayer_FetchUserData()
-            profileData = fetchuserdata.getProfileData_BSL(session['email'])
+            fetchuserdata = FetchMyUserData.FetchMyUserData(session['email'],'','')
+            profileData,msg = fetchuserdata.getMyProfileData()
             rulesEngine = RulesEngine_PlanType.RulesEngine_PlanType('')
             allowPosting,allowMessages = rulesEngine.rulesEngine_Employer(myUser.email,myUser.userType,myUser.planType)
-        fetchjobdata = Businesslayer_FetchJobData.Businesslayer_FetchJobData()
-        jobData = fetchjobdata.getJobData_BSL()
+        fetchjobdata = FetchMyJobData.FetchMyJobData('','')
+        jobData,msg = fetchjobdata.getMyJobData()
         noOfJobs = len(jobData)
         if(noOfJobs == 0):
             return render_template("jobs.html",noOfJobs=noOfJobs,jobData=jobData,userType=userType,allow=allowPosting)
@@ -401,8 +401,8 @@ def addJobApplication():
             getUserType = Businesslayer_GetUserType.Businesslayer_GetUserType()
             getUserTypeData = getUserType.getUserType_BSL(session['email'])
             userType = getUserTypeData[2]
-            fetchjobdata = Businesslayer_FetchJobData.Businesslayer_FetchJobData()
-            jobData = fetchjobdata.getJobData_BSL()
+            fetchjobdata = FetchMyJobData.FetchMyJobData('','')
+            jobData,msg = fetchjobdata.getMyJobData()
             insertgivenjobapplication = InsertGivenJobApplication.InsertGivenJobApplication(email,'')
             message = insertgivenjobapplication.insertGivenJobApplication()
             noOfJobs = len(jobData)
@@ -441,17 +441,16 @@ def messageForm():
         getUserTypeData = getUserType.getUserType_BSL(session['email'])
         if (getUserTypeData[2] == 'employee'):
             userType = 'employee'
-            fetchuserdata = Businesslayer_FetchUserData.Businesslayer_FetchUserData()
-            profileData = fetchuserdata.getProfileData_BSL(session['email'])
+            fetchuserdata = FetchMyUserData.FetchMyUserData(session['email'],'','')
+            profileData,msg = fetchuserdata.getMyProfileData()
             rulesEngine = RulesEngine_PlanType.RulesEngine_PlanType('')
             allowPosting,allowMessages = rulesEngine.rulesEngine_Employer(myUser.email,myUser.userType,myUser.planType)
         else:
             userType = 'employer'
-            fetchuserdata = Businesslayer_FetchUserData.Businesslayer_FetchUserData()
-            profileData = fetchuserdata.getProfileData_BSL(session['email'])
+            fetchuserdata = FetchMyUserData.FetchMyUserData(session['email'],'','')
+            profileData,msg = fetchuserdata.getMyProfileData()
             rulesEngine = RulesEngine_PlanType.RulesEngine_PlanType('')
             allowPosting,allowMessages = rulesEngine.rulesEngine_Employer(myUser.email,myUser.userType,myUser.planType)
-            fetchjobdata = Businesslayer_FetchJobData.Businesslayer_FetchJobData()
         return render_template("messaging.html",allowMessages=allowMessages)
     except Exception as e:
         excep_msg = "Error in view messaging"

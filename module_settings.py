@@ -20,7 +20,7 @@ sys.path.append(os.path.abspath(os.path.join('0','/Businesslayer')))
 from Businesslayer import UpdateMyUserobject
 from Businesslayer import HashMyChangingPassword
 from Businesslayer import CheckIfMyUserValid
-from Businesslayer import Businesslayer_FetchJobData
+from Businesslayer import FetchMyJobData
 from Businesslayer import FetchMySearchedProfile
 from Businesslayer import FetchAllUserStatuses
 from Businesslayer import InsertUserJob
@@ -37,7 +37,7 @@ from Businesslayer import Password_Equate
 from Businesslayer import Password_SpaceCheck
 from Businesslayer import RulesEngine_PlanType
 from Businesslayer import InsertGivenJobApplication
-from Businesslayer import Businesslayer_FetchUserData
+from Businesslayer import FetchMyUserData
 from Businesslayer import Businesslayer_FactoryPattern
 from Businesslayer import XmlReader
 
