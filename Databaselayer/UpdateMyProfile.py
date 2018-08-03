@@ -41,7 +41,7 @@ class UpdateMyProfile(IProfileUpdate.IProfileUpdate):
                 self.user_details_list[19],self.user_details_list[20],self.user_details_list[21],self.user_details_list[22]])
                 conn.commit()
                 logging.info("Changes updated in the database")
-            self.result  = "pass"
+                self.result  = "pass"
         except Exception as e:
             conn.rollback()
             excep_msg = "Error occured in updateMyProfileMethod_DBL method"
