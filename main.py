@@ -311,8 +311,8 @@ def jobs():
             fetchjobdata = FetchMyJobData.FetchMyJobData('','')
             jobData,msg = fetchjobdata.getMyJobData()
             noOfJobs = len(jobData)
-            getUserType = Businesslayer_GetUserType.Businesslayer_GetUserType()
-            getUserTypeData = getUserType.getUserType_BSL(session['email'])
+            getUserType = GetMyUserType.GetMyUserType(session['email'],'','')
+            getUserTypeData,message = getUserType.getMyUserType()
             userType = getUserTypeData[2]
             fetchuserdata = FetchMyUserData.FetchMyUserData(session['email'],'','')
             profileData,msg = fetchuserdata.getMyProfileData()
@@ -361,8 +361,8 @@ def CheckErrorLog():
 @app.route("/addJobs")
 def addJobs():
     try:
-        getUserType = Businesslayer_GetUserType.Businesslayer_GetUserType()
-        getUserTypeData = getUserType.getUserType_BSL(session['email'])
+        getUserType = GetMyUserType.GetMyUserType(session['email'],'','')
+        getUserTypeData,message = getUserType.getMyUserType()
         if (getUserTypeData[2] == 'employee'):
             userType = 'employee'
             fetchuserdata = FetchMyUserData.FetchMyUserData(session['email'],'','')
@@ -398,8 +398,8 @@ def addJobApplication():
     try:
         if request.method == 'POST':
             email = session['email']
-            getUserType = Businesslayer_GetUserType.Businesslayer_GetUserType()
-            getUserTypeData = getUserType.getUserType_BSL(session['email'])
+            getUserType = GetMyUserType.GetMyUserType(session['email'],'','')
+            getUserTypeData,message = getUserType.getMyUserType()
             userType = getUserTypeData[2]
             fetchjobdata = FetchMyJobData.FetchMyJobData('','')
             jobData,msg = fetchjobdata.getMyJobData()
@@ -437,8 +437,8 @@ def messaging():
 @app.route("/messageForm")
 def messageForm():
     try:
-        getUserType = Businesslayer_GetUserType.Businesslayer_GetUserType()
-        getUserTypeData = getUserType.getUserType_BSL(session['email'])
+        getUserType = GetMyUserType.GetMyUserType(session['email'],'','')
+        getUserTypeData,message = getUserType.getMyUserType()
         if (getUserTypeData[2] == 'employee'):
             userType = 'employee'
             fetchuserdata = FetchMyUserData.FetchMyUserData(session['email'],'','')

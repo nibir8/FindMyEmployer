@@ -28,7 +28,7 @@ from Businesslayer import InsertMyUser
 from Businesslayer import LoginMyClass
 from Businesslayer import PostUserStatus
 from Businesslayer import UpdateMyGivenProfile
-from Businesslayer import Businesslayer_GetUserType
+from Businesslayer import GetMyUserType
 from Businesslayer import Email_NullCheck
 from Businesslayer import Password_NullCheck
 from Businesslayer import Email_Validate
