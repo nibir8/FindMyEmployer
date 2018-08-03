@@ -38,7 +38,7 @@ from Businesslayer import Password_SpaceCheck
 from Businesslayer import RulesEngine_PlanType
 from Businesslayer import InsertGivenJobApplication
 from Businesslayer import FetchMyUserData
-from Businesslayer import Businesslayer_FactoryPattern
+from Businesslayer import FactoryPattern
 from Businesslayer import XmlReader
 
 sys.path.append(os.path.abspath(os.path.join('0','../Models')))
