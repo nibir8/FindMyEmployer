@@ -203,8 +203,8 @@ def login():
             factoryObject_Validator_passNullCheck = factoryObject.factoryPattern_BSL('Password NullCheck')
             checkPassNull = factoryObject_Validator_passNullCheck.formValidate_BSL(password)
             if ((not checkEmailNull)and(not checkPassNull)):
-                checkifuservalid = Businesslayer_CheckIfUserValid.Businesslayer_CheckIfUserValid()
-                value = checkifuservalid.isValid_BSL(email, password)
+                checkifuservalid = CheckIfMyUserValid.CheckIfMyUserValid(email,password,'','')
+                value = checkifuservalid.isValid()
                 checkEmailNull = ""
                 checkPassNull = ""
                 if (value == True):
