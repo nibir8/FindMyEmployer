@@ -5,4 +5,4 @@ DROP PROCEDURE IF EXISTS spGetUserDetails;
  (
   email varchar(50)
   )
-  Select userid,firstname from tbl_users where  email = email
+  Select userid,firstname,typeOfUser from tbl_users where  email = email
