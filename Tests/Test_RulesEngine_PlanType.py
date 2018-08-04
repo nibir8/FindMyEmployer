@@ -14,7 +14,7 @@ import extensions
 sys.path.append(os.path.abspath(os.path.join('..', 'LoggingDatabase/')))
 import LoggingErrorsinDatabase
 sys.path.append(os.path.abspath(os.path.join('..','Databaselayer/')))
-from FetchApplicationCount import FetchApplicationCount
+import FetchGetApplicationCount
 from FetchJobsCount import FetchJobsCount
 sys.path.append(os.path.abspath(os.path.join('..', 'DecoraterClasses/')))
 from NormalEmployee import NormalEmployee
