@@ -24,7 +24,7 @@ class Test_Password_SpaceCheck(unittest.TestCase):
 
     def test_formValidate_BSL_2(self):
         formValidate = Password_SpaceCheck.Password_SpaceCheck()
-        result = formValidate.formValidate_BSL(Password[4])
+        result = formValidate.formValidate_BSL("    ")
         assert result == "Password not valid"
 
 if __name__ == '__main__':
