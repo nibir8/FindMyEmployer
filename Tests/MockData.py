@@ -15,6 +15,8 @@ Province = ['Nova Scotia','Ontario','Qubec','Alberta']
 
 Country = ['Canada','Canada','USA','Canada']
 
+TypeOfUser =['Employee','Employer']
+
 Messages1 = ['Changed Successfully','Wrong password','The below password is same as previous password']
 Messages2 = ['pass','fail']
 Messages3 = ['User Staus Fetched Successfully','Unable to fetch user status']
